@@ -1,0 +1,1426 @@
+{ "AllDocuments":[
+{
+   "Document": {
+     "CmdLine": {
+       "Command": "metamap -L 20 -Z 2020AB --lexicon db -V USAbase -E -AI+ --JSONf 2 -E /tmp/text_000N_41516 /tmp/text_000N.out_41516",
+       "Options": [
+         {
+           "OptName": "lexicon_year",
+           "OptValue": "20"
+         },
+         {
+           "OptName": "mm_data_year",
+           "OptValue": "2020AB"
+         },
+         {
+           "OptName": "lexicon",
+           "OptValue": "db"
+         },
+         {
+           "OptName": "mm_data_version",
+           "OptValue": "USAbase"
+         },
+         {
+           "OptName": "strict_model"
+         },
+         {
+           "OptName": "show_cuis"
+         },
+         {
+           "OptName": "bracketed_output"
+         },
+         {
+           "OptName": "JSONf",
+           "OptValue": "2"
+         },
+         {
+           "OptName": "indicate_citation_end"
+         },
+         {
+           "OptName": "infile",
+           "OptValue": "/tmp/text_000N_41516"
+         },
+         {
+           "OptName": "outfile",
+           "OptValue": "/tmp/text_000N.out_41516"
+         }]
+     },
+     "AAs": [],
+     "Negations": [],
+     "Utterances": [
+       {
+         "PMID": "text_000N_41516",
+         "UttSection": "tx",
+         "UttNum": "1",
+         "UttText": "What is the main cause of HIV-1 infection in children? ",
+         "UttStartPos": "0",
+         "UttLength": "55",
+         "Phrases": [
+           {
+             "PhraseText": "What",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "pron",
+                 "LexMatch": "what",
+                 "InputMatch": "What",
+                 "LexCat": "pron",
+                 "Tokens": ["what"]
+               }],
+             "PhraseStartPos": "0",
+             "PhraseLength": "4",
+             "Candidates": [],
+             "Mappings": []
+           },
+           {
+             "PhraseText": "is",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "aux",
+                 "LexMatch": "is",
+                 "InputMatch": "is",
+                 "LexCat": "aux",
+                 "Tokens": ["is"]
+               }],
+             "PhraseStartPos": "5",
+             "PhraseLength": "2",
+             "Candidates": [],
+             "Mappings": []
+           },
+           {
+             "PhraseText": "the main cause of HIV-1 infection",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "det",
+                 "LexMatch": "the",
+                 "InputMatch": "the",
+                 "LexCat": "det",
+                 "Tokens": ["the"]
+               },
+               {
+                 "SyntaxType": "mod",
+                 "LexMatch": "main",
+                 "InputMatch": "main",
+                 "LexCat": "adj",
+                 "Tokens": ["main"]
+               },
+               {
+                 "SyntaxType": "head",
+                 "LexMatch": "cause",
+                 "InputMatch": "cause",
+                 "LexCat": "noun",
+                 "Tokens": ["cause"]
+               },
+               {
+                 "SyntaxType": "prep",
+                 "LexMatch": "of",
+                 "InputMatch": "of",
+                 "LexCat": "prep",
+                 "Tokens": ["of"]
+               },
+               {
+                 "SyntaxType": "mod",
+                 "LexMatch": "hiv-1 infection",
+                 "InputMatch": "HIV - 1 infection",
+                 "LexCat": "noun",
+                 "Tokens": ["hiv","1","infection"]
+               }],
+             "PhraseStartPos": "8",
+             "PhraseLength": "33",
+             "Candidates": [],
+             "Mappings": [
+               {
+                 "MappingScore": "-746",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-581",
+                     "CandidateCUI": "C0205225",
+                     "CandidateMatched": "Main",
+                     "CandidatePreferred": "Primary",
+                     "MatchedWords": ["main"],
+                     "SemTypes": ["qlco"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "2",
+                         "TextMatchEnd": "2",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","LNC","MTH","NCI","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "12",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-748",
+                     "CandidateCUI": "C0015127",
+                     "CandidateMatched": "cause",
+                     "CandidatePreferred": "Etiology aspects",
+                     "MatchedWords": ["cause"],
+                     "SemTypes": ["ftcn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","MSH","MTH"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "17",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-647",
+                     "CandidateCUI": "C0276500",
+                     "CandidateMatched": "HIV 1 infection",
+                     "CandidatePreferred": "Human immunodeficiency virus I infection",
+                     "MatchedWords": ["hiv","1","infection"],
+                     "SemTypes": ["dsyn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "5",
+                         "TextMatchEnd": "6",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "2",
+                         "LexVariation": "0"
+                       },
+                       {
+                         "TextMatchStart": "7",
+                         "TextMatchEnd": "7",
+                         "ConcMatchStart": "3",
+                         "ConcMatchEnd": "3",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["NLMSubSyn","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "26",
+                         "Length": "15"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-746",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-581",
+                     "CandidateCUI": "C0205225",
+                     "CandidateMatched": "Main",
+                     "CandidatePreferred": "Primary",
+                     "MatchedWords": ["main"],
+                     "SemTypes": ["qlco"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "2",
+                         "TextMatchEnd": "2",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","LNC","MTH","NCI","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "12",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-748",
+                     "CandidateCUI": "C1524003",
+                     "CandidateMatched": "Cause",
+                     "CandidatePreferred": "Science of Etiology",
+                     "MatchedWords": ["cause"],
+                     "SemTypes": ["cnce"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["MTH","NCI","NCI_NCI-GLOSS"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "17",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-647",
+                     "CandidateCUI": "C0276500",
+                     "CandidateMatched": "HIV 1 infection",
+                     "CandidatePreferred": "Human immunodeficiency virus I infection",
+                     "MatchedWords": ["hiv","1","infection"],
+                     "SemTypes": ["dsyn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "5",
+                         "TextMatchEnd": "6",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "2",
+                         "LexVariation": "0"
+                       },
+                       {
+                         "TextMatchStart": "7",
+                         "TextMatchEnd": "7",
+                         "ConcMatchStart": "3",
+                         "ConcMatchEnd": "3",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["NLMSubSyn","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "26",
+                         "Length": "15"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-746",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-581",
+                     "CandidateCUI": "C1542147",
+                     "CandidateMatched": "Main",
+                     "CandidatePreferred": "Main",
+                     "MatchedWords": ["main"],
+                     "SemTypes": ["qlco"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "2",
+                         "TextMatchEnd": "2",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MTH","NCI"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "12",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-748",
+                     "CandidateCUI": "C0015127",
+                     "CandidateMatched": "cause",
+                     "CandidatePreferred": "Etiology aspects",
+                     "MatchedWords": ["cause"],
+                     "SemTypes": ["ftcn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","MSH","MTH"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "17",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-647",
+                     "CandidateCUI": "C0276500",
+                     "CandidateMatched": "HIV 1 infection",
+                     "CandidatePreferred": "Human immunodeficiency virus I infection",
+                     "MatchedWords": ["hiv","1","infection"],
+                     "SemTypes": ["dsyn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "5",
+                         "TextMatchEnd": "6",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "2",
+                         "LexVariation": "0"
+                       },
+                       {
+                         "TextMatchStart": "7",
+                         "TextMatchEnd": "7",
+                         "ConcMatchStart": "3",
+                         "ConcMatchEnd": "3",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["NLMSubSyn","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "26",
+                         "Length": "15"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-746",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-581",
+                     "CandidateCUI": "C1542147",
+                     "CandidateMatched": "Main",
+                     "CandidatePreferred": "Main",
+                     "MatchedWords": ["main"],
+                     "SemTypes": ["qlco"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "2",
+                         "TextMatchEnd": "2",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MTH","NCI"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "12",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-748",
+                     "CandidateCUI": "C1524003",
+                     "CandidateMatched": "Cause",
+                     "CandidatePreferred": "Science of Etiology",
+                     "MatchedWords": ["cause"],
+                     "SemTypes": ["cnce"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["MTH","NCI","NCI_NCI-GLOSS"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "17",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-647",
+                     "CandidateCUI": "C0276500",
+                     "CandidateMatched": "HIV 1 infection",
+                     "CandidatePreferred": "Human immunodeficiency virus I infection",
+                     "MatchedWords": ["hiv","1","infection"],
+                     "SemTypes": ["dsyn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "5",
+                         "TextMatchEnd": "6",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "2",
+                         "LexVariation": "0"
+                       },
+                       {
+                         "TextMatchStart": "7",
+                         "TextMatchEnd": "7",
+                         "ConcMatchStart": "3",
+                         "ConcMatchEnd": "3",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["NLMSubSyn","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "26",
+                         "Length": "15"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               }]
+           },
+           {
+             "PhraseText": "in children?",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "prep",
+                 "LexMatch": "in",
+                 "InputMatch": "in",
+                 "LexCat": "prep",
+                 "Tokens": ["in"]
+               },
+               {
+                 "SyntaxType": "head",
+                 "LexMatch": "children",
+                 "InputMatch": "children",
+                 "LexCat": "noun",
+                 "Tokens": ["children"]
+               },
+               {
+                 "SyntaxType": "punc",
+                 "InputMatch": "?",
+                 "Tokens": []
+               }],
+             "PhraseStartPos": "42",
+             "PhraseLength": "12",
+             "Candidates": [],
+             "Mappings": [
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C0008059",
+                     "CandidateMatched": "Children",
+                     "CandidatePreferred": "Child",
+                     "MatchedWords": ["children"],
+                     "SemTypes": ["aggp"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["AOD","CHV","CSP","DXP","HL7V3.0","LCH","LCH_NW","LNC","MSH","MTH","NCI","NCI_FDA","NCI_NICHD","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "45",
+                         "Length": "8"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C0680063",
+                     "CandidateMatched": "Children",
+                     "CandidatePreferred": "Offspring",
+                     "MatchedWords": ["children"],
+                     "SemTypes": ["famg"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["AOD","CHV","HL7V3.0","MTH","NCI","NCI_CDISC","NCI_GDC","NCI_NCI-GLOSS"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "45",
+                         "Length": "8"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               }]
+           }]
+       },
+       {
+         "PMID": "text_000N_41516",
+         "UttSection": "tx",
+         "UttNum": "2",
+         "UttText": "What plays the crucial role in the Mother to Child Transmission of HIV-1 and what increases the risk?",
+         "UttStartPos": "55",
+         "UttLength": "101",
+         "Phrases": [
+           {
+             "PhraseText": "What",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "pron",
+                 "LexMatch": "what",
+                 "InputMatch": "What",
+                 "LexCat": "pron",
+                 "Tokens": ["what"]
+               }],
+             "PhraseStartPos": "55",
+             "PhraseLength": "4",
+             "Candidates": [],
+             "Mappings": []
+           },
+           {
+             "PhraseText": "plays",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "verb",
+                 "LexMatch": "plays",
+                 "InputMatch": "plays",
+                 "LexCat": "verb",
+                 "Tokens": ["plays"]
+               }],
+             "PhraseStartPos": "60",
+             "PhraseLength": "5",
+             "Candidates": [],
+             "Mappings": [
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C0032214",
+                     "CandidateMatched": "Plays",
+                     "CandidatePreferred": "Play",
+                     "MatchedWords": ["plays"],
+                     "SemTypes": ["dora"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","CSP","ICF","ICF-CY","LCH_NW","MSH","MTH"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "60",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C0600138",
+                     "CandidateMatched": "play",
+                     "CandidatePreferred": "Does play",
+                     "MatchedWords": ["play"],
+                     "SemTypes": ["fndg"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","MTH","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "60",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               }]
+           },
+           {
+             "PhraseText": "the crucial role in the Mother to Child Transmission of HIV-1",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "det",
+                 "LexMatch": "the",
+                 "InputMatch": "the",
+                 "LexCat": "det",
+                 "Tokens": ["the"]
+               },
+               {
+                 "SyntaxType": "mod",
+                 "LexMatch": "crucial",
+                 "InputMatch": "crucial",
+                 "LexCat": "adj",
+                 "Tokens": ["crucial"]
+               },
+               {
+                 "SyntaxType": "head",
+                 "LexMatch": "role",
+                 "InputMatch": "role",
+                 "LexCat": "noun",
+                 "Tokens": ["role"]
+               },
+               {
+                 "SyntaxType": "prep",
+                 "LexMatch": "in",
+                 "InputMatch": "in",
+                 "LexCat": "prep",
+                 "Tokens": ["in"]
+               },
+               {
+                 "SyntaxType": "det",
+                 "LexMatch": "the",
+                 "InputMatch": "the",
+                 "LexCat": "det",
+                 "Tokens": ["the"]
+               },
+               {
+                 "SyntaxType": "mod",
+                 "LexMatch": "mother to child transmission",
+                 "InputMatch": "Mother to Child Transmission",
+                 "LexCat": "noun",
+                 "Tokens": ["mother","to","child","transmission"]
+               },
+               {
+                 "SyntaxType": "prep",
+                 "LexMatch": "of",
+                 "InputMatch": "of",
+                 "LexCat": "prep",
+                 "Tokens": ["of"]
+               },
+               {
+                 "SyntaxType": "mod",
+                 "LexMatch": "hiv-1",
+                 "InputMatch": "HIV - 1",
+                 "LexCat": "noun",
+                 "Tokens": ["hiv","1"]
+               }],
+             "PhraseStartPos": "66",
+             "PhraseLength": "61",
+             "Candidates": [],
+             "Mappings": [
+               {
+                 "MappingScore": "-724",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-736",
+                     "CandidateCUI": "C0035820",
+                     "CandidateMatched": "Role",
+                     "CandidatePreferred": "Social Role",
+                     "MatchedWords": ["role"],
+                     "SemTypes": ["socb"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["AOD","CHV","CSP","LCH_NW","MSH","MTH","NCI"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "78",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-623",
+                     "CandidateCUI": "C0282474",
+                     "CandidateMatched": "Mother-to-Child Transmission",
+                     "CandidatePreferred": "Maternal-Fetal Infection Transmission",
+                     "MatchedWords": ["mother","to","child","transmission"],
+                     "SemTypes": ["patf"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "6",
+                         "TextMatchEnd": "9",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "4",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MSH","NLMSubSyn"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "90",
+                         "Length": "28"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-586",
+                     "CandidateCUI": "C0019704",
+                     "CandidateMatched": "HIV1",
+                     "CandidatePreferred": "HIV-1",
+                     "MatchedWords": ["hiv1"],
+                     "SemTypes": ["virs"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "11",
+                         "TextMatchEnd": "12",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","CSP","LNC","MSH","MTH","NCBI","NCI","NCI_CDISC","NCI_CTRP","NLMSubSyn","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "122",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-724",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-736",
+                     "CandidateCUI": "C0035820",
+                     "CandidateMatched": "Role",
+                     "CandidatePreferred": "Social Role",
+                     "MatchedWords": ["role"],
+                     "SemTypes": ["socb"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["AOD","CHV","CSP","LCH_NW","MSH","MTH","NCI"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "78",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-623",
+                     "CandidateCUI": "C0282474",
+                     "CandidateMatched": "Mother-to-Child Transmission",
+                     "CandidatePreferred": "Maternal-Fetal Infection Transmission",
+                     "MatchedWords": ["mother","to","child","transmission"],
+                     "SemTypes": ["patf"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "6",
+                         "TextMatchEnd": "9",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "4",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MSH","NLMSubSyn"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "90",
+                         "Length": "28"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-586",
+                     "CandidateCUI": "C4287934",
+                     "CandidateMatched": "HIV1+",
+                     "CandidatePreferred": "Human Immunodeficiency Virus 1 Positive",
+                     "MatchedWords": ["hiv1"],
+                     "SemTypes": ["lbtr"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "11",
+                         "TextMatchEnd": "12",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["LNC","NCI","NCI_CTRP"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "122",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-724",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-736",
+                     "CandidateCUI": "C1705810",
+                     "CandidateMatched": "Role",
+                     "CandidatePreferred": "Generic Role",
+                     "MatchedWords": ["role"],
+                     "SemTypes": ["qlco"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["MTH","NCI","NCI_CDISC","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "78",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-623",
+                     "CandidateCUI": "C0282474",
+                     "CandidateMatched": "Mother-to-Child Transmission",
+                     "CandidatePreferred": "Maternal-Fetal Infection Transmission",
+                     "MatchedWords": ["mother","to","child","transmission"],
+                     "SemTypes": ["patf"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "6",
+                         "TextMatchEnd": "9",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "4",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MSH","NLMSubSyn"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "90",
+                         "Length": "28"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-586",
+                     "CandidateCUI": "C0019704",
+                     "CandidateMatched": "HIV1",
+                     "CandidatePreferred": "HIV-1",
+                     "MatchedWords": ["hiv1"],
+                     "SemTypes": ["virs"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "11",
+                         "TextMatchEnd": "12",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","CSP","LNC","MSH","MTH","NCBI","NCI","NCI_CDISC","NCI_CTRP","NLMSubSyn","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "122",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-724",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-736",
+                     "CandidateCUI": "C1705810",
+                     "CandidateMatched": "Role",
+                     "CandidatePreferred": "Generic Role",
+                     "MatchedWords": ["role"],
+                     "SemTypes": ["qlco"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["MTH","NCI","NCI_CDISC","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "78",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-623",
+                     "CandidateCUI": "C0282474",
+                     "CandidateMatched": "Mother-to-Child Transmission",
+                     "CandidatePreferred": "Maternal-Fetal Infection Transmission",
+                     "MatchedWords": ["mother","to","child","transmission"],
+                     "SemTypes": ["patf"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "6",
+                         "TextMatchEnd": "9",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "4",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MSH","NLMSubSyn"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "90",
+                         "Length": "28"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-586",
+                     "CandidateCUI": "C4287934",
+                     "CandidateMatched": "HIV1+",
+                     "CandidatePreferred": "Human Immunodeficiency Virus 1 Positive",
+                     "MatchedWords": ["hiv1"],
+                     "SemTypes": ["lbtr"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "11",
+                         "TextMatchEnd": "12",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["LNC","NCI","NCI_CTRP"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "122",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-724",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-736",
+                     "CandidateCUI": "C3871154",
+                     "CandidateMatched": "Role",
+                     "CandidatePreferred": "Role",
+                     "MatchedWords": ["role"],
+                     "SemTypes": ["inpr"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["LNC","MTH"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "78",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-623",
+                     "CandidateCUI": "C0282474",
+                     "CandidateMatched": "Mother-to-Child Transmission",
+                     "CandidatePreferred": "Maternal-Fetal Infection Transmission",
+                     "MatchedWords": ["mother","to","child","transmission"],
+                     "SemTypes": ["patf"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "6",
+                         "TextMatchEnd": "9",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "4",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MSH","NLMSubSyn"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "90",
+                         "Length": "28"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-586",
+                     "CandidateCUI": "C0019704",
+                     "CandidateMatched": "HIV1",
+                     "CandidatePreferred": "HIV-1",
+                     "MatchedWords": ["hiv1"],
+                     "SemTypes": ["virs"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "11",
+                         "TextMatchEnd": "12",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","CSP","LNC","MSH","MTH","NCBI","NCI","NCI_CDISC","NCI_CTRP","NLMSubSyn","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "122",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-724",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-736",
+                     "CandidateCUI": "C3871154",
+                     "CandidateMatched": "Role",
+                     "CandidatePreferred": "Role",
+                     "MatchedWords": ["role"],
+                     "SemTypes": ["inpr"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "3",
+                         "TextMatchEnd": "3",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["LNC","MTH"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "78",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-623",
+                     "CandidateCUI": "C0282474",
+                     "CandidateMatched": "Mother-to-Child Transmission",
+                     "CandidatePreferred": "Maternal-Fetal Infection Transmission",
+                     "MatchedWords": ["mother","to","child","transmission"],
+                     "SemTypes": ["patf"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "6",
+                         "TextMatchEnd": "9",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "4",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["MSH","NLMSubSyn"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "90",
+                         "Length": "28"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   },
+                   {
+                     "CandidateScore": "-586",
+                     "CandidateCUI": "C4287934",
+                     "CandidateMatched": "HIV1+",
+                     "CandidatePreferred": "Human Immunodeficiency Virus 1 Positive",
+                     "MatchedWords": ["hiv1"],
+                     "SemTypes": ["lbtr"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "11",
+                         "TextMatchEnd": "12",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "no",
+                     "IsOverMatch": "no",
+                     "Sources": ["LNC","NCI","NCI_CTRP"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "122",
+                         "Length": "5"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               }]
+           },
+           {
+             "PhraseText": "and",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "conj",
+                 "LexMatch": "and",
+                 "InputMatch": "and",
+                 "LexCat": "conj",
+                 "Tokens": ["and"]
+               }],
+             "PhraseStartPos": "128",
+             "PhraseLength": "3",
+             "Candidates": [],
+             "Mappings": []
+           },
+           {
+             "PhraseText": "what",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "pron",
+                 "LexMatch": "what",
+                 "InputMatch": "what",
+                 "LexCat": "pron",
+                 "Tokens": ["what"]
+               }],
+             "PhraseStartPos": "132",
+             "PhraseLength": "4",
+             "Candidates": [],
+             "Mappings": []
+           },
+           {
+             "PhraseText": "increases",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "verb",
+                 "LexMatch": "increases",
+                 "InputMatch": "increases",
+                 "LexCat": "verb",
+                 "Tokens": ["increases"]
+               }],
+             "PhraseStartPos": "137",
+             "PhraseLength": "9",
+             "Candidates": [],
+             "Mappings": [
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C0205217",
+                     "CandidateMatched": "Increases",
+                     "CandidatePreferred": "Increased",
+                     "MatchedWords": ["increases"],
+                     "SemTypes": ["qlco"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","LNC","MTH","SNMI","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "137",
+                         "Length": "9"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C0442805",
+                     "CandidateMatched": "increases",
+                     "CandidatePreferred": "Increase",
+                     "MatchedWords": ["increases"],
+                     "SemTypes": ["ftcn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["CHV","MTH","NCI","NCI_CDISC","SNOMEDCT_US"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "137",
+                         "Length": "9"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               }]
+           },
+           {
+             "PhraseText": "the risk?",
+             "SyntaxUnits": [
+               {
+                 "SyntaxType": "det",
+                 "LexMatch": "the",
+                 "InputMatch": "the",
+                 "LexCat": "det",
+                 "Tokens": ["the"]
+               },
+               {
+                 "SyntaxType": "head",
+                 "LexMatch": "risk",
+                 "InputMatch": "risk",
+                 "LexCat": "noun",
+                 "Tokens": ["risk"]
+               },
+               {
+                 "SyntaxType": "punc",
+                 "InputMatch": "?",
+                 "Tokens": []
+               }],
+             "PhraseStartPos": "147",
+             "PhraseLength": "9",
+             "Candidates": [],
+             "Mappings": [
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C0035647",
+                     "CandidateMatched": "Risk",
+                     "CandidatePreferred": "Risk",
+                     "MatchedWords": ["risk"],
+                     "SemTypes": ["idcn"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["AOD","CHV","HL7V3.0","LCH","LCH_NW","LNC","MSH","MTH","NCI"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "151",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               },
+               {
+                 "MappingScore": "-1000",
+                 "MappingCandidates": [
+                   {
+                     "CandidateScore": "-1000",
+                     "CandidateCUI": "C4552904",
+                     "CandidateMatched": "risk",
+                     "CandidatePreferred": "Subject Risk",
+                     "MatchedWords": ["risk"],
+                     "SemTypes": ["cnce"],
+                     "MatchMaps": [
+                       {
+                         "TextMatchStart": "1",
+                         "TextMatchEnd": "1",
+                         "ConcMatchStart": "1",
+                         "ConcMatchEnd": "1",
+                         "LexVariation": "0"
+                       }],
+                     "IsHead": "yes",
+                     "IsOverMatch": "no",
+                     "Sources": ["MTH","NCI","NCI_CDISC-GLOSS"],
+                     "ConceptPIs": [
+                       {
+                         "StartPos": "151",
+                         "Length": "4"
+                       }],
+                     "Status": "0",
+                     "Negated": "0"
+                   }]
+               }]
+           }]
+       }]
+   }
+ }
+
+]}
