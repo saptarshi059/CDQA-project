@@ -1,4 +1,0 @@
-Disease or Syndrome	isa	Pathologic Function
-Functional Concept	isa	Idea or Concept
-Qualitative Concept	isa	Idea or Concept
-Virus	causes	Pathologic Function

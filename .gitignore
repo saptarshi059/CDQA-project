@@ -1,3 +1,5 @@
 UMLS_KG/
 
 pykg2vec/
+
+metamap_output.json
