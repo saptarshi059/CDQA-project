@@ -55,7 +55,7 @@ def preprocess_input(dataset):
             answer['answer_start'] = start_idx - 2
             answer['answer_end'] = end_idx - 2     # When the gold label is off by two characters
     
-    encodings = tokenizer(dataset['context'].to_list(), dataset['question'].to_list(), truncation=True, padding=True)
+    encodings = tokenizer(dataset['context'].to_list(), dataset['question'].to_list(),                           truncation=True, padding=True)
     
     start_positions = []
     end_positions = []
@@ -149,20 +149,16 @@ class CovidQADataset(torch.utils.data.Dataset):
 from sklearn.model_selection import KFold
 from torch.utils.data import DataLoader
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 
 kfold = KFold(n_splits=5)
 num_epochs = 3
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
-model_name = 'distilbert-base-uncased'
+model_name = 'twmkn9/albert-base-v2-squad2'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-
-model.to(device)
-model.train()
 
 for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)): 
     print(f'FOLD {fold}')
@@ -171,6 +167,11 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
     train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids]))
     
     train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+    
+    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
+
+    model.to(device)
+    model.train()   
     
     # Initialize optimizer
     optim = AdamW(model.parameters(), lr=5e-5)
@@ -183,8 +184,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
             attention_mask = batch['attention_mask'].to(device)
             start_positions = batch['start_positions'].to(device)
             end_positions = batch['end_positions'].to(device)
-            outputs = model(input_ids, attention_mask=attention_mask, start_positions=start_positions, \
-                end_positions=end_positions)
+            outputs = model(input_ids, attention_mask=attention_mask, start_positions=start_positions, end_positions=end_positions)
             loss = outputs[0]
             loss.backward()
             optim.step()
@@ -197,7 +197,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
 
     # Evaluationfor this fold
     test_data = full_dataset.iloc[test_ids]
-    nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') else 0)
+    nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu')                                else 0)
     with torch.no_grad():
         questions = []
         true_answers = []
