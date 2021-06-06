@@ -55,7 +55,7 @@ def preprocess_input(dataset):
             answer['answer_start'] = start_idx - 2
             answer['answer_end'] = end_idx - 2     # When the gold label is off by two characters
     
-    encodings = tokenizer(dataset['context'].to_list(), dataset['question'].to_list(), truncation=True, padding=True)
+    encodings = tokenizer(dataset['context'].to_list(), dataset['question'].to_list(),                           truncation=True, padding=True)
     
     start_positions = []
     end_positions = []
@@ -77,7 +77,7 @@ def preprocess_input(dataset):
 # In[ ]:
 
 
-#Code to compute F1 scores
+#Code to compute F1 & EM scores
 import re
 import string
 import collections
@@ -115,6 +115,14 @@ def compute_f1(a_gold, a_pred):
     recall = 1.0 * num_same / len(gold_toks)
     f1 = (2 * precision * recall) / (precision + recall)
     return f1
+
+def compute_EM(df):
+    EM = []
+    for i in range(len(df)):
+        a_gold = df['true_answer'][i]
+        a_pred = df['predicted_answer'][i]
+        EM.append(int(normalize_answer(a_gold) == normalize_answer(a_pred)))
+    return np.sum(EM)
 
 def compute_f1_main(df):
     F1 = []
@@ -160,18 +168,28 @@ model_name = 'twmkn9/albert-base-v2-squad2'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
+fold_f1_score = []
+fold_EM_score = []
+
 for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)): 
     print(f'FOLD {fold}')
     print('--------------------------------')
      
     train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids]))
     
-    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-
     model.to(device)
-    model.train()   
+    
+    '''
+    Setting all gradients for the model to 0 & initializing weights. Otherwise each fold will use the prior 
+    fold's gradients.
+    '''
+    model.init_weights()
+    model.zero_grad()
+    
+    model.train()
     
     # Initialize optimizer
     optim = AdamW(model.parameters(), lr=5e-5)
@@ -184,7 +202,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
             attention_mask = batch['attention_mask'].to(device)
             start_positions = batch['start_positions'].to(device)
             end_positions = batch['end_positions'].to(device)
-            outputs = model(input_ids, attention_mask=attention_mask, start_positions=start_positions, end_positions=end_positions)
+            outputs = model(input_ids, attention_mask=attention_mask, start_positions=start_positions,                             end_positions=end_positions)
             loss = outputs[0]
             loss.backward()
             optim.step()
@@ -211,7 +229,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
             true_answers.append(test_data.iloc[i]['answer']['text'])
 
             # Generate outputs
-            QA_input = {'question': question, 'context': context}
+            QA_input = {'question': questions[i], 'context': context}
             predicted_answers.append(nlp(QA_input)['answer'])
         
         final_df['question'] = questions
@@ -219,8 +237,15 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
         final_df['predicted_answer'] = predicted_answers
             
     #Print F1
-    fold_f1_score = compute_f1_main(final_df)
-    print(f'F1 for fold {fold}: {fold_f1_score}')
+    fold_f1_score.append(compute_f1_main(final_df))
+    print(f'F1 for fold {fold}: {fold_f1_score[fold]}')
+    
+    #Print EM
+    fold_EM_score.append(compute_EM(final_df))
+    print(f'EM for fold {fold}: {fold_EM_score[fold]}')
+
+print(f"Avg. F1: {np.mean(fold_F1_score)}")
+print(f"Avg. EM: {np.mean(fold_EM_score)}")
 
 model.eval()
 
