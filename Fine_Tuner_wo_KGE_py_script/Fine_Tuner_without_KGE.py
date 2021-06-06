@@ -55,7 +55,7 @@ def preprocess_input(dataset):
             answer['answer_start'] = start_idx - 2
             answer['answer_end'] = end_idx - 2     # When the gold label is off by two characters
     
-    encodings = tokenizer(dataset['context'].to_list(), dataset['question'].to_list(),                           truncation=True, padding=True)
+    encodings = tokenizer(dataset['context'].to_list(), dataset['question'].to_list(), truncation=True, padding=True)
     
     start_positions = []
     end_positions = []

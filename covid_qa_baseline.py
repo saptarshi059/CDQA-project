@@ -94,11 +94,17 @@ def compute_f1(a_gold, a_pred):
   f1 = (2 * precision * recall) / (precision + recall)
   return f1
 
+def compute_EM(a_gold, a_pred):
+  return int(normalize_answer(a_gold) == normalize_answer(a_pred))
+
 F1 = []
-final_df = pd.read_csv('navteca_roberta-base-squad2_results.csv')
+EM = []
+final_df = pd.read_csv('clagator_biobert_squad2_cased_results.csv')
 for i in range(len(final_df)):
   a_gold = final_df['true_answer'][i]
   a_pred = final_df['predicted_answer'][i]
   F1.append(compute_f1(a_gold,a_pred))
+  EM.append(compute_EM(a_gold,a_pred))
 
 print(f"Avg. F1: {np.mean(F1)}")
+print(f"Total EM: {np.sum(EM)}")
