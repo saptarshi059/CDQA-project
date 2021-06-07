@@ -2,4 +2,6 @@ UMLS_KG/
 
 pykg2vec/
 
+.ipynb_checkpoints/
+
 metamap_output.json
