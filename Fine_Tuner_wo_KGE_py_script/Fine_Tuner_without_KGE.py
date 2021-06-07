@@ -122,7 +122,7 @@ def compute_EM(df):
         a_gold = df['true_answer'][i]
         a_pred = df['predicted_answer'][i]
         EM.append(int(normalize_answer(a_gold) == normalize_answer(a_pred)))
-    return np.sum(EM)
+    return np.mean(EM)
 
 def compute_f1_main(df):
     F1 = []

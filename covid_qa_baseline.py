@@ -163,4 +163,4 @@ if __name__ == '__main__':
         EM.append(compute_EM(a_gold, a_pred))
 
     print(f"Avg. F1: {np.mean(F1)}")
-    print(f"Total EM: {np.sum(EM)}")
+    print(f"Total EM: {np.mean(EM)}")
