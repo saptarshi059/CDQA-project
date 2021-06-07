@@ -7,104 +7,160 @@ Original file is located at
     https://colab.research.google.com/drive/1b7ZeerisjbX0P9IPZAwbeI1AUjEudkqg
 """
 
-#!pip install transformers
-#!pip install transformers[sentencepiece]
+# !pip install transformers
+# !pip install transformers[sentencepiece]
 
 import pandas as pd
-#url = "https://raw.githubusercontent.com/deepset-ai/COVID-QA/master/data/question-answering/COVID-QA.json"
-df = pd.read_json("COVID-QA.json")
+
+# url = "https://raw.githubusercontent.com/deepset-ai/COVID-QA/master/data/question-answering/COVID-QA.json"
+
 
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
+from custom_qa_pipeline import CustomQuestionAnsweringPipeline
 import torch
 from tqdm import tqdm
-
-def gen_answers(model_name):
-  tokenizer = AutoTokenizer.from_pretrained(model_name)
-  model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-  nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=torch.cuda.current_device())
-  questions = []
-  true_answers = []
-  predicted_answers = []
-  final_df = pd.DataFrame(columns=['question', 'true_answer', 'predicted_answer'])
-  start_index = 0
-
-  for i in tqdm(range(len(df))):
-    context = df['data'][i]['paragraphs'][0]['context']
-    number_of_questions = 0
-
-    for q in df['data'][i]['paragraphs'][0]['qas']:
-      questions.append(q['question'])
-      true_answers.append(q['answers'][0]['text'])
-      number_of_questions += 1
-
-    for n in range(start_index, start_index + number_of_questions):
-      QA_input = {'question': questions[n], 'context': context}
-      predicted_answers.append(nlp(QA_input)['answer'])
-
-    start_index = start_index + number_of_questions
-
-  final_df['question'] = questions
-  final_df['true_answer'] = true_answers
-  final_df['predicted_answer'] = predicted_answers
-
-  model_name = model_name.replace("/","_")
-
-  final_df.to_csv(model_name + '_results.csv')
-
-#gen_answers('phiyodr/roberta-large-finetuned-squad2') 33.50 F1
-gen_answers('navteca/roberta-base-squad2')
-#gen_answers('clagator/biobert_squad2_cased') 43.35 F1
-#gen_answers('ktrapeznikov/scibert_scivocab_uncased_squad_v2') 44.33 F1
 
 import re
 import string
 import collections
 import numpy as np
 
+
 def normalize_answer(s):
-  """Lower text and remove punctuation, articles and extra whitespace."""
-  def remove_articles(text):
-    regex = re.compile(r'\b(a|an|the)\b', re.UNICODE)
-    return re.sub(regex, ' ', text)
-  def white_space_fix(text):
-    return ' '.join(text.split())
-  def remove_punc(text):
-    exclude = set(string.punctuation)
-    return ''.join(ch for ch in text if ch not in exclude)
-  def lower(text):
-    return text.lower()
-  return white_space_fix(remove_articles(remove_punc(lower(s))))
+    """Lower text and remove punctuation, articles and extra whitespace."""
+
+    def remove_articles(text):
+        regex = re.compile(r'\b(a|an|the)\b', re.UNICODE)
+        return re.sub(regex, ' ', text)
+
+    def white_space_fix(text):
+        return ' '.join(text.split())
+
+    def remove_punc(text):
+        exclude = set(string.punctuation)
+        return ''.join(ch for ch in text if ch not in exclude)
+
+    def lower(text):
+        return text.lower()
+
+    return white_space_fix(remove_articles(remove_punc(lower(s))))
+
 
 def get_tokens(s):
-  if not s: return []
-  return normalize_answer(s).split()
+    if not s: return []
+    return normalize_answer(s).split()
+
 
 def compute_f1(a_gold, a_pred):
-  gold_toks = get_tokens(a_gold)
-  pred_toks = get_tokens(a_pred)
-  common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
-  num_same = sum(common.values())
-  if len(gold_toks) == 0 or len(pred_toks) == 0:
-    # If either is no-answer, then F1 is 1 if they agree, 0 otherwise
-    return int(gold_toks == pred_toks)
-  if num_same == 0:
-    return 0
-  precision = 1.0 * num_same / len(pred_toks)
-  recall = 1.0 * num_same / len(gold_toks)
-  f1 = (2 * precision * recall) / (precision + recall)
-  return f1
+    gold_toks = get_tokens(a_gold)
+    pred_toks = get_tokens(a_pred)
+    common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
+    num_same = sum(common.values())
+    if len(gold_toks) == 0 or len(pred_toks) == 0:
+        # If either is no-answer, then F1 is 1 if they agree, 0 otherwise
+        return int(gold_toks == pred_toks)
+    if num_same == 0:
+        return 0
+    precision = 1.0 * num_same / len(pred_toks)
+    recall = 1.0 * num_same / len(gold_toks)
+    f1 = (2 * precision * recall) / (precision + recall)
+    return f1
+
 
 def compute_EM(a_gold, a_pred):
-  return int(normalize_answer(a_gold) == normalize_answer(a_pred))
+    return int(normalize_answer(a_gold) == normalize_answer(a_pred))
 
-F1 = []
-EM = []
-final_df = pd.read_csv('clagator_biobert_squad2_cased_results.csv')
-for i in range(len(final_df)):
-  a_gold = final_df['true_answer'][i]
-  a_pred = final_df['predicted_answer'][i]
-  F1.append(compute_f1(a_gold,a_pred))
-  EM.append(compute_EM(a_gold,a_pred))
 
-print(f"Avg. F1: {np.mean(F1)}")
-print(f"Total EM: {np.sum(EM)}")
+def gen_answers(model_name, custom_pipeline=False):
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
+
+    if custom_pipeline:
+        print('$$$ Using Custom QA Pipeline $$$')
+        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=torch.cuda.current_device())
+    else:
+        print('$$$ Using Vanilla QA Pipeline $$$')
+        nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=torch.cuda.current_device())
+
+    questions = []
+    true_answers = []
+    predicted_answers = []
+    final_df = pd.DataFrame(columns=['question', 'true_answer', 'predicted_answer'])
+    start_index = 0
+    question_first = bool(tokenizer.padding_side == "right")
+    model_embds = model.get_input_embeddings()
+    print('\tmodel_embds: {}'.format(model_embds.weight.shape))
+
+    for i in tqdm(range(len(df))):
+        context = df['data'][i]['paragraphs'][0]['context']
+        number_of_questions = 0
+
+        for q in df['data'][i]['paragraphs'][0]['qas']:
+            questions.append(q['question'])
+            true_answers.append(q['answers'][0]['text'])
+            number_of_questions += 1
+
+        for n in range(start_index, start_index + number_of_questions):
+            QA_input = {'question': questions[n], 'context': context}
+            if custom_pipeline:
+                encoded_inputs = tokenizer(
+                    text=questions[n] if question_first else context,
+                    text_pair=context if question_first else questions[n],
+                    padding='longest',
+                    truncation="only_second" if question_first else "only_first",
+                    # max_length=kwargs["max_seq_len"],
+                    max_length=384,
+                    stride=128,
+                    return_tensors="pt",
+                    return_token_type_ids=True,
+                    return_overflowing_tokens=True,
+                    return_offsets_mapping=True,
+                    return_special_tokens_mask=True,
+                )
+                # input_ids = torch.tensor(encoded_inputs['input_ids']).to('cuda:0')
+                input_ids = encoded_inputs['input_ids'].to('cuda:0')
+                input_embds = model_embds(input_ids).detach().cpu().numpy()
+                # QA_input['_input_embds_'] = input_embds
+                # print('Question: {}'.format(questions[n]))
+                # print('context: {}'.format(context))
+                # print('input_ids: {}'.format(input_ids.shape))
+                # print('input_embds: {}'.format(input_embds.shape))
+                predicted_answers.append(nlp(QA_input, _input_embds_=input_embds)['answer'])
+            else:
+                predicted_answers.append(nlp(QA_input)['answer'])
+
+        start_index = start_index + number_of_questions
+
+    final_df['question'] = questions
+    final_df['true_answer'] = true_answers
+    final_df['predicted_answer'] = predicted_answers
+
+    model_name = model_name.replace("/", "_")
+
+    final_df.to_csv(model_name + '_results{}.csv'.format('_custom' if custom_pipeline else ''))
+
+
+if __name__ == '__main__':
+    CUSTOM_PIPELINE = True
+
+    df = pd.read_json("COVID-QA.json")
+    model_name = 'navteca/roberta-base-squad2'
+    effective_model_name = model_name.replace("/", "_")
+    # gen_answers('phiyodr/roberta-large-finetuned-squad2')                      # F1: 33.50
+    gen_answers('navteca/roberta-base-squad2', custom_pipeline=CUSTOM_PIPELINE)  # F1: 43.49     EM: 492
+    # gen_answers('clagator/biobert_squad2_cased')                               # F1: 43.35
+    # gen_answers('ktrapeznikov/scibert_scivocab_uncased_squad_v2')              # F1: 44.33
+
+
+    F1 = []
+    EM = []
+    final_df = pd.read_csv('{}_results{}.csv'.format(effective_model_name,
+                                                     '_custom' if CUSTOM_PIPELINE else ''))
+    for i in range(len(final_df)):
+        a_gold = final_df['true_answer'][i]
+        a_pred = final_df['predicted_answer'][i]
+        F1.append(compute_f1(a_gold, a_pred))
+        EM.append(compute_EM(a_gold, a_pred))
+
+    print(f"Avg. F1: {np.mean(F1)}")
+    print(f"Total EM: {np.sum(EM)}")

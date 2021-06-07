@@ -243,6 +243,8 @@ class CustomQuestionAnsweringPipeline(Pipeline):
         kwargs.setdefault("max_question_len", 64)
         kwargs.setdefault("handle_impossible_answer", False)
 
+        # print('args: {}'.format(args))
+        # print('kwargs: {}'.format(kwargs))
         input_embds = kwargs['_input_embds_']
 
         if kwargs["topk"] < 1:
@@ -334,11 +336,15 @@ class CustomQuestionAnsweringPipeline(Pipeline):
                     )
                 features_list.append(features)
 
+        # print('*** len(features_list): {} ***'.format(len(features_list)))
         all_answers = []
         for record_idx, (features, example) in enumerate(zip(features_list, examples)):
             model_input_names = [fname for fname in self.tokenizer.model_input_names if fname != 'input_ids']
             fw_args = {k: [feature.__dict__[k] for feature in features] for k in model_input_names}
-            fw_args['input_embds'] = input_embds[record_idx]
+            # fw_args['inputs_embeds'] = input_embds[record_idx]
+            fw_args['inputs_embeds'] = input_embds
+            # for k in fw_args.keys():
+            #     print('k: {}'.format(k))
 
             # Manage tensor allocation on correct device
             with self.device_placement():
