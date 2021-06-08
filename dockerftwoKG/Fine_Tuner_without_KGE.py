@@ -164,7 +164,7 @@ num_epochs = 3
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
-model_name = 'twmkn9/albert-base-v2-squad2'
+model_name = 'navteca/roberta-base-squad2'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
