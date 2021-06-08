@@ -157,7 +157,7 @@ class CovidQADataset(torch.utils.data.Dataset):
 from sklearn.model_selection import KFold
 from torch.utils.data import DataLoader
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 kfold = KFold(n_splits=5)
 num_epochs = 3
