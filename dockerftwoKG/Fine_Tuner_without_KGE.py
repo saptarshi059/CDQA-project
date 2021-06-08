@@ -157,7 +157,7 @@ class CovidQADataset(torch.utils.data.Dataset):
 from sklearn.model_selection import KFold
 from torch.utils.data import DataLoader
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 
 kfold = KFold(n_splits=5)
 num_epochs = 3
@@ -181,13 +181,6 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
     
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
     model.to(device)
-    
-    '''
-    Setting all gradients for the model to 0 & initializing weights. Otherwise each fold will use the prior 
-    fold's gradients.
-    '''
-    model.init_weights()
-    model.zero_grad()
     
     model.train()
     
