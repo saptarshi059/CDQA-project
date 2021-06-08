@@ -336,15 +336,12 @@ class CustomQuestionAnsweringPipeline(Pipeline):
                     )
                 features_list.append(features)
 
-        # print('*** len(features_list): {} ***'.format(len(features_list)))
         all_answers = []
         for record_idx, (features, example) in enumerate(zip(features_list, examples)):
+            # Get model inputs, avoiding input_ids because we will swap in the input embeds
             model_input_names = [fname for fname in self.tokenizer.model_input_names if fname != 'input_ids']
             fw_args = {k: [feature.__dict__[k] for feature in features] for k in model_input_names}
-            # fw_args['inputs_embeds'] = input_embds[record_idx]
-            fw_args['inputs_embeds'] = input_embds
-            # for k in fw_args.keys():
-            #     print('k: {}'.format(k))
+            fw_args['inputs_embeds'] = input_embds  # add embds to inputs
 
             # Manage tensor allocation on correct device
             with self.device_placement():

@@ -151,7 +151,6 @@ if __name__ == '__main__':
     # gen_answers('clagator/biobert_squad2_cased')                               # F1: 43.35
     # gen_answers('ktrapeznikov/scibert_scivocab_uncased_squad_v2')              # F1: 44.33
 
-
     F1 = []
     EM = []
     final_df = pd.read_csv('{}_results{}.csv'.format(effective_model_name,
