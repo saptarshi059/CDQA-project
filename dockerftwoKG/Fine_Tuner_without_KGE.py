@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 #Reading in the dataset
@@ -33,7 +33,7 @@ all_contexts, all_questions, all_answers = read_covidqa()
 full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)), columns =['context', 'question', 'answer'])
 
 
-# In[ ]:
+# In[2]:
 
 
 def preprocess_input(dataset):
@@ -74,7 +74,7 @@ def preprocess_input(dataset):
     return encodings
 
 
-# In[ ]:
+# In[3]:
 
 
 #Code to compute F1 & EM scores
@@ -133,7 +133,7 @@ def compute_f1_main(df):
     return np.mean(F1)
 
 
-# In[ ]:
+# In[4]:
 
 
 #Dataloader Object Creation
@@ -150,14 +150,14 @@ class CovidQADataset(torch.utils.data.Dataset):
         return len(self.encodings.input_ids)
 
 
-# In[ ]:
+# In[5]:
 
 
 #Main fine-tuning loop
 from sklearn.model_selection import KFold
 from torch.utils.data import DataLoader
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 kfold = KFold(n_splits=5)
 num_epochs = 3
@@ -168,7 +168,7 @@ model_name = 'navteca/roberta-base-squad2'
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-fold_f1_score = []
+fold_F1_score = []
 fold_EM_score = []
 
 for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)): 
@@ -181,6 +181,9 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
     
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
     model.to(device)
+    
+    model.zero_grad()
+    model.init_weights()
     
     model.train()
     
@@ -200,16 +203,14 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
             loss.backward()
             optim.step()
 
-    # Process is complete.
-    print('Training process has finished. Saving trained model.')
-
     # Print about testing
     print('Starting testing')
 
     # Evaluationfor this fold
-    test_data = full_dataset.iloc[test_ids]
-    nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu')                                else 0)
     with torch.no_grad():
+        model.eval()
+        test_data = full_dataset.iloc[test_ids]
+        nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu')                                else 0)
         questions = []
         true_answers = []
         predicted_answers = []
@@ -230,8 +231,8 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
         final_df['predicted_answer'] = predicted_answers
             
     #Print F1
-    fold_f1_score.append(compute_f1_main(final_df))
-    print(f'F1 for fold {fold}: {fold_f1_score[fold]}')
+    fold_F1_score.append(compute_f1_main(final_df))
+    print(f'F1 for fold {fold}: {fold_F1_score[fold]}')
     
     #Print EM
     fold_EM_score.append(compute_EM(final_df))
@@ -239,6 +240,4 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
 
 print(f"Avg. F1: {np.mean(fold_F1_score)}")
 print(f"Avg. EM: {np.mean(fold_EM_score)}")
-
-model.eval()
 
