@@ -285,8 +285,8 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', default=4, help='How many items to process as once', type=int)
     parser.add_argument('--lr', default=5e-5, help='How many items to process as once', type=float)
     parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform')
-    parser.add_argument('--model_name', default='navteca/roberta-base-squad2',
-                        help='Type of model to use from HuggingFace')
+    # parser.add_argument('--model_name', default='navteca/roberta-base-squad2', help='Type of model to use from HuggingFace')
+    parser.add_argument('--model_name', default='ktrapeznikov/scibert_scivocab_uncased_squad_v2', help='Type of model to use from HuggingFace')
 
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input')
 
