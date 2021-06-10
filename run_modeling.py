@@ -309,6 +309,7 @@ if __name__ == '__main__':
         print('--------------------------------')
 
         train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer))
+        fold_n_iters = len(train_dataset) / args.batch_size
         train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
         # input('okty')
 
@@ -354,10 +355,11 @@ if __name__ == '__main__':
                 loss.backward()
                 optim.step()
                 batch_elapsed_time = time.time() - batch_start_time
-                print('Epoch: {0}/{1} Iter: {2} Loss: {3:.4f} Time: {4:.2f}s'.format(epoch_idx,
-                                                                                     args.n_epochs,
-                                                                                     batch_idx,
-                                                                                     loss, batch_elapsed_time))
+                print('Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'.format(epoch_idx,
+                                                                                         args.n_epochs,
+                                                                                         batch_idx,
+                                                                                         fold_n_iters,
+                                                                                         loss, batch_elapsed_time))
 
         # Process is complete.
         print('Training process has finished. Saving trained model.')
