@@ -82,12 +82,12 @@ def preprocess_input(dataset, tokenizer_):
     encodings = tokenizer_(
         dataset['question'].to_list() if pad_on_right else dataset['context'].to_list(),
         dataset['context'].to_list() if pad_on_right else dataset['question'].to_list(),
-        truncation=True,
-        stride=0,
-        padding='max_length',
+        truncation='longest_first',
+        stride=64,
+        padding=True,
         return_overflowing_tokens=True,
         return_offsets_mapping=True,
-        max_length=tokenizer_.model_max_length
+        max_length=384
     )
     # print('encodings.keys(): {}'.format(encodings.keys()))
     # print('encodings[input_ids]: {}'.format(len(encodings['input_ids'])))
@@ -310,7 +310,7 @@ if __name__ == '__main__':
         print('--------------------------------')
 
         train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer))
-        fold_n_iters = len(train_dataset) / args.batch_size
+        fold_n_iters = int(len(train_dataset) / args.batch_size)
         train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
         # input('okty')
 
