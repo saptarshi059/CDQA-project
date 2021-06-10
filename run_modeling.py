@@ -305,7 +305,7 @@ if __name__ == '__main__':
     fold_EM_score = []
 
     for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
-        print(f'FOLD {fold}')
+        print('FOLD {}'.format(fold))
         print('--------------------------------')
 
         train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer))
