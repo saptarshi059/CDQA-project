@@ -391,11 +391,11 @@ if __name__ == '__main__':
 
         # Print F1
         fold_f1_score.append(compute_f1_main(final_df))
-        print(f'F1 for fold {fold}: {fold_f1_score[fold]}')
+        print('F1 for fold {}: {}'.format(fold, fold_f1_score[fold]))
 
         # Print EM
         fold_EM_score.append(compute_EM(final_df))
-        print(f'EM for fold {fold}: {fold_EM_score[fold]}')
+        print('EM for fold {}: {}'.format(fold, fold_EM_score[fold]))
 
-    print(f"Avg. F1: {np.mean(fold_f1_score)}")
-    print(f"Avg. EM: {np.mean(fold_EM_score)}")
+    print("Avg. F1: {}".format(np.mean(fold_f1_score)))
+    print("Avg. EM: {}".format(np.mean(fold_EM_score)))
