@@ -11,7 +11,7 @@ import collections
 import numpy as np
 import pandas as pd
 
-from tqdm.notebook import tqdm
+# from tqdm.notebook import tqdm
 from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
