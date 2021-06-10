@@ -87,6 +87,7 @@ def preprocess_input(dataset, tokenizer_):
         padding='max_length',
         return_overflowing_tokens=True,
         return_offsets_mapping=True,
+        max_length=tokenizer_.model_max_length
     )
     # print('encodings.keys(): {}'.format(encodings.keys()))
     # print('encodings[input_ids]: {}'.format(len(encodings['input_ids'])))
