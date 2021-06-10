@@ -16,6 +16,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 
+
 # from custom_question_rep import custom_question_rep_gen
 
 
@@ -58,6 +59,10 @@ def preprocess_input(dataset, tokenizer_):
 
     question_texts = dataset['question'].to_list()
     context_texts = dataset['context'].to_list()
+    # print('len(question_texts): {}'.format(len(question_texts)))
+    # print('len(context_texts): {}'.format(len(context_texts)))
+
+    pad_on_right = tokenizer_.padding_side == "right"
 
     for answer, context in zip(dataset['answer'], dataset['context']):
         gold_text = answer['text']
@@ -74,32 +79,127 @@ def preprocess_input(dataset, tokenizer_):
             answer['answer_start'] = start_idx - 2
             answer['answer_end'] = end_idx - 2  # When the gold label is off by two characters
 
-    encodings = tokenizer_(dataset['context'].to_list(), dataset['question'].to_list(), \
-                           truncation=True, padding=True)
+    encodings = tokenizer_(
+        dataset['question'].to_list() if pad_on_right else dataset['context'].to_list(),
+        dataset['context'].to_list() if pad_on_right else dataset['question'].to_list(),
+        truncation=True,
+        stride=0,
+        padding='max_length',
+        return_overflowing_tokens=True,
+        return_offsets_mapping=True,
+    )
+    # print('encodings.keys(): {}'.format(encodings.keys()))
+    # print('encodings[input_ids]: {}'.format(len(encodings['input_ids'])))
 
+    # Since one example might give us several features if it has a long context, we need a map from a feature to
+    # its corresponding example. This key gives us just that.
+    sample_mapping = encodings.pop("overflow_to_sample_mapping")
+    # print('sample_mapping: {}'.format(len(sample_mapping)))
+    # The offset mappings will give us a map from token to character position in the original context. This will
+    # help us compute the start_positions and end_positions.
+    offset_mapping = encodings.pop("offset_mapping")
+    # print('offset_mapping: {}'.format(len(offset_mapping)))
+
+    encodings["start_positions"] = []
+    encodings["end_positions"] = []
+
+    for i, offsets in enumerate(offset_mapping):
+        # We will label impossible answers with the index of the CLS token.
+        input_ids = encodings["input_ids"][i]
+        cls_index = input_ids.index(tokenizer_.cls_token_id)
+        # print('offsets: {}'.format(offsets))
+        # Grab the sequence corresponding to that example (to know what is the context and what is the question).
+        sequence_ids = encodings.sequence_ids(i)
+        # print('sequence_ids: {}'.format(sequence_ids))
+
+        # One example can give several spans, this is the index of the example containing this span of text.
+        sample_index = sample_mapping[i]
+        # print('dataset[\'answer\']: {}'.format(dataset['answer']))
+        # answers = dataset['answer'][sample_index]
+        i_answers = answers[sample_index]
+        # print('i_answers: {}'.format(i_answers))
+
+        # If no answers are given, set the cls_index as answer.
+        if i_answers["answer_start"] is None:
+            # input('i_answers["answer_start"]: {}'.format(i_answers["answer_start"]))
+            encodings["start_positions"].append(cls_index)
+            encodings["end_positions"].append(cls_index)
+        else:
+            # Start/end character index of the answer in the text.
+            start_char = i_answers["answer_start"]
+            end_char = start_char + len(i_answers["text"])
+            # print('start_char: {}'.format(start_char))
+            # print('end_char: {}'.format(end_char))
+
+            # Start token index of the current span in the text.
+            token_start_index = 0
+            while sequence_ids[token_start_index] != (1 if pad_on_right else 0):
+                token_start_index += 1
+            # print('** token_start_index: {} **'.format(token_start_index))
+
+            # End token index of the current span in the text.
+            token_end_index = len(input_ids) - 1
+            while sequence_ids[token_end_index] != (1 if pad_on_right else 0):
+                token_end_index -= 1
+            # print('** token_end_index: {} **'.format(token_end_index))
+
+            # Detect if the answer is out of the span (in which case this feature is labeled with the CLS index).
+            if not (offsets[token_start_index][0] <= start_char and offsets[token_end_index][1] >= end_char):
+                # print('offsets[token_start_index]: {}'.format(offsets[token_start_index]))
+                # print('offsets[token_end_index]: {}'.format(offsets[token_end_index]))
+                encodings["start_positions"].append(cls_index)
+                encodings["end_positions"].append(cls_index)
+                # input('appending cls index')
+            else:
+                # Otherwise move the token_start_index and token_end_index to the two ends of the answer.
+                # Note: we could go after the last offset if the answer is the last word (edge case).
+                while token_start_index < len(offsets) and offsets[token_start_index][0] <= start_char:
+                    token_start_index += 1
+                encodings["start_positions"].append(token_start_index - 1)
+                while offsets[token_end_index][1] >= end_char:
+                    token_end_index -= 1
+                encodings["end_positions"].append(token_end_index + 1)
+
+    # print('encodings.keys: {}'.format(encodings.keys()))
     # for k, v in encodings.items():
-    #     print('k: {} v: {}'.format(k, len(v)))
+    #     if type(v) == list:
+    #         print('k: {} v: {}'.format(k, len(v)))
 
-    start_positions = []
-    end_positions = []
-    for i in range(len(answers)):
-        start_positions.append(encodings.char_to_token(i, answers[i]['answer_start']))
-        end_positions.append(encodings.char_to_token(i, answers[i]['answer_end'] - 1))
+    encodings["question_texts"] = []
+    encodings["context_texts"] = []
+    for i in range(len(encodings['input_ids'])):
 
-        # if start position is None, the answer passage has been truncated
-        if start_positions[-1] is None:
-            start_positions[-1] = tokenizer_.model_max_length
-        if end_positions[-1] is None:
-            end_positions[-1] = tokenizer_.model_max_length
+        i_question_text = question_texts[sample_mapping[i]]
+        i_input_ids = encodings['input_ids'][i]
+        i_input_text = tokenizer_.decode(i_input_ids, skip_special_tokens=True)
+        if i_input_text.startswith(i_question_text):
+            i_context_text = i_input_text[len(i_question_text):]
+        else:
+            i_context_text = i_input_text[:-len(i_question_text)]
 
-    # print('start_positions: {}'.format(start_positions))
-    # print('end_positions: {}'.format(end_positions))
+        encodings["question_texts"].append(i_question_text)
+        encodings["context_texts"].append(i_context_text)
 
-    encodings.update({'start_positions': start_positions, 'end_positions': end_positions,
-                      'question_texts': question_texts, 'context_texts': context_texts})
-    # for k, v in encodings.items():
-    #     print('k: {} v: {}'.format(k, len(v)))
-    # input('encodings: {}'.format(encodings.keys()))
+        # print('i: {}'.format(i))
+        # print('\ti_input_text: {}'.format(i_input_text))
+        # print('\ti_question_text: {}'.format(i_question_text))
+        # print('\ti_context_text: {}'.format(i_context_text))
+        # print('\tstart_positions: {}'.format(encodings['start_positions'][i]))
+        # print('\tend_positions: {}'.format(encodings['end_positions'][i]))
+        # input('okty')
+
+    # input('okty')
+    # encodings.update({'question_texts': question_texts, 'context_texts': context_texts})
+    # u_start_vals, u_start_cnts = np.unique(encodings['start_positions'], return_counts=True)
+    # u_end_vals, u_end_cnts = np.unique(encodings['end_positions'], return_counts=True)
+
+    # print('Start positions')
+    # for v, c in zip(u_start_vals, u_start_cnts):
+    #     print('v: {} count: {}'.format(v, c))
+    #
+    # print('End positions')
+    # for v, c in zip(u_end_vals, u_end_cnts):
+    #     print('v: {} count: {}'.format(v, c))
 
     return encodings
 
@@ -169,7 +269,8 @@ class CovidQADataset(torch.utils.data.Dataset):
         self.encodings = encodings
 
     def __getitem__(self, idx):
-        return {key: torch.tensor(val[idx]) if key not in ['question_texts', 'context_texts'] else val[idx] for key, val in self.encodings.items()}
+        return {key: torch.tensor(val[idx]) if key not in ['question_texts', 'context_texts'] else val[idx] for key, val
+                in self.encodings.items()}
 
     def __len__(self):
         return len(self.encodings.input_ids)
@@ -181,7 +282,7 @@ if __name__ == '__main__':
     parser.add_argument('--data', default='COVID-QA.json', help='Filepath to CovidQA dataset')
 
     parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
-    parser.add_argument('--batch_size', default=32, help='How many items to process as once', type=int)
+    parser.add_argument('--batch_size', default=4, help='How many items to process as once', type=int)
     parser.add_argument('--lr', default=5e-5, help='How many items to process as once', type=float)
     parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform')
     parser.add_argument('--model_name', default='navteca/roberta-base-squad2',
