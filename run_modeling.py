@@ -288,7 +288,7 @@ if __name__ == '__main__':
     parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
     parser.add_argument('--batch_size', default=4, help='How many items to process as once', type=int)
     parser.add_argument('--lr', default=5e-5, help='How many items to process as once', type=float)
-    parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform')
+    parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform', type=int)
     parser.add_argument('--n_stride', default=164, help='How many folds to use for cross val', type=int)
     parser.add_argument('--model_name',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
