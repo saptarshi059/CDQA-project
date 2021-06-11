@@ -1,11 +1,13 @@
 __author__ = 'Connor Heaton and Saptarshi Sengupta'
 
 import re
+import os
 import json
 import time
 import torch
 import string
 import argparse
+import datetime
 import collections
 
 import numpy as np
@@ -53,7 +55,7 @@ def read_covidqa(fp):
     return contexts, questions, answers
 
 
-def preprocess_input(dataset, tokenizer_):
+def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512):
     answers = dataset['answer'].to_list()
     context = dataset['context'].to_list()
 
@@ -82,11 +84,12 @@ def preprocess_input(dataset, tokenizer_):
     encodings = tokenizer_(
         dataset['question'].to_list() if pad_on_right else dataset['context'].to_list(),
         dataset['context'].to_list() if pad_on_right else dataset['question'].to_list(),
-        truncation=True,
-        stride=0,
-        padding='max_length',
+        truncation='longest_first',
+        stride=n_stride,
+        padding=True,
         return_overflowing_tokens=True,
         return_offsets_mapping=True,
+        max_length=max_len,
     )
     # print('encodings.keys(): {}'.format(encodings.keys()))
     # print('encodings[input_ids]: {}'.format(len(encodings['input_ids'])))
@@ -280,17 +283,31 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--data', default='COVID-QA.json', help='Filepath to CovidQA dataset')
+    parser.add_argument('--out', default='out', help='Directory to put output')
 
     parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
     parser.add_argument('--batch_size', default=4, help='How many items to process as once', type=int)
     parser.add_argument('--lr', default=5e-5, help='How many items to process as once', type=float)
     parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform')
-    parser.add_argument('--model_name', default='navteca/roberta-base-squad2',
+    parser.add_argument('--n_stride', default=164, help='How many folds to use for cross val', type=int)
+    parser.add_argument('--model_name',
+                        # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
+                        # default='clagator/biobert_squad2_cased',
+                        default='navteca/roberta-base-squad2',
                         help='Type of model to use from HuggingFace')
 
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input')
 
     args = parser.parse_args()
+
+    if not os.path.exists(args.out):
+        os.makedirs(args.out)
+
+    effective_model_name = args.model_name.replace('/', '-')
+    curr_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    model_out_fname = '{}_{}.txt'.format(effective_model_name, curr_time)
+    model_out_fp = os.path.join(args.out, model_out_fname)
+    print('*** model_out_fp: {} ***'.format(model_out_fp))
 
     USE_KGE = args.use_kge
     kfold = KFold(n_splits=args.n_splits)
@@ -301,6 +318,10 @@ if __name__ == '__main__':
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
+    N_STRIDE = args.n_stride
+    MAX_LEN = tokenizer.model_max_length if tokenizer.model_max_length <= 512 else 512
+    # some of the tokenizers return 1000000000000000019884624838656 as model_max_length for some reason
+
     fold_f1_score = []
     fold_EM_score = []
 
@@ -308,8 +329,9 @@ if __name__ == '__main__':
         print('FOLD {}'.format(fold))
         print('--------------------------------')
 
-        train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer))
-        fold_n_iters = len(train_dataset) / args.batch_size
+        train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
+                                                        n_stride=N_STRIDE, max_len=MAX_LEN))
+        fold_n_iters = int(len(train_dataset) / args.batch_size)
         train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
         # input('okty')
 
@@ -401,3 +423,13 @@ if __name__ == '__main__':
 
     print("Avg. F1: {}".format(np.mean(fold_f1_score)))
     print("Avg. EM: {}".format(np.mean(fold_EM_score)))
+
+    print('Writing results to file...')
+    write_lines = ['Fold: {0}\tF1: {1:.4f}\tEM: {2:.4}'.format(f_idx, f1, em)
+                   for f_idx, (f1, em) in enumerate(zip(fold_f1_score, fold_EM_score))]
+    write_lines.append('Avg. F1: {}'.format(np.mean(fold_f1_score)))
+    write_lines.append('Avg. EM: {}'.format(np.mean(fold_EM_score)))
+
+    with open(model_out_fp, 'w+') as f:
+        f.write('\n'.join(write_lines))
+
