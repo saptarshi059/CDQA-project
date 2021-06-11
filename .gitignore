@@ -5,3 +5,5 @@ pykg2vec/
 .ipynb_checkpoints/
 
 metamap_output.json
+
+Metamap_Tokenizations.pkl
