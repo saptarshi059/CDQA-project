@@ -33,6 +33,7 @@ def custom_input_rep(ques, context):
     print('context: \"{}\"'.format(context))
     print('tup: {}'.format(tup))    # debugging
     print('tup columns: {}'.format(tup.columns))
+    print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
 
     metamap_tokenized_question = tup['Tokenization'][0]
 
