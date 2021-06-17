@@ -8,10 +8,10 @@ import pandas as pd
 
 # DTE_BERT_Lookup_Table = pd.read_pickle(os.path.join(os.path.abspath('UMLS_KG'), 'embeddings/distmult/DTE_to_BERT.pkl'))
 
-DTE_BERT_Lookup_Table = pd.read_pickle('DTE_to_BERT.pkl')
+DTE_BERT_Lookup_Table = pd.read_pickle('DTE_to_RoBERTa.pkl')
 Metamap_Tokenizations = pd.read_pickle('Metamap_Tokenizations.pkl')
 
-model_name = 'bert-base-uncased'
+model_name = 'navteca/roberta-base-squad2'
 
 model = AutoModel.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
