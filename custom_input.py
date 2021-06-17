@@ -65,7 +65,7 @@ def custom_input_rep(ques, context):
 
     # Since our total i/p's can only be 512 tokens long, the context has to be adjusted accordingly.
     len_custom_question = len(question_embeddings)
-    max_length = 512
+    max_length = tokenizer.model_max_length if tokenizer.model_max_length <= 512 else 512
     limit_for_context = max_length - (len_custom_question + 2)  # 2 to account for [CLS] & [SEP]
 
     context_embeddings = []
