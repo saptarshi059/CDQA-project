@@ -35,7 +35,7 @@ def custom_input_rep(ques, context):
     print('tup columns: {}'.format(tup.columns))
     print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
 
-    metamap_tokenized_question = tup['Tokenization'][0]
+    metamap_tokenized_question = tup['Tokenization'].values[0]
 
     # Removing punctuations/spaces from domain-terms for easy comparison
     mappings = tup['Mappings'][0]
