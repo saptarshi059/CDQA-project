@@ -29,16 +29,16 @@ def custom_input_rep(ques, context):
         return re.sub(r'[\W\s]', '', word).lower()
 
     tup = Metamap_Tokenizations.query("Question==@ques")
-    print('ques: \"{}\"'.format(ques))
-    print('context: \"{}\"'.format(context))
-    print('tup: {}'.format(tup))    # debugging
-    print('tup columns: {}'.format(tup.columns))
-    print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
+    # print('ques: \"{}\"'.format(ques))
+    # print('context: \"{}\"'.format(context))
+    # print('tup: {}'.format(tup))    # debugging
+    # print('tup columns: {}'.format(tup.columns))
+    # print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
 
     metamap_tokenized_question = tup['Tokenization'].values[0]
 
     # Removing punctuations/spaces from domain-terms for easy comparison
-    mappings = tup['Mappings'][0]
+    mappings = tup['Mappings'].values[0]
     for i, x in enumerate(mappings):
         mappings[i][0] = clean_term(x[0])
 
