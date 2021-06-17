@@ -83,6 +83,6 @@ def custom_input_rep(ques, context):
                                                       SEP_embedding)), dim=1)
 
     # This difference will be used to adjust the start/end indices of the answers in context.
-    token_diff = len(tokenizer(question)['input_ids']) - len(question_embeddings)
+    token_diff = len(tokenizer(ques)['input_ids']) - len(question_embeddings)
 
     return final_representation, token_diff
