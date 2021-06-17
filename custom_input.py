@@ -29,7 +29,10 @@ def custom_input_rep(ques, context):
         return re.sub(r'[\W\s]', '', word).lower()
 
     tup = Metamap_Tokenizations.query("Question==@ques")
+    print('ques: \"{}\"'.format(ques))
+    print('context: \"{}\"'.format(context))
     print('tup: {}'.format(tup))    # debugging
+    print('tup columns: {}'.format(tup.columns))
 
     metamap_tokenized_question = tup['Tokenization'][0]
 
