@@ -7,8 +7,8 @@ import os
 import pandas as pd
 
 # DTE_BERT_Lookup_Table = pd.read_pickle(os.path.join(os.path.abspath('UMLS_KG'), 'embeddings/distmult/DTE_to_BERT.pkl'))
-DTE_BERT_Lookup_Table = pd.read_pickle('DTE_to_BERT.pkl')
 
+DTE_BERT_Lookup_Table = pd.read_pickle('DTE_to_BERT.pkl')
 Metamap_Tokenizations = pd.read_pickle('Metamap_Tokenizations.pkl')
 
 model_name = 'bert-base-uncased'
@@ -65,7 +65,7 @@ def custom_input_rep(ques, context):
 
     # Since our total i/p's can only be 512 tokens long, the context has to be adjusted accordingly.
     len_custom_question = len(question_embeddings)
-    max_length = tokenizer.model_max_length if tokenizer.model_max_length <= 512 else 512
+    max_length = 512
     limit_for_context = max_length - (len_custom_question + 2)  # 2 to account for [CLS] & [SEP]
 
     context_embeddings = []
@@ -77,9 +77,9 @@ def custom_input_rep(ques, context):
         context_embeddings.append(BERT_embeddings(torch.LongTensor([index])))
 
     # In this way, I don't have to add the CLS & SEP embeddings during fine-tuning.
-    final_representation = torch.unsqueeze(torch.cat((CLS_embedding,
-                                                      torch.cat([*question_embeddings]),
-                                                      torch.cat([*context_embeddings]),
+    final_representation = torch.unsqueeze(torch.cat((CLS_embedding, \
+                                                      torch.cat([*question_embeddings]), \
+                                                      torch.cat([*context_embeddings]), \
                                                       SEP_embedding)), dim=1)
 
     # This difference will be used to adjust the start/end indices of the answers in context.
