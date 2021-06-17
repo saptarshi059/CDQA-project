@@ -27,7 +27,7 @@ all_entities = DTE_BERT_Lookup_Table['Term'].to_list()
 def custom_input_rep(ques, context):
     def clean_term(word):
         return re.sub(r'[\W\s]', '', word).lower()
-
+    
     tup = Metamap_Tokenizations.query("Question==@ques")
     # print('ques: \"{}\"'.format(ques))
     # print('context: \"{}\"'.format(context))

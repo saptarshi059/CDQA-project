@@ -357,6 +357,7 @@ if __name__ == '__main__':
                     input_embds, offsets = [], []
                     for q_text, c_text in zip(question_texts, context_texts):
                         this_input_embds, this_n_token_adj = custom_input_rep(q_text, c_text)
+                        exit()
 
                         input_embds.append(this_input_embds)
                         offsets.append(this_n_token_adj)
