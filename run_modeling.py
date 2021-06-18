@@ -362,8 +362,8 @@ if __name__ == '__main__':
                         input_embds.append(this_input_embds)
                         offsets.append(this_n_token_adj)
 
-                    input_embds = torch.cat(input_embds, dim=0)
-                    offsets = torch.cat(offsets, dim=0)
+                    input_embds = torch.cat(input_embds, dim=0).to(device)
+                    offsets = torch.cat(offsets, dim=0).to(device)
 
                     start_positions = start_positions - offsets
                     end_positions = end_positions - offsets
