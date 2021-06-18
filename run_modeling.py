@@ -18,7 +18,6 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 
-
 # from custom_question_rep import custom_question_rep_gen
 from custom_input import custom_input_rep
 
@@ -357,7 +356,7 @@ if __name__ == '__main__':
                     input_embds, offsets = [], []
                     for q_text, c_text in zip(question_texts, context_texts):
                         re.sub(' +', ' ', q_text)
-                        this_input_embds, this_n_token_adj = custom_input_rep(q_text.strip(), c_text)
+                        this_input_embds, this_n_token_adj = custom_input_rep(q_text, c_text)
 
                         input_embds.append(this_input_embds)
                         offsets.append(this_n_token_adj)
