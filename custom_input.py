@@ -88,7 +88,9 @@ def custom_input_rep(ques, context):
                                                       torch.cat([*question_embeddings]),\
                                                       torch.cat([*context_embeddings]),\
                                                       SEP_embedding)), dim=1)
-    
+
+    input('final_representation: {}'.format(final_representation.shape))
+
     #This difference will be used to adjust the start/end indices of the answers in context.
     token_diff = len(tokenizer(ques)['input_ids']) - len(question_embeddings)
        
