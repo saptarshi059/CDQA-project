@@ -359,7 +359,7 @@ if __name__ == '__main__':
                         this_input_embds, this_n_token_adj = custom_input_rep(q_text, c_text)
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([[this_n_token_adj]])
-                        input_embds.append(this_input_embds)
+                        input_embds.append(this_input_embds.unsqueeze(0))
                         offsets.append(this_n_token_adj)
 
                     input_embds = torch.cat(input_embds, dim=0).to(device)
@@ -372,9 +372,15 @@ if __name__ == '__main__':
                     model_embds = model.get_input_embeddings()
                     input_embds = model_embds(input_ids)
 
+                print('*' * 50)
+                print('input_embds: {}'.format(input_embds.shape))
+                print('attention_mask: {}'.format(attention_mask.shape))
+                print('start_positions: {}'.format(start_positions.shape))
+                print('end_positions: {}'.format(end_positions.shape))
+                print('*' * 50)
+
                 outputs = model(inputs_embeds=input_embds, attention_mask=attention_mask,
-                                start_positions=start_positions,
-                                end_positions=end_positions)
+                                start_positions=start_positions, end_positions=end_positions)
                 loss = outputs[0]
                 loss.backward()
                 optim.step()
