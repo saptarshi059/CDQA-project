@@ -5,6 +5,7 @@ import torch
 import re
 import os
 import pandas as pd
+import re
 
 #DTE_Model_Lookup_Table = pd.read_pickle(os.path.join(os.path.abspath('UMLS_KG'), 'embeddings/distmult/DTE_to_BERT.pkl'))
 
@@ -24,7 +25,8 @@ SEP_embedding = model_embeddings(torch.LongTensor([tokenizer.sep_token_id]))
 all_entities = DTE_Model_Lookup_Table['Term'].to_list()
 
 def custom_input_rep(ques, context):
-    
+    ques = re.sub(' +', ' ', ques).strip()
+
     def clean_term(word):
         return re.sub(r'[\W\s]', '', word).lower()
 

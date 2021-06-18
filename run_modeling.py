@@ -355,7 +355,7 @@ if __name__ == '__main__':
                 if USE_KGE:
                     input_embds, offsets = [], []
                     for q_text, c_text in zip(question_texts, context_texts):
-                        re.sub(' +', ' ', q_text)
+                        #re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked. 
                         this_input_embds, this_n_token_adj = custom_input_rep(q_text, c_text)
 
                         input_embds.append(this_input_embds)
