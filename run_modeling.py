@@ -353,17 +353,19 @@ if __name__ == '__main__':
                 end_positions = batch['end_positions'].to(device)
 
                 if USE_KGE:
-                    input_embds, offsets = [], []
+                    input_embds, offsets, attn_masks = [], [], []
                     for q_text, c_text in zip(question_texts, context_texts):
                         #re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked. 
-                        this_input_embds, this_n_token_adj = custom_input_rep(q_text, c_text)
+                        this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([[this_n_token_adj]])
                         input_embds.append(this_input_embds.unsqueeze(0))
+                        attn_masks.append(this_attention_mask.unsqueeze(0))
                         offsets.append(this_n_token_adj)
 
                     input_embds = torch.cat(input_embds, dim=0).to(device)
                     offsets = torch.cat(offsets, dim=0).to(device)
+                    attention_mask = torch.cat(attn_masks, dim=0).to(device)
 
                     start_positions = start_positions - offsets
                     end_positions = end_positions - offsets
@@ -373,8 +375,8 @@ if __name__ == '__main__':
                     input_embds = model_embds(input_ids)
 
                 print('*' * 50)
-                print('input_embds: {}'.format(input_embds.shape))
                 print('attention_mask: {}'.format(attention_mask.shape))
+                print('input_embds: {}'.format(input_embds.shape))
                 print('start_positions: {}'.format(start_positions.shape))
                 print('end_positions: {}'.format(end_positions.shape))
                 print('*' * 50)
