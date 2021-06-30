@@ -10,6 +10,7 @@ import argparse
 import datetime
 import collections
 
+
 import numpy as np
 import pandas as pd
 
@@ -282,7 +283,7 @@ class CovidQADataset(torch.utils.data.Dataset):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--data', default='COVID-QA.json', help='Filepath to CovidQA dataset')
+    parser.add_argument('--data', default='COVID-QA_cleaned.json', help='Filepath to CovidQA dataset')
     parser.add_argument('--out', default='out', help='Directory to put output')
 
     parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
