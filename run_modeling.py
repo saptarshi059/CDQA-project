@@ -303,14 +303,16 @@ if __name__ == '__main__':
 
     if not os.path.exists(args.out):
         os.makedirs(args.out)
+    USE_KGE = args.use_kge
 
     effective_model_name = args.model_name.replace('/', '-')
     curr_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    model_out_fname = '{}_{}.txt'.format(effective_model_name, curr_time)
+    model_out_fname = '{}{}_{}.txt'.format(effective_model_name,
+                                           '_kge' if USE_KGE else '',
+                                           curr_time)
     model_out_fp = os.path.join(args.out, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
-    USE_KGE = args.use_kge
     kfold = KFold(n_splits=args.n_splits)
     all_contexts, all_questions, all_answers = read_covidqa(args.data)
     # Converting to a dataframe for easy k-fold splits
