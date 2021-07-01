@@ -331,17 +331,20 @@ if __name__ == '__main__':
         print('FOLD {}'.format(fold))
         print('--------------------------------')
 
+        print('Creating dataset...')
         train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
                                                         n_stride=N_STRIDE, max_len=MAX_LEN))
         fold_n_iters = int(len(train_dataset) / args.batch_size)
         train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
         # input('okty')
 
+        print('Creating model...')
         model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
         model.to(device)
         model.train()
         optim = AdamW(model.parameters(), lr=args.lr)
 
+        print('Beginning training...')
         # Run the training loop for defined number of epochs
         for epoch_idx in range(args.n_epochs):
             for batch_idx, batch in enumerate(train_loader):
@@ -358,12 +361,14 @@ if __name__ == '__main__':
                     input_embds, offsets, attn_masks = [], [], []
                     for q_text, c_text in zip(question_texts, context_texts):
                         #re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked. 
-                        this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
-                        # print('this_n_token_adj: {}'.format(this_n_token_adj))
-                        this_n_token_adj = torch.tensor([this_n_token_adj])
-                        input_embds.append(this_input_embds.unsqueeze(0))
-                        attn_masks.append(this_attention_mask.unsqueeze(0))
-                        offsets.append(this_n_token_adj)
+                        with torch.no_grad():
+                            # print('** KGE **')
+                            this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
+                            # print('this_n_token_adj: {}'.format(this_n_token_adj))
+                            this_n_token_adj = torch.tensor([this_n_token_adj])
+                            input_embds.append(this_input_embds.unsqueeze(0))
+                            attn_masks.append(this_attention_mask.unsqueeze(0))
+                            offsets.append(this_n_token_adj)
 
                     input_embds = torch.cat(input_embds, dim=0).to(device)
                     offsets = torch.cat(offsets, dim=0).to(device)
