@@ -10,7 +10,6 @@ import argparse
 import datetime
 import collections
 
-
 import numpy as np
 import pandas as pd
 
@@ -360,7 +359,7 @@ if __name__ == '__main__':
                 if USE_KGE:
                     input_embds, offsets, attn_masks = [], [], []
                     for q_text, c_text in zip(question_texts, context_texts):
-                        #re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked. 
+                        # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
                         with torch.no_grad():
                             # print('** KGE **')
                             this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
@@ -397,11 +396,12 @@ if __name__ == '__main__':
                 loss.backward()
                 optim.step()
                 batch_elapsed_time = time.time() - batch_start_time
-                print('Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'.format(epoch_idx,
-                                                                                         args.n_epochs,
-                                                                                         batch_idx,
-                                                                                         fold_n_iters,
-                                                                                         loss, batch_elapsed_time))
+                print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
+                print_str = print_str.format(epoch_idx, args.n_epochs,
+                                             batch_idx, fold_n_iters,
+                                             loss, batch_elapsed_time,
+                                             fold, args.n_splits)
+                print(print_str)
 
         # Process is complete.
         print('Training process has finished. Saving trained model.')
@@ -452,4 +452,3 @@ if __name__ == '__main__':
 
     with open(model_out_fp, 'w+') as f:
         f.write('\n'.join(write_lines))
-
