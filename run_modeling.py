@@ -10,7 +10,6 @@ import argparse
 import datetime
 import collections
 
-
 import numpy as np
 import pandas as pd
 
@@ -297,21 +296,23 @@ if __name__ == '__main__':
                         default='navteca/roberta-base-squad2',
                         help='Type of model to use from HuggingFace')
 
-    parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
+    parser.add_argument('--use_kge', default=True, help='If KGEs should be place in input',
                         type=str2bool)
 
     args = parser.parse_args()
 
     if not os.path.exists(args.out):
         os.makedirs(args.out)
+    USE_KGE = args.use_kge
 
     effective_model_name = args.model_name.replace('/', '-')
     curr_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    model_out_fname = '{}_{}.txt'.format(effective_model_name, curr_time)
+    model_out_fname = '{}{}_{}.txt'.format(effective_model_name,
+                                           '_kge' if USE_KGE else '',
+                                           curr_time)
     model_out_fp = os.path.join(args.out, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
-    USE_KGE = args.use_kge
     kfold = KFold(n_splits=args.n_splits)
     all_contexts, all_questions, all_answers = read_covidqa(args.data)
     # Converting to a dataframe for easy k-fold splits
@@ -331,17 +332,20 @@ if __name__ == '__main__':
         print('FOLD {}'.format(fold))
         print('--------------------------------')
 
+        print('Creating dataset...')
         train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
                                                         n_stride=N_STRIDE, max_len=MAX_LEN))
         fold_n_iters = int(len(train_dataset) / args.batch_size)
         train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
         # input('okty')
 
+        print('Creating model...')
         model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
         model.to(device)
         model.train()
         optim = AdamW(model.parameters(), lr=args.lr)
 
+        print('Beginning training...')
         # Run the training loop for defined number of epochs
         for epoch_idx in range(args.n_epochs):
             for batch_idx, batch in enumerate(train_loader):
@@ -357,18 +361,20 @@ if __name__ == '__main__':
                 if USE_KGE:
                     input_embds, offsets, attn_masks = [], [], []
                     for q_text, c_text in zip(question_texts, context_texts):
-                        #re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked. 
-                        this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
-                        # print('this_n_token_adj: {}'.format(this_n_token_adj))
-                        this_n_token_adj = torch.tensor([this_n_token_adj])
-                        input_embds.append(this_input_embds.unsqueeze(0))
-                        attn_masks.append(this_attention_mask.unsqueeze(0))
-                        offsets.append(this_n_token_adj)
+                        # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
+                        with torch.no_grad():
+                            # print('** KGE **')
+                            this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
+                            # print('this_n_token_adj: {}'.format(this_n_token_adj))
+                            this_n_token_adj = torch.tensor([this_n_token_adj])
+                            input_embds.append(this_input_embds.unsqueeze(0))
+                            attn_masks.append(this_attention_mask.unsqueeze(0))
+                            offsets.append(this_n_token_adj)
 
                     input_embds = torch.cat(input_embds, dim=0).to(device)
                     offsets = torch.cat(offsets, dim=0).to(device)
 
-                    print('offsets: {}'.format(offsets.shape))
+                    # print('offsets: {}'.format(offsets.shape))
 
                     attention_mask = torch.cat(attn_masks, dim=0).to(device)
 
@@ -379,12 +385,12 @@ if __name__ == '__main__':
                     model_embds = model.get_input_embeddings()
                     input_embds = model_embds(input_ids)
 
-                print('*' * 50)
-                print('attention_mask: {}'.format(attention_mask.shape))
-                print('input_embds: {}'.format(input_embds.shape))
-                print('start_positions: {}'.format(start_positions.shape))
-                print('end_positions: {}'.format(end_positions.shape))
-                print('*' * 50)
+                # print('*' * 50)
+                # print('attention_mask: {}'.format(attention_mask.shape))
+                # print('input_embds: {}'.format(input_embds.shape))
+                # print('start_positions: {}'.format(start_positions.shape))
+                # print('end_positions: {}'.format(end_positions.shape))
+                # print('*' * 50)
 
                 outputs = model(inputs_embeds=input_embds, attention_mask=attention_mask,
                                 start_positions=start_positions, end_positions=end_positions)
@@ -392,11 +398,12 @@ if __name__ == '__main__':
                 loss.backward()
                 optim.step()
                 batch_elapsed_time = time.time() - batch_start_time
-                print('Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'.format(epoch_idx,
-                                                                                         args.n_epochs,
-                                                                                         batch_idx,
-                                                                                         fold_n_iters,
-                                                                                         loss, batch_elapsed_time))
+                print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
+                print_str = print_str.format(epoch_idx, args.n_epochs,
+                                             batch_idx, fold_n_iters,
+                                             loss, batch_elapsed_time,
+                                             fold, args.n_splits)
+                print(print_str)
 
         # Process is complete.
         print('Training process has finished. Saving trained model.')
@@ -447,4 +454,3 @@ if __name__ == '__main__':
 
     with open(model_out_fp, 'w+') as f:
         f.write('\n'.join(write_lines))
-

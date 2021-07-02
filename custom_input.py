@@ -37,11 +37,11 @@ def custom_input_rep(ques, context):
         return re.sub(r'[\W\s]', '', word).lower()
 
     tup = Metamap_Tokenizations.query("Question==@ques")
-    print('ques: \"{}\"'.format(ques))
-    print('context: \"{}\"'.format(context))
-    print('tup: {}'.format(tup))  # debugging
-    print('tup columns: {}'.format(tup.columns))
-    print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
+    # print('ques: \"{}\"'.format(ques))
+    # print('context: \"{}\"'.format(context))
+    # print('tup: {}'.format(tup))  # debugging
+    # print('tup columns: {}'.format(tup.columns))
+    # print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
 
     metamap_tokenized_question = tup['Tokenization'].values[0]
 
@@ -111,8 +111,8 @@ def custom_input_rep(ques, context):
         new_padding = torch.zeros((n_pad, model_dim))
         final_representation = torch.cat([final_representation, new_padding], dim=0)
 
-    print('!! attn_mask: {} !!'.format(attn_mask.shape))
-    print('!! final_representation: {} !!'.format(final_representation.shape))
+    # print('!! attn_mask: {} !!'.format(attn_mask.shape))
+    # print('!! final_representation: {} !!'.format(final_representation.shape))
 
     # This difference will be used to adjust the start/end indices of the answers in context.
     token_diff = len(tokenizer(ques)['input_ids']) - len(question_embeddings)
