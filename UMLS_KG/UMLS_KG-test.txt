@@ -1,6 +1,0 @@
-Play	associated_with	Maternal-Fetal Infection Transmission
-Play	has_permuted_term	Play
-Child	mapped_from	Child
-Social Role	permuted_term_of	Social Role
-Social Role	used_for	Social Role
-Human immunodeficiency virus I infection	same_as	Human immunodeficiency virus I infection

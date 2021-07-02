@@ -1,5 +1,0 @@
-Risk	has_permuted_term	Risk
-Child	same_as	Child
-Maternal-Fetal Infection Transmission	permuted_term_of	Maternal-Fetal Infection Transmission
-HIV-1	has_entry_version	HIV-1
-Maternal-Fetal Infection Transmission	complicates	Maternal-Fetal Infection Transmission
