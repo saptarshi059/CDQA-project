@@ -303,7 +303,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
-
     if not os.path.exists(args.out):
         os.makedirs(args.out)
     USE_KGE = args.use_kge
