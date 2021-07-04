@@ -1,6 +1,7 @@
 __author__ = 'Connor Heaton and Saptarshi Sengupta'
 
 import re
+import gc
 import os
 import json
 import time
@@ -578,6 +579,7 @@ if __name__ == '__main__':
 
         del model
         del nlp
+        gc.collect()
         torch.cuda.empty_cache()
 
     print("Avg. F1: {}".format(np.mean(fold_f1_score)))
