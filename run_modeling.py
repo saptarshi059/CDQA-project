@@ -573,6 +573,8 @@ if __name__ == '__main__':
         fold_EM_score.append(compute_EM(final_df))
         print('EM for fold {}: {}'.format(fold, fold_EM_score[fold]))
 
+        del nlp
+
     print("Avg. F1: {}".format(np.mean(fold_f1_score)))
     print("Avg. EM: {}".format(np.mean(fold_EM_score)))
 
