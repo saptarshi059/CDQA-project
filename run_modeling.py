@@ -13,7 +13,8 @@ import collections
 import numpy as np
 import pandas as pd
 
-# from tqdm.notebook import tqdm
+import torch.distributed as dist
+import torch.multiprocessing as mp
 from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
@@ -279,6 +280,91 @@ class CovidQADataset(torch.utils.data.Dataset):
         return len(self.encodings.input_ids)
 
 
+def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stride, max_len, world_size, batch_size,
+                           lr, n_epochs, use_kge, fold, n_splits, seed=16):
+    dist.init_process_group('nccl',
+                            world_size=world_size,
+                            rank=rank)
+    torch.manual_seed(seed)
+
+    device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+
+    print('Creating tokenizer and dataset on device {}...'.format(rank))
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    dataset = CovidQADataset(preprocess_input(dataset.iloc[train_idxs], tokenizer,
+                                                    n_stride=n_stride, max_len=max_len))
+    fold_n_iters = int(len(dataset) / (batch_size * world_size))
+    data_sampler = torch.utils.data.distributed.DistributedSampler(dataset,
+                                                                   num_replicas=world_size,
+                                                                   rank=rank, shuffle=False)
+    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False,
+                             pin_memory=True, sampler=data_sampler)
+
+    print('Creating model on device {}...'.format(rank))
+    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
+    model.to(device)
+    model.train()
+    optim = AdamW(model.parameters(), lr=lr)
+
+    for epoch_idx in range(n_epochs):
+        for batch_idx, batch in enumerate(data_loader):
+            if batch_idx > 2:
+                break
+            batch_start_time = time.time()
+            optim.zero_grad()
+            question_texts = batch['question_texts']
+            context_texts = batch['context_texts']
+            input_ids = batch['input_ids'].to(device)
+            attention_mask = batch['attention_mask'].to(device)
+            start_positions = batch['start_positions'].to(device)
+            end_positions = batch['end_positions'].to(device)
+
+            if use_kge:
+                input_embds, offsets, attn_masks = [], [], []
+                for q_text, c_text in zip(question_texts, context_texts):
+                    # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
+                    with torch.no_grad():
+                        # print('** KGE **')
+                        this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
+                        # print('this_n_token_adj: {}'.format(this_n_token_adj))
+                        this_n_token_adj = torch.tensor([this_n_token_adj])
+                        input_embds.append(this_input_embds.unsqueeze(0))
+                        attn_masks.append(this_attention_mask.unsqueeze(0))
+                        offsets.append(this_n_token_adj)
+
+                input_embds = torch.cat(input_embds, dim=0).to(device)
+                offsets = torch.cat(offsets, dim=0).to(device)
+
+                # print('offsets: {}'.format(offsets.shape))
+
+                attention_mask = torch.cat(attn_masks, dim=0).to(device)
+
+                start_positions = start_positions - offsets
+                end_positions = end_positions - offsets
+            else:
+                model_embds = model.get_input_embeddings()
+                input_embds = model_embds(input_ids)
+
+            outputs = model(inputs_embeds=input_embds, attention_mask=attention_mask,
+                            start_positions=start_positions, end_positions=end_positions)
+            loss = outputs[0]
+            loss.backward()
+            optim.step()
+            batch_elapsed_time = time.time() - batch_start_time
+            print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
+            print_str = print_str.format(epoch_idx, n_epochs,
+                                         batch_idx, fold_n_iters,
+                                         loss, batch_elapsed_time,
+                                         fold, n_splits)
+            if rank == 0:
+                print(print_str)
+    # only save once
+    if rank == 0:
+        print('Saving model...')
+        torch.save(model.state_dict(), out_fp)
+    dist.barrier()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
@@ -300,19 +386,46 @@ if __name__ == '__main__':
                         type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
 
+    parser.add_argument('--gpus', default=[0], help='Which GPUs to use', type=int, nargs='+')
+    parser.add_argument('--port', default='12345', help='Port to use for DDP')
+
     args = parser.parse_args()
+
+    os.environ['MASTER_ADDR'] = 'localhost'
+    os.environ['MASTER_PORT'] = args.port
 
     torch.manual_seed(args.seed)
     if not os.path.exists(args.out):
         os.makedirs(args.out)
-    USE_KGE = args.use_kge
 
+    curr_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    print('*' * len('* Model time ID: {} *'.format(curr_time)))
+    print('* Model time ID: {} *'.format(curr_time))
+    print('*' * len('* Model time ID: {} *'.format(curr_time)))
+
+    model_outdir = os.path.join(args.out, curr_time)
+    if not os.path.exists(model_outdir):
+        os.makedirs(model_outdir)
+
+    model_ckpt_dir = os.path.join(model_outdir, 'models')
+    if not os.path.exists(model_ckpt_dir):
+        os.makedirs(model_ckpt_dir)
+
+    model_ckpt_tmplt = os.path.join(model_ckpt_dir, 'model_fold{}.pt')
+
+    model_arg_fp = os.path.join(model_outdir, 'args.txt')
+    args_d = vars(args)
+    with open(model_arg_fp, 'w+') as f:
+        for k, v in args_d.items():
+            f.write('{} = {}\n'.format(k, v))
+
+    USE_KGE = args.use_kge
     effective_model_name = args.model_name.replace('/', '-')
     curr_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     model_out_fname = '{}{}_{}.txt'.format(effective_model_name,
                                            '_kge' if USE_KGE else '',
                                            curr_time)
-    model_out_fp = os.path.join(args.out, model_out_fname)
+    model_out_fp = os.path.join(model_outdir, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
     kfold = KFold(n_splits=args.n_splits, random_state=args.seed)
@@ -333,82 +446,97 @@ if __name__ == '__main__':
     for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
         print('FOLD {}'.format(fold))
         print('--------------------------------')
+        model_ckpt_fp = model_ckpt_tmplt.format(fold)
 
-        print('Creating dataset...')
-        train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
-                                                        n_stride=N_STRIDE, max_len=MAX_LEN))
-        fold_n_iters = int(len(train_dataset) / args.batch_size)
-        train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-        # input('okty')
+        print('Training {} distributed models for fold {}...'.format(len(args.gpus), fold))
+        mp.spawn(train_fold_distributed, nprocs=len(args.gpus), args=(model_ckpt_fp, full_dataset, train_ids,
+                                                                      args.model_name, N_STRIDE, MAX_LEN,
+                                                                      len(args.gpus), args.batch_size,
+                                                                      args.lr, args.n_epochs, USE_KGE,
+                                                                      fold, args.n_splits, args.seed))
 
-        print('Creating model...')
-        model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
-        model.to(device)
-        model.train()
-        optim = AdamW(model.parameters(), lr=args.lr)
-
-        print('Beginning training...')
-        # Run the training loop for defined number of epochs
-        for epoch_idx in range(args.n_epochs):
-            for batch_idx, batch in enumerate(train_loader):
-                batch_start_time = time.time()
-                optim.zero_grad()
-                question_texts = batch['question_texts']
-                context_texts = batch['context_texts']
-                input_ids = batch['input_ids'].to(device)
-                attention_mask = batch['attention_mask'].to(device)
-                start_positions = batch['start_positions'].to(device)
-                end_positions = batch['end_positions'].to(device)
-
-                if USE_KGE:
-                    input_embds, offsets, attn_masks = [], [], []
-                    for q_text, c_text in zip(question_texts, context_texts):
-                        # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
-                        with torch.no_grad():
-                            # print('** KGE **')
-                            this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
-                            # print('this_n_token_adj: {}'.format(this_n_token_adj))
-                            this_n_token_adj = torch.tensor([this_n_token_adj])
-                            input_embds.append(this_input_embds.unsqueeze(0))
-                            attn_masks.append(this_attention_mask.unsqueeze(0))
-                            offsets.append(this_n_token_adj)
-
-                    input_embds = torch.cat(input_embds, dim=0).to(device)
-                    offsets = torch.cat(offsets, dim=0).to(device)
-
-                    # print('offsets: {}'.format(offsets.shape))
-
-                    attention_mask = torch.cat(attn_masks, dim=0).to(device)
-
-                    start_positions = start_positions - offsets
-                    end_positions = end_positions - offsets
-
-                else:
-                    model_embds = model.get_input_embeddings()
-                    input_embds = model_embds(input_ids)
-
-                # print('*' * 50)
-                # print('attention_mask: {}'.format(attention_mask.shape))
-                # print('input_embds: {}'.format(input_embds.shape))
-                # print('start_positions: {}'.format(start_positions.shape))
-                # print('end_positions: {}'.format(end_positions.shape))
-                # print('*' * 50)
-
-                outputs = model(inputs_embeds=input_embds, attention_mask=attention_mask,
-                                start_positions=start_positions, end_positions=end_positions)
-                loss = outputs[0]
-                loss.backward()
-                optim.step()
-                batch_elapsed_time = time.time() - batch_start_time
-                print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
-                print_str = print_str.format(epoch_idx, args.n_epochs,
-                                             batch_idx, fold_n_iters,
-                                             loss, batch_elapsed_time,
-                                             fold, args.n_splits)
-                print(print_str)
+        # print('Creating dataset...')
+        # train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
+        #                                                 n_stride=N_STRIDE, max_len=MAX_LEN))
+        # fold_n_iters = int(len(train_dataset) / args.batch_size)
+        # train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+        # # input('okty')
+        #
+        # print('Creating model...')
+        # model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
+        # model.to(device)
+        # model.train()
+        # optim = AdamW(model.parameters(), lr=args.lr)
+        #
+        # print('Beginning training...')
+        # # Run the training loop for defined number of epochs
+        # for epoch_idx in range(args.n_epochs):
+        #     for batch_idx, batch in enumerate(train_loader):
+        #         batch_start_time = time.time()
+        #         optim.zero_grad()
+        #         question_texts = batch['question_texts']
+        #         context_texts = batch['context_texts']
+        #         input_ids = batch['input_ids'].to(device)
+        #         attention_mask = batch['attention_mask'].to(device)
+        #         start_positions = batch['start_positions'].to(device)
+        #         end_positions = batch['end_positions'].to(device)
+        #
+        #         if USE_KGE:
+        #             input_embds, offsets, attn_masks = [], [], []
+        #             for q_text, c_text in zip(question_texts, context_texts):
+        #                 # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
+        #                 with torch.no_grad():
+        #                     # print('** KGE **')
+        #                     this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
+        #                     # print('this_n_token_adj: {}'.format(this_n_token_adj))
+        #                     this_n_token_adj = torch.tensor([this_n_token_adj])
+        #                     input_embds.append(this_input_embds.unsqueeze(0))
+        #                     attn_masks.append(this_attention_mask.unsqueeze(0))
+        #                     offsets.append(this_n_token_adj)
+        #
+        #             input_embds = torch.cat(input_embds, dim=0).to(device)
+        #             offsets = torch.cat(offsets, dim=0).to(device)
+        #
+        #             # print('offsets: {}'.format(offsets.shape))
+        #
+        #             attention_mask = torch.cat(attn_masks, dim=0).to(device)
+        #
+        #             start_positions = start_positions - offsets
+        #             end_positions = end_positions - offsets
+        #
+        #         else:
+        #             model_embds = model.get_input_embeddings()
+        #             input_embds = model_embds(input_ids)
+        #
+        #         # print('*' * 50)
+        #         # print('attention_mask: {}'.format(attention_mask.shape))
+        #         # print('input_embds: {}'.format(input_embds.shape))
+        #         # print('start_positions: {}'.format(start_positions.shape))
+        #         # print('end_positions: {}'.format(end_positions.shape))
+        #         # print('*' * 50)
+        #
+        #         outputs = model(inputs_embeds=input_embds, attention_mask=attention_mask,
+        #                         start_positions=start_positions, end_positions=end_positions)
+        #         loss = outputs[0]
+        #         loss.backward()
+        #         optim.step()
+        #         batch_elapsed_time = time.time() - batch_start_time
+        #         print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
+        #         print_str = print_str.format(epoch_idx, args.n_epochs,
+        #                                      batch_idx, fold_n_iters,
+        #                                      loss, batch_elapsed_time,
+        #                                      fold, args.n_splits)
+        #         print(print_str)
 
         # Process is complete.
-        print('Training process has finished. Saving trained model.')
+        print('Training process has finished...')
+
+        print('Loading trained model ckpt...')
+        model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
+        model.to(device)
+        map_location = {'cuda:0': 'cuda:0'}
+        state_dict = torch.load(model_ckpt_fp, map_location=map_location)
+        model.load_state_dict(state_dict)
 
         # Print about testing
         print('Starting testing')
