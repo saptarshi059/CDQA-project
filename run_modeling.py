@@ -361,6 +361,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
     # only save once
     if rank == 0:
         print('Saving model...')
+        model.eval()
         torch.save(model.state_dict(), out_fp)
     dist.barrier()
 
@@ -553,6 +554,8 @@ if __name__ == '__main__':
 
             # Iterate over the test data and generate predictions
             for i in range(len(test_data)):
+                if i > 2:
+                    break
                 context = test_data.iloc[i]['context']
                 questions.append(test_data.iloc[i]['question'])
                 true_answers.append(test_data.iloc[i]['answer']['text'])
@@ -575,6 +578,7 @@ if __name__ == '__main__':
 
         del model
         del nlp
+        torch.cuda.empty_cache()
 
     print("Avg. F1: {}".format(np.mean(fold_f1_score)))
     print("Avg. EM: {}".format(np.mean(fold_EM_score)))
