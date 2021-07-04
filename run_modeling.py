@@ -287,7 +287,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
                             rank=rank)
     torch.manual_seed(seed)
 
-    device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+    device = torch.device('cuda:{}'.format(rank)) if torch.cuda.is_available() else torch.device('cpu')
 
     print('Creating tokenizer and dataset on device {}...'.format(rank))
     tokenizer = AutoTokenizer.from_pretrained(model_name)
