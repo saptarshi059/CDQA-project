@@ -309,8 +309,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     for epoch_idx in range(n_epochs):
         for batch_idx, batch in enumerate(data_loader):
-            if batch_idx > 2:
-                break
+            # if batch_idx > 2:
+            #     break
             batch_start_time = time.time()
             optim.zero_grad()
             question_texts = batch['question_texts']
@@ -555,8 +555,8 @@ if __name__ == '__main__':
 
             # Iterate over the test data and generate predictions
             for i in range(len(test_data)):
-                if i > 2:
-                    break
+                # if i > 2:
+                #     break
                 context = test_data.iloc[i]['context']
                 questions.append(test_data.iloc[i]['question'])
                 true_answers.append(test_data.iloc[i]['answer']['text'])
@@ -579,6 +579,7 @@ if __name__ == '__main__':
 
         del model
         del nlp
+        del final_df
         gc.collect()
         torch.cuda.empty_cache()
 
