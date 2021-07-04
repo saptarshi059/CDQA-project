@@ -298,9 +298,11 @@ if __name__ == '__main__':
 
     parser.add_argument('--use_kge', default=True, help='If KGEs should be place in input',
                         type=str2bool)
+    parser.add_argument('--seed', default=16, type=int)
 
     args = parser.parse_args()
 
+    torch.manual_seed(args.seed)
     if not os.path.exists(args.out):
         os.makedirs(args.out)
     USE_KGE = args.use_kge
@@ -313,7 +315,7 @@ if __name__ == '__main__':
     model_out_fp = os.path.join(args.out, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
-    kfold = KFold(n_splits=args.n_splits)
+    kfold = KFold(n_splits=args.n_splits, random_state=args.seed)
     all_contexts, all_questions, all_answers = read_covidqa(args.data)
     # Converting to a dataframe for easy k-fold splits
     full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)),
