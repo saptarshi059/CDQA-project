@@ -12,10 +12,10 @@ import pickle5 as pickle
 # DTE_Model_Lookup_Table = pd.read_pickle(os.path.join(os.path.abspath('UMLS_KG'), 'embeddings/distmult/DTE_to_BERT.pkl'))
 
 # DTE_Model_Lookup_Table = pd.read_pickle('DTE_to_RoBERTa.pkl')
-Metamap_Tokenizations = pd.read_pickle('tmp/Metamap_Tokenizations.pkl')
+Metamap_Tokenizations = pd.read_pickle('Metamap_Tokenizations.pkl')
 
 # config = pickle.load(open(f"{path}/params.pkl", "rb"))
-DTE_Model_Lookup_Table = pickle.load(open('tmp/DTE_to_RoBERTa.pkl', 'rb'))
+DTE_Model_Lookup_Table = pickle.load(open('DTE_to_RoBERTa.pkl', 'rb'))
 
 model_name = 'navteca/roberta-base-squad2'
 
