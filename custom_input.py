@@ -30,7 +30,7 @@ SEP_embedding = model_embeddings(torch.LongTensor([tokenizer.sep_token_id]))
 all_entities = DTE_Model_Lookup_Table['Term'].to_list()
 
 
-def custom_input_rep(ques, context):
+def custom_input_rep(ques, context, max_length=512):
     ques = re.sub(' +', ' ', ques).strip()
 
     def clean_term(word):
@@ -53,6 +53,7 @@ def custom_input_rep(ques, context):
     domain_terms = [x[0] for x in mappings]
 
     question_embeddings = []
+    new_question_text = []
     for word in metamap_tokenized_question:
         '''
         This is done to easily check if the current word is a DT or not since DT form of the same word 
@@ -70,15 +71,21 @@ def custom_input_rep(ques, context):
             if mapped_concept in all_entities:
                 question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
 
+            new_question_text.append('a')
+
         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
         else:
             subword_indices = tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
             for index in subword_indices:
                 question_embeddings.append(model_embeddings(torch.LongTensor([index])))
 
+            new_question_text.append(word)
+
+    new_question_text = ' '.join(new_question_text)
+
     # Since our total i/p's can only be 512 tokens long, the context has to be adjusted accordingly.
     len_custom_question = len(question_embeddings)
-    max_length = 512
+    # max_length = 512
     limit_for_context = max_length - (len_custom_question + 2)  # 2 to account for [CLS] & [SEP]
 
     context_embeddings = []
@@ -101,7 +108,7 @@ def custom_input_rep(ques, context):
                                       SEP_embedding))
 
     n_pad = max_length - final_representation.shape[0]
-    attn_mask = torch.zeros((max_length, max_length))
+    attn_mask = torch.ones((max_length, max_length))
     for mask_idx in range(n_pad):
         attn_mask[-(mask_idx + 1), :] = 0
         attn_mask[:, -(mask_idx + 1)] = 0
@@ -117,4 +124,4 @@ def custom_input_rep(ques, context):
     # This difference will be used to adjust the start/end indices of the answers in context.
     token_diff = len(tokenizer(ques)['input_ids']) - len(question_embeddings)
 
-    return final_representation, token_diff, attn_mask
+    return final_representation, token_diff, attn_mask, new_question_text

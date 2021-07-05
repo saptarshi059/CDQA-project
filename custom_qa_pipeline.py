@@ -246,6 +246,7 @@ class CustomQuestionAnsweringPipeline(Pipeline):
         # print('args: {}'.format(args))
         # print('kwargs: {}'.format(kwargs))
         input_embds = kwargs['_input_embds_']
+        attention_mask = kwargs['_attention_mask_']
 
         if kwargs["topk"] < 1:
             raise ValueError(f"topk parameter should be >= 1 (got {kwargs['topk']})")
@@ -339,9 +340,15 @@ class CustomQuestionAnsweringPipeline(Pipeline):
         all_answers = []
         for record_idx, (features, example) in enumerate(zip(features_list, examples)):
             # Get model inputs, avoiding input_ids because we will swap in the input embeds
-            model_input_names = [fname for fname in self.tokenizer.model_input_names if fname != 'input_ids']
-            fw_args = {k: [feature.__dict__[k] for feature in features] for k in model_input_names}
-            fw_args['inputs_embeds'] = input_embds  # add embds to inputs
+            if input_embds is not None and attention_mask is not None:
+                model_input_names = [fname for fname in self.tokenizer.model_input_names if fname not in ['input_ids']]
+                fw_args = {k: [feature.__dict__[k] for feature in features] for k in model_input_names}
+                fw_args['inputs_embeds'] = input_embds  # add embds to inputs
+                fw_args['attention_mask'] = attention_mask  # add attn mask to inputs
+                # print('fw_args: {}'.format(fw_args.keys()))
+            else:
+                model_input_names = self.tokenizer.model_input_names
+                fw_args = {k: [feature.__dict__[k] for feature in features] for k in model_input_names}
 
             # Manage tensor allocation on correct device
             with self.device_placement():
@@ -440,6 +447,12 @@ class CustomQuestionAnsweringPipeline(Pipeline):
             if kwargs["handle_impossible_answer"]:
                 answers.append({"score": min_null_score, "start": 0, "end": 0, "answer": ""})
 
+            answers = [ans if ans['answer'].strip() != '' else {'score': -100, 'start': 0, 'end': 0, 'answer': ''} for ans in answers]
+
+            # for answer in answers:
+            #     print('start: {} end: {} score: {} answer: {}'.format(answer['start'], answer['end'],
+            #                                                           answer['score'], answer['answer']))
+            # input('okty')
             answers = sorted(answers, key=lambda x: x["score"], reverse=True)[: kwargs["topk"]]
             all_answers += answers
 

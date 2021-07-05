@@ -22,6 +22,7 @@ from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, Qu
 
 # from custom_question_rep import custom_question_rep_gen
 from custom_input import custom_input_rep
+from custom_qa_pipeline import CustomQuestionAnsweringPipeline
 
 
 def str2bool(v):
@@ -293,7 +294,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
     print('Creating tokenizer and dataset on device {}...'.format(rank))
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     dataset = CovidQADataset(preprocess_input(dataset.iloc[train_idxs], tokenizer,
-                                                    n_stride=n_stride, max_len=max_len))
+                                              n_stride=n_stride, max_len=max_len))
     fold_n_iters = int(len(dataset) / (batch_size * world_size))
     data_sampler = torch.utils.data.distributed.DistributedSampler(dataset,
                                                                    num_replicas=world_size,
@@ -309,8 +310,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     for epoch_idx in range(n_epochs):
         for batch_idx, batch in enumerate(data_loader):
-            # if batch_idx > 2:
-            #     break
+            if batch_idx > 2:
+                break
             batch_start_time = time.time()
             optim.zero_grad()
             question_texts = batch['question_texts']
@@ -326,7 +327,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
                     # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
                     with torch.no_grad():
                         # print('** KGE **')
-                        this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
+                        this_input_embds, this_n_token_adj, this_attention_mask, _ = custom_input_rep(q_text, c_text)
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
                         input_embds.append(this_input_embds.unsqueeze(0))
@@ -385,7 +386,7 @@ if __name__ == '__main__':
                         default='navteca/roberta-base-squad2',
                         help='Type of model to use from HuggingFace')
 
-    parser.add_argument('--use_kge', default=True, help='If KGEs should be place in input',
+    parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
                         type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
 
@@ -547,8 +548,19 @@ if __name__ == '__main__':
 
         # Evaluationfor this fold
         test_data = full_dataset.iloc[test_ids]
-        nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') \
-            else 0)
+        # nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') \
+        #     else 0)
+
+        # if USE_KGE:
+        #     print('$$$ Using Custom QA Pipeline $$$')
+        #     nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') else 0)
+        # else:
+        #     print('$$$ Using Vanilla QA Pipeline $$$')
+        #     nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') else 0)
+
+        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
+                                              device=-1 if device == torch.device('cpu') else 0)
+
         with torch.no_grad():
             questions = []
             true_answers = []
@@ -565,7 +577,36 @@ if __name__ == '__main__':
 
                 # Generate outputs
                 QA_input = {'question': questions[i], 'context': context}
-                predicted_answers.append(nlp(QA_input)['answer'])
+                input_embds = None
+                attn_mask = None
+                if USE_KGE:
+                    # input_embds, offsets, attn_masks = [], [], []
+                    with torch.no_grad():
+                        # print('** KGE **')
+                        custom_input_data = custom_input_rep(questions[i], context, max_length=args.max_len)
+                        this_input_embds, this_n_token_adj, this_attention_mask, new_q_text = custom_input_data
+                        # print('this_n_token_adj: {}'.format(this_n_token_adj))
+                        this_n_token_adj = torch.tensor([this_n_token_adj])
+                        input_embds = this_input_embds.unsqueeze(0)
+                        attn_mask = this_attention_mask.unsqueeze(0)
+                        offsets = this_n_token_adj
+                        QA_input['question'] = new_q_text
+
+                    # attention_mask = torch.cat(attn_masks, dim=0).to(device)
+
+                # else:
+                #     predicted_answer = nlp(QA_input)['answer']
+                # print('input_embds: {}'.format(input_embds.shape))
+                # print('attn_mask: {}'.format(attn_mask.shape))
+                predicted_answer = nlp(
+                    QA_input,
+                    _input_embds_=input_embds,
+                    _attention_mask_=attn_mask,
+                    max_seq_len=MAX_LEN,
+                    doc_stride=N_STRIDE
+                )['answer']
+
+                predicted_answers.append(predicted_answer)
 
             final_df['question'] = questions
             final_df['true_answer'] = true_answers

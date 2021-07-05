@@ -17,6 +17,7 @@ import pandas as pd
 
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 from custom_qa_pipeline import CustomQuestionAnsweringPipeline
+from custom_input import custom_input_rep
 import torch
 from tqdm import tqdm
 
@@ -74,6 +75,7 @@ def compute_EM(a_gold, a_pred):
 def gen_answers(model_name, custom_pipeline=False):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
+    max_len = 384
 
     if custom_pipeline:
         print('$$$ Using Custom QA Pipeline $$$')
@@ -103,29 +105,45 @@ def gen_answers(model_name, custom_pipeline=False):
         for n in range(start_index, start_index + number_of_questions):
             QA_input = {'question': questions[n], 'context': context}
             if custom_pipeline:
-                encoded_inputs = tokenizer(
-                    text=questions[n] if question_first else context,
-                    text_pair=context if question_first else questions[n],
-                    padding='longest',
-                    truncation="only_second" if question_first else "only_first",
-                    # max_length=kwargs["max_seq_len"],
-                    max_length=384,
-                    stride=128,
-                    return_tensors="pt",
-                    return_token_type_ids=True,
-                    return_overflowing_tokens=True,
-                    return_offsets_mapping=True,
-                    return_special_tokens_mask=True,
-                )
-                # input_ids = torch.tensor(encoded_inputs['input_ids']).to('cuda:0')
-                input_ids = encoded_inputs['input_ids'].to('cuda:0')
-                input_embds = model_embds(input_ids).detach().cpu().numpy()
+                # encoded_inputs = tokenizer(
+                #     text=questions[n] if question_first else context,
+                #     text_pair=context if question_first else questions[n],
+                #     padding='longest',
+                #     truncation="only_second" if question_first else "only_first",
+                #     # max_length=kwargs["max_seq_len"],
+                #     max_length=384,
+                #     stride=128,
+                #     return_tensors="pt",
+                #     return_token_type_ids=True,
+                #     return_overflowing_tokens=True,
+                #     return_offsets_mapping=True,
+                #     return_special_tokens_mask=True,
+                # )
+                # # print('encoded_inputs.keys: {}'.format(encoded_inputs.keys()))
+                # # input_ids = torch.tensor(encoded_inputs['input_ids']).to('cuda:0')
+                # input_ids = encoded_inputs['input_ids'].to('cuda:0')
+                # attention_mask = encoded_inputs['attention_mask'].to('cuda:0')
+                # input_embds = model_embds(input_ids).detach().cpu().numpy()
                 # QA_input['_input_embds_'] = input_embds
                 # print('Question: {}'.format(questions[n]))
                 # print('context: {}'.format(context))
                 # print('input_ids: {}'.format(input_ids.shape))
                 # print('input_embds: {}'.format(input_embds.shape))
-                predicted_answers.append(nlp(QA_input, _input_embds_=input_embds)['answer'])
+
+                with torch.no_grad():
+                    # print('** KGE **')
+                    print('questions[n]: \'{}\''.format(questions[n]))
+                    custom_input_data = custom_input_rep(questions[n], context, max_length=max_len)
+                    this_input_embds, this_n_token_adj, this_attention_mask, new_q_text = custom_input_data
+                    # print('this_n_token_adj: {}'.format(this_n_token_adj))
+                    this_n_token_adj = torch.tensor([this_n_token_adj])
+                    input_embds = this_input_embds.unsqueeze(0)
+                    attn_mask = this_attention_mask.unsqueeze(0)
+                    offsets = this_n_token_adj
+                    QA_input['question'] = new_q_text
+
+                predicted_answers.append(nlp(QA_input, _input_embds_=input_embds,
+                                             _attention_mask_=attn_mask)['answer'])
             else:
                 predicted_answers.append(nlp(QA_input)['answer'])
 
