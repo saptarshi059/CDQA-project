@@ -310,8 +310,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     for epoch_idx in range(n_epochs):
         for batch_idx, batch in enumerate(data_loader):
-            if batch_idx > 2:
-                break
+            # if batch_idx > 2:
+            #     break
             batch_start_time = time.time()
             optim.zero_grad()
             question_texts = batch['question_texts']
