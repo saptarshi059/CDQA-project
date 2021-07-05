@@ -386,7 +386,7 @@ if __name__ == '__main__':
                         default='navteca/roberta-base-squad2',
                         help='Type of model to use from HuggingFace')
 
-    parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
+    parser.add_argument('--use_kge', default=True, help='If KGEs should be place in input',
                         type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
 
