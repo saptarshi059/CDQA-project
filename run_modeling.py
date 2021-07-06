@@ -306,8 +306,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     print('Creating model on device {}...'.format(rank))
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-    model.to(device_)
-    dtes.to(device_)
+    model = model.to(device_)
+    dtes = dtes.to(model.device)
 
     if use_kge:
         initial_input_embeddings = model.get_input_embeddings().weight
