@@ -304,6 +304,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     print('Creating model on device {}...'.format(rank))
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
+
+
     model.to(device)
     model.train()
     optim = AdamW(model.parameters(), lr=lr)
