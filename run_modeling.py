@@ -307,6 +307,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
     print('Creating model on device {}...'.format(rank))
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
     model.to(device)
+    dtes.to(device)
 
     if use_kge:
         initial_input_embeddings = model.get_input_embeddings().weight
@@ -321,6 +322,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
         new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
         model.set_input_embeddings(new_input_embeddings)
+
+    dist.barrier()
 
     model.train()
     optim = AdamW(model.parameters(), lr=lr)
@@ -457,7 +460,7 @@ if __name__ == '__main__':
 
     DTE_Model_Lookup_Table = pickle.load(open('DTE_to_RoBERTa.pkl', 'rb'))
     dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
-    dtes = torch.cat(dtes, dim=0)
+    dtes = torch.cat(dtes, dim=0).to('cpu')
     # input('dtes: {}'.format(dtes.shape))
 
     kfold = KFold(n_splits=args.n_splits, random_state=args.seed)
