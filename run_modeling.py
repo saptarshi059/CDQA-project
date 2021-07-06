@@ -291,7 +291,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
                             rank=rank)
     torch.manual_seed(seed)
 
-    device = torch.device('cuda:{}'.format(rank)) if torch.cuda.is_available() else torch.device('cpu')
+    device_ = torch.device('cuda:{}'.format(rank)) if torch.cuda.is_available() else torch.device('cpu')
 
     print('Creating tokenizer and dataset on device {}...'.format(rank))
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -306,8 +306,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     print('Creating model on device {}...'.format(rank))
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-    model.to(device)
-    dtes.to(device)
+    model.to(device_)
+    dtes.to(device_)
 
     if use_kge:
         initial_input_embeddings = model.get_input_embeddings().weight
@@ -336,10 +336,10 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
             optim.zero_grad()
             question_texts = batch['question_texts']
             context_texts = batch['context_texts']
-            input_ids = batch['input_ids'].to(device)
-            attention_mask = batch['attention_mask'].to(device)
-            start_positions = batch['start_positions'].to(device)
-            end_positions = batch['end_positions'].to(device)
+            input_ids = batch['input_ids'].to(device_)
+            attention_mask = batch['attention_mask'].to(device_)
+            start_positions = batch['start_positions'].to(device_)
+            end_positions = batch['end_positions'].to(device_)
 
             if use_kge:
                 input_embds, offsets, attn_masks, input_ids = [], [], [], []
@@ -356,14 +356,14 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
                         input_ids.append(in_ids.unsqueeze(0))
                         offsets.append(this_n_token_adj)
 
-                input_embds = torch.cat(input_embds, dim=0).to(device)
-                input_ids = torch.cat(input_ids, dim=0).to(device)
-                offsets = torch.cat(offsets, dim=0).to(device)
+                input_embds = torch.cat(input_embds, dim=0).to(device_)
+                input_ids = torch.cat(input_ids, dim=0).to(device_)
+                offsets = torch.cat(offsets, dim=0).to(device_)
 
                 # print('custom input_ids: {}'.format(input_ids.shape))
                 # print('custom input_embds: {}'.format(input_embds.shape))
 
-                attention_mask = torch.cat(attn_masks, dim=0).to(device)
+                attention_mask = torch.cat(attn_masks, dim=0).to(device_)
 
                 start_positions = start_positions - offsets
                 end_positions = end_positions - offsets
@@ -468,7 +468,7 @@ if __name__ == '__main__':
     # Converting to a dataframe for easy k-fold splits
     full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)),
                                 columns=['context', 'question', 'answer'])
-    device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+
 
     # sample_encoded_inputs = tokenizer(text='the first string of text',
     #                                   text_pair='the second string of text')
@@ -571,6 +571,7 @@ if __name__ == '__main__':
         print('Training process has finished...')
 
         print('Loading trained model ckpt...')
+        device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
         model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
         model.to(device)
         map_location = {'cuda:0': 'cuda:0'}
