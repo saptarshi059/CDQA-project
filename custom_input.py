@@ -23,6 +23,7 @@ model = AutoModel.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 model_embeddings = model.get_input_embeddings()
+n_contextual_embds = model_embeddings.weight.shape[0]
 
 CLS_embedding = model_embeddings(torch.LongTensor([tokenizer.cls_token_id]))
 SEP_embedding = model_embeddings(torch.LongTensor([tokenizer.sep_token_id]))
@@ -53,6 +54,7 @@ def custom_input_rep(ques, context, max_length=512):
     domain_terms = [x[0] for x in mappings]
 
     question_embeddings = []
+    input_ids = [tokenizer.cls_token_id]
     new_question_text = []
     for word in metamap_tokenized_question:
         '''
@@ -70,12 +72,14 @@ def custom_input_rep(ques, context, max_length=512):
             mapped_concept = mappings[domain_terms.index(filtered_word)][1]
             if mapped_concept in all_entities:
                 question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
+                input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
 
             new_question_text.append('a')
 
         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
         else:
             subword_indices = tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
+            input_ids.extend(subword_indices)
             for index in subword_indices:
                 question_embeddings.append(model_embeddings(torch.LongTensor([index])))
 
@@ -92,9 +96,10 @@ def custom_input_rep(ques, context, max_length=512):
 
     # Taking all tokens b/w 1 & limit_for_context
     reduced_context_indices = tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
-
+    input_ids.extend(reduced_context_indices)
     for index in reduced_context_indices:
         context_embeddings.append(model_embeddings(torch.LongTensor([index])))
+    input_ids.append(tokenizer.sep_token_id)
 
     # In this way, I don't have to add the CLS & SEP embeddings during fine-tuning.
     # final_representation = torch.unsqueeze(torch.cat((CLS_embedding,\
@@ -118,10 +123,13 @@ def custom_input_rep(ques, context, max_length=512):
         new_padding = torch.zeros((n_pad, model_dim))
         final_representation = torch.cat([final_representation, new_padding], dim=0)
 
+    while len(input_ids) < max_length:
+        input_ids.append(tokenizer.pad_token_id)
     # print('!! attn_mask: {} !!'.format(attn_mask.shape))
     # print('!! final_representation: {} !!'.format(final_representation.shape))
 
     # This difference will be used to adjust the start/end indices of the answers in context.
     token_diff = len(tokenizer(ques)['input_ids']) - len(question_embeddings)
+    input_ids = torch.tensor(input_ids)
 
-    return final_representation, token_diff, attn_mask, new_question_text
+    return final_representation, token_diff, attn_mask, new_question_text, input_ids

@@ -13,7 +13,9 @@ import collections
 
 import numpy as np
 import pandas as pd
+import pickle5 as pickle
 
+import torch.nn as nn
 import torch.distributed as dist
 import torch.multiprocessing as mp
 from torch.utils.data import DataLoader
@@ -283,7 +285,7 @@ class CovidQADataset(torch.utils.data.Dataset):
 
 
 def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stride, max_len, world_size, batch_size,
-                           lr, n_epochs, use_kge, fold, n_splits, seed=16):
+                           lr, n_epochs, use_kge, fold, n_splits, dtes, seed=16):
     dist.init_process_group('nccl',
                             world_size=world_size,
                             rank=rank)
@@ -304,16 +306,29 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     print('Creating model on device {}...'.format(rank))
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-
-
     model.to(device)
+
+    if use_kge:
+        initial_input_embeddings = model.get_input_embeddings().weight
+
+        print('initial_input_embeddings.device: {}'.format(initial_input_embeddings.device))
+        print('dtes.device: {}'.format(dtes.device))
+
+        print('initial_input_embeddings: {}'.format(initial_input_embeddings.shape))
+        print('dtes: {}'.format(dtes.shape))
+        new_input_embedding_weights = torch.cat([initial_input_embeddings, dtes], dim=0)
+        print('new_input_embedding_weights: {}'.format(new_input_embedding_weights.shape))
+
+        new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights)
+        model.set_input_embeddings(new_input_embeddings)
+
     model.train()
     optim = AdamW(model.parameters(), lr=lr)
 
     for epoch_idx in range(n_epochs):
         for batch_idx, batch in enumerate(data_loader):
-            # if batch_idx > 2:
-            #     break
+            if batch_idx > 2:
+                break
             batch_start_time = time.time()
             optim.zero_grad()
             question_texts = batch['question_texts']
@@ -324,32 +339,38 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
             end_positions = batch['end_positions'].to(device)
 
             if use_kge:
-                input_embds, offsets, attn_masks = [], [], []
+                input_embds, offsets, attn_masks, input_ids = [], [], [], []
                 for q_text, c_text in zip(question_texts, context_texts):
                     # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
                     with torch.no_grad():
                         # print('** KGE **')
-                        this_input_embds, this_n_token_adj, this_attention_mask, _ = custom_input_rep(q_text, c_text)
+                        this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids = custom_input_rep(q_text,
+                                                                                                              c_text)
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
                         input_embds.append(this_input_embds.unsqueeze(0))
                         attn_masks.append(this_attention_mask.unsqueeze(0))
+                        input_ids.append(in_ids.unsqueeze(0))
                         offsets.append(this_n_token_adj)
 
                 input_embds = torch.cat(input_embds, dim=0).to(device)
+                input_ids = torch.cat(input_ids, dim=0).to(device)
                 offsets = torch.cat(offsets, dim=0).to(device)
 
-                # print('offsets: {}'.format(offsets.shape))
+                # print('custom input_ids: {}'.format(input_ids.shape))
+                # print('custom input_embds: {}'.format(input_embds.shape))
 
                 attention_mask = torch.cat(attn_masks, dim=0).to(device)
 
                 start_positions = start_positions - offsets
                 end_positions = end_positions - offsets
             else:
-                model_embds = model.get_input_embeddings()
-                input_embds = model_embds(input_ids)
+                # model_embds = model.get_input_embeddings()
+                # input_embds = model_embds(input_ids)
+                pass
 
-            outputs = model(inputs_embeds=input_embds, attention_mask=attention_mask,
+            outputs = model(inputs_embeds=None, input_ids=input_ids,
+                            attention_mask=attention_mask,
                             start_positions=start_positions, end_positions=end_positions)
             loss = outputs[0]
             loss.backward()
@@ -434,6 +455,11 @@ if __name__ == '__main__':
     model_out_fp = os.path.join(model_outdir, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
+    DTE_Model_Lookup_Table = pickle.load(open('DTE_to_RoBERTa.pkl', 'rb'))
+    dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
+    dtes = torch.cat(dtes, dim=0)
+    # input('dtes: {}'.format(dtes.shape))
+
     kfold = KFold(n_splits=args.n_splits, random_state=args.seed)
     all_contexts, all_questions, all_answers = read_covidqa(args.data)
     # Converting to a dataframe for easy k-fold splits
@@ -441,6 +467,10 @@ if __name__ == '__main__':
                                 columns=['context', 'question', 'answer'])
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+
+    # sample_encoded_inputs = tokenizer(text='the first string of text',
+    #                                   text_pair='the second string of text')
+    # input('sample_encoded_inputs: {}'.format(sample_encoded_inputs))
 
     N_STRIDE = args.n_stride
     # MAX_LEN = tokenizer.model_max_length if tokenizer.model_max_length <= 512 else 512
@@ -455,12 +485,12 @@ if __name__ == '__main__':
         print('--------------------------------')
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
 
-        print('Training {} distributed models for fold {}...'.format(len(args.gpus), fold))
+        print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))
         mp.spawn(train_fold_distributed, nprocs=len(args.gpus), args=(model_ckpt_fp, full_dataset, train_ids,
                                                                       args.model_name, N_STRIDE, MAX_LEN,
                                                                       len(args.gpus), args.batch_size,
                                                                       args.lr, args.n_epochs, USE_KGE,
-                                                                      fold, args.n_splits, args.seed))
+                                                                      fold, args.n_splits, dtes, args.seed))
 
         # print('Creating dataset...')
         # train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
@@ -581,20 +611,30 @@ if __name__ == '__main__':
                 QA_input = {'question': questions[i], 'context': context}
                 input_embds = None
                 attn_mask = None
+                input_ids = None
                 if USE_KGE:
                     # input_embds, offsets, attn_masks = [], [], []
                     with torch.no_grad():
                         # print('** KGE **')
                         custom_input_data = custom_input_rep(questions[i], context, max_length=args.max_len)
-                        this_input_embds, this_n_token_adj, this_attention_mask, new_q_text = custom_input_data
+                        this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, input_ids = custom_input_data
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
                         input_embds = this_input_embds.unsqueeze(0)
                         attn_mask = this_attention_mask.unsqueeze(0)
+                        input_ids = input_ids.unsqueeze(0)
                         offsets = this_n_token_adj
                         QA_input['question'] = new_q_text
 
                     # attention_mask = torch.cat(attn_masks, dim=0).to(device)
+                else:
+                    encoded_inputs = tokenizer(text=questions[i],
+                                               text_pair=context,
+                                               max_length=args.max_len,
+                                               padding='longest',
+                                               stride=N_STRIDE)
+                    input_ids = encoded_inputs['input_ids']
+                    attn_mask = encoded_inputs['attention_mask']
 
                 # else:
                 #     predicted_answer = nlp(QA_input)['answer']
@@ -602,7 +642,8 @@ if __name__ == '__main__':
                 # print('attn_mask: {}'.format(attn_mask.shape))
                 predicted_answer = nlp(
                     QA_input,
-                    _input_embds_=input_embds,
+                    _input_ids_=input_ids,
+                    _input_embds_=None,
                     _attention_mask_=attn_mask,
                     max_seq_len=MAX_LEN,
                     doc_stride=N_STRIDE

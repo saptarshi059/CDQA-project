@@ -245,6 +245,7 @@ class CustomQuestionAnsweringPipeline(Pipeline):
 
         # print('args: {}'.format(args))
         # print('kwargs: {}'.format(kwargs))
+        input_ids = kwargs['_input_ids_']
         input_embds = kwargs['_input_embds_']
         attention_mask = kwargs['_attention_mask_']
 
@@ -343,8 +344,12 @@ class CustomQuestionAnsweringPipeline(Pipeline):
             if input_embds is not None and attention_mask is not None:
                 model_input_names = [fname for fname in self.tokenizer.model_input_names if fname not in ['input_ids']]
                 fw_args = {k: [feature.__dict__[k] for feature in features] for k in model_input_names}
-                fw_args['inputs_embeds'] = input_embds  # add embds to inputs
                 fw_args['attention_mask'] = attention_mask  # add attn mask to inputs
+
+                if input_ids is not None:   # if we have input_ids, take those. Otherwise, take embds
+                    fw_args['input_ids'] = input_ids
+                else:
+                    fw_args['inputs_embeds'] = input_embds  # add embds to inputs
                 # print('fw_args: {}'.format(fw_args.keys()))
             else:
                 model_input_names = self.tokenizer.model_input_names
