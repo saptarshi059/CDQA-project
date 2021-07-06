@@ -486,6 +486,7 @@ if __name__ == '__main__':
         print('FOLD {}'.format(fold))
         print('--------------------------------')
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
+        dtes = dtes.to('cpu')
 
         print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))
         mp.spawn(train_fold_distributed, nprocs=len(args.gpus), args=(model_ckpt_fp, full_dataset, train_ids,
@@ -573,7 +574,15 @@ if __name__ == '__main__':
         print('Loading trained model ckpt...')
         device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
         model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
-        model.to(device)
+        model = model.to(device)
+        dtes = dtes.to(model.device)
+
+        if USE_KGE:
+            initial_input_embeddings = model.get_input_embeddings().weight
+            new_input_embedding_weights = torch.cat([initial_input_embeddings, dtes], dim=0)
+            new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
+            model.set_input_embeddings(new_input_embeddings)
+
         map_location = {'cuda:0': 'cuda:0'}
         state_dict = torch.load(model_ckpt_fp, map_location=map_location)
         model.load_state_dict(state_dict)
