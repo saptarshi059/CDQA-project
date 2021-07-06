@@ -466,7 +466,6 @@ if __name__ == '__main__':
     full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)),
                                 columns=['context', 'question', 'answer'])
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     # sample_encoded_inputs = tokenizer(text='the first string of text',
     #                                   text_pair='the second string of text')
@@ -590,6 +589,7 @@ if __name__ == '__main__':
         #     print('$$$ Using Vanilla QA Pipeline $$$')
         #     nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') else 0)
 
+        tokenizer = AutoTokenizer.from_pretrained(args.model_name)
         nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
                                               device=-1 if device == torch.device('cpu') else 0)
 
@@ -666,6 +666,7 @@ if __name__ == '__main__':
         del model
         del nlp
         del final_df
+        del tokenizer
         gc.collect()
         torch.cuda.empty_cache()
 
