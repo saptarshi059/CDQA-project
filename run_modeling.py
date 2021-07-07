@@ -409,10 +409,11 @@ if __name__ == '__main__':
     parser.add_argument('--model_name',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
                         # default='clagator/biobert_squad2_cased',
-                        default='navteca/roberta-base-squad2',
+                        # default='navteca/roberta-base-squad2',
+                        default='deepset/roberta-base-squad2',
                         help='Type of model to use from HuggingFace')
 
-    parser.add_argument('--use_kge', default=True, help='If KGEs should be place in input',
+    parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
                         type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
 
