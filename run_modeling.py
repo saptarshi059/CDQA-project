@@ -329,7 +329,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
     optim = AdamW(model.parameters(), lr=lr)
     scheduler = None
     if warmup_proportion > 0.0:
-        n_warmup_iters = int(len(dataset) * n_epochs * warmup_proportion)
+        n_warmup_iters = int(len(dataset) * n_epochs * warmup_proportion / (batch_size * world_size))
         print('** n_warmup_iters: {} **'.format(n_warmup_iters))
         scheduler = get_constant_schedule_with_warmup(optim,
                                                       num_warmup_steps=n_warmup_iters)
