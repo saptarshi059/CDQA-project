@@ -90,12 +90,13 @@ def custom_input_rep(ques, context, max_length=512):
     # Since our total i/p's can only be 512 tokens long, the context has to be adjusted accordingly.
     len_custom_question = len(question_embeddings)
     # max_length = 512
-    limit_for_context = max_length - (len_custom_question + 2)  # 2 to account for [CLS] & [SEP]
+    limit_for_context = max_length - (len_custom_question + 3)  # 2 to account for [CLS] & [SEP]
 
     context_embeddings = []
 
     # Taking all tokens b/w 1 & limit_for_context
     reduced_context_indices = tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
+    input_ids.append(tokenizer.sep_token_id)
     input_ids.extend(reduced_context_indices)
     for index in reduced_context_indices:
         context_embeddings.append(model_embeddings(torch.LongTensor([index])))
@@ -109,6 +110,7 @@ def custom_input_rep(ques, context, max_length=512):
 
     final_representation = torch.cat((CLS_embedding,
                                       torch.cat([*question_embeddings]),
+                                      SEP_embedding,
                                       torch.cat([*context_embeddings]),
                                       SEP_embedding))
 
