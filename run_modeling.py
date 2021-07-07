@@ -20,8 +20,8 @@ import torch.distributed as dist
 import torch.multiprocessing as mp
 from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
+from transformers import get_constant_schedule_with_warmup
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
-
 # from custom_question_rep import custom_question_rep_gen
 from custom_input import custom_input_rep
 from custom_qa_pipeline import CustomQuestionAnsweringPipeline
@@ -285,7 +285,7 @@ class CovidQADataset(torch.utils.data.Dataset):
 
 
 def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stride, max_len, world_size, batch_size,
-                           lr, n_epochs, use_kge, fold, n_splits, dtes, seed=16):
+                           lr, n_epochs, use_kge, fold, n_splits, dtes, warmup_proportion=0.0, seed=16):
     dist.init_process_group('nccl',
                             world_size=world_size,
                             rank=rank)
@@ -327,6 +327,12 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     model.train()
     optim = AdamW(model.parameters(), lr=lr)
+    scheduler = None
+    if warmup_proportion > 0.0:
+        n_warmup_iters = int(len(dataset) * n_epochs * warmup_proportion)
+        print('** n_warmup_iters: {} **'.format(n_warmup_iters))
+        scheduler = get_constant_schedule_with_warmup(optim,
+                                                      num_warmup_steps=n_warmup_iters)
 
     for epoch_idx in range(n_epochs):
         for batch_idx, batch in enumerate(data_loader):
@@ -378,6 +384,11 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
             loss = outputs[0]
             loss.backward()
             optim.step()
+            if scheduler is not None:
+                if batch_idx == 0 and epoch_idx == 0:
+                    print('* scheduler.step() *')   # just to know it 'took'
+                scheduler.step()
+
             batch_elapsed_time = time.time() - batch_start_time
             print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
             print_str = print_str.format(epoch_idx, n_epochs,
@@ -397,7 +408,10 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--data', default='COVID-QA_cleaned.json', help='Filepath to CovidQA dataset')
+    parser.add_argument('--data',
+                        # default='COVID-QA_cleaned.json',
+                        default='200423_covidQA.json',
+                        help='Filepath to CovidQA dataset')
     parser.add_argument('--out', default='out', help='Directory to put output')
 
     parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
@@ -416,6 +430,7 @@ if __name__ == '__main__':
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
                         type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
+    parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
     parser.add_argument('--gpus', default=[0], help='Which GPUs to use', type=int, nargs='+')
     parser.add_argument('--port', default='12345', help='Port to use for DDP')
@@ -494,80 +509,9 @@ if __name__ == '__main__':
                                                                       args.model_name, N_STRIDE, MAX_LEN,
                                                                       len(args.gpus), args.batch_size,
                                                                       args.lr, args.n_epochs, USE_KGE,
-                                                                      fold, args.n_splits, dtes, args.seed))
-
-        # print('Creating dataset...')
-        # train_dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
-        #                                                 n_stride=N_STRIDE, max_len=MAX_LEN))
-        # fold_n_iters = int(len(train_dataset) / args.batch_size)
-        # train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-        # # input('okty')
-        #
-        # print('Creating model...')
-        # model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
-        # model.to(device)
-        # model.train()
-        # optim = AdamW(model.parameters(), lr=args.lr)
-        #
-        # print('Beginning training...')
-        # # Run the training loop for defined number of epochs
-        # for epoch_idx in range(args.n_epochs):
-        #     for batch_idx, batch in enumerate(train_loader):
-        #         batch_start_time = time.time()
-        #         optim.zero_grad()
-        #         question_texts = batch['question_texts']
-        #         context_texts = batch['context_texts']
-        #         input_ids = batch['input_ids'].to(device)
-        #         attention_mask = batch['attention_mask'].to(device)
-        #         start_positions = batch['start_positions'].to(device)
-        #         end_positions = batch['end_positions'].to(device)
-        #
-        #         if USE_KGE:
-        #             input_embds, offsets, attn_masks = [], [], []
-        #             for q_text, c_text in zip(question_texts, context_texts):
-        #                 # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
-        #                 with torch.no_grad():
-        #                     # print('** KGE **')
-        #                     this_input_embds, this_n_token_adj, this_attention_mask = custom_input_rep(q_text, c_text)
-        #                     # print('this_n_token_adj: {}'.format(this_n_token_adj))
-        #                     this_n_token_adj = torch.tensor([this_n_token_adj])
-        #                     input_embds.append(this_input_embds.unsqueeze(0))
-        #                     attn_masks.append(this_attention_mask.unsqueeze(0))
-        #                     offsets.append(this_n_token_adj)
-        #
-        #             input_embds = torch.cat(input_embds, dim=0).to(device)
-        #             offsets = torch.cat(offsets, dim=0).to(device)
-        #
-        #             # print('offsets: {}'.format(offsets.shape))
-        #
-        #             attention_mask = torch.cat(attn_masks, dim=0).to(device)
-        #
-        #             start_positions = start_positions - offsets
-        #             end_positions = end_positions - offsets
-        #
-        #         else:
-        #             model_embds = model.get_input_embeddings()
-        #             input_embds = model_embds(input_ids)
-        #
-        #         # print('*' * 50)
-        #         # print('attention_mask: {}'.format(attention_mask.shape))
-        #         # print('input_embds: {}'.format(input_embds.shape))
-        #         # print('start_positions: {}'.format(start_positions.shape))
-        #         # print('end_positions: {}'.format(end_positions.shape))
-        #         # print('*' * 50)
-        #
-        #         outputs = model(inputs_embeds=input_embds, attention_mask=attention_mask,
-        #                         start_positions=start_positions, end_positions=end_positions)
-        #         loss = outputs[0]
-        #         loss.backward()
-        #         optim.step()
-        #         batch_elapsed_time = time.time() - batch_start_time
-        #         print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
-        #         print_str = print_str.format(epoch_idx, args.n_epochs,
-        #                                      batch_idx, fold_n_iters,
-        #                                      loss, batch_elapsed_time,
-        #                                      fold, args.n_splits)
-        #         print(print_str)
+                                                                      fold, args.n_splits, dtes,
+                                                                      args.warmup_proportion,
+                                                                      args.seed))
 
         # Process is complete.
         print('Training process has finished...')
