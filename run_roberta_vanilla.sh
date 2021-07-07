@@ -9,4 +9,5 @@ python run_modeling.py --batch_size 40 \
 		       --n_stride 192 \
 		       --use_kge F \
 		       --gpus 0 1 \
+		       --seed 18 \
 		       --port 42069
