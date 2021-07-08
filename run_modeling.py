@@ -482,7 +482,7 @@ if __name__ == '__main__':
     dtes = torch.cat(dtes, dim=0).to('cpu')
     # input('dtes: {}'.format(dtes.shape))
 
-    kfold = KFold(n_splits=args.n_splits, random_state=args.seed)
+    kfold = KFold(n_splits=args.n_splits, shuffle=True, random_state=args.seed)
     all_contexts, all_questions, all_answers = read_covidqa(args.data)
     # Converting to a dataframe for easy k-fold splits
     full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)),
