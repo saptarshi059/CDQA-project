@@ -41,8 +41,11 @@ def str2bool(v):
 
 
 def read_covidqa(fp):
-    with open(fp, 'rb') as f:
-        covidqa_dict = json.load(f)
+    # with open(fp, 'rb') as f:
+    #     covidqa_dict = json.load(f)
+
+    with open(fp, encoding='utf-8', errors='ignore') as json_data:
+        covidqa_dict = json.load(json_data, strict=False)
 
     contexts = []
     questions = []
@@ -409,8 +412,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--data',
-                        default='COVID-QA_cleaned.json',
-                        # default='200423_covidQA.json',
+                        # default='COVID-QA_cleaned.json',
+                        default='200423_covidQA.json',
                         help='Filepath to CovidQA dataset')
     parser.add_argument('--out', default='out', help='Directory to put output')
 
