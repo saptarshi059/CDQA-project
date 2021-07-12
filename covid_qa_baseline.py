@@ -45,6 +45,7 @@ def normalize_answer(s):
         return text.lower()
 
     return white_space_fix(remove_articles(remove_punc(lower(s))))
+    # return white_space_fix(remove_punc(lower(s)))
 
 
 def get_tokens(s):
@@ -159,13 +160,15 @@ def gen_answers(model_name, custom_pipeline=False):
 
 
 if __name__ == '__main__':
-    CUSTOM_PIPELINE = True
+    CUSTOM_PIPELINE = False
 
-    df = pd.read_json("COVID-QA.json")
-    model_name = 'navteca/roberta-base-squad2'
+    df = pd.read_json('200423_covidQA.json')
+    # df = pd.read_json('COVID-QA_cleaned.json')
+    # model_name = 'navteca/roberta-base-squad2'
+    model_name = 'deepset/roberta-base-squad2'
     effective_model_name = model_name.replace("/", "_")
     # gen_answers('phiyodr/roberta-large-finetuned-squad2')                      # F1: 33.50
-    gen_answers('navteca/roberta-base-squad2', custom_pipeline=CUSTOM_PIPELINE)  # F1: 43.49     EM: 492
+    gen_answers(model_name, custom_pipeline=CUSTOM_PIPELINE)  # F1: 43.49     EM: 492
     # gen_answers('clagator/biobert_squad2_cased')                               # F1: 43.35
     # gen_answers('ktrapeznikov/scibert_scivocab_uncased_squad_v2')              # F1: 44.33
 
