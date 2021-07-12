@@ -12,13 +12,14 @@ def evaluate_question_answering():
     ########## Settings
     ##########################
     device, n_gpu = initialize_device_settings(use_cuda=True)
-    lang_model = "deepset/roberta-base-squad2"
+    lang_model = "deepset/roberta-base-squad2-covid"
+    # deepset/roberta-base-squad2
     do_lower_case = True
 
     data_dir = Path('data/')
     evaluation_filename = 'COVID-QA_cleaned.json'
 
-    batch_size = 50
+    batch_size = 128
     no_ans_boost = -100
     accuracy_at = 3     # accuracy at n is useful for answers inside long documents
 
