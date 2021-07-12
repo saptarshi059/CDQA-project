@@ -19,7 +19,7 @@ def evaluate_question_answering():
     evaluation_filename = 'COVID-QA_cleaned.json'
 
     batch_size = 50
-    no_ans_boost = 0
+    no_ans_boost = -100
     accuracy_at = 3     # accuracy at n is useful for answers inside long documents
 
     # 1.Create a tokenizer
