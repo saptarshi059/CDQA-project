@@ -30,7 +30,7 @@ def evaluate_question_answering():
     # 2. Create a DataProcessor that handles all the conversion from raw text into a pytorch Dataset
     processor = SquadProcessor(
         tokenizer=tokenizer,
-        max_seq_len=256,
+        max_seq_len=384,
         label_list= ["start_token", "end_token"],
         metric="squad",
         train_filename=None,
@@ -38,7 +38,7 @@ def evaluate_question_answering():
         dev_split=0,
         test_filename=evaluation_filename,
         data_dir=data_dir,
-        doc_stride=128,
+        doc_stride=192,
     )
 
     # 3. Create a DataSilo that loads dataset, provides DataLoaders for them and calculates a few descriptive statistics of our datasets
