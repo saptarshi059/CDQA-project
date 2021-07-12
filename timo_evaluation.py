@@ -12,12 +12,15 @@ def evaluate_question_answering():
     ########## Settings
     ##########################
     device, n_gpu = initialize_device_settings(use_cuda=True)
-    lang_model = "deepset/roberta-base-squad2-covid"
+    # lang_model = "deepset/roberta-base-squad2-covid"
+    lang_model = "deepset/roberta-base-squad2"
     # deepset/roberta-base-squad2
+
     do_lower_case = True
 
     data_dir = Path('data/')
-    evaluation_filename = 'COVID-QA_cleaned.json'
+    # evaluation_filename = 'COVID-QA_cleaned.json'
+    evaluation_filename = '200423_covidQA.json'
 
     batch_size = 128
     no_ans_boost = -100
