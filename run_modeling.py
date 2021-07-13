@@ -247,7 +247,7 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1):
     for k, v in encodings.items():
         print('k: {} v: {}'.format(k, len(v)))
 
-    input('okty')
+    # input('okty')
 
     return encodings
 
