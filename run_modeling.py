@@ -7,6 +7,7 @@ import json
 import time
 import torch
 import string
+import random
 import argparse
 import datetime
 import collections
@@ -63,7 +64,7 @@ def read_covidqa(fp):
     return contexts, questions, answers
 
 
-def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512):
+def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1):
     answers = dataset['answer'].to_list()
     context = dataset['context'].to_list()
 
@@ -111,8 +112,14 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512):
     offset_mapping = encodings.pop("offset_mapping")
     # print('offset_mapping: {}'.format(len(offset_mapping)))
 
+    # input('sample_mapping: {}'.format(sample_mapping))
+    # input('offset_mapping: {}'.format(offset_mapping))
+
     encodings["start_positions"] = []
     encodings["end_positions"] = []
+
+    positive_idxs = []
+    neg_idxs_by_sample = {}
 
     for i, offsets in enumerate(offset_mapping):
         # We will label impossible answers with the index of the CLS token.
@@ -135,7 +142,12 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512):
             # input('i_answers["answer_start"]: {}'.format(i_answers["answer_start"]))
             encodings["start_positions"].append(cls_index)
             encodings["end_positions"].append(cls_index)
+
+            curr_neg_idxs_for_sample = neg_idxs_by_sample.get(sample_index, [])
+            curr_neg_idxs_for_sample.append(i)
+            neg_idxs_by_sample[sample_index] = curr_neg_idxs_for_sample
         else:
+
             # Start/end character index of the answer in the text.
             start_char = i_answers["answer_start"]
             end_char = start_char + len(i_answers["text"])
@@ -160,6 +172,10 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512):
                 # print('offsets[token_end_index]: {}'.format(offsets[token_end_index]))
                 encodings["start_positions"].append(cls_index)
                 encodings["end_positions"].append(cls_index)
+
+                curr_neg_idxs_for_sample = neg_idxs_by_sample.get(sample_index, [])
+                curr_neg_idxs_for_sample.append(i)
+                neg_idxs_by_sample[sample_index] = curr_neg_idxs_for_sample
                 # input('appending cls index')
             else:
                 # Otherwise move the token_start_index and token_end_index to the two ends of the answer.
@@ -170,6 +186,8 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512):
                 while offsets[token_end_index][1] >= end_char:
                     token_end_index -= 1
                 encodings["end_positions"].append(token_end_index + 1)
+
+                positive_idxs.append(i)
 
     # print('encodings.keys: {}'.format(encodings.keys()))
     # for k, v in encodings.items():
@@ -211,6 +229,25 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512):
     # print('End positions')
     # for v, c in zip(u_end_vals, u_end_cnts):
     #     print('v: {} count: {}'.format(v, c))
+
+    for k, v in encodings.items():
+        print('k: {} v: {}'.format(k, len(v)))
+
+    print('len(positive_idxs): {}'.format(len(positive_idxs)))
+    for sample_idx, potential_neg_idxs in neg_idxs_by_sample.items():
+        selected_neg_idxs = random.choices(potential_neg_idxs, k=n_neg)
+        positive_idxs.extend(selected_neg_idxs)
+
+    positive_idxs = list(sorted(positive_idxs))
+    print('len(positive_idxs): {}'.format(len(positive_idxs)))
+
+    for encoding_key in encodings.keys():
+        encodings[encoding_key] = [encodings[encoding_key][i] for i in positive_idxs]
+
+    for k, v in encodings.items():
+        print('k: {} v: {}'.format(k, len(v)))
+
+    input('okty')
 
     return encodings
 
@@ -412,8 +449,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--data',
-                        # default='COVID-QA_cleaned.json',
-                        default='200423_covidQA.json',
+                        default='data/COVID-QA_cleaned.json',
+                        # default='data/200423_covidQA.json',
                         help='Filepath to CovidQA dataset')
     parser.add_argument('--out', default='out', help='Directory to put output')
 
