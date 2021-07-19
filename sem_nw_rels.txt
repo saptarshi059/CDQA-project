@@ -1,0 +1,49 @@
+co-occurs_with 
+isa   
+result_of               
+property_of             
+ consists_of             
+ affects                 
+ associated_with         
+ complicates             
+ location_of             
+ manifestation_of        
+ occurs_in               
+ part_of                 
+ exhibits                
+ causes                  
+ process_of              
+ produces                
+ disrupts                
+ adjacent_to             
+ conceptual_part_of      
+ connected_to            
+ traverses               
+ branch_of               
+ developmental_form_of   
+ interconnects           
+ surrounds               
+ tributary_of            
+ contains                
+ derivative_of           
+ interacts_with          
+ analyzes                
+ assesses_effect_of      
+ diagnoses               
+ measures                
+ method_of               
+ precedes                
+ uses  
+ conceptually_related_to 
+ issue_in                
+ evaluation_of           
+ carries_out             
+ performs                
+ manages                 
+ indicates               
+ measurement_of          
+ prevents                
+ treats                  
+ degree_of               
+ practices               
+ ingredient_of   
