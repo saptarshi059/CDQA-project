@@ -5,7 +5,9 @@ class FFNN(torch.nn.Module):
         super().__init__()
         self.custom_nn = torch.nn.ModuleList()
         for i in range(num_hidden_layers):
+            self.custom_nn.add_module(f'Dropout{i}', torch.nn.Dropout())
             self.custom_nn.add_module(f'LL{i}', torch.nn.Linear(input_dim, hidden_dim))
+            self.custom_nn.add_module(f'LN{i}', torch.nn.LayerNorm(hidden_dim))
             self.custom_nn.add_module(f'activation{i}', torch.nn.ReLU())
             input_dim = hidden_dim
         self.custom_nn.add_module(f'Output Layer',
@@ -19,7 +21,7 @@ class FFNN(torch.nn.Module):
             hidden_states.append(output)
             input_data = output
         '''
-        hidden_states[-1] is the softmax o/p which we need to optimize the n/w with.
+        hidden_states[-1] is the softmax o/p which we need to train the n/w with.
         hidden_states[-3] will be used during inference time to obtain the equivalent BERT variant embedding. 
         It's '-3' & not '-2' since the 2nd to last layer is linear o/p layer of size vocab_size.
         '''
