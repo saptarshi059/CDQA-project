@@ -325,7 +325,7 @@ class CovidQADataset(torch.utils.data.Dataset):
 
 
 def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stride, max_len, world_size, batch_size,
-                           lr, n_epochs, use_kge, fold, n_splits, dtes, warmup_proportion=0.0, seed=16):
+                           lr, n_epochs, use_kge, fold, n_splits, dtes, warmup_proportion=0.0, seed=16, l2=0.01):
     dist.init_process_group('nccl',
                             world_size=world_size,
                             rank=rank)
@@ -366,7 +366,23 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
     dist.barrier()
 
     model.train()
-    optim = AdamW(model.parameters(), lr=lr)
+    no_decay = ['layernorm', 'norm']
+    param_optimizer = list(model.named_parameters())
+
+    no_decay_parms = []
+    reg_parms = []
+    for n, p in param_optimizer:
+        if any(nd in n for nd in no_decay):
+            no_decay_parms.append(p)
+        else:
+            reg_parms.append(p)
+
+    optimizer_grouped_parameters = [
+        {'params': reg_parms, 'weight_decay': l2},
+        {'params': no_decay_parms, 'weight_decay': 0.0},
+    ]
+
+    optim = AdamW(optimizer_grouped_parameters, lr=lr)
     scheduler = None
     if warmup_proportion > 0.0:
         n_warmup_iters = int(len(dataset) * n_epochs * warmup_proportion / (batch_size * world_size))
