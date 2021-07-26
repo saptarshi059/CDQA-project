@@ -325,7 +325,8 @@ class CovidQADataset(torch.utils.data.Dataset):
 
 
 def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stride, max_len, world_size, batch_size,
-                           lr, n_epochs, use_kge, fold, n_splits, dtes, warmup_proportion=0.0, seed=16, l2=0.01):
+                           lr, n_epochs, use_kge, fold, n_splits, n_neg_records, dtes,
+                           warmup_proportion=0.0, seed=16, l2=0.01):
     dist.init_process_group('nccl',
                             world_size=world_size,
                             rank=rank)
@@ -336,7 +337,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
     print('Creating tokenizer and dataset on device {}...'.format(rank))
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     dataset = CovidQADataset(preprocess_input(dataset.iloc[train_idxs], tokenizer,
-                                              n_stride=n_stride, max_len=max_len))
+                                              n_stride=n_stride, max_len=max_len, n_neg=n_neg_records))
     fold_n_iters = int(len(dataset) / (batch_size * world_size))
     data_sampler = torch.utils.data.distributed.DistributedSampler(dataset,
                                                                    num_replicas=world_size,
@@ -489,6 +490,7 @@ if __name__ == '__main__':
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
     parser.add_argument('--dte_lookup_table_fp', default='DTE-to-navteca-roberta-base-squad2.pkl')
+    parser.add_argument('--n_neg_records', default=5, type=int)
 
     parser.add_argument('--gpus', default=[0], help='Which GPUs to use', type=int, nargs='+')
     parser.add_argument('--port', default='12345', help='Port to use for DDP')
@@ -567,7 +569,8 @@ if __name__ == '__main__':
                                                                       args.model_name, N_STRIDE, MAX_LEN,
                                                                       len(args.gpus), args.batch_size,
                                                                       args.lr, args.n_epochs, USE_KGE,
-                                                                      fold, args.n_splits, dtes,
+                                                                      fold, args.n_splits, args.n_neg_records,
+                                                                      dtes,
                                                                       args.warmup_proportion,
                                                                       args.seed))
 
