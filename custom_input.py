@@ -70,11 +70,18 @@ def custom_input_rep(ques, context, max_length=512):
         then use its BERT embeddings.
         '''
 
-        if filtered_word in domain_terms:  # Use DTE_BERT_Matrix
+        # if filtered_word in domain_terms:  # Use DTE_BERT_Matrix
+        #     mapped_concept = mappings[domain_terms.index(filtered_word)][1]
+        #     if mapped_concept in all_entities:
+        #         question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
+        #         input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
+        #
+        #     new_question_text.append('a')
+
+        if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][1] in all_entities:  # Use DTE_BERT_Matrix
             mapped_concept = mappings[domain_terms.index(filtered_word)][1]
-            if mapped_concept in all_entities:
-                question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
-                input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
+            question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
+            input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
 
             new_question_text.append('a')
 
