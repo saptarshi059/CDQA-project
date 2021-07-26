@@ -15,7 +15,8 @@ import pickle5 as pickle
 Metamap_Tokenizations = pd.read_pickle('Metamap_Tokenizations.pkl')
 
 # config = pickle.load(open(f"{path}/params.pkl", "rb"))
-DTE_Model_Lookup_Table = pickle.load(open('DTE_to_RoBERTa.pkl', 'rb'))
+DTE_Model_Lookup_Table = pickle.load(open('DTE-to-navteca-roberta-base-squad2.pkl', 'rb'))
+print('DTE_Model_Lookup_Table:\n{}'.format(DTE_Model_Lookup_Table))
 
 model_name = 'navteca/roberta-base-squad2'
 
@@ -28,7 +29,8 @@ n_contextual_embds = model_embeddings.weight.shape[0]
 CLS_embedding = model_embeddings(torch.LongTensor([tokenizer.cls_token_id]))
 SEP_embedding = model_embeddings(torch.LongTensor([tokenizer.sep_token_id]))
 
-all_entities = DTE_Model_Lookup_Table['Term'].to_list()
+# all_entities = DTE_Model_Lookup_Table['Term'].to_list()
+all_entities = DTE_Model_Lookup_Table['Entity'].to_list()
 
 
 def custom_input_rep(ques, context, max_length=512):

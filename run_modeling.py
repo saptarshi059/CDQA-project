@@ -472,6 +472,8 @@ if __name__ == '__main__':
     parser.add_argument('--seed', default=16, type=int)
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
+    parser.add_argument('--dte_lookup_table_fp', default='DTE-to-navteca-roberta-base-squad2.pkl')
+
     parser.add_argument('--gpus', default=[0], help='Which GPUs to use', type=int, nargs='+')
     parser.add_argument('--port', default='12345', help='Port to use for DDP')
 
@@ -514,7 +516,7 @@ if __name__ == '__main__':
     model_out_fp = os.path.join(model_outdir, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
-    DTE_Model_Lookup_Table = pickle.load(open('DTE_to_RoBERTa.pkl', 'rb'))
+    DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
     dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
     dtes = torch.cat(dtes, dim=0).to('cpu')
     # input('dtes: {}'.format(dtes.shape))
