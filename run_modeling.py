@@ -462,7 +462,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
     # only save once
 
     avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts)
-    pct_replaced = [x / y for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
+    pct_replaced = [x / y if y is not 0 else 0.0 for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
     avg_pct_replaced = sum(pct_replaced) / len(pct_replaced)
 
     if use_kge:
