@@ -234,6 +234,7 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1):
         print('k: {} v: {}'.format(k, len(v)))
 
     print('len(positive_idxs): {}'.format(len(positive_idxs)))
+    print('Selecting up to {} negative records for each sample...'.format(n_neg))
     for sample_idx, potential_neg_idxs in neg_idxs_by_sample.items():
         selected_neg_idxs = random.choices(potential_neg_idxs, k=n_neg)
         positive_idxs.extend(selected_neg_idxs)
@@ -490,7 +491,7 @@ if __name__ == '__main__':
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
     parser.add_argument('--dte_lookup_table_fp', default='DTE-to-navteca-roberta-base-squad2.pkl')
-    parser.add_argument('--n_neg_records', default=5, type=int)
+    parser.add_argument('--n_neg_records', default=1, type=int)
 
     parser.add_argument('--gpus', default=[0], help='Which GPUs to use', type=int, nargs='+')
     parser.add_argument('--port', default='12345', help='Port to use for DDP')
