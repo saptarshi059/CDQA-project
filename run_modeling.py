@@ -367,6 +367,8 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
     dist.barrier()
 
+    n_orig_token_counts, n_dte_hit_counts = [], []
+
     model.train()
     no_decay = ['layernorm', 'norm']
     param_optimizer = list(model.named_parameters())
@@ -411,14 +413,16 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
                     # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
                     with torch.no_grad():
                         # print('** KGE **')
-                        this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids = custom_input_rep(q_text,
-                                                                                                              c_text)
+                        custom_input_info = custom_input_rep(q_text, c_text)
+                        this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
                         input_embds.append(this_input_embds.unsqueeze(0))
                         attn_masks.append(this_attention_mask.unsqueeze(0))
                         input_ids.append(in_ids.unsqueeze(0))
                         offsets.append(this_n_token_adj)
+                        n_orig_token_counts.append(n_orig_tokens)
+                        n_dte_hit_counts.append(n_dte_hits)
 
                 input_embds = torch.cat(input_embds, dim=0).to(device_)
                 input_ids = torch.cat(input_ids, dim=0).to(device_)
@@ -456,6 +460,17 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
             if rank == 0:
                 print(print_str)
     # only save once
+
+    avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts)
+    pct_replaced = [x / y for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
+    avg_pct_replaced = sum(pct_replaced) / len(pct_replaced)
+
+    if use_kge:
+        print_str = '** GPU {0} Avg n hits: {1:.2f} Avg replace pct: {2:.2f}'.format(rank,
+                                                                                     avg_n_hits,
+                                                                                     avg_pct_replaced)
+        print(print_str)
+
     if rank == 0:
         print('Saving model...')
         model.eval()
@@ -637,7 +652,7 @@ if __name__ == '__main__':
                     with torch.no_grad():
                         # print('** KGE **')
                         custom_input_data = custom_input_rep(questions[i], context, max_length=args.max_len)
-                        this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, input_ids = custom_input_data
+                        this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
                         input_embds = this_input_embds.unsqueeze(0)

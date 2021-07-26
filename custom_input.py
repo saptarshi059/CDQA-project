@@ -47,6 +47,8 @@ def custom_input_rep(ques, context, max_length=512):
     # print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
 
     metamap_tokenized_question = tup['Tokenization'].values[0]
+    n_original_tokens = len(metamap_tokenized_question)
+    n_dte_hits = 0
 
     # Removing punctuations/spaces from domain-terms for easy comparison
     mappings = tup['Mappings'].values[0]
@@ -82,8 +84,9 @@ def custom_input_rep(ques, context, max_length=512):
             mapped_concept = mappings[domain_terms.index(filtered_word)][1]
             question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
             input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
-
             new_question_text.append('a')
+
+            n_dte_hits += 1
 
         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
         else:
@@ -143,4 +146,4 @@ def custom_input_rep(ques, context, max_length=512):
     token_diff = len(tokenizer(ques)['input_ids']) - len(question_embeddings)
     input_ids = torch.tensor(input_ids)
 
-    return final_representation, token_diff, attn_mask, new_question_text, input_ids
+    return final_representation, token_diff, attn_mask, new_question_text, input_ids, n_original_tokens, n_dte_hits
