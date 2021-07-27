@@ -72,24 +72,24 @@ def custom_input_rep(ques, context, max_length=512):
         then use its BERT embeddings.
         '''
 
-        if filtered_word in domain_terms:  # Use DTE_BERT_Matrix
-            mapped_concept = mappings[domain_terms.index(filtered_word)][1]
-            print('** FIRST CONDITION SATISFIED **')
-            if mapped_concept in all_entities:
-                print('** SECOND CONDITION SATISFIED **')
-                question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
-                input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
+        # if filtered_word in domain_terms:  # Use DTE_BERT_Matrix
+        #     mapped_concept = mappings[domain_terms.index(filtered_word)][2]
+        #     print('** FIRST CONDITION SATISFIED filtered_word: {} **'.format(filtered_word))
+        #     if mapped_concept in all_entities:
+        #         print('** SECOND CONDITION SATISFIED **')
+        #         question_embeddings.append(DTE_Model_Lookup_Table.query("Entity==@mapped_concept")['Embedding'].values[0])
+        #         input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
+        #
+        #     new_question_text.append('a')
 
+        if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in all_entities:  # Use DTE_BERT_Matrix
+            mapped_concept = mappings[domain_terms.index(filtered_word)][2]
+            question_embeddings.append(DTE_Model_Lookup_Table.query("Entity==@mapped_concept")['Embedding'].values[0])
+            input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
             new_question_text.append('a')
 
-        # if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][1] in all_entities:  # Use DTE_BERT_Matrix
-        #     mapped_concept = mappings[domain_terms.index(filtered_word)][1]
-        #     question_embeddings.append(DTE_Model_Lookup_Table.query("Term==@mapped_concept")['Embedding'].values[0])
-        #     input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
-        #     new_question_text.append('a')
-        #
-        #     n_dte_hits += 1
-        #     print('DTE HIT!')
+            n_dte_hits += 1
+            # print('DTE HIT!')
 
         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
         else:
