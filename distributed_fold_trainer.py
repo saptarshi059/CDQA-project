@@ -238,6 +238,7 @@ class DistributedFoldTrainer(object):
 
         self.device = torch.device('cuda:{}'.format(self.rank)) if torch.cuda.is_available() else torch.device('cpu')
         torch.cuda.set_device(self.device)
+        print('Device for GPU {}: {}'.format(self.rank, self.device))
 
         torch.manual_seed(self.seed)
         dist.init_process_group('nccl',
@@ -391,7 +392,6 @@ class DistributedFoldTrainer(object):
                                                           (epoch * self.n_iters) + batch_idx)
                         self.summary_writer.add_histogram('weight/{}'.format(name), p.data,
                                                           (epoch * self.n_iters) + batch_idx)
-            dist.barrier()
 
             if self.rank == 0:
                 batch_elapsed_time = time.time() - batch_start_time
@@ -401,6 +401,7 @@ class DistributedFoldTrainer(object):
                                              loss, batch_elapsed_time,
                                              self.fold, self.n_splits)
                 print(print_str)
+            dist.barrier()
 
         avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0
         pct_replaced = [x / y if y is not 0 else 0.0 for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
