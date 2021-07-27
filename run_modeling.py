@@ -584,10 +584,16 @@ if __name__ == '__main__':
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
         dtes = dtes.to('cpu')
 
+        print('Preparing dataset for fold...')
+        tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+        dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
+                                                  n_stride=N_STRIDE, max_len=MAX_LEN, n_neg=args.n_neg_records))
+
+        del tokenizer
         dist_arg_d = {
             'model_ckpt_fp': model_ckpt_fp,
             'tb_dir': tb_dir,
-            'full_dataset': full_dataset,
+            'dataset': dataset,
             'train_ids': train_ids,
             'model_name': args.model_name,
             'N_STRIDE': N_STRIDE,

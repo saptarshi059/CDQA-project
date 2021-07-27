@@ -219,7 +219,7 @@ class DistributedFoldTrainer(object):
 
         self.model_ckpt_fp = arg_d['model_ckpt_fp']
         self.tb_dir = arg_d['tb_dir']
-        self.dataset = arg_d['full_dataset']
+        self.dataset = arg_d['dataset']
         self.train_idxs = arg_d['train_ids']
         self.model_name = arg_d['model_name']
         self.n_stride = arg_d['N_STRIDE']
@@ -237,17 +237,18 @@ class DistributedFoldTrainer(object):
         self.seed = arg_d['seed']
 
         self.device = torch.device('cuda:{}'.format(self.rank)) if torch.cuda.is_available() else torch.device('cpu')
+        torch.cuda.set_device(self.device)
 
+        torch.manual_seed(self.seed)
         dist.init_process_group('nccl',
                                 world_size=self.world_size,
                                 rank=self.rank)
-        torch.manual_seed(self.seed)
 
         print('Creating tokenizer and dataset on device {}...'.format(self.rank))
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-        self.dataset = CovidQADataset(preprocess_input(self.dataset.iloc[self.train_idxs], self.tokenizer,
-                                                       n_stride=self.n_stride, max_len=self.max_len,
-                                                       n_neg=self.n_neg_records))
+        # self.dataset = CovidQADataset(preprocess_input(self.dataset.iloc[self.train_idxs], self.tokenizer,
+        #                                                n_stride=self.n_stride, max_len=self.max_len,
+        #                                                n_neg=self.n_neg_records))
         self.fold_n_iters = int(len(self.dataset) / (self.batch_size * self.world_size))
         data_sampler = torch.utils.data.distributed.DistributedSampler(self.dataset,
                                                                        num_replicas=self.world_size,
