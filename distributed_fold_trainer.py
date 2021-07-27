@@ -372,8 +372,8 @@ class DistributedFoldTrainer(object):
             if batch_idx == 0:
                 print('GPU {} input_ids - shape: {} device: {}'.format(self.rank, input_ids.shape, input_ids.device))
                 print('GPU {} attention_mask - shape: {} device: {}'.format(self.rank, attention_mask.shape, attention_mask.device))
-                print('GPU {} start_positions - shape: {} device: {}'.format(self.rank, start_positions.shape, attention_mask.start_positions))
-                print('GPU {} end_positions - shape: {} device: {}'.format(self.rank, end_positions.shape, end_positions.start_positions))
+                print('GPU {} start_positions - shape: {} device: {}'.format(self.rank, start_positions.shape, start_positions.device))
+                print('GPU {} end_positions - shape: {} device: {}'.format(self.rank, end_positions.shape, start_positions.device))
 
             outputs = self.model(inputs_embeds=None, input_ids=input_ids,
                                  attention_mask=attention_mask,
