@@ -4,6 +4,7 @@ import re
 import gc
 import os
 import json
+import math
 import time
 import torch
 import string
@@ -21,6 +22,7 @@ import torch.distributed as dist
 import torch.multiprocessing as mp
 from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
+from torch.utils.tensorboard import SummaryWriter
 from transformers import get_constant_schedule_with_warmup
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 # from custom_question_rep import custom_question_rep_gen
@@ -325,8 +327,8 @@ class CovidQADataset(torch.utils.data.Dataset):
         return len(self.encodings.input_ids)
 
 
-def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stride, max_len, world_size, batch_size,
-                           lr, n_epochs, use_kge, fold, n_splits, n_neg_records, dtes,
+def train_fold_distributed(rank, out_fp, tb_dir, dataset, train_idxs, model_name, n_stride, max_len, world_size,
+                           batch_size, lr, n_epochs, use_kge, fold, n_splits, n_neg_records, dtes,
                            warmup_proportion=0.0, seed=16, l2=0.01):
     dist.init_process_group('nccl',
                             world_size=world_size,
@@ -365,7 +367,6 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
         new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
         model.set_input_embeddings(new_input_embeddings)
 
-    dist.barrier()
 
     n_orig_token_counts, n_dte_hit_counts = [], []
 
@@ -386,6 +387,7 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
         {'params': no_decay_parms, 'weight_decay': 0.0},
     ]
 
+    n_iters = int(math.ceil(len(dataset) / (batch_size * world_size)))
     optim = AdamW(optimizer_grouped_parameters, lr=lr)
     scheduler = None
     if warmup_proportion > 0.0:
@@ -394,6 +396,12 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
         scheduler = get_constant_schedule_with_warmup(optim,
                                                       num_warmup_steps=n_warmup_iters)
 
+    summary_writer = None
+    if rank == 0:
+        print('** GPU 0 creating summary writer **')
+        summary_writer = SummaryWriter(log_dir=tb_dir)
+
+    dist.barrier()
     for epoch_idx in range(n_epochs):
         for batch_idx, batch in enumerate(data_loader):
             # if batch_idx > 2:
@@ -430,15 +438,12 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
 
                 # print('custom input_ids: {}'.format(input_ids.shape))
                 # print('custom input_embds: {}'.format(input_embds.shape))
+                print('offsets: {}'.format(offsets))
 
                 attention_mask = torch.cat(attn_masks, dim=0).to(device_)
 
                 start_positions = start_positions - offsets
                 end_positions = end_positions - offsets
-            else:
-                # model_embds = model.get_input_embeddings()
-                # input_embds = model_embds(input_ids)
-                pass
 
             outputs = model(inputs_embeds=None, input_ids=input_ids,
                             attention_mask=attention_mask,
@@ -450,6 +455,10 @@ def train_fold_distributed(rank, out_fp, dataset, train_idxs, model_name, n_stri
                 if batch_idx == 0 and epoch_idx == 0:
                     print('* scheduler.step() *')   # just to know it 'took'
                 scheduler.step()
+
+            if rank == 0:
+                summary_writer.add_scalar('loss/fold_{}'.format(fold), loss,
+                                          (epoch_idx * n_iters) + batch_idx)
 
             batch_elapsed_time = time.time() - batch_start_time
             print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
@@ -533,6 +542,10 @@ if __name__ == '__main__':
     if not os.path.exists(model_ckpt_dir):
         os.makedirs(model_ckpt_dir)
 
+    tb_dir = os.path.join(model_outdir, 'tb_dir')
+    if not os.path.exists(tb_dir):
+        os.makedirs(tb_dir)
+
     model_ckpt_tmplt = os.path.join(model_ckpt_dir, 'model_fold{}.pt')
 
     model_arg_fp = os.path.join(model_outdir, 'args.txt')
@@ -581,7 +594,7 @@ if __name__ == '__main__':
         dtes = dtes.to('cpu')
 
         print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))
-        mp.spawn(train_fold_distributed, nprocs=len(args.gpus), args=(model_ckpt_fp, full_dataset, train_ids,
+        mp.spawn(train_fold_distributed, nprocs=len(args.gpus), args=(model_ckpt_fp, tb_dir, full_dataset, train_ids,
                                                                       args.model_name, N_STRIDE, MAX_LEN,
                                                                       len(args.gpus), args.batch_size,
                                                                       args.lr, args.n_epochs, USE_KGE,
