@@ -163,7 +163,7 @@ if __name__ == '__main__':
     CUSTOM_PIPELINE = False
 
     # df = pd.read_json('200423_covidQA.json')
-    df = pd.read_json('COVID-QA_cleaned.json')
+    df = pd.read_json('data/COVID-QA_cleaned.json')
     # model_name = 'navteca/roberta-base-squad2'
     model_name = 'deepset/roberta-base-squad2'
     effective_model_name = model_name.replace("/", "_")
