@@ -438,7 +438,7 @@ def train_fold_distributed(rank, out_fp, tb_dir, dataset, train_idxs, model_name
                     print('* scheduler.step() *')  # just to know it 'took'
                 scheduler.step()
 
-            if rank == 0:
+            if rank == 0 and ((epoch_idx * n_iters) + batch_idx) % 25 == 0:
                 summary_writer.add_scalar('loss/fold_{}'.format(fold), loss,
                                           (epoch_idx * n_iters) + batch_idx)
 
