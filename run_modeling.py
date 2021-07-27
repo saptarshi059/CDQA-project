@@ -470,9 +470,9 @@ def train_fold_distributed(rank, out_fp, tb_dir, dataset, train_idxs, model_name
                 print(print_str)
     # only save once
 
-    avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts)
+    avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0
     pct_replaced = [x / y if y is not 0 else 0.0 for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
-    avg_pct_replaced = sum(pct_replaced) / len(pct_replaced)
+    avg_pct_replaced = sum(pct_replaced) / len(pct_replaced) if len(pct_replaced) > 0 else 0.0
 
     if use_kge:
         print_str = '** GPU {0} Avg n hits: {1:.2f} Avg replace pct: {2:.2f}'.format(rank,
