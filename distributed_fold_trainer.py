@@ -414,6 +414,8 @@ class DistributedFoldTrainer(object):
             self.optim.step()
             self.optim.zero_grad()
 
+            print('Worker {} finished batch {}...'.format(self.rank, batch_idx))
+
             dist.barrier()
 
         avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0

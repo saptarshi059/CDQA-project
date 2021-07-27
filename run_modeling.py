@@ -621,7 +621,7 @@ if __name__ == '__main__':
         #                                                               args.warmup_proportion,
         #                                                               args.seed))
         mp.spawn(DistributedFoldTrainer, nprocs=len(args.gpus), args=(dist_arg_d, ))
-        input('okty')
+        # input('okty')
         # Process is complete.
         print('Training process has finished...')
 
@@ -648,8 +648,8 @@ if __name__ == '__main__':
         # Evaluationfor this fold
         test_data = full_dataset.iloc[test_ids]
         tokenizer = AutoTokenizer.from_pretrained(args.model_name)
-        test_dataset = CovidQADataset(preprocess_input(test_data, tokenizer,
-                                                       n_stride=N_STRIDE, max_len=args.max_len, n_neg=-1))
+        # test_dataset = CovidQADataset(preprocess_input(test_data, tokenizer,
+        #                                                n_stride=N_STRIDE, max_len=args.max_len, n_neg=-1))
         nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
                                               device=-1 if device == torch.device('cpu') else 0)
         # nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') \
