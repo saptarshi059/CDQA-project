@@ -414,7 +414,7 @@ class DistributedFoldTrainer(object):
             self.optim.step()
             self.optim.zero_grad()
 
-            print('Worker {} finished batch {}...'.format(self.rank, batch_idx))
+            # print('Worker {} finished batch {}...'.format(self.rank, batch_idx))
 
             dist.barrier()
 
