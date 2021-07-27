@@ -33,7 +33,7 @@ SEP_embedding = model_embeddings(torch.LongTensor([tokenizer.sep_token_id]))
 all_entities = DTE_Model_Lookup_Table['Entity'].to_list()
 
 
-def custom_input_rep(ques, context, max_length=512):
+def custom_input_rep(ques, context, max_length=512, concat=False):
     ques = re.sub(' +', ' ', ques).strip()
 
     def clean_term(word):
@@ -91,6 +91,15 @@ def custom_input_rep(ques, context, max_length=512):
             n_dte_hits += 1
             # print('DTE HIT!')
 
+            if concat:
+                # print('$$ concatenating KGE $$')
+                subword_indices = tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
+                input_ids.extend(subword_indices)
+                for index in subword_indices:
+                    question_embeddings.append(model_embeddings(torch.LongTensor([index])))
+
+                new_question_text.append(word)
+
         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
         else:
             subword_indices = tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
@@ -102,10 +111,15 @@ def custom_input_rep(ques, context, max_length=512):
 
     new_question_text = ' '.join(new_question_text)
 
+    if concat:
+        effective_max_length = max_length + 15
+    else:
+        effective_max_length = max_length
+
     # Since our total i/p's can only be 512 tokens long, the context has to be adjusted accordingly.
     len_custom_question = len(question_embeddings)
     # max_length = 512
-    limit_for_context = max_length - (len_custom_question + 3)  # 2 to account for [CLS] & [SEP]
+    limit_for_context = effective_max_length - (len_custom_question + 3)  # 2 to account for [CLS] & [SEP]
 
     context_embeddings = []
 
@@ -129,8 +143,8 @@ def custom_input_rep(ques, context, max_length=512):
                                       torch.cat([*context_embeddings]),
                                       SEP_embedding))
 
-    n_pad = max_length - final_representation.shape[0]
-    attn_mask = torch.ones((max_length, max_length))
+    n_pad = effective_max_length - final_representation.shape[0]
+    attn_mask = torch.ones((effective_max_length, effective_max_length))
     for mask_idx in range(n_pad):
         attn_mask[-(mask_idx + 1), :] = 0
         attn_mask[:, -(mask_idx + 1)] = 0
@@ -140,7 +154,7 @@ def custom_input_rep(ques, context, max_length=512):
         new_padding = torch.zeros((n_pad, model_dim))
         final_representation = torch.cat([final_representation, new_padding], dim=0)
 
-    while len(input_ids) < max_length:
+    while len(input_ids) < effective_max_length:
         input_ids.append(tokenizer.pad_token_id)
     # print('!! attn_mask: {} !!'.format(attn_mask.shape))
     # print('!! final_representation: {} !!'.format(final_representation.shape))

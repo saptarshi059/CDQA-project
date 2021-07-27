@@ -460,8 +460,8 @@ def train_fold_distributed(rank, out_fp, tb_dir, dataset, train_idxs, model_name
                                          fold, n_splits)
             if rank == 0:
                 print(print_str)
-    # only save once
 
+    # only save once
     avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0
     pct_replaced = [x / y if y is not 0 else 0.0 for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
     avg_pct_replaced = sum(pct_replaced) / len(pct_replaced) if len(pct_replaced) > 0 else 0.0
@@ -493,7 +493,7 @@ if __name__ == '__main__':
     parser.add_argument('--lr', default=5e-5, help='How many items to process as once', type=float)
     parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform', type=int)
     parser.add_argument('--n_stride', default=164, help='How many folds to use for cross val', type=int)
-    parser.add_argument('--max_len', default=512, help='How many folds to use for cross val', type=int)
+    parser.add_argument('--max_len', default=384, help='How many folds to use for cross val', type=int)
     parser.add_argument('--model_name',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
                         # default='clagator/biobert_squad2_cased',
@@ -503,6 +503,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
                         type=str2bool)
+    parser.add_argument('--concat_kge', default=False, type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
@@ -510,7 +511,7 @@ if __name__ == '__main__':
     parser.add_argument('--n_neg_records', default=1, type=int)
 
     parser.add_argument('--gpus', default=[0], help='Which GPUs to use', type=int, nargs='+')
-    parser.add_argument('--port', default='12345', help='Port to use for DDP')
+    parser.add_argument('--port', default='14345', help='Port to use for DDP')
 
     args = parser.parse_args()
 
@@ -609,6 +610,7 @@ if __name__ == '__main__':
             'dtes': dtes,
             'warmup_proportion': args.warmup_proportion,
             'seed': args.seed,
+            'concat_kge': args.concat_kge,
         }
 
         print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))

@@ -235,6 +235,7 @@ class DistributedFoldTrainer(object):
         self.dtes = arg_d['dtes']
         self.warmup_proportion = arg_d['warmup_proportion']
         self.seed = arg_d['seed']
+        self.concat_kge = arg_d['concat_kge']
 
         self.device = torch.device('cuda:{}'.format(self.rank)) if torch.cuda.is_available() else torch.device('cpu')
         torch.cuda.set_device(self.device)
@@ -348,7 +349,8 @@ class DistributedFoldTrainer(object):
                     # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
                     with torch.no_grad():
                         # print('** KGE **')
-                        custom_input_info = custom_input_rep(q_text, c_text)
+                        custom_input_info = custom_input_rep(q_text, c_text, max_length=self.max_len,
+                                                             concat=self.concat_kge)
                         this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
