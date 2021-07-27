@@ -331,7 +331,7 @@ class DistributedFoldTrainer(object):
             # if batch_idx > 2:
             #     break
             batch_start_time = time.time()
-            self.optim.zero_grad()
+
             question_texts = batch['question_texts']
             context_texts = batch['context_texts']
             input_ids = batch['input_ids'].to(self.device)
@@ -369,13 +369,19 @@ class DistributedFoldTrainer(object):
                 start_positions = start_positions - offsets
                 end_positions = end_positions - offsets
 
+            if batch_idx == 0:
+                print('GPU {} input_ids - shape: {} device: {}'.format(self.rank, input_ids.shape, input_ids.device))
+                print('GPU {} attention_mask - shape: {} device: {}'.format(self.rank, attention_mask.shape, attention_mask.device))
+                print('GPU {} start_positions - shape: {} device: {}'.format(self.rank, start_positions.shape, attention_mask.start_positions))
+                print('GPU {} end_positions - shape: {} device: {}'.format(self.rank, end_positions.shape, end_positions.start_positions))
+
             outputs = self.model(inputs_embeds=None, input_ids=input_ids,
                                  attention_mask=attention_mask,
                                  start_positions=start_positions, end_positions=end_positions)
 
             loss = outputs[0]
             loss.backward()
-            self.optim.step()
+
             if self.scheduler is not None:
                 if batch_idx == 0 and epoch == 0:
                     print('* scheduler.step() *')  # just to know it 'took'
@@ -401,6 +407,10 @@ class DistributedFoldTrainer(object):
                                              loss, batch_elapsed_time,
                                              self.fold, self.n_splits)
                 print(print_str)
+
+            self.optim.step()
+            self.optim.zero_grad()
+
             dist.barrier()
 
         avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0
