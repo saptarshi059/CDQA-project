@@ -277,6 +277,8 @@ class DistributedFoldTrainer(object):
             self.model.set_input_embeddings(new_input_embeddings)
 
         self.model.train()
+
+        print('Creating optimizer on device {}...'.format(self.rank))
         no_decay = ['layernorm', 'norm']
         param_optimizer = list(self.model.named_parameters())
 
@@ -309,6 +311,7 @@ class DistributedFoldTrainer(object):
             self.summary_writer = SummaryWriter(log_dir=self.tb_dir)
 
         dist.barrier()
+        print('GPU {} passed barrier... running...'.format(self.rank))
         self.run()
 
     def run(self):
@@ -316,7 +319,7 @@ class DistributedFoldTrainer(object):
             if self.rank == 0:
                 print('Performing epoch {} of {}'.format(epoch, self.n_epochs))
 
-                self.run_one_epoch(epoch)
+            self.run_one_epoch(epoch)
 
         if self.rank == 0:
             print('Training done, saving model...')
