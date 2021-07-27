@@ -211,34 +211,17 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1):
         encodings["question_texts"].append(i_question_text)
         encodings["context_texts"].append(i_context_text)
 
-        # print('i: {}'.format(i))
-        # print('\ti_input_text: {}'.format(i_input_text))
-        # print('\ti_question_text: {}'.format(i_question_text))
-        # print('\ti_context_text: {}'.format(i_context_text))
-        # print('\tstart_positions: {}'.format(encodings['start_positions'][i]))
-        # print('\tend_positions: {}'.format(encodings['end_positions'][i]))
-        # input('okty')
-
-    # input('okty')
-    # encodings.update({'question_texts': question_texts, 'context_texts': context_texts})
-    # u_start_vals, u_start_cnts = np.unique(encodings['start_positions'], return_counts=True)
-    # u_end_vals, u_end_cnts = np.unique(encodings['end_positions'], return_counts=True)
-
-    # print('Start positions')
-    # for v, c in zip(u_start_vals, u_start_cnts):
-    #     print('v: {} count: {}'.format(v, c))
-    #
-    # print('End positions')
-    # for v, c in zip(u_end_vals, u_end_cnts):
-    #     print('v: {} count: {}'.format(v, c))
-
     for k, v in encodings.items():
         print('k: {} v: {}'.format(k, len(v)))
 
     print('len(positive_idxs): {}'.format(len(positive_idxs)))
     print('Selecting up to {} negative records for each sample...'.format(n_neg))
+
     for sample_idx, potential_neg_idxs in neg_idxs_by_sample.items():
-        selected_neg_idxs = random.choices(potential_neg_idxs, k=n_neg)
+        if n_neg > 0:
+            selected_neg_idxs = random.choices(potential_neg_idxs, k=n_neg)
+        else:
+            selected_neg_idxs = potential_neg_idxs
         positive_idxs.extend(selected_neg_idxs)
 
     positive_idxs = list(sorted(positive_idxs))
@@ -367,7 +350,6 @@ def train_fold_distributed(rank, out_fp, tb_dir, dataset, train_idxs, model_name
         new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
         model.set_input_embeddings(new_input_embeddings)
 
-
     n_orig_token_counts, n_dte_hit_counts = [], []
 
     model.train()
@@ -453,12 +435,20 @@ def train_fold_distributed(rank, out_fp, tb_dir, dataset, train_idxs, model_name
             optim.step()
             if scheduler is not None:
                 if batch_idx == 0 and epoch_idx == 0:
-                    print('* scheduler.step() *')   # just to know it 'took'
+                    print('* scheduler.step() *')  # just to know it 'took'
                 scheduler.step()
 
             if rank == 0:
                 summary_writer.add_scalar('loss/fold_{}'.format(fold), loss,
                                           (epoch_idx * n_iters) + batch_idx)
+
+                for name, p in model.named_parameters():
+                    if p.grad is not None and p.grad.data is not None:
+                        summary_writer.add_histogram('grad/{}'.format(name), p.grad.data,
+                                                     (epoch_idx * n_iters) + batch_idx)
+                        summary_writer.add_histogram('weight/{}'.format(name), p.data,
+                                                     (epoch_idx * n_iters) + batch_idx)
+            dist.barrier()
 
             batch_elapsed_time = time.time() - batch_start_time
             print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
@@ -574,7 +564,6 @@ if __name__ == '__main__':
     full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)),
                                 columns=['context', 'question', 'answer'])
 
-
     # sample_encoded_inputs = tokenizer(text='the first string of text',
     #                                   text_pair='the second string of text')
     # input('sample_encoded_inputs: {}'.format(sample_encoded_inputs))
@@ -621,12 +610,18 @@ if __name__ == '__main__':
         map_location = {'cuda:0': 'cuda:0'}
         state_dict = torch.load(model_ckpt_fp, map_location=map_location)
         model.load_state_dict(state_dict)
+        model.eval()
 
         # Print about testing
         print('Starting testing')
 
         # Evaluationfor this fold
         test_data = full_dataset.iloc[test_ids]
+        tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+        test_dataset = CovidQADataset(preprocess_input(test_data, tokenizer,
+                                                       n_stride=N_STRIDE, max_len=args.max_len, n_neg=-1))
+        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
+                                              device=-1 if device == torch.device('cpu') else 0)
         # nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') \
         #     else 0)
 
@@ -636,10 +631,6 @@ if __name__ == '__main__':
         # else:
         #     print('$$$ Using Vanilla QA Pipeline $$$')
         #     nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') else 0)
-
-        tokenizer = AutoTokenizer.from_pretrained(args.model_name)
-        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
-                                              device=-1 if device == torch.device('cpu') else 0)
 
         with torch.no_grad():
             questions = []
