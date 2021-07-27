@@ -26,8 +26,10 @@ from torch.utils.tensorboard import SummaryWriter
 from transformers import get_constant_schedule_with_warmup
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 # from custom_question_rep import custom_question_rep_gen
+
 from custom_input import custom_input_rep
 from custom_qa_pipeline import CustomQuestionAnsweringPipeline
+from distributed_fold_trainer import DistributedFoldTrainer
 
 
 def str2bool(v):
@@ -582,16 +584,38 @@ if __name__ == '__main__':
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
         dtes = dtes.to('cpu')
 
-        print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))
-        mp.spawn(train_fold_distributed, nprocs=len(args.gpus), args=(model_ckpt_fp, tb_dir, full_dataset, train_ids,
-                                                                      args.model_name, N_STRIDE, MAX_LEN,
-                                                                      len(args.gpus), args.batch_size,
-                                                                      args.lr, args.n_epochs, USE_KGE,
-                                                                      fold, args.n_splits, args.n_neg_records,
-                                                                      dtes,
-                                                                      args.warmup_proportion,
-                                                                      args.seed))
+        dist_arg_d = {
+            'model_ckpt_fp': model_ckpt_fp,
+            'tb_dir': tb_dir,
+            'full_dataset': full_dataset,
+            'train_ids': train_ids,
+            'model_name': args.model_name,
+            'N_STRIDE': N_STRIDE,
+            'MAX_LEN': MAX_LEN,
+            'world_size': len(args.gpus),
+            'batch_size': args.batch_size,
+            'lr': args.lr,
+            'n_epochs': args.n_epochs,
+            'USE_KGE': USE_KGE,
+            'fold': fold,
+            'n_splits': args.n_splits,
+            'n_neg_records': args.n_neg_records,
+            'dtes': dtes,
+            'warmup_proportion': args.warmup_proportion,
+            'seed': args.seed,
+        }
 
+        print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))
+        # mp.spawn(train_fold_distributed, nprocs=len(args.gpus), args=(model_ckpt_fp, tb_dir, full_dataset, train_ids,
+        #                                                               args.model_name, N_STRIDE, MAX_LEN,
+        #                                                               len(args.gpus), args.batch_size,
+        #                                                               args.lr, args.n_epochs, USE_KGE,
+        #                                                               fold, args.n_splits, args.n_neg_records,
+        #                                                               dtes,
+        #                                                               args.warmup_proportion,
+        #                                                               args.seed))
+        mp.spawn(DistributedFoldTrainer, nprocs=len(args.gpus), args=(dist_arg_d, ))
+        input('okty')
         # Process is complete.
         print('Training process has finished...')
 
