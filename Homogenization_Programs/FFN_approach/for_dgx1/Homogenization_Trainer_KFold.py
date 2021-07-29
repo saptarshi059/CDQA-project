@@ -14,10 +14,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-BV','--BERT_variant', default='navteca/roberta-base-squad2')
-parser.add_argument('-f', '--folds', default=5)
-parser.add_argument('-e', '--epochs', default=50)
-parser.add_argument('-b', '--batch_size', default=128)
-parser.add_argument('-nl', '--num_hidden_layers', default=5)
+parser.add_argument('-f', '--folds', default=5, type=int)
+parser.add_argument('-e', '--epochs', default=50, type=int)
+parser.add_argument('-b', '--batch_size', default=128, type=int)
+parser.add_argument('-nl', '--num_hidden_layers', default=5, type=int)
 args = parser.parse_args()
 
 BERT_variant = args.BERT_variant
