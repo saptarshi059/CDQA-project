@@ -125,7 +125,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(homogenization_dataset)
     .cuda() will be different objects with those before the call (https://pytorch.org/docs/stable/optim.html)
     '''
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:5' if torch.cuda.is_available() else 'cpu')
     model.to(device)
     
     # Initialize optimizer

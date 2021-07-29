@@ -5,7 +5,7 @@ class FFNN(torch.nn.Module):
         super().__init__()
         self.custom_nn = torch.nn.ModuleList()
         for i in range(num_hidden_layers):
-            self.custom_nn.add_module(f'Dropout{i}', torch.nn.Dropout())
+            self.custom_nn.add_module(f'Dropout{i}', torch.nn.Dropout(p=0.25))
             self.custom_nn.add_module(f'LL{i}', torch.nn.Linear(input_dim, hidden_dim))
             self.custom_nn.add_module(f'LN{i}', torch.nn.LayerNorm(hidden_dim))
             self.custom_nn.add_module(f'activation{i}', torch.nn.ReLU())
