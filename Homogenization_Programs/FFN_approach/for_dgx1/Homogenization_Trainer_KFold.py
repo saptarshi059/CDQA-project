@@ -201,6 +201,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(homogenization_dataset)
             
             test_loss += loss.item()
 
+        print(f'Test Loss: {test_loss}')
         test_fold_loss[fold] = test_loss
 
 # Print fold results
