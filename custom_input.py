@@ -160,7 +160,12 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
     # print('!! final_representation: {} !!'.format(final_representation.shape))
 
     # This difference will be used to adjust the start/end indices of the answers in context.
-    token_diff = len(tokenizer(ques)['input_ids']) - len(question_embeddings)
+    og_input_ids = tokenizer(ques)['input_ids']
+
+    print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
+    # print('input_ids: {}'.format(input_ids))
+
+    token_diff = len(og_input_ids) - len(question_embeddings)
     input_ids = torch.tensor(input_ids)
 
     return final_representation, token_diff, attn_mask, new_question_text, input_ids, n_original_tokens, n_dte_hits
