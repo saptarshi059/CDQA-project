@@ -42,7 +42,7 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
     tup = Metamap_Tokenizations.query("Question==@ques")
     # print('ques: \"{}\"'.format(ques))
     # print('context: \"{}\"'.format(context))
-    # print('tup: {}'.format(tup))  # debugging
+    print('tup: {}'.format(tup))  # debugging
     # print('tup columns: {}'.format(tup.columns))
     # print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
 
