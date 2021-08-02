@@ -52,6 +52,7 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
 
     # Removing punctuations/spaces from domain-terms for easy comparison
     mappings = tup['Mappings'].values[0]
+    print('mappings: {}'.format(mappings))  # debugging
     for i, x in enumerate(mappings):
         mappings[i][0] = clean_term(x[0])
 
