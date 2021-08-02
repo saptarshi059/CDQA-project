@@ -126,6 +126,9 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
 
     context_embeddings = []
 
+    og_input_ids = tokenizer(ques)['input_ids']
+    print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
+
     # Taking all tokens b/w 1 & limit_for_context
     reduced_context_indices = tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
     input_ids.append(tokenizer.sep_token_id)
@@ -156,9 +159,6 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
         model_dim = final_representation.shape[-1]
         new_padding = torch.zeros((n_pad, model_dim))
         final_representation = torch.cat([final_representation, new_padding], dim=0)
-
-    og_input_ids = tokenizer(ques)['input_ids']
-    print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
 
     while len(input_ids) < effective_max_length:
         input_ids.append(tokenizer.pad_token_id)
