@@ -17,7 +17,7 @@ parser.add_argument('-BV','--BERT_variant', default='navteca/roberta-base-squad2
 parser.add_argument('-f', '--folds', default=5, type=int)
 parser.add_argument('-e', '--epochs', default=50, type=int)
 parser.add_argument('-b', '--batch_size', default=128, type=int)
-parser.add_argument('-nl', '--num_hidden_layers', default=5, type=int)
+parser.add_argument('-nl', '--num_hidden_layers', default=10, type=int)
 args = parser.parse_args()
 
 BERT_variant = args.BERT_variant
@@ -72,7 +72,7 @@ def reset_weights(m):
 # Configuration options
 k_folds = args.folds
 num_epochs = args.epochs
-loss_function = torch.nn.BCELoss()
+loss_function = torch.nn.MSELoss()
 batch_size = args.batch_size
 #1 X [dim of 1 KGE], since we are doing mean(triple)
 input_dimension = ent_embeddings_size
