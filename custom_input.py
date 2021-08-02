@@ -42,7 +42,7 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
     tup = Metamap_Tokenizations.query("Question==@ques")
     # print('ques: \"{}\"'.format(ques))
     # print('context: \"{}\"'.format(context))
-    print('tup: {}'.format(tup))  # debugging
+    # print('tup: {}'.format(tup))  # debugging
     # print('tup columns: {}'.format(tup.columns))
     # print('tup[\'Tokenization\']: {}'.format(tup['Tokenization']))
 
@@ -85,7 +85,9 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
         if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in all_entities:  # Use DTE_BERT_Matrix
             mapped_concept = mappings[domain_terms.index(filtered_word)][2]
             question_embeddings.append(DTE_Model_Lookup_Table.query("Entity==@mapped_concept")['Embedding'].values[0].to('cpu'))
-            input_ids.append(n_contextual_embds + all_entities.index(mapped_concept))
+            custom_input_id = n_contextual_embds + all_entities.index(mapped_concept)
+            print('filtered_word: {} concept: {} custom ID: {}'.format(filtered_word, mapped_concept, custom_input_id))
+            input_ids.append(custom_input_id)
             new_question_text.append('a')
 
             n_dte_hits += 1
@@ -103,6 +105,7 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
         else:
             subword_indices = tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
+            print('word: {} subword_indices: {}'.format(word, subword_indices))
             input_ids.extend(subword_indices)
             for index in subword_indices:
                 question_embeddings.append(model_embeddings(torch.LongTensor([index])))
@@ -154,17 +157,17 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
         new_padding = torch.zeros((n_pad, model_dim))
         final_representation = torch.cat([final_representation, new_padding], dim=0)
 
+    og_input_ids = tokenizer(ques)['input_ids']
+    print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
+
     while len(input_ids) < effective_max_length:
         input_ids.append(tokenizer.pad_token_id)
     # print('!! attn_mask: {} !!'.format(attn_mask.shape))
     # print('!! final_representation: {} !!'.format(final_representation.shape))
 
     # This difference will be used to adjust the start/end indices of the answers in context.
-    og_input_ids = tokenizer(ques)['input_ids']
 
-    print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
     # print('input_ids: {}'.format(input_ids))
-
     token_diff = len(og_input_ids) - len(question_embeddings)
     input_ids = torch.tensor(input_ids)
 
