@@ -387,11 +387,6 @@ class DistributedFoldTrainer(object):
             loss = outputs[0]
             loss.backward()
 
-            if self.scheduler is not None:
-                if batch_idx == 0 and epoch == 0:
-                    print('* scheduler.step() *')  # just to know it 'took'
-                self.scheduler.step()
-
             if self.rank == 0 and ((epoch * self.n_iters) + batch_idx) % 25 == 0:
                 self.summary_writer.add_scalar('loss/fold_{}'.format(self.fold), loss,
                                                (epoch * self.n_iters) + batch_idx)
@@ -415,6 +410,11 @@ class DistributedFoldTrainer(object):
 
             self.optim.step()
             self.optim.zero_grad()
+
+            if self.scheduler is not None:
+                if batch_idx == 0 and epoch == 0:
+                    print('* scheduler.step() *')  # just to know it 'took'
+                self.scheduler.step()
 
             # print('Worker {} finished batch {}...'.format(self.rank, batch_idx))
 
