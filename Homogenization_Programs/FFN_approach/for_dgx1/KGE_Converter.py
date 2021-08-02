@@ -25,7 +25,7 @@ with open('entity2idx.pkl', 'rb') as f:
 
 input_dimension = len(ent_embeddings.columns)
 output_dimension = AutoTokenizer.from_pretrained(BERT_variant).vocab_size
-number_of_hidden_layers = 5
+number_of_hidden_layers = 10
 hidden_dimension = 768
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -55,5 +55,5 @@ with torch.no_grad():
         converted_embeddings.append(homogenized_embedding)
         
 print('Saving Homogenized Embeddings...')
-pd.DataFrame(zip(entity_names, converted_embeddings),  columns = ['Term', 'Embedding']).to_pickle(f"DTE-to-{BERT_variant.replace('/','-')}.pkl")
+pd.DataFrame(zip(entity_names, converted_embeddings),  columns = ['Entity', 'Embedding']).to_pickle(f"DTE-to-{BERT_variant.replace('/','-')}.pkl")
 

@@ -12,7 +12,7 @@ class FFNN(torch.nn.Module):
             input_dim = hidden_dim
         self.custom_nn.add_module(f'Output Layer',
                                   torch.nn.Linear(hidden_dim, output_dim))
-        self.custom_nn.add_module(f'Softmax', torch.nn.Softmax(dim=1))
+        self.custom_nn.add_module(f'Tanh', torch.nn.Tanh())
 
     def forward(self, input_data):
         hidden_states = []

@@ -23,7 +23,7 @@ input_dimension = ent_embeddings_size
 output_dimension = vocab_size
 
 #Play with this
-number_of_hidden_layers = 5
+number_of_hidden_layers = 10
 
 #Size of embedding required by BERT variant (usually 768)
 hidden_dimension = 768
@@ -39,8 +39,7 @@ We have to make send the model to device before creating the optimizer since "pa
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
-#Binary Cross Entropy loss
-criterion = torch.nn.BCELoss()
+criterion = torch.nn.MSELoss()
 
 #Adam optimizer
 optimizer = torch.optim.Adam(model.parameters())
@@ -119,4 +118,4 @@ import matplotlib.pyplot as plt
 plt.plot(list(range(len(epoch_loss_list))), epoch_loss_list)
 plt.xlabel('epoch number')
 plt.ylabel('epoch loss')
-plt.show()
+plt.savefig('Training_Loss_Plot.png', bbox_inches='tight', dpi=600)
