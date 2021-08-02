@@ -86,7 +86,8 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
             mapped_concept = mappings[domain_terms.index(filtered_word)][2]
             question_embeddings.append(DTE_Model_Lookup_Table.query("Entity==@mapped_concept")['Embedding'].values[0].to('cpu'))
             custom_input_id = n_contextual_embds + all_entities.index(mapped_concept)
-            print('filtered_word: {} concept: {} custom ID: {}'.format(filtered_word, mapped_concept, custom_input_id))
+            print('filtered_word: \"{}\"\tconcept: \"{}\"\tcustom ID: {}'.format(filtered_word, mapped_concept,
+                                                                                 custom_input_id))
             input_ids.append(custom_input_id)
             new_question_text.append('a')
 
@@ -105,7 +106,7 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
         else:
             subword_indices = tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
-            print('word: {} subword_indices: {}'.format(word, subword_indices))
+            print('word: \"{}\"\tsubword_indices: {}'.format(word, subword_indices))
             input_ids.extend(subword_indices)
             for index in subword_indices:
                 question_embeddings.append(model_embeddings(torch.LongTensor([index])))
@@ -128,7 +129,7 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
     input_ids.append(tokenizer.sep_token_id)
     print('Raw question: {}'.format(ques))
     og_input_ids = tokenizer(ques)['input_ids']
-    print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
+    print('og_input_ids: {}\ncustom input_ids: {}'.format(og_input_ids, input_ids))
 
     # Taking all tokens b/w 1 & limit_for_context
     reduced_context_indices = tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
