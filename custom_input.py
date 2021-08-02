@@ -125,7 +125,7 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
     limit_for_context = effective_max_length - (len_custom_question + 3)  # 2 to account for [CLS] & [SEP]
 
     context_embeddings = []
-
+    print('Raw question: {}'.format(ques))
     og_input_ids = tokenizer(ques)['input_ids']
     print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
 
