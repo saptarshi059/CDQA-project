@@ -125,13 +125,13 @@ def custom_input_rep(ques, context, max_length=512, concat=False):
     limit_for_context = effective_max_length - (len_custom_question + 3)  # 2 to account for [CLS] & [SEP]
 
     context_embeddings = []
+    input_ids.append(tokenizer.sep_token_id)
     print('Raw question: {}'.format(ques))
     og_input_ids = tokenizer(ques)['input_ids']
     print('og_input_ids: {}\ninput_ids: {}'.format(og_input_ids, input_ids))
 
     # Taking all tokens b/w 1 & limit_for_context
     reduced_context_indices = tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
-    input_ids.append(tokenizer.sep_token_id)
     input_ids.extend(reduced_context_indices)
     for index in reduced_context_indices:
         context_embeddings.append(model_embeddings(torch.LongTensor([index])))
