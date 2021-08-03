@@ -28,10 +28,10 @@ output_dimension = AutoTokenizer.from_pretrained(BERT_variant).vocab_size
 number_of_hidden_layers = 10
 hidden_dimension = 768
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cpu')
 
 model = FFNN(input_dimension, output_dimension, number_of_hidden_layers, hidden_dimension)
-model.load_state_dict(torch.load('Homogenizer.pt'))
+model.load_state_dict(torch.load('Homogenizer.pt', map_location=device))
 model.to(device)
 model.eval()
 
@@ -55,5 +55,5 @@ with torch.no_grad():
         converted_embeddings.append(homogenized_embedding)
         
 print('Saving Homogenized Embeddings...')
-pd.DataFrame(zip(entity_names, converted_embeddings),  columns = ['Entity', 'Embedding']).to_pickle(f"DTE-to-{BERT_variant.replace('/','-')}.pkl")
+pd.DataFrame(zip(entity_names, converted_embeddings),  columns = ['Entity', 'Embedding']).to_pickle(f"NN-DTE-to-{BERT_variant.replace('/','-')}.pkl")
 

@@ -10,17 +10,17 @@
 from transformers import AutoModel, AutoTokenizer
 import torch
 import pickle5 as pickle
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 import pandas as pd
+
+#Loading triple_list
+with open('expanded_entities.pkl', 'rb') as f:
+    triple_list = pickle.load(f)
 
 #if use_average == True, homogenized embedding is formed by averaging occurrences of the entity o/p
 #Else, is == pooled model output.
 def Create_DTE_BERT_LookUp_Table(model_name, use_average=True):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    
-    #Loading triple_list
-    with open('expanded_entities.pkl', 'rb') as f:
-        triple_list = pickle.load(f)
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModel.from_pretrained(model_name)
@@ -62,6 +62,9 @@ def Create_DTE_BERT_LookUp_Table(model_name, use_average=True):
     DTE_BERT_Matrix.clear()
     
     print('Saving converted embeddings...')
-    DTE_BERT_Lookup_Table.to_pickle(f'DTE_to_{model_name.replace("/","_")}.pkl')
+    DTE_BERT_Lookup_Table.to_pickle(f'Expansion-DTE_to_{model_name.replace("/","_")}.pkl')
 
-Create_DTE_BERT_LookUp_Table('navteca/roberta-base-squad2')
+Create_DTE_BERT_LookUp_Table('phiyodr/bert-base-finetuned-squad2')
+Create_DTE_BERT_LookUp_Table('ktrapeznikov/biobert_v1.1_pubmed_squad_v2')
+Create_DTE_BERT_LookUp_Table('ktrapeznikov/scibert_scivocab_uncased_squad_v2')
+
