@@ -129,6 +129,9 @@ class InputMaker(object):
         # reduced_context_indices = self.tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
         reduced_context_indices = self.tokenizer(context, truncation=True, max_length=self.max_len)['input_ids'][1:-1]
         input_ids.extend(reduced_context_indices)
+        if len(input_ids) >= self.max_len:
+            input_ids = input_ids[:self.max_len - 1]
+
         # for index in reduced_context_indices:
         #     context_embeddings.append(model_embeddings(torch.LongTensor([index])))
         input_ids.append(self.sep_id)
