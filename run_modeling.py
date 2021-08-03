@@ -27,7 +27,8 @@ from transformers import get_constant_schedule_with_warmup
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 # from custom_question_rep import custom_question_rep_gen
 
-from custom_input import custom_input_rep
+from input_maker import InputMaker
+# from custom_input import custom_input_rep
 from custom_qa_pipeline import CustomQuestionAnsweringPipeline
 from distributed_fold_trainer import DistributedFoldTrainer
 
@@ -312,173 +313,6 @@ class CovidQADataset(torch.utils.data.Dataset):
         return len(self.encodings.input_ids)
 
 
-def train_fold_distributed(rank, out_fp, tb_dir, dataset, train_idxs, model_name, n_stride, max_len, world_size,
-                           batch_size, lr, n_epochs, use_kge, fold, n_splits, n_neg_records, dtes,
-                           warmup_proportion=0.0, seed=16, l2=0.01):
-    dist.init_process_group('nccl',
-                            world_size=world_size,
-                            rank=rank)
-    torch.manual_seed(seed)
-
-    device_ = torch.device('cuda:{}'.format(rank)) if torch.cuda.is_available() else torch.device('cpu')
-
-    print('Creating tokenizer and dataset on device {}...'.format(rank))
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    dataset = CovidQADataset(preprocess_input(dataset.iloc[train_idxs], tokenizer,
-                                              n_stride=n_stride, max_len=max_len, n_neg=n_neg_records))
-    fold_n_iters = int(len(dataset) / (batch_size * world_size))
-    data_sampler = torch.utils.data.distributed.DistributedSampler(dataset,
-                                                                   num_replicas=world_size,
-                                                                   rank=rank, shuffle=False)
-    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False,
-                             pin_memory=True, sampler=data_sampler)
-
-    print('Creating model on device {}...'.format(rank))
-    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-    model = model.to(device_)
-    dtes = dtes.to(model.device)
-
-    if use_kge:
-        initial_input_embeddings = model.get_input_embeddings().weight
-
-        print('initial_input_embeddings.device: {}'.format(initial_input_embeddings.device))
-        print('dtes.device: {}'.format(dtes.device))
-
-        print('initial_input_embeddings: {}'.format(initial_input_embeddings.shape))
-        print('dtes: {}'.format(dtes.shape))
-        new_input_embedding_weights = torch.cat([initial_input_embeddings, dtes], dim=0)
-        print('new_input_embedding_weights: {}'.format(new_input_embedding_weights.shape))
-
-        new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
-        model.set_input_embeddings(new_input_embeddings)
-
-    n_orig_token_counts, n_dte_hit_counts = [], []
-
-    model.train()
-    no_decay = ['layernorm', 'norm']
-    param_optimizer = list(model.named_parameters())
-
-    no_decay_parms = []
-    reg_parms = []
-    for n, p in param_optimizer:
-        if any(nd in n for nd in no_decay):
-            no_decay_parms.append(p)
-        else:
-            reg_parms.append(p)
-
-    optimizer_grouped_parameters = [
-        {'params': reg_parms, 'weight_decay': l2},
-        {'params': no_decay_parms, 'weight_decay': 0.0},
-    ]
-
-    n_iters = int(math.ceil(len(dataset) / (batch_size * world_size)))
-    optim = AdamW(optimizer_grouped_parameters, lr=lr)
-    scheduler = None
-    if warmup_proportion > 0.0:
-        n_warmup_iters = int(len(dataset) * n_epochs * warmup_proportion / (batch_size * world_size))
-        print('** n_warmup_iters: {} **'.format(n_warmup_iters))
-        scheduler = get_constant_schedule_with_warmup(optim,
-                                                      num_warmup_steps=n_warmup_iters)
-
-    summary_writer = None
-    if rank == 0:
-        print('** GPU 0 creating summary writer **')
-        summary_writer = SummaryWriter(log_dir=tb_dir)
-
-    dist.barrier()
-    for epoch_idx in range(n_epochs):
-        for batch_idx, batch in enumerate(data_loader):
-            # if batch_idx > 2:
-            #     break
-            batch_start_time = time.time()
-            optim.zero_grad()
-            question_texts = batch['question_texts']
-            context_texts = batch['context_texts']
-            input_ids = batch['input_ids'].to(device_)
-            attention_mask = batch['attention_mask'].to(device_)
-            start_positions = batch['start_positions'].to(device_)
-            end_positions = batch['end_positions'].to(device_)
-
-            if use_kge:
-                input_embds, offsets, attn_masks, input_ids = [], [], [], []
-                for q_text, c_text in zip(question_texts, context_texts):
-                    # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
-                    with torch.no_grad():
-                        # print('** KGE **')
-                        custom_input_info = custom_input_rep(q_text, c_text)
-                        this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
-                        # print('this_n_token_adj: {}'.format(this_n_token_adj))
-                        this_n_token_adj = torch.tensor([this_n_token_adj])
-                        input_embds.append(this_input_embds.unsqueeze(0))
-                        attn_masks.append(this_attention_mask.unsqueeze(0))
-                        input_ids.append(in_ids.unsqueeze(0))
-                        offsets.append(this_n_token_adj)
-                        n_orig_token_counts.append(n_orig_tokens)
-                        n_dte_hit_counts.append(n_dte_hits)
-
-                input_embds = torch.cat(input_embds, dim=0).to(device_)
-                input_ids = torch.cat(input_ids, dim=0).to(device_)
-                offsets = torch.cat(offsets, dim=0).to(device_)
-
-                # print('custom input_ids: {}'.format(input_ids.shape))
-                # print('custom input_embds: {}'.format(input_embds.shape))
-                print('offsets: {}'.format(offsets))
-
-                attention_mask = torch.cat(attn_masks, dim=0).to(device_)
-
-                start_positions = start_positions - offsets
-                end_positions = end_positions - offsets
-
-            outputs = model(inputs_embeds=None, input_ids=input_ids,
-                            attention_mask=attention_mask,
-                            start_positions=start_positions, end_positions=end_positions)
-            loss = outputs[0]
-            loss.backward()
-            optim.step()
-            if scheduler is not None:
-                if batch_idx == 0 and epoch_idx == 0:
-                    print('* scheduler.step() *')  # just to know it 'took'
-                scheduler.step()
-
-            if rank == 0 and ((epoch_idx * n_iters) + batch_idx) % 25 == 0:
-                summary_writer.add_scalar('loss/fold_{}'.format(fold), loss,
-                                          (epoch_idx * n_iters) + batch_idx)
-
-                for name, p in model.named_parameters():
-                    if p.grad is not None and p.grad.data is not None:
-                        summary_writer.add_histogram('grad/{}'.format(name), p.grad.data,
-                                                     (epoch_idx * n_iters) + batch_idx)
-                        summary_writer.add_histogram('weight/{}'.format(name), p.data,
-                                                     (epoch_idx * n_iters) + batch_idx)
-            dist.barrier()
-
-            batch_elapsed_time = time.time() - batch_start_time
-            print_str = 'Fold: {6}/{7} Epoch: {0}/{1} Iter: {2}/{3} Loss: {4:.4f} Time: {5:.2f}s'
-            print_str = print_str.format(epoch_idx, n_epochs,
-                                         batch_idx, fold_n_iters,
-                                         loss, batch_elapsed_time,
-                                         fold, n_splits)
-            if rank == 0:
-                print(print_str)
-
-    # only save once
-    avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0
-    pct_replaced = [x / y if y is not 0 else 0.0 for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
-    avg_pct_replaced = sum(pct_replaced) / len(pct_replaced) if len(pct_replaced) > 0 else 0.0
-
-    if use_kge:
-        print_str = '** GPU {0} Avg n hits: {1:.2f} Avg replace pct: {2:.2f}'.format(rank,
-                                                                                     avg_n_hits,
-                                                                                     avg_pct_replaced)
-        print(print_str)
-
-    if rank == 0:
-        print('Saving model...')
-        model.eval()
-        torch.save(model.state_dict(), out_fp)
-    dist.barrier()
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
@@ -498,7 +332,9 @@ if __name__ == '__main__':
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
                         # default='clagator/biobert_squad2_cased',
                         # default='navteca/roberta-base-squad2',
-                        default='deepset/roberta-base-squad2',
+                        default='phiyodr/bert-base-finetuned-squad2',
+                        # default='ktrapeznikov/biobert_v1.1_pubmed_squad_v2',
+                        # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
                         help='Type of model to use from HuggingFace')
 
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
@@ -507,7 +343,11 @@ if __name__ == '__main__':
     parser.add_argument('--seed', default=16, type=int)
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
-    parser.add_argument('--dte_lookup_table_fp', default='DTE_to_navteca_roberta-base-squad2.pkl')
+    parser.add_argument('--dte_lookup_table_fp',
+                        default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
+                        # default='DTE_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl',
+                        # default='DTE_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl',
+                        )
     parser.add_argument('--n_neg_records', default=1, type=int)
 
     parser.add_argument('--gpus', default=[0], help='Which GPUs to use', type=int, nargs='+')
@@ -526,6 +366,8 @@ if __name__ == '__main__':
     print('*' * len('* Model time ID: {} *'.format(curr_time)))
     print('* Model time ID: {} *'.format(curr_time))
     print('*' * len('* Model time ID: {} *'.format(curr_time)))
+
+    my_maker = InputMaker(args)
 
     model_outdir = os.path.join(args.out, curr_time)
     if not os.path.exists(model_outdir):
@@ -611,6 +453,7 @@ if __name__ == '__main__':
             'warmup_proportion': args.warmup_proportion,
             'seed': args.seed,
             'concat_kge': args.concat_kge,
+            'my_maker': my_maker,
         }
 
         print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))
@@ -687,11 +530,14 @@ if __name__ == '__main__':
                     # input_embds, offsets, attn_masks = [], [], []
                     with torch.no_grad():
                         # print('** KGE **')
-                        custom_input_data = custom_input_rep(questions[i], context, max_length=args.max_len)
-                        this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
+                        # custom_input_data = custom_input_rep(questions[i], context, max_length=args.max_len)
+                        # this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
+
+                        custom_input_data = my_maker.make_inputs(questions[i], context)
+                        this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
-                        input_embds = this_input_embds.unsqueeze(0)
+                        # input_embds = this_input_embds.unsqueeze(0)
                         attn_mask = this_attention_mask.unsqueeze(0)
                         input_ids = input_ids.unsqueeze(0)
                         offsets = this_n_token_adj

@@ -26,7 +26,7 @@ from torch.utils.tensorboard import SummaryWriter
 from transformers import get_constant_schedule_with_warmup
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering
 
-from custom_input import custom_input_rep
+# from custom_input import custom_input_rep
 
 
 class CovidQADataset(torch.utils.data.Dataset):
@@ -236,6 +236,7 @@ class DistributedFoldTrainer(object):
         self.warmup_proportion = arg_d['warmup_proportion']
         self.seed = arg_d['seed']
         self.concat_kge = arg_d['concat_kge']
+        self.my_maker = arg_d['my_maker']
 
         self.device = torch.device('cuda:{}'.format(self.rank)) if torch.cuda.is_available() else torch.device('cpu')
         torch.cuda.set_device(self.device)
@@ -349,19 +350,23 @@ class DistributedFoldTrainer(object):
                     # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
                     with torch.no_grad():
                         # print('** KGE **')
-                        custom_input_info = custom_input_rep(q_text, c_text, max_length=self.max_len,
-                                                             concat=self.concat_kge)
-                        this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
+                        # custom_input_info = custom_input_rep(q_text, c_text, max_length=self.max_len,
+                        #                                      concat=self.concat_kge)
+                        # this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
+
+                        custom_input_info = self.my_maker.make_inputs(q_text, c_text)
+                        this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
+
                         # print('this_n_token_adj: {}'.format(this_n_token_adj))
                         this_n_token_adj = torch.tensor([this_n_token_adj])
-                        input_embds.append(this_input_embds.unsqueeze(0))
+                        # input_embds.append(this_input_embds.unsqueeze(0))
                         attn_masks.append(this_attention_mask.unsqueeze(0))
                         input_ids.append(in_ids.unsqueeze(0))
                         offsets.append(this_n_token_adj)
                         n_orig_token_counts.append(n_orig_tokens)
                         n_dte_hit_counts.append(n_dte_hits)
 
-                input_embds = torch.cat(input_embds, dim=0).to(self.device)
+                # input_embds = torch.cat(input_embds, dim=0).to(self.device)
                 input_ids = torch.cat(input_ids, dim=0).to(self.device)
                 offsets = torch.cat(offsets, dim=0).to(self.device)
 
