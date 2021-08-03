@@ -2,7 +2,6 @@
 # Creating question representations in this block.
 from transformers import AutoTokenizer, AutoModel
 import torch
-import re
 import os
 import pandas as pd
 import re
