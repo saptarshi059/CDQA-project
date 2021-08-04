@@ -27,6 +27,7 @@ from transformers import get_constant_schedule_with_warmup
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 # from custom_question_rep import custom_question_rep_gen
 
+from tqdm import tqdm
 from input_maker import InputMaker
 # from custom_input import custom_input_rep
 # from custom_qa_pipeline import CustomQuestionAnsweringPipeline
@@ -530,7 +531,7 @@ if __name__ == '__main__':
             final_df = pd.DataFrame(columns=['question', 'true_answer', 'predicted_answer'])
 
             # Iterate over the test data and generate predictions
-            for i in range(len(test_data)):
+            for i in tqdm(range(len(test_data))):
                 # if i > 2:
                 #     break
                 context = test_data.iloc[i]['context']
