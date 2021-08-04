@@ -531,7 +531,7 @@ if __name__ == '__main__':
             final_df = pd.DataFrame(columns=['question', 'true_answer', 'predicted_answer'])
 
             # Iterate over the test data and generate predictions
-            for i in tqdm(range(len(test_data))):
+            for i in range(len(test_data)):
                 # if i > 2:
                 #     break
                 context = test_data.iloc[i]['context']
