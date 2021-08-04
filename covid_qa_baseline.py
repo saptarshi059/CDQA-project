@@ -26,7 +26,7 @@ import string
 import collections
 import numpy as np
 
-from input_maker import InputMaker
+# from input_maker import InputMaker
 
 
 def normalize_answer(s):
@@ -80,7 +80,7 @@ def gen_answers(model_name, custom_pipeline=False):
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
     max_len = 384
 
-    my_maker = InputMaker({})
+    # my_maker = InputMaker({})
 
     if custom_pipeline:
         print('$$$ Using Custom QA Pipeline $$$')
@@ -110,9 +110,9 @@ def gen_answers(model_name, custom_pipeline=False):
         for n in range(start_index, start_index + number_of_questions):
             QA_input = {'question': questions[n], 'context': context}
 
-            custom_input_ids, custom_attn_masks = my_maker.make_pipeline_inputs(questions[n], context)
-            print('custom_input_ids: {}'.format(custom_input_ids.shape))
-            print('custom_attn_masks: {}'.format(custom_attn_masks.shape))
+            # custom_input_ids, custom_attn_masks = my_maker.make_pipeline_inputs(questions[n], context)
+            # print('custom_input_ids: {}'.format(custom_input_ids.shape))
+            # print('custom_attn_masks: {}'.format(custom_attn_masks.shape))
 
             if custom_pipeline:
                 # encoded_inputs = tokenizer(
@@ -170,12 +170,12 @@ def gen_answers(model_name, custom_pipeline=False):
 
 
 if __name__ == '__main__':
-    CUSTOM_PIPELINE = True
+    CUSTOM_PIPELINE = False
 
     # df = pd.read_json('200423_covidQA.json')
     df = pd.read_json('data/COVID-QA_cleaned.json')
     # model_name = 'navteca/roberta-base-squad2'
-    model_name = 'deepset/roberta-base-squad2'
+    model_name = 'phiyodr/bert-base-finetuned-squad2'
     effective_model_name = model_name.replace("/", "_")
     # gen_answers('phiyodr/roberta-large-finetuned-squad2')                      # F1: 33.50
     gen_answers(model_name, custom_pipeline=CUSTOM_PIPELINE)  # F1: 43.49     EM: 492
