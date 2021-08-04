@@ -17,7 +17,7 @@ import pandas as pd
 
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
 from custom_qa_pipeline import CustomQuestionAnsweringPipeline
-from custom_input import custom_input_rep
+# from custom_input import custom_input_rep
 import torch
 from tqdm import tqdm
 
@@ -175,7 +175,7 @@ if __name__ == '__main__':
     # df = pd.read_json('200423_covidQA.json')
     df = pd.read_json('data/COVID-QA_cleaned.json')
     # model_name = 'navteca/roberta-base-squad2'
-    model_name = 'ktrapeznikov/biobert_v1.1_pubmed_squad_v2'
+    model_name = 'ktrapeznikov/scibert_scivocab_uncased_squad_v2'
     effective_model_name = model_name.replace("/", "_")
     # gen_answers('phiyodr/roberta-large-finetuned-squad2')                      # F1: 33.50
     gen_answers(model_name, custom_pipeline=CUSTOM_PIPELINE)  # F1: 43.49     EM: 492
