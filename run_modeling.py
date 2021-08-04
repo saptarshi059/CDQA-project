@@ -96,11 +96,11 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1, mak
             answer['answer_start'] = start_idx - 2
             answer['answer_end'] = end_idx - 2  # When the gold label is off by two characters
 
-    if maker is not None:
-        print('Converting questions using custom domain term questions...')
-        all_questions_ = dataset['question'].tolist()
-        all_questions_ = [maker.convert_questions_to_kge(q) for q in all_questions_]
-        dataset['question'] = all_questions_
+    # if maker is not None:
+    #     print('Converting questions using custom domain term questions...')
+    #     all_questions_ = dataset['question'].tolist()
+    #     all_questions_ = [maker.convert_questions_to_kge(q) for q in all_questions_]
+    #     dataset['question'] = all_questions_
 
     encodings = tokenizer_(
         dataset['question'].to_list() if pad_on_right else dataset['context'].to_list(),
@@ -416,8 +416,8 @@ if __name__ == '__main__':
 
     kfold = KFold(n_splits=args.n_splits, shuffle=True, random_state=args.seed)
     all_contexts, all_questions, all_answers = read_covidqa(args.data)
-    # if USE_KGE:
-    #     all_questions = [my_maker.convert_questions_to_kge(q) for q in all_questions]
+    if USE_KGE:
+        all_questions = [my_maker.convert_questions_to_kge(q) for q in all_questions]
     # input('okty')
     # Converting to a dataframe for easy k-fold splits
     full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)),
@@ -449,8 +449,7 @@ if __name__ == '__main__':
             tokenizer.add_tokens(custom_domain_term_tokens)
 
         dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
-                                                  n_stride=N_STRIDE, max_len=MAX_LEN, n_neg=args.n_neg_records,
-                                                  maker=my_maker if USE_KGE else None))
+                                                  n_stride=N_STRIDE, max_len=MAX_LEN, n_neg=args.n_neg_records))
 
         del tokenizer
         dist_arg_d = {
@@ -540,8 +539,8 @@ if __name__ == '__main__':
 
                 # Generate outputs
                 q_i = questions[i]
-                if USE_KGE:
-                    q_i = my_maker.convert_questions_to_kge(q_i)
+                # if USE_KGE:
+                #     q_i = my_maker.convert_questions_to_kge(q_i)
                 QA_input = {'question': q_i, 'context': context}
                 input_embds = None
                 attn_mask = None
