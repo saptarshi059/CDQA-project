@@ -311,9 +311,9 @@ class DistributedFoldTrainer(object):
                                                                num_warmup_steps=n_warmup_iters)
 
         self.summary_writer = None
-        if self.rank == 0:
-            print('** GPU 0 creating summary writer **')
-            self.summary_writer = SummaryWriter(log_dir=self.tb_dir)
+        # if self.rank == 0:
+        #     print('** GPU 0 creating summary writer **')
+        #     self.summary_writer = SummaryWriter(log_dir=self.tb_dir)
 
         dist.barrier()
         print('GPU {} passed barrier... running...'.format(self.rank))
@@ -395,17 +395,17 @@ class DistributedFoldTrainer(object):
             loss = outputs[0]
             loss.backward()
 
-            if self.rank == 0 and ((epoch * self.n_iters) + batch_idx) % 25 == 0:
-                self.summary_writer.add_scalar('loss/fold_{}'.format(self.fold), loss,
-                                               (epoch * self.n_iters) + batch_idx)
-
-            if self.rank == 0 and ((epoch * self.n_iters) + batch_idx) % 60 == 0:
-                for name, p in self.model.named_parameters():
-                    if p.grad is not None and p.grad.data is not None:
-                        self.summary_writer.add_histogram('grad/{}'.format(name), p.grad.data,
-                                                          (epoch * self.n_iters) + batch_idx)
-                        self.summary_writer.add_histogram('weight/{}'.format(name), p.data,
-                                                          (epoch * self.n_iters) + batch_idx)
+            # if self.rank == 0 and ((epoch * self.n_iters) + batch_idx) % 25 == 0:
+            #     self.summary_writer.add_scalar('loss/fold_{}'.format(self.fold), loss,
+            #                                    (epoch * self.n_iters) + batch_idx)
+            #
+            # if self.rank == 0 and ((epoch * self.n_iters) + batch_idx) % 60 == 0:
+            #     for name, p in self.model.named_parameters():
+            #         if p.grad is not None and p.grad.data is not None:
+            #             self.summary_writer.add_histogram('grad/{}'.format(name), p.grad.data,
+            #                                               (epoch * self.n_iters) + batch_idx)
+            #             self.summary_writer.add_histogram('weight/{}'.format(name), p.data,
+            #                                               (epoch * self.n_iters) + batch_idx)
 
             if self.rank == 0:
                 batch_elapsed_time = time.time() - batch_start_time
