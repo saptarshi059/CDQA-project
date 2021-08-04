@@ -29,7 +29,7 @@ from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering, Qu
 
 from input_maker import InputMaker
 # from custom_input import custom_input_rep
-from custom_qa_pipeline import CustomQuestionAnsweringPipeline
+# from custom_qa_pipeline import CustomQuestionAnsweringPipeline
 from distributed_fold_trainer import DistributedFoldTrainer
 
 
