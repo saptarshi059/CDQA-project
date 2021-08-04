@@ -250,3 +250,35 @@ class InputMaker(object):
         comb_attn_masks = torch.cat(comb_attn_masks, dim=0)
 
         return comb_input_ids, comb_attn_masks
+
+    def convert_questions_to_kge(self, q_text):
+        # print('** q_text: {} **'.format(q_text))
+        q_text = re.sub(' +', ' ', q_text).strip()
+        tup = self.metamap_tokenizations.query("Question==@q_text")
+        metamap_tokenized_question = tup['Tokenization'].values[0]
+
+        mappings = tup['Mappings'].values[0]
+        for i, x in enumerate(mappings):
+            mappings[i][0] = clean_term(x[0])
+        domain_terms = [x[0] for x in mappings]
+
+        new_question_text = []
+        for word in metamap_tokenized_question:
+            filtered_word = clean_term(word)
+
+            if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
+                mapped_concept = mappings[domain_terms.index(filtered_word)][2]
+                custom_concept_token = '[{}]'.format(mapped_concept)
+                new_question_text.append(custom_concept_token)
+
+                if self.concat_kge:
+                    new_question_text.append(word)
+            else:
+                new_question_text.append(word)
+        new_question_text = ' '.join(new_question_text)
+        # print('new_question_text: {}'.format(new_question_text))
+
+        return new_question_text
+
+
+

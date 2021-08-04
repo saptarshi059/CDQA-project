@@ -69,7 +69,7 @@ def read_covidqa(fp):
     return contexts, questions, answers
 
 
-def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1):
+def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1, maker=None):
     answers = dataset['answer'].to_list()
     context = dataset['context'].to_list()
 
@@ -80,6 +80,7 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1):
 
     pad_on_right = tokenizer_.padding_side == "right"
 
+    # ensure start and end indices are accurate
     for answer, context in zip(dataset['answer'], dataset['context']):
         gold_text = answer['text']
         start_idx = answer['answer_start']
@@ -94,6 +95,12 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1):
         elif context[start_idx - 2:end_idx - 2] == gold_text:
             answer['answer_start'] = start_idx - 2
             answer['answer_end'] = end_idx - 2  # When the gold label is off by two characters
+
+    if maker is not None:
+        print('Converting questions using custom domain term questions...')
+        all_questions_ = dataset['question'].tolist()
+        all_questions_ = [maker.convert_questions_to_kge(q) for q in all_questions_]
+        dataset['question'] = all_questions_
 
     encodings = tokenizer_(
         dataset['question'].to_list() if pad_on_right else dataset['context'].to_list(),
@@ -354,6 +361,7 @@ if __name__ == '__main__':
     parser.add_argument('--port', default='14345', help='Port to use for DDP')
 
     args = parser.parse_args()
+    mp.set_sharing_strategy('file_system')
 
     os.environ['MASTER_ADDR'] = 'localhost'
     os.environ['MASTER_PORT'] = args.port
@@ -401,10 +409,16 @@ if __name__ == '__main__':
     DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
     dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
     dtes = torch.cat(dtes, dim=0).to('cpu')
+
+    domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
+    custom_domain_term_tokens = ['[{}]'.format(dt) for dt in domain_terms]
     # input('dtes: {}'.format(dtes.shape))
 
     kfold = KFold(n_splits=args.n_splits, shuffle=True, random_state=args.seed)
     all_contexts, all_questions, all_answers = read_covidqa(args.data)
+    # if USE_KGE:
+    #     all_questions = [my_maker.convert_questions_to_kge(q) for q in all_questions]
+    # input('okty')
     # Converting to a dataframe for easy k-fold splits
     full_dataset = pd.DataFrame(list(zip(all_contexts, all_questions, all_answers)),
                                 columns=['context', 'question', 'answer'])
@@ -429,8 +443,14 @@ if __name__ == '__main__':
 
         print('Preparing dataset for fold...')
         tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+        if USE_KGE:
+            print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
+            print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
+            tokenizer.add_tokens(custom_domain_term_tokens)
+
         dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
-                                                  n_stride=N_STRIDE, max_len=MAX_LEN, n_neg=args.n_neg_records))
+                                                  n_stride=N_STRIDE, max_len=MAX_LEN, n_neg=args.n_neg_records,
+                                                  maker=my_maker if USE_KGE else None))
 
         del tokenizer
         dist_arg_d = {
@@ -493,20 +513,17 @@ if __name__ == '__main__':
         # Evaluationfor this fold
         test_data = full_dataset.iloc[test_ids]
         tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+        if USE_KGE:
+            print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
+            print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
+            tokenizer.add_tokens(custom_domain_term_tokens)
+
         # test_dataset = CovidQADataset(preprocess_input(test_data, tokenizer,
         #                                                n_stride=N_STRIDE, max_len=args.max_len, n_neg=-1))
-        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
-                                              device=-1 if device == torch.device('cpu') else 0)
-        # nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') \
-        #     else 0)
-
-        # if USE_KGE:
-        #     print('$$$ Using Custom QA Pipeline $$$')
-        #     nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') else 0)
-        # else:
-        #     print('$$$ Using Vanilla QA Pipeline $$$')
-        #     nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=-1 if device == torch.device('cpu') else 0)
-
+        # nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
+        #                                       device=-1 if device == torch.device('cpu') else 0)
+        nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
+                                        device=-1 if device == torch.device('cpu') else 0)
         with torch.no_grad():
             questions = []
             true_answers = []
@@ -522,36 +539,39 @@ if __name__ == '__main__':
                 true_answers.append(test_data.iloc[i]['answer']['text'])
 
                 # Generate outputs
-                QA_input = {'question': questions[i], 'context': context}
+                q_i = questions[i]
+                if USE_KGE:
+                    q_i = my_maker.convert_questions_to_kge(q_i)
+                QA_input = {'question': q_i, 'context': context}
                 input_embds = None
                 attn_mask = None
                 input_ids = None
-                if USE_KGE:
-                    # input_embds, offsets, attn_masks = [], [], []
-                    with torch.no_grad():
-                        # print('** KGE **')
-                        # custom_input_data = custom_input_rep(questions[i], context, max_length=args.max_len)
-                        # this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
-
-                        custom_input_data = my_maker.make_inputs(questions[i], context)
-                        this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
-                        # print('this_n_token_adj: {}'.format(this_n_token_adj))
-                        this_n_token_adj = torch.tensor([this_n_token_adj])
-                        # input_embds = this_input_embds.unsqueeze(0)
-                        attn_mask = this_attention_mask.unsqueeze(0)
-                        input_ids = input_ids.unsqueeze(0)
-                        offsets = this_n_token_adj
-                        QA_input['question'] = new_q_text
-
-                    # attention_mask = torch.cat(attn_masks, dim=0).to(device)
-                else:
-                    encoded_inputs = tokenizer(text=questions[i],
-                                               text_pair=context,
-                                               max_length=args.max_len,
-                                               padding='longest',
-                                               stride=N_STRIDE)
-                    input_ids = encoded_inputs['input_ids']
-                    attn_mask = encoded_inputs['attention_mask']
+                # if USE_KGE:
+                #     # input_embds, offsets, attn_masks = [], [], []
+                #     with torch.no_grad():
+                #         # print('** KGE **')
+                #         # custom_input_data = custom_input_rep(questions[i], context, max_length=args.max_len)
+                #         # this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
+                #
+                #         custom_input_data = my_maker.make_inputs(questions[i], context)
+                #         this_n_token_adj, this_attention_mask, new_q_text, input_ids, _, _ = custom_input_data
+                #         # print('this_n_token_adj: {}'.format(this_n_token_adj))
+                #         this_n_token_adj = torch.tensor([this_n_token_adj])
+                #         # input_embds = this_input_embds.unsqueeze(0)
+                #         attn_mask = this_attention_mask.unsqueeze(0)
+                #         input_ids = input_ids.unsqueeze(0)
+                #         offsets = this_n_token_adj
+                #         QA_input['question'] = new_q_text
+                #
+                #     # attention_mask = torch.cat(attn_masks, dim=0).to(device)
+                # else:
+                #     encoded_inputs = tokenizer(text=questions[i],
+                #                                text_pair=context,
+                #                                max_length=args.max_len,
+                #                                padding='longest',
+                #                                stride=N_STRIDE)
+                #     input_ids = encoded_inputs['input_ids']
+                #     attn_mask = encoded_inputs['attention_mask']
 
                 # else:
                 #     predicted_answer = nlp(QA_input)['answer']
@@ -559,9 +579,9 @@ if __name__ == '__main__':
                 # print('attn_mask: {}'.format(attn_mask.shape))
                 predicted_answer = nlp(
                     QA_input,
-                    _input_ids_=input_ids,
-                    _input_embds_=None,
-                    _attention_mask_=attn_mask,
+                    # _input_ids_=input_ids,
+                    # _input_embds_=None,
+                    # _attention_mask_=attn_mask,
                     max_seq_len=MAX_LEN,
                     doc_stride=N_STRIDE
                 )['answer']

@@ -255,8 +255,8 @@ class DistributedFoldTrainer(object):
         self.fold_n_iters = int(len(self.dataset) / (self.batch_size * self.world_size))
         data_sampler = torch.utils.data.distributed.DistributedSampler(self.dataset,
                                                                        num_replicas=self.world_size,
-                                                                       rank=self.rank, shuffle=False)
-        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True,
+                                                                       rank=self.rank, shuffle=True)
+        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,
                                       pin_memory=True, sampler=data_sampler)
 
         print('Creating model on device {}...'.format(self.rank))
@@ -267,13 +267,15 @@ class DistributedFoldTrainer(object):
         if self.use_kge:
             initial_input_embeddings = self.model.get_input_embeddings().weight
 
-            print('initial_input_embeddings.device: {}'.format(initial_input_embeddings.device))
-            print('dtes.device: {}'.format(self.dtes.device))
+            if self.rank == 0:
+                print('initial_input_embeddings.device: {}'.format(initial_input_embeddings.device))
+                print('dtes.device: {}'.format(self.dtes.device))
 
-            print('initial_input_embeddings: {}'.format(initial_input_embeddings.shape))
-            print('dtes: {}'.format(self.dtes.shape))
+                print('initial_input_embeddings: {}'.format(initial_input_embeddings.shape))
+                print('dtes: {}'.format(self.dtes.shape))
             new_input_embedding_weights = torch.cat([initial_input_embeddings, self.dtes], dim=0)
-            print('new_input_embedding_weights: {}'.format(new_input_embedding_weights.shape))
+            if self.rank == 0:
+                print('new_input_embedding_weights: {}'.format(new_input_embedding_weights.shape))
 
             new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
             self.model.set_input_embeddings(new_input_embeddings)
@@ -303,7 +305,8 @@ class DistributedFoldTrainer(object):
         if self.warmup_proportion > 0.0:
             n_warmup_iters = int(
                 len(self.dataset) * self.n_epochs * self.warmup_proportion / (self.batch_size * self.world_size))
-            print('** n_warmup_iters: {} **'.format(n_warmup_iters))
+            if self.rank == 0:
+                print('** n_warmup_iters: {} **'.format(n_warmup_iters))
             self.scheduler = get_constant_schedule_with_warmup(self.optim,
                                                                num_warmup_steps=n_warmup_iters)
 
@@ -337,47 +340,47 @@ class DistributedFoldTrainer(object):
             #     break
             batch_start_time = time.time()
 
-            question_texts = batch['question_texts']
-            context_texts = batch['context_texts']
+            # question_texts = batch['question_texts']
+            # context_texts = batch['context_texts']
             input_ids = batch['input_ids'].to(self.device)
             attention_mask = batch['attention_mask'].to(self.device)
             start_positions = batch['start_positions'].to(self.device)
             end_positions = batch['end_positions'].to(self.device)
 
-            if self.use_kge:
-                input_embds, offsets, attn_masks, input_ids = [], [], [], []
-                for q_text, c_text in zip(question_texts, context_texts):
-                    # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
-                    with torch.no_grad():
-                        # print('** KGE **')
-                        # custom_input_info = custom_input_rep(q_text, c_text, max_length=self.max_len,
-                        #                                      concat=self.concat_kge)
-                        # this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
-
-                        custom_input_info = self.my_maker.make_inputs(q_text, c_text)
-                        this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
-
-                        # print('this_n_token_adj: {}'.format(this_n_token_adj))
-                        this_n_token_adj = torch.tensor([this_n_token_adj])
-                        # input_embds.append(this_input_embds.unsqueeze(0))
-                        attn_masks.append(this_attention_mask.unsqueeze(0))
-                        input_ids.append(in_ids.unsqueeze(0))
-                        offsets.append(this_n_token_adj)
-                        n_orig_token_counts.append(n_orig_tokens)
-                        n_dte_hit_counts.append(n_dte_hits)
-
-                # input_embds = torch.cat(input_embds, dim=0).to(self.device)
-                input_ids = torch.cat(input_ids, dim=0).to(self.device)
-                offsets = torch.cat(offsets, dim=0).to(self.device)
-
-                # print('custom input_ids: {}'.format(input_ids.shape))
-                # print('custom input_embds: {}'.format(input_embds.shape))
-                # print('offsets: {}'.format(offsets))
-
-                attention_mask = torch.cat(attn_masks, dim=0).to(self.device)
-
-                start_positions = start_positions - offsets
-                end_positions = end_positions - offsets
+            # if self.use_kge:
+            #     input_embds, offsets, attn_masks, input_ids = [], [], [], []
+            #     for q_text, c_text in zip(question_texts, context_texts):
+            #         # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
+            #         with torch.no_grad():
+            #             # print('** KGE **')
+            #             # custom_input_info = custom_input_rep(q_text, c_text, max_length=self.max_len,
+            #             #                                      concat=self.concat_kge)
+            #             # this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
+            #
+            #             custom_input_info = self.my_maker.make_inputs(q_text, c_text)
+            #             this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
+            #
+            #             # print('this_n_token_adj: {}'.format(this_n_token_adj))
+            #             this_n_token_adj = torch.tensor([this_n_token_adj])
+            #             # input_embds.append(this_input_embds.unsqueeze(0))
+            #             attn_masks.append(this_attention_mask.unsqueeze(0))
+            #             input_ids.append(in_ids.unsqueeze(0))
+            #             offsets.append(this_n_token_adj)
+            #             n_orig_token_counts.append(n_orig_tokens)
+            #             n_dte_hit_counts.append(n_dte_hits)
+            #
+            #     # input_embds = torch.cat(input_embds, dim=0).to(self.device)
+            #     input_ids = torch.cat(input_ids, dim=0).to(self.device)
+            #     offsets = torch.cat(offsets, dim=0).to(self.device)
+            #
+            #     # print('custom input_ids: {}'.format(input_ids.shape))
+            #     # print('custom input_embds: {}'.format(input_embds.shape))
+            #     # print('offsets: {}'.format(offsets))
+            #
+            #     attention_mask = torch.cat(attn_masks, dim=0).to(self.device)
+            #
+            #     start_positions = start_positions - offsets
+            #     end_positions = end_positions - offsets
 
             if batch_idx == 0:
                 print('GPU {} input_ids - shape: {} device: {}'.format(self.rank, input_ids.shape, input_ids.device))
