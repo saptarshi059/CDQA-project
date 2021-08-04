@@ -245,7 +245,7 @@ class CustomQuestionAnsweringPipeline(Pipeline):
 
         # print('args: {}'.format(args))
         # print('kwargs: {}'.format(kwargs))
-        input_ids = kwargs['_input_ids_']
+        # input_ids = kwargs['_input_ids_']
         input_embds = kwargs['_input_embds_']
         attention_mask = kwargs['_attention_mask_']
 
@@ -257,6 +257,7 @@ class CustomQuestionAnsweringPipeline(Pipeline):
 
         # Convert inputs to features
         examples = self._args_parser(*args, **kwargs)
+        # input('examples: {}'.format(examples))
         if not self.tokenizer.is_fast:
             features_list = [
                 squad_convert_examples_to_features(
@@ -274,6 +275,7 @@ class CustomQuestionAnsweringPipeline(Pipeline):
         else:
             features_list = []
             for example in examples:
+                print('example: {}'.format(example))
                 # Define the side we want to truncate / pad and the text/pair sorting
                 question_first = bool(self.tokenizer.padding_side == "right")
 
@@ -291,6 +293,12 @@ class CustomQuestionAnsweringPipeline(Pipeline):
                     return_special_tokens_mask=True,
                 )
 
+                print('encoded_inputs:')
+                for k, v in encoded_inputs.items():
+                    print('k: {} v: {}'.format(k, v.shape))
+                print("encoded_inputs['input_ids'][0, :]: {}".format(encoded_inputs['input_ids'][0, :]))
+                # print("encoded_inputs['input_ids'][-1, :]: {}".format(encoded_inputs['input_ids'][-1, :]))
+                input('okty')
                 # When the input is too long, it's converted in a batch of inputs with overflowing tokens
                 # and a stride of overlap between the inputs. If a batch of inputs is given, a special output
                 # "overflow_to_sample_mapping" indicate which member of the encoded batch belong to which original batch sample.

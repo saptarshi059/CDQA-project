@@ -26,6 +26,8 @@ import string
 import collections
 import numpy as np
 
+from input_maker import InputMaker
+
 
 def normalize_answer(s):
     """Lower text and remove punctuation, articles and extra whitespace."""
@@ -78,9 +80,11 @@ def gen_answers(model_name, custom_pipeline=False):
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
     max_len = 384
 
+    my_maker = InputMaker({})
+
     if custom_pipeline:
         print('$$$ Using Custom QA Pipeline $$$')
-        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=torch.cuda.current_device())
+        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer) # , device=torch.cuda.current_device()
     else:
         print('$$$ Using Vanilla QA Pipeline $$$')
         nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=torch.cuda.current_device())
@@ -105,6 +109,11 @@ def gen_answers(model_name, custom_pipeline=False):
 
         for n in range(start_index, start_index + number_of_questions):
             QA_input = {'question': questions[n], 'context': context}
+
+            custom_input_ids, custom_attn_masks = my_maker.make_pipeline_inputs(questions[n], context)
+            print('custom_input_ids: {}'.format(custom_input_ids.shape))
+            print('custom_attn_masks: {}'.format(custom_attn_masks.shape))
+
             if custom_pipeline:
                 # encoded_inputs = tokenizer(
                 #     text=questions[n] if question_first else context,
@@ -135,7 +144,7 @@ def gen_answers(model_name, custom_pipeline=False):
                     # print('** KGE **')
                     print('questions[n]: \'{}\''.format(questions[n]))
                     custom_input_data = custom_input_rep(questions[n], context, max_length=max_len)
-                    this_input_embds, this_n_token_adj, this_attention_mask, new_q_text = custom_input_data
+                    this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, _, _, _ = custom_input_data
                     # print('this_n_token_adj: {}'.format(this_n_token_adj))
                     this_n_token_adj = torch.tensor([this_n_token_adj])
                     input_embds = this_input_embds.unsqueeze(0)
@@ -144,7 +153,8 @@ def gen_answers(model_name, custom_pipeline=False):
                     QA_input['question'] = new_q_text
 
                 predicted_answers.append(nlp(QA_input, _input_embds_=input_embds,
-                                             _attention_mask_=attn_mask)['answer'])
+                                             _attention_mask_=attn_mask,
+                                             doc_stride=164)['answer'])
             else:
                 predicted_answers.append(nlp(QA_input)['answer'])
 
@@ -160,7 +170,7 @@ def gen_answers(model_name, custom_pipeline=False):
 
 
 if __name__ == '__main__':
-    CUSTOM_PIPELINE = False
+    CUSTOM_PIPELINE = True
 
     # df = pd.read_json('200423_covidQA.json')
     df = pd.read_json('data/COVID-QA_cleaned.json')

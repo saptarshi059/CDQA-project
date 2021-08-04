@@ -256,7 +256,7 @@ class DistributedFoldTrainer(object):
         data_sampler = torch.utils.data.distributed.DistributedSampler(self.dataset,
                                                                        num_replicas=self.world_size,
                                                                        rank=self.rank, shuffle=False)
-        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,
+        self.data_loader = DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True,
                                       pin_memory=True, sampler=data_sampler)
 
         print('Creating model on device {}...'.format(self.rank))
