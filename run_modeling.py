@@ -348,6 +348,7 @@ if __name__ == '__main__':
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
                         type=str2bool)
     parser.add_argument('--concat_kge', default=False, type=str2bool)
+    parser.add_argument('--random_kge', default=False, type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
@@ -409,6 +410,10 @@ if __name__ == '__main__':
 
     DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
     dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
+    if args.random_kge:
+        print('Replacing DTEs with random tensors...')
+        dtes = [torch.rand(1, 768) for _ in dtes]
+
     dtes = torch.cat(dtes, dim=0).to('cpu')
 
     domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
