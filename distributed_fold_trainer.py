@@ -349,42 +349,7 @@ class DistributedFoldTrainer(object):
             start_positions = batch['start_positions'].to(self.device)
             end_positions = batch['end_positions'].to(self.device)
 
-            # if self.use_kge:
-            #     input_embds, offsets, attn_masks, input_ids = [], [], [], []
-            #     for q_text, c_text in zip(question_texts, context_texts):
-            #         # re.sub(' +', ' ', q_text) this was returning a string, I guess if you assigned it to q_text, it would have worked.
-            #         with torch.no_grad():
-            #             # print('** KGE **')
-            #             # custom_input_info = custom_input_rep(q_text, c_text, max_length=self.max_len,
-            #             #                                      concat=self.concat_kge)
-            #             # this_input_embds, this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
-            #
-            #             custom_input_info = self.my_maker.make_inputs(q_text, c_text)
-            #             this_n_token_adj, this_attention_mask, _, in_ids, n_orig_tokens, n_dte_hits = custom_input_info
-            #
-            #             # print('this_n_token_adj: {}'.format(this_n_token_adj))
-            #             this_n_token_adj = torch.tensor([this_n_token_adj])
-            #             # input_embds.append(this_input_embds.unsqueeze(0))
-            #             attn_masks.append(this_attention_mask.unsqueeze(0))
-            #             input_ids.append(in_ids.unsqueeze(0))
-            #             offsets.append(this_n_token_adj)
-            #             n_orig_token_counts.append(n_orig_tokens)
-            #             n_dte_hit_counts.append(n_dte_hits)
-            #
-            #     # input_embds = torch.cat(input_embds, dim=0).to(self.device)
-            #     input_ids = torch.cat(input_ids, dim=0).to(self.device)
-            #     offsets = torch.cat(offsets, dim=0).to(self.device)
-            #
-            #     # print('custom input_ids: {}'.format(input_ids.shape))
-            #     # print('custom input_embds: {}'.format(input_embds.shape))
-            #     # print('offsets: {}'.format(offsets))
-            #
-            #     attention_mask = torch.cat(attn_masks, dim=0).to(self.device)
-            #
-            #     start_positions = start_positions - offsets
-            #     end_positions = end_positions - offsets
-
-            if batch_idx == 0:
+            if batch_idx == 0 and self.rank == 0:
                 print('GPU {} input_ids - shape: {} device: {}'.format(self.rank, input_ids.shape, input_ids.device))
                 print('GPU {} token_type_ids - shape: {} device: {}'.format(self.rank, token_type_ids.shape, token_type_ids.device))
                 print('GPU {} attention_mask - shape: {} device: {}'.format(self.rank, attention_mask.shape, attention_mask.device))
@@ -397,18 +362,6 @@ class DistributedFoldTrainer(object):
 
             loss = outputs[0]
             loss.backward()
-
-            # if self.rank == 0 and ((epoch * self.n_iters) + batch_idx) % 25 == 0:
-            #     self.summary_writer.add_scalar('loss/fold_{}'.format(self.fold), loss,
-            #                                    (epoch * self.n_iters) + batch_idx)
-            #
-            # if self.rank == 0 and ((epoch * self.n_iters) + batch_idx) % 60 == 0:
-            #     for name, p in self.model.named_parameters():
-            #         if p.grad is not None and p.grad.data is not None:
-            #             self.summary_writer.add_histogram('grad/{}'.format(name), p.grad.data,
-            #                                               (epoch * self.n_iters) + batch_idx)
-            #             self.summary_writer.add_histogram('weight/{}'.format(name), p.data,
-            #                                               (epoch * self.n_iters) + batch_idx)
 
             if self.rank == 0:
                 batch_elapsed_time = time.time() - batch_start_time
@@ -423,8 +376,6 @@ class DistributedFoldTrainer(object):
             self.optim.zero_grad()
 
             if self.scheduler is not None:
-                if batch_idx == 0 and epoch == 0:
-                    print('* scheduler.step() *')  # just to know it 'took'
                 self.scheduler.step()
 
             # print('Worker {} finished batch {}...'.format(self.rank, batch_idx))
@@ -434,11 +385,5 @@ class DistributedFoldTrainer(object):
         avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0
         pct_replaced = [x / y if y is not 0 else 0.0 for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
         avg_pct_replaced = sum(pct_replaced) / len(pct_replaced) if len(pct_replaced) > 0 else 0.0
-
-        if self.use_kge:
-            print_str = '** GPU {0} Avg n hits: {1:.2f} Avg replace pct: {2:.2f}'.format(self.rank,
-                                                                                         avg_n_hits,
-                                                                                         avg_pct_replaced)
-            print(print_str)
 
 
