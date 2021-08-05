@@ -272,6 +272,7 @@ class InputMaker(object):
                 new_question_text.append(custom_concept_token)
 
                 if self.concat_kge:
+                    new_question_text.append('/')
                     new_question_text.append(word)
             else:
                 new_question_text.append(word)
