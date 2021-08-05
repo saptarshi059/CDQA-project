@@ -10,23 +10,38 @@ Original file is located at
 # !pip install transformers
 # !pip install transformers[sentencepiece]
 
-import pandas as pd
 
 # url = "https://raw.githubusercontent.com/deepset-ai/COVID-QA/master/data/question-answering/COVID-QA.json"
 
-
-from transformers import AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
-from custom_qa_pipeline import CustomQuestionAnsweringPipeline
-# from custom_input import custom_input_rep
-import torch
-from tqdm import tqdm
-
+import os
 import re
+import torch
 import string
+import argparse
 import collections
-import numpy as np
 
-# from input_maker import InputMaker
+import numpy as np
+import pandas as pd
+import torch.nn as nn
+import pickle5 as pickle
+
+from tqdm import tqdm
+from input_maker import InputMaker
+# from custom_qa_pipeline import CustomQuestionAnsweringPipeline
+from transformers import AutoTokenizer, AutoModelForQuestionAnswering, QuestionAnsweringPipeline
+
+
+def str2bool(v):
+    if isinstance(v, bool):
+        return v
+    if v.lower() == 'none':
+        return None
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 
 def normalize_answer(s):
@@ -75,28 +90,15 @@ def compute_EM(a_gold, a_pred):
     return int(normalize_answer(a_gold) == normalize_answer(a_pred))
 
 
-def gen_answers(model_name, custom_pipeline=False):
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-    max_len = 384
-
-    # my_maker = InputMaker({})
-
-    if custom_pipeline:
-        print('$$$ Using Custom QA Pipeline $$$')
-        nlp = CustomQuestionAnsweringPipeline(model=model, tokenizer=tokenizer) # , device=torch.cuda.current_device()
-    else:
-        print('$$$ Using Vanilla QA Pipeline $$$')
-        nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=torch.cuda.current_device())
+def gen_answers(tokenizer, model, pred_fp, max_len, n_stride, my_maker=None):
+    print('$$$ Creating QA Pipeline $$$')
+    nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer, device=torch.cuda.current_device())
 
     questions = []
     true_answers = []
     predicted_answers = []
     final_df = pd.DataFrame(columns=['question', 'true_answer', 'predicted_answer'])
     start_index = 0
-    question_first = bool(tokenizer.padding_side == "right")
-    model_embds = model.get_input_embeddings()
-    print('\tmodel_embds: {}'.format(model_embds.weight.shape))
 
     for i in tqdm(range(len(df))):
         context = df['data'][i]['paragraphs'][0]['context']
@@ -108,55 +110,12 @@ def gen_answers(model_name, custom_pipeline=False):
             number_of_questions += 1
 
         for n in range(start_index, start_index + number_of_questions):
-            QA_input = {'question': questions[n], 'context': context}
+            QA_input = {
+                'question': questions[n] if my_maker is None else my_maker.convert_questions_to_kge(questions[n]),
+                'context': context,
+            }
 
-            # custom_input_ids, custom_attn_masks = my_maker.make_pipeline_inputs(questions[n], context)
-            # print('custom_input_ids: {}'.format(custom_input_ids.shape))
-            # print('custom_attn_masks: {}'.format(custom_attn_masks.shape))
-
-            if custom_pipeline:
-                # encoded_inputs = tokenizer(
-                #     text=questions[n] if question_first else context,
-                #     text_pair=context if question_first else questions[n],
-                #     padding='longest',
-                #     truncation="only_second" if question_first else "only_first",
-                #     # max_length=kwargs["max_seq_len"],
-                #     max_length=384,
-                #     stride=128,
-                #     return_tensors="pt",
-                #     return_token_type_ids=True,
-                #     return_overflowing_tokens=True,
-                #     return_offsets_mapping=True,
-                #     return_special_tokens_mask=True,
-                # )
-                # # print('encoded_inputs.keys: {}'.format(encoded_inputs.keys()))
-                # # input_ids = torch.tensor(encoded_inputs['input_ids']).to('cuda:0')
-                # input_ids = encoded_inputs['input_ids'].to('cuda:0')
-                # attention_mask = encoded_inputs['attention_mask'].to('cuda:0')
-                # input_embds = model_embds(input_ids).detach().cpu().numpy()
-                # QA_input['_input_embds_'] = input_embds
-                # print('Question: {}'.format(questions[n]))
-                # print('context: {}'.format(context))
-                # print('input_ids: {}'.format(input_ids.shape))
-                # print('input_embds: {}'.format(input_embds.shape))
-
-                with torch.no_grad():
-                    # print('** KGE **')
-                    print('questions[n]: \'{}\''.format(questions[n]))
-                    custom_input_data = custom_input_rep(questions[n], context, max_length=max_len)
-                    this_input_embds, this_n_token_adj, this_attention_mask, new_q_text, _, _, _ = custom_input_data
-                    # print('this_n_token_adj: {}'.format(this_n_token_adj))
-                    this_n_token_adj = torch.tensor([this_n_token_adj])
-                    input_embds = this_input_embds.unsqueeze(0)
-                    attn_mask = this_attention_mask.unsqueeze(0)
-                    offsets = this_n_token_adj
-                    QA_input['question'] = new_q_text
-
-                predicted_answers.append(nlp(QA_input, _input_embds_=input_embds,
-                                             _attention_mask_=attn_mask,
-                                             doc_stride=164)['answer'])
-            else:
-                predicted_answers.append(nlp(QA_input)['answer'])
+            predicted_answers.append(nlp(QA_input, max_seq_len=max_len, doc_stride=n_stride)['answer'])
 
         start_index = start_index + number_of_questions
 
@@ -164,33 +123,98 @@ def gen_answers(model_name, custom_pipeline=False):
     final_df['true_answer'] = true_answers
     final_df['predicted_answer'] = predicted_answers
 
-    model_name = model_name.replace("/", "_")
-
-    final_df.to_csv(model_name + '_results{}.csv'.format('_custom' if custom_pipeline else ''))
+    final_df.to_csv(pred_fp)
+    return final_df
 
 
 if __name__ == '__main__':
-    CUSTOM_PIPELINE = False
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('--model_name',
+                        default='phiyodr/bert-base-finetuned-squad2',
+                        # default='ktrapeznikov/biobert_v1.1_pubmed_squad_v2',
+                        # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
+                        )
+    parser.add_argument('--use_kge', default=False, type=str2bool)
+    parser.add_argument('--concat_kge', default=False, type=str2bool)
+
+    parser.add_argument('--n_stride', default=164, type=int)
+    parser.add_argument('--max_len', default=384, type=int)
+    parser.add_argument('--dte_lookup_table_fp',
+                        default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
+                        # default='DTE_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl',
+                        # default='DTE_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl',
+                        )
+    parser.add_argument('--out', default='baselines', help='Directory to put output')
+
+    args = parser.parse_args()
+
+    if not os.path.exists(args.out):
+        os.makedirs(args.out)
+
+    model_name = args.model_name
+    effective_model_name = model_name.replace("/", "_")
+    pred_filename = '{}_{}maxlen_{}stride{}{}_results.csv'.format(effective_model_name,
+                                                                  args.max_len, args.n_stride,
+                                                                  '_kge' if args.use_kge else '',
+                                                                  '_concat' if args.concat_kge else '')
+    pred_fp = os.path.join(args.out, pred_filename)
+
+    results_filename = '{}_{}maxlen_{}stride{}{}_results.txt'.format(effective_model_name,
+                                                                     args.max_len, args.n_stride,
+                                                                     '_kge' if args.use_kge else '',
+                                                                     '_concat' if args.concat_kge else '')
+    results_fp = os.path.join(args.out, results_filename)
 
     # df = pd.read_json('200423_covidQA.json')
     df = pd.read_json('data/COVID-QA_cleaned.json')
     # model_name = 'navteca/roberta-base-squad2'
-    model_name = 'ktrapeznikov/scibert_scivocab_uncased_squad_v2'
-    effective_model_name = model_name.replace("/", "_")
-    # gen_answers('phiyodr/roberta-large-finetuned-squad2')                      # F1: 33.50
-    gen_answers(model_name, custom_pipeline=CUSTOM_PIPELINE)  # F1: 43.49     EM: 492
-    # gen_answers('clagator/biobert_squad2_cased')                               # F1: 43.35
-    # gen_answers('ktrapeznikov/scibert_scivocab_uncased_squad_v2')              # F1: 44.33
+    print('Creating model and tokenizer...')
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
+    my_maker = None
+    if args.use_kge:
+        print('Updating model and tokenizer to use KGEs...')
+        DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
+        domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
+        custom_domain_term_tokens = ['[{}]'.format(dt) for dt in domain_terms]
+        print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
+        print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
+        tokenizer.add_tokens(custom_domain_term_tokens)
+
+        print('Updating model embedding table...')
+        dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
+        dtes = torch.cat(dtes, dim=0).to('cpu')
+        print('\tdtes: {}'.format(dtes.shape))
+        initial_input_embeddings = model.get_input_embeddings().weight
+        print('\tinitial_input_embeddings: {}'.format(initial_input_embeddings.shape))
+        new_input_embedding_weights = torch.cat([initial_input_embeddings, dtes], dim=0)
+        print('\tnew_input_embedding_weights: {}'.format(new_input_embedding_weights.shape))
+        new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
+        model.set_input_embeddings(new_input_embeddings)
+
+        my_maker = InputMaker(args)
+
+    with torch.no_grad():
+        final_df = gen_answers(tokenizer=tokenizer, model=model, pred_fp=pred_fp, max_len=args.max_len,
+                               n_stride=args.n_stride, my_maker=my_maker)
 
     F1 = []
     EM = []
-    final_df = pd.read_csv('{}_results{}.csv'.format(effective_model_name,
-                                                     '_custom' if CUSTOM_PIPELINE else ''))
+    # final_df = pd.read_csv(pred_fp)
     for i in range(len(final_df)):
         a_gold = final_df['true_answer'][i]
         a_pred = final_df['predicted_answer'][i]
         F1.append(compute_f1(a_gold, a_pred))
         EM.append(compute_EM(a_gold, a_pred))
 
-    print(f"Avg. F1: {np.mean(F1)}")
-    print(f"Total EM: {np.mean(EM)}")
+    avg_f1 = np.mean(F1)
+    avg_em = np.mean(EM)
+    print(f"Avg. F1: {avg_f1}")
+    print(f"Total EM: {avg_em}")
+
+    with open(results_fp, 'w+') as f:
+        f.write('Avg F1: {}'.format(avg_f1))
+        f.write('Avg EM: {}'.format(avg_em))
+
+    print('All done :)')
