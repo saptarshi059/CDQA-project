@@ -7,7 +7,7 @@ import os
 import pandas as pd
 from transformers import AutoTokenizer
 
-BERT_variant = 'navteca/roberta-base-squad2'
+BERT_variant = 'phiyodr/bert-base-finetuned-squad2'
 tokenizer = AutoTokenizer.from_pretrained(BERT_variant)
 
 UMLS_KG_path = os.getcwd()

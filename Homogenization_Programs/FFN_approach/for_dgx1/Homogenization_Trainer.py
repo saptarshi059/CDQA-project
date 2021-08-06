@@ -39,7 +39,7 @@ We have to make send the model to device before creating the optimizer since "pa
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
-criterion = torch.nn.MSELoss()
+criterion = torch.nn.BCELoss()
 
 #Adam optimizer
 optimizer = torch.optim.Adam(model.parameters())
