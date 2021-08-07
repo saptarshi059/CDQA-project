@@ -78,6 +78,7 @@ for trple in tqdm(KGT.itertuples()):
     mean_embeddings.append(train)
     multiple_hot_targets_indices.append(test)
 
-pd.DataFrame(zip(mean_embeddings, multiple_hot_targets_indices), columns=['train', 'test']).to_pickle('Homogenization_data.pkl')
+pd.DataFrame(zip(mean_embeddings, multiple_hot_targets_indices), columns=['train', 'test']).to_pickle('Triples_Homogenization_data.pkl')
 
 print('FFN training dataset created...')
+

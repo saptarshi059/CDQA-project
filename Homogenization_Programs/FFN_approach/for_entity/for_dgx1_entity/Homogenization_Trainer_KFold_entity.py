@@ -13,9 +13,9 @@ from MyNN import FFNN
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-BV','--BERT_variant', default='navteca/roberta-base-squad2')
+parser.add_argument('-BV','--BERT_variant', default='phiyodr/bert-base-finetuned-squad2')
 parser.add_argument('-f', '--folds', default=5, type=int)
-parser.add_argument('-e', '--epochs', default=50, type=int)
+parser.add_argument('-e', '--epochs', default=100, type=int)
 parser.add_argument('-b', '--batch_size', default=128, type=int)
 parser.add_argument('-nl', '--num_hidden_layers', default=10, type=int)
 args = parser.parse_args()
@@ -33,7 +33,7 @@ from torch.utils.data import Dataset, DataLoader
 import numpy as np
 class FFN_Data(Dataset):
     def __init__(self):
-        data = pd.read_pickle('Homogenization_data.pkl')
+        data = pd.read_pickle('Entity_Homogenization_data.pkl')
         self.x = data['train']
         self.y = data['test']
         self.n_samples = data.shape[0]
@@ -72,7 +72,7 @@ def reset_weights(m):
 # Configuration options
 k_folds = args.folds
 num_epochs = args.epochs
-loss_function = torch.nn.MSELoss()
+loss_function = torch.nn.BCELoss()
 batch_size = args.batch_size
 #1 X [dim of 1 KGE], since we are doing mean(triple)
 input_dimension = ent_embeddings_size
@@ -125,7 +125,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(homogenization_dataset)
     .cuda() will be different objects with those before the call (https://pytorch.org/docs/stable/optim.html)
     '''
 
-    device = torch.device('cuda:5' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:3' if torch.cuda.is_available() else 'cpu')
     model.to(device)
     
     # Initialize optimizer
@@ -251,6 +251,4 @@ plt.title('Tracking Loss over K-Folds')
 # add a legend, and position it on the upper right
 plt.legend((line1, line2), ('Training Loss', 'Test Loss'))
 
-plt.savefig('KFold_Loss_Plot.png', bbox_inches='tight', dpi=600)
-plt.show()
-
+plt.savefig('KFold_Loss_Plot_entity.png', bbox_inches='tight', dpi=600)
