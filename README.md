@@ -89,6 +89,7 @@ python run_modeling.py --batch_size 40 \
 export CUDA_VISIBLE_DEVICES=0,1
 python run_modeling.py --batch_size 40 \
                        --model_name "phiyodr/bert-base-finetuned-squad2" \
+                       --dte_lookup_table_fp "DTE_to_phiyodr_bert-base-finetuned-squad2.pkl" \
                        --lr 3e-5 \
                        --n_epochs 2 \
                        --max_len 384 \
@@ -107,6 +108,7 @@ python run_modeling.py --batch_size 40 \
 export CUDA_VISIBLE_DEVICES=0,1
 python run_modeling.py --batch_size 40 \
                        --model_name "phiyodr/bert-base-finetuned-squad2" \
+                       --dte_lookup_table_fp "DTE_to_phiyodr_bert-base-finetuned-squad2.pkl" \
                        --lr 3e-5 \
                        --n_epochs 3 \
                        --max_len 384 \
