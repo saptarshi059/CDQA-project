@@ -52,3 +52,4 @@ for entity_name, entity_index in tqdm(entity2id.items()):
 pd.DataFrame(zip(entity_embeddings, multiple_hot_targets_indices), columns=['train', 'test']).to_pickle('Entity_Homogenization_data.pkl')
 
 print('FFN training dataset created...')
+
