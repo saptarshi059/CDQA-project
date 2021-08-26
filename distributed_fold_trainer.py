@@ -283,7 +283,8 @@ class DistributedFoldTrainer(object):
             self.model.set_input_embeddings(new_input_embeddings)
 
         self.model.train()
-        self.model = DDP(self.model, device_ids=self.args.gpus)
+        # self.model = DDP(self.model, device_ids=self.args.gpus)
+        self.model = DDP(self.model, device_ids=[gpu])
 
         print('Creating optimizer on device {}...'.format(self.rank))
         no_decay = ['layernorm', 'norm']
