@@ -351,7 +351,6 @@ if __name__ == '__main__':
     parser.add_argument('--random_kge', default=False, type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
-    parser.add_argument('--test_ddp', default=False, type=str2bool)
 
     parser.add_argument('--dte_lookup_table_fp',
                         default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
@@ -480,7 +479,7 @@ if __name__ == '__main__':
             'seed': args.seed,
             'concat_kge': args.concat_kge,
             'my_maker': my_maker,
-            'test_ddp': args.test_ddp,
+            'args': args,
         }
 
         print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))
