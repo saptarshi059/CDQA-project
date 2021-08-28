@@ -29,7 +29,7 @@ class InputMaker(object):
         self.concat_kge = getattr(self.args, 'concat_kge', False)
 
         print('InputMaker reading metamap...')
-        self.metamap_tokenizations = pd.read_pickle(self.metamap_tokenizations_pkl_fp)
+        self.metamap_tokenizations = pickle.load(open(self.metamap_tokenizations_pkl_fp, 'rb'))
 
         print('InputMaker reading DTE lookup table...')
         self.DTE_model_lookup_table = pickle.load(open(self.dte_lookup_table_fp, 'rb'))
