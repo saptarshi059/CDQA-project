@@ -449,6 +449,7 @@ if __name__ == '__main__':
         print('--------------------------------')
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
         dtes = dtes.to('cpu')
+        print('\t$$$ dtes[:10, :10]: {} $$$'.format(dtes[:10, :10]))
 
         print('Preparing dataset for fold...')
         tokenizer = AutoTokenizer.from_pretrained(args.model_name)
@@ -482,6 +483,7 @@ if __name__ == '__main__':
             'seed': args.seed,
             'concat_kge': args.concat_kge,
             'my_maker': my_maker,
+            'args': args,
         }
 
         print('Training {} distributed model(s) for fold {}...'.format(len(args.gpus), fold))

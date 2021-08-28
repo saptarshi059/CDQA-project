@@ -24,6 +24,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 from torch.utils.tensorboard import SummaryWriter
 from transformers import get_constant_schedule_with_warmup
+from torch.nn.parallel import DistributedDataParallel as DDP
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering
 
 # from custom_input import custom_input_rep
@@ -237,6 +238,7 @@ class DistributedFoldTrainer(object):
         self.seed = arg_d['seed']
         self.concat_kge = arg_d['concat_kge']
         self.my_maker = arg_d['my_maker']
+        self.args = arg_d['args']
 
         self.device = torch.device('cuda:{}'.format(self.rank)) if torch.cuda.is_available() else torch.device('cpu')
         torch.cuda.set_device(self.device)
@@ -281,6 +283,8 @@ class DistributedFoldTrainer(object):
             self.model.set_input_embeddings(new_input_embeddings)
 
         self.model.train()
+        # self.model = DDP(self.model, device_ids=self.args.gpus)
+        self.model = DDP(self.model, device_ids=[gpu])
 
         print('Creating optimizer on device {}...'.format(self.rank))
         no_decay = ['layernorm', 'norm']
@@ -329,7 +333,7 @@ class DistributedFoldTrainer(object):
         if self.rank == 0:
             print('Training done, saving model...')
             self.model.eval()
-            torch.save(self.model.state_dict(), self.model_ckpt_fp)
+            torch.save(self.model.module.state_dict(), self.model_ckpt_fp)
         dist.barrier()
 
     def run_one_epoch(self, epoch):
