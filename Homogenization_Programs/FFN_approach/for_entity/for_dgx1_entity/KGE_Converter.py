@@ -10,20 +10,30 @@ from transformers import AutoTokenizer
 import pandas as pd
 import os
 import torch
-import pickle
+import pickle5 as pickle
 
 BERT_variant = 'phiyodr/bert-base-finetuned-squad2'
 
-UMLS_KGE_path = os.getcwd()
+#UMLS_KGE_path = os.getcwd()
 
-ent_embeddings = pd.read_csv(os.path.join(UMLS_KGE_path,                                          os.path.relpath('embeddings/distmult/ent_embedding.tsv')),                                          sep='\t', header=None)
+#ent_embeddings = pd.read_csv(os.path.join(UMLS_KGE_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
 
-with open(os.path.join(UMLS_KGE_path, 'entity2idx.pkl'), 'rb') as f:
+UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG/')
+
+with open(os.path.join(UMLS_KG_path, 'entity2idx.pkl'), 'rb') as f:
     entity2id = pickle.load(f)
 
-input_dimension = len(ent_embeddings.columns)
-output_dimension = AutoTokenizer.from_pretrained(BERT_variant).vocab_size
-number_of_hidden_layers = 10
+ent_embeddings = pd.read_csv(os.path.join(UMLS_KG_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
+
+with open('Entity_Homogenization_data.pkl', 'rb') as f:
+    dataset = pickle.load(f)
+
+#input_dimension = len(ent_embeddings.columns)
+#output_dimension = AutoTokenizer.from_pretrained(BERT_variant).vocab_size
+input_dimension = dataset['train'].iloc[0].shape[0]
+output_dimension = dataset['test'].iloc[0].shape[0]
+
+number_of_hidden_layers = 5
 hidden_dimension = 768
 
 device = torch.device('cpu')
@@ -34,10 +44,6 @@ model.to(device)
 model.eval()
 
 print(f'Model loaded on device: {device} ...')
-
-
-# In[ ]:
-
 
 #Converting entity KGE's to target model equivalents
 from tqdm import tqdm
@@ -54,5 +60,5 @@ with torch.no_grad():
         converted_embeddings.append(homogenized_embedding)
         
 print('Saving Homogenized Embeddings...')
-pd.DataFrame(zip(entity_names, converted_embeddings),             columns = ['Entity', 'Embedding']).to_pickle(f"NN-DTE-to-{BERT_variant.replace('/','-')}.pkl")
+pd.DataFrame(zip(entity_names, converted_embeddings), columns = ['Entity', 'Embedding']).to_pickle(f"NN-DTE-to-{BERT_variant.replace('/','-')}.pkl")
 

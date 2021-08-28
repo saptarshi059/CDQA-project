@@ -20,6 +20,7 @@ import pickle5 as pickle
 import torch.nn as nn
 import torch.distributed as dist
 import torch.multiprocessing as mp
+from bert_score import score
 from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 from torch.utils.tensorboard import SummaryWriter
@@ -353,9 +354,10 @@ if __name__ == '__main__':
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
     parser.add_argument('--dte_lookup_table_fp',
-                        default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
+                        default=False
+                        #default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
                         # default='DTE_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl',
-                        # default='DTE_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl',
+                        # default='DTE_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl'
                         )
     parser.add_argument('--n_neg_records', default=1, type=int)
 
@@ -439,6 +441,7 @@ if __name__ == '__main__':
     # some of the tokenizers return 1000000000000000019884624838656 as model_max_length for some reason
 
     fold_f1_score = []
+    fold_f1_score_with_bert_score = []
     fold_EM_score = []
 
     for fold, (train_ids, test_ids) in enumerate(kfold.split(full_dataset)):
@@ -601,6 +604,10 @@ if __name__ == '__main__':
         fold_f1_score.append(compute_f1_main(final_df))
         print('F1 for fold {}: {}'.format(fold, fold_f1_score[fold]))
 
+        P, R, F1 = score(predicted_answers, true_answers, model_type='bert-base-uncased')
+        fold_f1_score_with_bert_score.append(F1.mean().item())
+        print(f'F1 score for fold {fold} with bert_score: {F1.mean().item()}')
+
         # Print EM
         fold_EM_score.append(compute_EM(final_df))
         print('EM for fold {}: {}'.format(fold, fold_EM_score[fold]))
@@ -613,6 +620,7 @@ if __name__ == '__main__':
         torch.cuda.empty_cache()
 
     print("Avg. F1: {}".format(np.mean(fold_f1_score)))
+    print("Avg. F1 with BERTScore: {}".format(np.mean(fold_f1_score_with_bert_score)))
     print("Avg. EM: {}".format(np.mean(fold_EM_score)))
 
     print('Writing results to file...')

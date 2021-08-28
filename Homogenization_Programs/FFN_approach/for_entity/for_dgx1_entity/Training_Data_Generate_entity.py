@@ -1,55 +1,55 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 #Reading in the necessary files
 import pickle5 as pickle
 import os
 import pandas as pd
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, AutoModel, logging
+import torch
+
+logging.set_verbosity(50)
 
 BERT_variant = 'phiyodr/bert-base-finetuned-squad2'
 tokenizer = AutoTokenizer.from_pretrained(BERT_variant)
+model = AutoModel.from_pretrained(BERT_variant)
 
-UMLS_KG_path = os.getcwd()
+device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
+model.to(device)
+print(f'Model loaded on device: {device}')
+
+model_embeddings = model.get_input_embeddings()
+
+UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG/')
 
 with open(os.path.join(UMLS_KG_path, 'entity2idx.pkl'), 'rb') as f:
     entity2id = pickle.load(f)
 
-KGE_path = os.path.join(UMLS_KG_path, os.path.relpath('embeddings/distmult'))
-
-ent_embeddings = pd.read_csv(os.path.join(KGE_path, 'ent_embedding.tsv'), sep='\t', header=None)
+ent_embeddings = pd.read_csv(os.path.join(UMLS_KG_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
 
 print('Loaded all necessary files...')
 
 
-# In[ ]:
+# In[2]:
 
 
-#Creating training dataset
-import torch
+#Creating training dataset - with subword embedding scheme
 from tqdm import tqdm
 import numpy as np
 
-'''
-#Instead of storing the full target vector, I am storing the indices of the natural text word pieces. 
-This allows us to create the target representation at runtime.
-'''
-entity_embeddings = []
-multiple_hot_targets_indices = []
-
-def gen_sample(entity_name, entity_index):
-    return torch.FloatTensor(ent_embeddings.iloc[entity_index]), tokenizer(entity_name)['input_ids']
+src = []
+tgt = []
+for ent_name, ent_index in tqdm(entity2id.items()):
+    entity_tokens = tokenizer(ent_name, return_tensors='pt')['input_ids'][0]
+    sw_embds = []
+    for index in range(1, len(entity_tokens)-1):
+        sw_embds.append(model_embeddings(entity_tokens[index].to(device)))
+    src.append(ent_embeddings.iloc[ent_index].to_numpy())
+    tgt.append(torch.mean(torch.vstack(sw_embds), dim=0).cpu().detach().numpy())
     
-print('Creating training samples according to the conversion scheme...')
-for entity_name, entity_index in tqdm(entity2id.items()):
-    train, test = gen_sample(entity_name, entity_index)
-    entity_embeddings.append(train)
-    multiple_hot_targets_indices.append(test)
-
-pd.DataFrame(zip(entity_embeddings, multiple_hot_targets_indices), columns=['train', 'test']).to_pickle('Entity_Homogenization_data.pkl')
+pd.DataFrame(zip(src, tgt), columns=['train', 'test']).to_pickle('Entity_Homogenization_data.pkl')
 
 print('FFN training dataset created...')
-
