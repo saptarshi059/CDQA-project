@@ -10,7 +10,7 @@
 from transformers import AutoModel, AutoTokenizer
 import torch
 import pickle5 as pickle
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 import pandas as pd
 
 #Loading triple_list
@@ -20,7 +20,7 @@ with open('expanded_entities.pkl', 'rb') as f:
 #if use_average == True, homogenized embedding is formed by averaging occurrences of the entity o/p
 #Else, is == pooled model output.
 def Create_DTE_BERT_LookUp_Table(model_name, use_average=True):
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModel.from_pretrained(model_name)
