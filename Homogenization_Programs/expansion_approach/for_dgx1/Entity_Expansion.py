@@ -3,7 +3,7 @@
 
 # In[ ]:
 
-#python Entity_Expansion.py --UMLS_Path ../Train_KGE/UMLS_KG_MT+SN
+#python Entity_Expansion.py --UMLS_Path ../../../../Train_KGE/UMLS_KG_MT+SN
 
 #Converting KGE to BERT embeddings (Domain Term Encoding (DTE)) - part1 (generating associated triples)
 #[Entity Expansion]
@@ -61,8 +61,8 @@ for entity in tqdm(entity2id.keys()):
 #Converting KGE to BERT embeddings (Domain Term Encoding (DTE)) - part2 (each KG item -> (KG item, KGE))
 #KGE located here
 
-ent_embeddings = pd.read_csv(os.join(os.path.abspath(args.UMLS_Path), os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
-rel_embeddings = pd.read_csv(os.join(os.path.abspath(args.UMLS_Path), os.path.relpath('embeddings/distmult/rel_embedding.tsv')), sep='\t', header=None)
+ent_embeddings = pd.read_csv(os.path.join(os.path.abspath(args.UMLS_Path), os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
+rel_embeddings = pd.read_csv(os.path.join(os.path.abspath(args.UMLS_Path), os.path.relpath('embeddings/distmult/rel_embedding.tsv')), sep='\t', header=None)
 
 '''
 Associating each item in the triple list with respective embeddings. 
