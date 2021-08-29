@@ -3,6 +3,7 @@
 
 # In[ ]:
 
+#python Entity_Expansion.py --UMLS_Path ../Train_KGE/UMLS_KG_MT+SN
 
 #Converting KGE to BERT embeddings (Domain Term Encoding (DTE)) - part1 (generating associated triples)
 #[Entity Expansion]
@@ -12,17 +13,22 @@ import os
 import pandas as pd
 import pickle5 as pickle
 from tqdm import tqdm
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--UMLS_Path', type=str)
+args = parser.parse_args()
 
 #Mapping b/w entity and corresponding ID
-with open('entity2idx.pkl', 'rb') as f:
+with open(os.path.join(os.path.abspath(args.UMLS_Path), 'entity2idx.pkl'), 'rb') as f:
     entity2id = pickle.load(f)
 
 #Mapping b/w relation and corresponding ID
-with open('relation2idx.pkl', 'rb') as f:
+with open(os.path.join(os.path.abspath(args.UMLS_Path), 'relation2idx.pkl'), 'rb') as f:
     relation2id = pickle.load(f)
 
 #Reading KGT dataframe
-with open('KGT.pkl', 'rb') as f:
+with open(os.path.join(os.path.abspath(args.UMLS_Path), 'KGT.pkl'), 'rb') as f:
     KGT = pickle.load(f)
 
 def triple_gen(current_entity):
@@ -55,8 +61,8 @@ for entity in tqdm(entity2id.keys()):
 #Converting KGE to BERT embeddings (Domain Term Encoding (DTE)) - part2 (each KG item -> (KG item, KGE))
 #KGE located here
 
-ent_embeddings = pd.read_csv(os.path.abspath('embeddings/distmult/ent_embedding.tsv'), sep='\t', header=None)
-rel_embeddings = pd.read_csv(os.path.abspath('embeddings/distmult/rel_embedding.tsv'), sep='\t', header=None)
+ent_embeddings = pd.read_csv(os.join(os.path.abspath(args.UMLS_Path), os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
+rel_embeddings = pd.read_csv(os.join(os.path.abspath(args.UMLS_Path), os.path.relpath('embeddings/distmult/rel_embedding.tsv')), sep='\t', header=None)
 
 '''
 Associating each item in the triple list with respective embeddings. 

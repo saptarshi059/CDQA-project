@@ -65,6 +65,5 @@ def Create_DTE_BERT_LookUp_Table(model_name, use_average=True):
     DTE_BERT_Lookup_Table.to_pickle(f'Expansion-DTE_to_{model_name.replace("/","_")}.pkl')
 
 Create_DTE_BERT_LookUp_Table('phiyodr/bert-base-finetuned-squad2')
-Create_DTE_BERT_LookUp_Table('ktrapeznikov/biobert_v1.1_pubmed_squad_v2')
-Create_DTE_BERT_LookUp_Table('ktrapeznikov/scibert_scivocab_uncased_squad_v2')
+#Create_DTE_BERT_LookUp_Table('ktrapeznikov/scibert_scivocab_uncased_squad_v2')
 
