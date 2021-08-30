@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Mik4KG.py --UMLS_Path ../../../../Train_KGE/UMLS_KG_MT+SN --BERT_Variant phiyodr/bert-base-finetuned-squad2
+#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT+SN --BERT_Variant phiyodr/bert-base-finetuned-squad2
 
 import pickle5 as pickle
 import pandas as pd
@@ -37,16 +37,47 @@ model_embeddings = model.get_input_embeddings()
 
 print('Necessary Files Loaded...')
 
-#Breaking entities using tokenizer approach & NOT passing THROUGH the model
+using_triples = False
+using_hidden_states = False
+using_pooler_output = True
+
+#Triples & Entity THROUGH the model approach
 src = []
 tgt = []
-for ent_name, ent_index in tqdm(entity2id.items()):
-    entity_tokens = tokenizer(ent_name, return_tensors='pt')['input_ids'][0]
-    sw_embds = []
-    for index in range(1, len(entity_tokens)-1):
-        sw_embds.append(model_embeddings(entity_tokens[index]))
-    src.append(ent_embeddings.iloc[ent_index].to_numpy())
-    tgt.append(torch.mean(torch.vstack(sw_embds), dim=0).detach().numpy())
+
+with torch.no_grad():
+    if using_triples == True:
+        for triple in tqdm(KGT.itertuples()):
+            natural_text = triple.E1 + ' ' + total_rel2desc.query('REL==@triple.Rel').Description.values[0] + ' ' + triple.E2
+            inputs = tokenizer(natural_text, return_tensors='pt')
+            inputs.to(device)
+            output = model(**inputs)
+            if using_pooler_output == True:
+                src.append(ent_embeddings.iloc[entity2id[triple.E1]].to_numpy())
+                tgt.append(output['pooler_output'].detach().cpu().numpy().reshape(1,-1))
+            else:#[CLS] output
+                src.append(ent_embeddings.iloc[entity2id[triple.E1]].to_numpy())
+                tgt.append(output['last_hidden_state'][0][0].detach().cpu().numpy().reshape(1,-1))
+    else:
+        for ent_name, ent_index in tqdm(entity2id.items()):
+            inputs = tokenizer(ent_name, return_tensors='pt')
+            inputs.to(device)
+            output = model(**inputs, output_hidden_states=True)
+            if using_hidden_states == True:
+                entity_tokens = output['hidden_states'][0][0].shape[0] - 2
+                vecs = []
+                for layer_idx in range(number_of_layers):
+                    vecs.append([output['hidden_states'][layer_idx][0][i] for i in range(1,  entity_tokens + 1)])
+                c = torch.vstack([torch.hstack(vecs[x]).reshape(1, entity_tokens, 768) for x in range(number_of_layers)])
+                src.append(ent_embeddings.iloc[ent_index].to_numpy())
+                tgt.append(torch.mean(torch.mean(c, dim=0), dim=0).detach().cpu().numpy().reshape(1,-1))
+            else:          
+                if using_pooler_output == True:
+                    src.append(ent_embeddings.iloc[ent_index].to_numpy())
+                    tgt.append(output['pooler_output'].detach().cpu().numpy().reshape(1,-1))
+                else: #[CLS] output
+                    src.append(ent_embeddings.iloc[ent_index].to_numpy())
+                    tgt.append(output['last_hidden_state'][0][0].detach().cpu().numpy().reshape(1,-1))
 
 weight_matrix = np.linalg.lstsq(np.vstack(src),np.vstack(tgt), rcond=None)[0]
 
