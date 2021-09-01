@@ -354,8 +354,8 @@ if __name__ == '__main__':
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
     parser.add_argument('--dte_lookup_table_fp',
-                        # default=False
-                        default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
+                        default=False
+                        # default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
                         # default='DTE_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl',
                         # default='DTE_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl'
                         )
@@ -378,8 +378,8 @@ if __name__ == '__main__':
     print('*' * len('* Model time ID: {} *'.format(curr_time)))
     print('* Model time ID: {} *'.format(curr_time))
     print('*' * len('* Model time ID: {} *'.format(curr_time)))
-
-    my_maker = InputMaker(args)
+    if args.use_kge:
+        my_maker = InputMaker(args)
 
     model_outdir = os.path.join(args.out, curr_time)
     if not os.path.exists(model_outdir):
