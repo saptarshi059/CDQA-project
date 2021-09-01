@@ -478,7 +478,7 @@ if __name__ == '__main__':
             'fold': fold,
             'n_splits': args.n_splits,
             'n_neg_records': args.n_neg_records,
-            'dtes': dtes,
+            'dtes': dtes if args.use_kge else None,
             'warmup_proportion': args.warmup_proportion,
             'seed': args.seed,
             'concat_kge': args.concat_kge,

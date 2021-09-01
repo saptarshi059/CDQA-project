@@ -264,7 +264,8 @@ class DistributedFoldTrainer(object):
         print('Creating model on device {}...'.format(self.rank))
         self.model = AutoModelForQuestionAnswering.from_pretrained(self.model_name)
         self.model = self.model.to(self.device)
-        self.dtes = self.dtes.to(self.model.device)
+
+        self.dtes = self.dtes.to(self.model.device) if self.dtes is not None else None
 
         if self.use_kge:
             initial_input_embeddings = self.model.get_input_embeddings().weight
