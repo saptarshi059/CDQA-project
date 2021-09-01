@@ -354,7 +354,7 @@ if __name__ == '__main__':
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
 
     parser.add_argument('--dte_lookup_table_fp',
-                        default=False
+                        default='Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl'
                         # default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
                         # default='DTE_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl',
                         # default='DTE_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl'
@@ -378,8 +378,8 @@ if __name__ == '__main__':
     print('*' * len('* Model time ID: {} *'.format(curr_time)))
     print('* Model time ID: {} *'.format(curr_time))
     print('*' * len('* Model time ID: {} *'.format(curr_time)))
-    if args.use_kge:
-        my_maker = InputMaker(args)
+
+    my_maker = InputMaker(args)
 
     model_outdir = os.path.join(args.out, curr_time)
     if not os.path.exists(model_outdir):
@@ -410,16 +410,16 @@ if __name__ == '__main__':
     model_out_fp = os.path.join(model_outdir, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
+    DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
+    dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
     if args.random_kge:
-        DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
-        dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
         print('Replacing DTEs with random tensors...')
         dtes = [torch.rand(1, 768) for _ in dtes]
 
-        dtes = torch.cat(dtes, dim=0).to('cpu')
+    dtes = torch.cat(dtes, dim=0).to('cpu')
 
-        domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
-        custom_domain_term_tokens = ['[{}]'.format(dt) for dt in domain_terms]
+    domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
+    custom_domain_term_tokens = ['[{}]'.format(dt) for dt in domain_terms]
     # input('dtes: {}'.format(dtes.shape))
 
     kfold = KFold(n_splits=args.n_splits, shuffle=True, random_state=args.seed)
@@ -448,12 +448,12 @@ if __name__ == '__main__':
         print('FOLD {}'.format(fold))
         print('--------------------------------')
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
+        dtes = dtes.to('cpu')
+        print('\t$$$ dtes[:10, :10]: {} $$$'.format(dtes[:10, :10]))
 
         print('Preparing dataset for fold...')
         tokenizer = AutoTokenizer.from_pretrained(args.model_name)
         if USE_KGE:
-            dtes = dtes.to('cpu')
-            print('\t$$$ dtes[:10, :10]: {} $$$'.format(dtes[:10, :10]))
             print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
             print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
             tokenizer.add_tokens(custom_domain_term_tokens)
@@ -478,7 +478,7 @@ if __name__ == '__main__':
             'fold': fold,
             'n_splits': args.n_splits,
             'n_neg_records': args.n_neg_records,
-            'dtes': dtes if args.use_kge else None,
+            'dtes': dtes,
             'warmup_proportion': args.warmup_proportion,
             'seed': args.seed,
             'concat_kge': args.concat_kge,
@@ -504,9 +504,9 @@ if __name__ == '__main__':
         device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
         model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
         model = model.to(device)
+        dtes = dtes.to(model.device)
 
         if USE_KGE:
-            dtes = dtes.to(model.device)
             initial_input_embeddings = model.get_input_embeddings().weight
             new_input_embedding_weights = torch.cat([initial_input_embeddings, dtes], dim=0)
             new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
