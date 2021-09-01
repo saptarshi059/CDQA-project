@@ -448,12 +448,12 @@ if __name__ == '__main__':
         print('FOLD {}'.format(fold))
         print('--------------------------------')
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
-        dtes = dtes.to('cpu')
         print('\t$$$ dtes[:10, :10]: {} $$$'.format(dtes[:10, :10]))
 
         print('Preparing dataset for fold...')
         tokenizer = AutoTokenizer.from_pretrained(args.model_name)
         if USE_KGE:
+            dtes = dtes.to('cpu')
             print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
             print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
             tokenizer.add_tokens(custom_domain_term_tokens)
@@ -504,9 +504,9 @@ if __name__ == '__main__':
         device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
         model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
         model = model.to(device)
-        dtes = dtes.to(model.device)
 
         if USE_KGE:
+            dtes = dtes.to(model.device)
             initial_input_embeddings = model.get_input_embeddings().weight
             new_input_embedding_weights = torch.cat([initial_input_embeddings, dtes], dim=0)
             new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
