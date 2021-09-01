@@ -349,14 +349,15 @@ class DistributedFoldTrainer(object):
             # question_texts = batch['question_texts']
             # context_texts = batch['context_texts']
             input_ids = batch['input_ids'].to(self.device)
-            token_type_ids = batch['token_type_ids'].to(self.device)
+            token_type_ids = batch['token_type_ids'].to(self.device) if batch['token_type_ids'] is not None else None
             attention_mask = batch['attention_mask'].to(self.device)
             start_positions = batch['start_positions'].to(self.device)
             end_positions = batch['end_positions'].to(self.device)
 
             if batch_idx == 0 and self.rank == 0:
                 print('GPU {} input_ids - shape: {} device: {}'.format(self.rank, input_ids.shape, input_ids.device))
-                print('GPU {} token_type_ids - shape: {} device: {}'.format(self.rank, token_type_ids.shape, token_type_ids.device))
+                if token_type_ids is not None:
+                    print('GPU {} token_type_ids - shape: {} device: {}'.format(self.rank, token_type_ids.shape, token_type_ids.device))
                 print('GPU {} attention_mask - shape: {} device: {}'.format(self.rank, attention_mask.shape, attention_mask.device))
                 print('GPU {} start_positions - shape: {} device: {}'.format(self.rank, start_positions.shape, start_positions.device))
                 print('GPU {} end_positions - shape: {} device: {}'.format(self.rank, end_positions.shape, start_positions.device))
