@@ -416,10 +416,10 @@ if __name__ == '__main__':
         print('Replacing DTEs with random tensors...')
         dtes = [torch.rand(1, 768) for _ in dtes]
 
-    dtes = torch.cat(dtes, dim=0).to('cpu')
+        dtes = torch.cat(dtes, dim=0).to('cpu')
 
-    domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
-    custom_domain_term_tokens = ['[{}]'.format(dt) for dt in domain_terms]
+        domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
+        custom_domain_term_tokens = ['[{}]'.format(dt) for dt in domain_terms]
     # input('dtes: {}'.format(dtes.shape))
 
     kfold = KFold(n_splits=args.n_splits, shuffle=True, random_state=args.seed)
