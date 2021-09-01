@@ -410,9 +410,9 @@ if __name__ == '__main__':
     model_out_fp = os.path.join(model_outdir, model_out_fname)
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
-    DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
-    dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
     if args.random_kge:
+        DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
+        dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
         print('Replacing DTEs with random tensors...')
         dtes = [torch.rand(1, 768) for _ in dtes]
 
