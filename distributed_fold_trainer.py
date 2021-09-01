@@ -349,7 +349,11 @@ class DistributedFoldTrainer(object):
             # question_texts = batch['question_texts']
             # context_texts = batch['context_texts']
             input_ids = batch['input_ids'].to(self.device)
-            token_type_ids = batch['token_type_ids'].to(self.device) if batch['token_type_ids'] is not None else None
+            if 'token_type_ids' in batch.keys():
+                token_type_ids = batch['token_type_ids'].to(self.device)
+            else:
+                token_type_ids = None
+
             attention_mask = batch['attention_mask'].to(self.device)
             start_positions = batch['start_positions'].to(self.device)
             end_positions = batch['end_positions'].to(self.device)
