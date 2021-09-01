@@ -448,12 +448,12 @@ if __name__ == '__main__':
         print('FOLD {}'.format(fold))
         print('--------------------------------')
         model_ckpt_fp = model_ckpt_tmplt.format(fold)
-        print('\t$$$ dtes[:10, :10]: {} $$$'.format(dtes[:10, :10]))
 
         print('Preparing dataset for fold...')
         tokenizer = AutoTokenizer.from_pretrained(args.model_name)
         if USE_KGE:
             dtes = dtes.to('cpu')
+            print('\t$$$ dtes[:10, :10]: {} $$$'.format(dtes[:10, :10]))
             print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
             print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
             tokenizer.add_tokens(custom_domain_term_tokens)
