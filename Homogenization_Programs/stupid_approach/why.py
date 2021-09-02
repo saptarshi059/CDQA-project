@@ -5,6 +5,7 @@ import pandas as pd
 import os
 from tqdm import tqdm
 import argparse
+import torch
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--UMLS_Path', type=str)
