@@ -20,5 +20,5 @@ homogenized_embeddings = {}
 for entity_name, index in tqdm(entity2id.items()):
     homogenized_embeddings[entity_name] = torch.FloatTensor(ent_embeddings.iloc[index].to_numpy()).reshape(1,-1)
 
-print(f'Saving Homogenized Embeddings for {model_name}...')
+print(f'Saving Homogenized Embeddings...')
 pd.DataFrame(list(homogenized_embeddings.items()), columns = ['Entity', 'Embedding']).to_pickle(f'stupid.pkl')
