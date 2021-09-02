@@ -1,9 +1,10 @@
-#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT+SN
+#python why.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT+SN
 
 import pickle5 as pickle
 import pandas as pd
 import os
 from tqdm import tqdm
+import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--UMLS_Path', type=str)
