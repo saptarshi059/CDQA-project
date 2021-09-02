@@ -571,7 +571,7 @@ if __name__ == '__main__':
         fold_f1_score.append(compute_f1_main(final_df))
         print('F1 for fold {}: {}'.format(fold, fold_f1_score[fold]))
 
-        P, R, F1 = score(predicted_answers, true_answers, model_type='bert-base-uncased')
+        P, R, F1 = score(predicted_answers, true_answers, lang='en')
         fold_f1_score_with_bert_score.append(F1.mean().item())
         print(f'F1 score for fold {fold} with bert_score: {F1.mean().item()}')
 
