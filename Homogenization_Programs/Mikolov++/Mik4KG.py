@@ -47,7 +47,7 @@ for ent_name, ent_index in tqdm(entity2id.items()):
     entity_tokens = tokenizer(ent_name, return_tensors='pt')['input_ids'][0]
     sw_embds = []
     for index in range(1, len(entity_tokens)-1):
-        sw_embds.append(model_embeddings(entity_tokens[index]))
+        sw_embds.append(model_embeddings(entity_tokens[index]).to(device))
     src.append(ent_embeddings.iloc[ent_index].to_numpy())
     tgt.append(torch.mean(torch.vstack(sw_embds), dim=0).detach().numpy())
 
