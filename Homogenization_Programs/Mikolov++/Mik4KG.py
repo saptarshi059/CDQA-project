@@ -35,7 +35,8 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 model_embeddings = model.get_input_embeddings()
 
-device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
+#device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
+device=torch.device('cpu')
 model.to(device)
 print(f'Model loaded on device: {device}')
 
@@ -47,7 +48,7 @@ for ent_name, ent_index in tqdm(entity2id.items()):
     entity_tokens = tokenizer(ent_name, return_tensors='pt')['input_ids'][0]
     sw_embds = []
     for index in range(1, len(entity_tokens)-1):
-        sw_embds.append(model_embeddings(entity_tokens[index]).to(device))
+        sw_embds.append(model_embeddings(entity_tokens[index]))
     src.append(ent_embeddings.iloc[ent_index].to_numpy())
     tgt.append(torch.mean(torch.vstack(sw_embds), dim=0).detach().numpy())
 
