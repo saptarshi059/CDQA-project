@@ -44,8 +44,8 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 model_embeddings = model.get_input_embeddings()
 
-#device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
-device=torch.device('cpu')
+device = ('cuda:7' if torch.cuda.is_available() else 'cpu')
+#device=torch.device('cpu')
 model.to(device)
 print(f'Model loaded on device: {device}')
 
@@ -62,8 +62,6 @@ if args.THROUGH == False:
             sw_embds.append(model_embeddings(entity_tokens[index]))
         src.append(ent_embeddings.iloc[ent_index].to_numpy())
         tgt.append(torch.mean(torch.vstack(sw_embds), dim=0).detach().numpy())
-
-    weight_matrix = np.linalg.lstsq(np.vstack(src),np.vstack(tgt), rcond=None)[0]
 else:
     number_of_layers = 4
     with torch.no_grad():
@@ -100,6 +98,7 @@ else:
                         src.append(ent_embeddings.iloc[ent_index].to_numpy())
                         tgt.append(output['last_hidden_state'][0][0].detach().cpu().numpy().reshape(1,-1))
 
+weight_matrix = np.linalg.lstsq(np.vstack(src),np.vstack(tgt), rcond=None)[0]
 homogenized_embeddings = {}
 for entity_name, index in tqdm(entity2id.items()):
     homogenized_embeddings[entity_name] = torch.FloatTensor(np.matmul(weight_matrix.T, ent_embeddings.iloc[index].to_numpy()).reshape(1,-1))
