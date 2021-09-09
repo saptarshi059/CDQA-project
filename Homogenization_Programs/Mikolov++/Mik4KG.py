@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT+SN --BERT_Variant navteca/roberta-base-squad2 --THROUGH True --TRIPLES True --HS False --PO True
+#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT+SN --BERT_Variant navteca/roberta-base-squad2 --KGE_Variant transe --THROUGH True --TRIPLES False --HS False --PO True
 
 import pickle5 as pickle
 import pandas as pd
@@ -14,13 +14,26 @@ import argparse
 
 logging.set_verbosity(50)
 
+def str2bool(v):
+    if isinstance(v, bool):
+        return v
+    if v.lower() == 'none':
+        return None
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--UMLS_Path', type=str)
 parser.add_argument('--BERT_Variant', type=str)
-parser.add_argument('--THROUGH', type=bool)
-parser.add_argument('--TRIPLES', type=bool)
-parser.add_argument('--HS', type=bool)
-parser.add_argument('--PO', type=bool)
+parser.add_argument('--THROUGH', type=str2bool)
+parser.add_argument('--TRIPLES', type=str2bool)
+parser.add_argument('--HS', type=str2bool)
+parser.add_argument('--PO', type=str2bool)
+parser.add_argument('--KGE_Variant', type=str)
 args = parser.parse_args()
 
 if args.TRIPLES == True:
@@ -36,7 +49,7 @@ with open(os.path.join(os.path.abspath(args.UMLS_Path), 'entity2idx.pkl'), 'rb')
 with open(os.path.join(os.path.abspath(args.UMLS_Path), 'KGT.pkl'), 'rb') as f:
     KGT = pickle.load(f)
 
-ent_embeddings = pd.read_csv(os.path.join(os.path.abspath(args.UMLS_Path), os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
+ent_embeddings = pd.read_csv(os.path.join(os.path.abspath(args.UMLS_Path), os.path.relpath(f'embeddings/{args.KGE_Variant}/ent_embedding.tsv')), sep='\t', header=None)
 
 model_name = args.BERT_Variant
 model = AutoModel.from_pretrained(model_name)
@@ -44,7 +57,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 model_embeddings = model.get_input_embeddings()
 
-device = ('cuda:7' if torch.cuda.is_available() else 'cpu')
+device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
 #device=torch.device('cpu')
 model.to(device)
 print(f'Model loaded on device: {device}')
