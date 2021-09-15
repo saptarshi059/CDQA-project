@@ -9,7 +9,7 @@ python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../Train_
 export CUDA_VISIBLE_DEVICES=3,5
 nohup python run_modeling.py --batch_size 40 \
                        --model_name 'phiyodr/bert-base-finetuned-squad2' \
-                       --dte_lookup_table_fp 'Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl' \
+                       --dte_lookup_table_fp 'Mikolov_to_phiyodr_bert-base-finetuned-squad2.pkl' \
                        --lr 3e-5 \
                        --n_epochs 3 \
                        --max_len 384 \
@@ -30,7 +30,7 @@ python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../Train_
 export CUDA_VISIBLE_DEVICES=3,5
 nohup python run_modeling.py --batch_size 40 \
                        --model_name 'phiyodr/bert-base-finetuned-squad2' \
-                       --dte_lookup_table_fp 'Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl' \
+                       --dte_lookup_table_fp 'Mikolov_to_phiyodr_bert-base-finetuned-squad2.pkl' \
                        --lr 3e-5 \
                        --n_epochs 3 \
                        --max_len 384 \
