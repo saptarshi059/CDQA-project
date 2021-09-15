@@ -18,7 +18,7 @@ parser.add_argument('--UMLS_Path', type=str)
 parser.add_argument('--BERT_Variant', type=str)
 args = parser.parse_args()
 
-UMLS_path = os.path.abspath(args.UMLS_path)
+UMLS_path = os.path.abspath(args.UMLS_Path)
 
 with open(os.path.join(UMLS_path, 'entity2idx.pkl'), 'rb') as file:
     entity2id = pickle.load(file)
