@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT+SN --BERT_Variant navteca/roberta-base-squad2 --KGE_Variant transe --THROUGH True --TRIPLES False --HS False --PO True
+#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant distmult --THROUGH True --TRIPLES False --HS False --PO True
 
 import pickle5 as pickle
 import pandas as pd
@@ -57,8 +57,8 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 model_embeddings = model.get_input_embeddings()
 
-device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
-#device=torch.device('cpu')
+#device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
+device=torch.device('cpu')
 model.to(device)
 print(f'Model loaded on device: {device}')
 

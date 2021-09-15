@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+#python Translation_Approach.py --UMLS_Path ../../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2
+
 import pandas as pd
 import pickle5 as pickle
 import os
@@ -9,8 +11,14 @@ import torch
 from transformers import AutoTokenizer
 from transformers import AutoModelForQuestionAnswering
 from tqdm import tqdm
+import argparse
 
-UMLS_path = os.path.abspath('Train_KGE/UMLS_KG_MT+SN')
+parser = argparse.ArgumentParser()
+parser.add_argument('--UMLS_Path', type=str)
+parser.add_argument('--BERT_Variant', type=str)
+args = parser.parse_args()
+
+UMLS_path = os.path.abspath(args.UMLS_path)
 
 with open(os.path.join(UMLS_path, 'entity2idx.pkl'), 'rb') as file:
     entity2id = pickle.load(file)
@@ -48,8 +56,7 @@ def weight_matrix_compute(model_name):
     W = np.linalg.lstsq(np.vstack(KGE_embeddings),np.vstack(Model_embeddings), rcond=None)[0]
     return W
 
-bert_W = weight_matrix_compute('phiyodr/bert-base-finetuned-squad2')
-#scibert_W = weight_matrix_compute('ktrapeznikov/scibert_scivocab_uncased_squad_v2')
+WT_Matrix = weight_matrix_compute(args.BERT_Variant)
 
 def homogenizer(weight_matrix, model_name):
     homogenized_embeddings = {}
@@ -59,6 +66,4 @@ def homogenizer(weight_matrix, model_name):
     print(f'Saving Homogenized Embeddings for {model_name}...')
     pd.DataFrame(list(homogenized_embeddings.items()), columns = ['Entity', 'Embedding']).to_pickle(f'Mikolov_to_{model_name.replace("/","_")}.pkl')
 
-
-homogenizer(bert_W, 'phiyodr/bert-base-finetuned-squad2')
-#homogenizer(scibert_W, 'ktrapeznikov/scibert_scivocab_uncased_squad_v2')
+homogenizer(WT_Matrix, args.BERT_Variant)
