@@ -4,7 +4,7 @@
 python ../Train_KGE/pykg2vec/scripts/pykg2vec_train.py -mn DistMult -ds UMLS_KG_MT -dsp /home/Train_KGE/UMLS_KG_MT -device cuda -b 3213 -l 10 -k 8 -lr 0.006543608492240101 -lmda 6.082386885464442e-05 -opt rms
 
 #Homogenize using Mikolov Strategy
-python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2
+python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2
 
 #Copy homogenized embeddings to the current folder
 mv Mikolov\(E-BERT\)\ approach/Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl .
@@ -28,7 +28,7 @@ nohup python run_modeling.py --batch_size 40 \
 rm Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl
 
 #### One done
-python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../../Train_KGE/UMLS_KG_SN --BERT_Variant phiyodr/bert-base-finetuned-squad2
+python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../Train_KGE/UMLS_KG_SN --BERT_Variant phiyodr/bert-base-finetuned-squad2
 mv Mikolov\(E-BERT\)\ approach/Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl .
 
 export CUDA_VISIBLE_DEVICES=3,5
@@ -51,7 +51,7 @@ rm Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl
 
 ####Next
 
-python Homogenization_Programs/Mikolov++/Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_SN --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant distmult --THROUGH True --TRIPLES False --HS False --PO True
+python Homogenization_Programs/Mikolov++/Mik4KG.py --UMLS_Path ../Train_KGE/UMLS_KG_SN --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant distmult --THROUGH True --TRIPLES False --HS False --PO True
 mv Homogenization_Programs/Mikolov++/Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl .
 
 export CUDA_VISIBLE_DEVICES=3,5
@@ -74,7 +74,7 @@ rm Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl
 
 ####Next
 
-python Homogenization_Programs/Mikolov++/Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT+SN --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant distmult --THROUGH True --TRIPLES False --HS False --PO True
+python Homogenization_Programs/Mikolov++/Mik4KG.py --UMLS_Path ../Train_KGE/UMLS_KG_MT+SN --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant distmult --THROUGH True --TRIPLES False --HS False --PO True
 mv Homogenization_Programs/Mikolov++/Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl .
 
 export CUDA_VISIBLE_DEVICES=3,5
