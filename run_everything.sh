@@ -22,7 +22,7 @@ nohup python run_modeling.py --batch_size 40 \
                        --seed 16 \
                        --port 42069 > "bert_MIK_MT.out" &
 
-rm Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl
+rm Mikolov_to_phiyodr_bert-base-finetuned-squad2.pkl
 
 #### One done
 python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../Train_KGE/UMLS_KG_SN --BERT_Variant phiyodr/bert-base-finetuned-squad2
@@ -43,7 +43,7 @@ nohup python run_modeling.py --batch_size 40 \
                        --seed 16 \
                        --port 42069 > "bert_MIK_SN.out" &
 
-rm Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl
+rm Mikolov_to_phiyodr_bert-base-finetuned-squad2.pkl
 
 ####Next
 
