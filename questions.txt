@@ -1,0 +1,2019 @@
+What is the main cause of hiv-1 infection in children?
+What plays the crucial role in the mother to child transmission of hiv-1 and what increases the risk?
+How many children were infected by hiv-1 in 2008-2009, worldwide?
+What is the role of c-c motif chemokine ligand 3 like 1 (ccl3l1) in mother to child transmission of hiv-1?
+What is dc-genr and where is it expressed?
+How does the presence of dc-signr affect the mtct of hiv-1?
+Why do low levels of dc-signr enhance mother to child transmission of hiv-1?
+What is the percentage of mother to child transmission of hiv-1, when there is no intervention?
+Does c-c chemokine receptor type 5 (ccr5) affect the transmission of hiv-1?
+How does mannanose binding lectin (mbl) affect elimination of hiv-1 pathogen?
+How can ccr5's effect in hiv-1 transmission be reduced?
+What is ifitm?
+How many cysteine residues are contained in the first transmembrane domain of ifitm3?
+What inhibits s-palmitoylation?
+What interaction is inhibited by the presence of 2-bromopalmitic acid (2bp)?
+What is a function associated with ifitm5?
+What regulates the antiviral activity of ifitm3?
+What is another name for ifitm5?
+Why is the expression of ifitm5 not promoted by interferons?
+What is the amino acid similarity between ifitm5 and the other ifitm proteins?
+What is the amino acid similarity between ifitm 1, ifitm 2, and ifitm 3?
+What amino acid might be involved in calcium binding in the c-terminal region of a protein?
+What is the size of bovine coronavirus?
+What is the molecular structure of bovine coronavirus?
+How many nucleotides does bovine coronavirus contain?
+What is the size of the orf1ab gene in bovine coronavirus?
+Is the orf1ab gene at the 3' or 5' end of the bovine coronavirus genome?
+What is a significant cause of influenze like illness among healthy adolescents and adults presenting for medical evaluation?
+What is the most common species of human coronavirus among adults?
+Which human coronavirus showed species specific clinical characteristics of its infection?
+What causes the outbreak of sars and mers?
+What is the case fatality rate of sars and mers?
+What were the common hcov strains in the 5 year usa study?
+Which species are more prevalent but less severe?
+What is required for a hepatitis b infection in cells?
+What regulates the broad, but less specific, virus-cell interaction in a hepatitis b infection?
+Which protein domain of the hepatitis b envelope is necessary for infection?
+Where is ntcp located in the body?
+What does the ntcp protein mediate?
+Is ntcp sufficient to allow hbv infection?
+Why is ntcp thought to not be sufficient for hbv infection?
+What kinds of viruses are japanese encephalitis virus(jev), tick-borne encephalitis virus(tbev), eastern equine encephalitis virus (eeev), sindbis virus(sv), and dengue virus(dv)?
+What are the current clinically-available methods to detect encephalitis viral antigens?
+What methods exist for detecting multiple antigens simultaneously in a one-sample, laboratory test?
+How many antigens could be detected by liew's multiplex elisa test?
+What kind of antibodies were used in the elisa-array assay?
+How was the elisa assay validated?
+What capture antibodies were used in the study?
+What was the spotting concentration range for the capture antibodies?
+How was the proper spotting concentration determined?
+How was cross reaction detection determined?
+How was the elisa-array assay validated?
+In 2010, how many cases of tuberculosis were estimated in china?
+What is the population of shandong province?
+What was the purpose of this study?
+What was the age range for the people surveyed?
+How was the survey designed?
+Was was the sample size?
+How were the clusters selected?
+How many people were in a community cluster?
+Who was excluded from the study?
+When was the study conducted?
+Who conducted the study?
+What medium was used to collect the sputum samples?
+What was the response rate for the study?
+What was the average age of a study participant?
+What was the prevalence rate in shandong in 2010 for sputum positive cases of tuberculosis?
+What was the most striking finding of the study regarding tuberculosis patients?
+How many cases of sputum positive tuberculosis patients had no persistent cough?
+How many tuberculosis patients in shandong were over 65 years old?
+What enzymes have been reported to be linked with severity of infection and various pathological conditions caused by microorganisms?
+At what temperatures was the assay completed?
+What criteria sets the guideline for drug-like properties?
+What could be novel candidates as potent inhibitors of papain like cysteine proteases in resistant microorganisms?
+What method is useful in administering small molecules for systemic delivery to the body?
+Why is the nasal mucosa useful in the delivery of small molecules into the body?
+What are the most common methods of inhaled delivery of medications?
+What medications have shown good promise to in vivo delivery via dry powder inhalers?
+How are sirnas typically delivered for systemic effect?
+What structures form the human airway?
+What size of particle has been shown to be most effective in the delivery to the lower airway?
+What are the essential conditions in sirna delivery to effectively produce gene silencing in the lungs?
+How long is the saibk gene?
+How many open reading frames are in the saibk gene?
+What virus has the closest genetic identity with the saibk gene?
+How many surgical masks or respirators have past studies projected will be required for a pandemic in the united states?
+What is the acronym mers-cov?
+What are the critical factors that determine the effect of an epidemic?
+When did the world health organization (who) officially declare the 2019-ncov epidemic as a public health emergency of international concern?
+What influenza virus was identified in china in 2013?
+What past research has been done on severe, single-wave pandemics?
+What is a clinical attack rate?
+What was the clinical attack rate in the 2009 h1n1 pandemic?
+What is the estimated r0 of covid-19?
+How many ventilators have past studies projected will be required for a pandemic in the united states?
+How is exhaled breath condensate used in viral research?
+How many patients were i this study?
+What was the conclusion of this study?
+How long did the patient breath into the rtube?
+What followed the reverse transcription step in the analysis?
+What was the last step in the analysis?
+What percentage of the patients were between 20 and 30 years old in this study?
+Why is ebc an attractive method for screening?
+What is the leading cause of death among children after the age of 1 month?
+How has the number of childhood pneumonia been reduced?
+What percentage of childhood deaths are due to pneumonia?
+How has the childhood population grown in the last two decades?
+What is the reduction in the number of childhood pneumonia cases?
+How much is the reduction in the childhood pneumonia deaths?
+Childhood pneumonia rate for high income countries vs low and middle income countries?
+What percentage of childhood pneumonia deaths occur outside hospital in low and middle income countries?
+Case fatality rates for childhood pneumonia in high income vs low and middle income countries?
+How can childhood pneumonia affect the subsequent health of a person?
+What is the increase in the risk of respiratory disease after having childhood pneumonia?
+Which is the best method to identify pneumonia in a person?
+What is responsible for the reduction of radiologic pneumonia?
+What is the percentage reduction in pneumonia cases due to vaccination?
+What is the revised who definition of bacterial pneumonia?
+What is the reduction in bacterial pneumonia under the revised who definition of bacterial pneumonia?
+What caused the increase in the incidence of empyema in children in the recent past?
+How have the incidence empyema been reduced?
+What pneumonia related or chest conditions indicate the need for child radiography?
+What chest diseases and pneumonia were identified as leading causes prior to the availability of vaccines?
+Why has pertussis immunity in infants has decreased in infants?
+What is the effect of childhood tuberculosis in childhood pneumonia?
+What are the risk factors in childhood pneumonia?
+How does air pollution affect the incidence of childhood pneumonia?
+What is the strongest risk factor for childhood pneumonia?
+What is the global coverage of influenza and pneumonia vaccines?
+Is influenza vaccination during pregnancy safe and how long does it protect the child?
+What is emphyema?
+How is the term end point consolidation described with regard to pneumonia diagnosis?
+What factors make h5n1 a worldwide threat to public health?
+What are the symptoms of h5n1 infection in humans?
+Name some medications used to treat influenza?
+Why have antiretrovirals medications had limited benefit in treating influenza?
+What is the focus of the current study?
+What is the result of the current study?
+How do the polysaccharides in plants effect the immune response?
+What does this study demonstrate?
+In this study, how did treatment of eap after infection affect survival?
+What viruses have been responsible for most common childhood acute respiratory track infections (arti)?
+Are there any vaccines against to protect against respiratory viral infections?
+Which type of bacteria are implicated in carrying genes of drug resistance?
+What may be a likely cause of sink-to-sink spreading of pathogens in the hospital setting?
+What types of acute respiratory infections can be screened and diagnosed with multiplex pcr?
+What is the role of antibodies during infection?
+How can antibodies also create health problems?
+Which technology invention produced antibodies that are clones of a unique parent cell?
+What mechanism is responsible for the creation of diversified repertoire for antibodies?
+What developments have been made possible by the study of b-cell repertoire?
+What motivates the study of the rare b-cells that produce broadly neutralizing antibodies (bnab)?
+How has the study of b-cells helped the treatment for respiratory syncytial virus (rsv)?
+How are the studies on b-cells helping the development of a universal influenza vaccine?
+What role b-cell play in malaria infection and prevention?
+How can the study of b-cells help in the prevention and treatment of autoimmune diseases?
+When was the middle east respiratory syndrome coronavirus isolated first?
+What is the case fatality rate for mers coronavirus?
+How does gender influence mers-cov infection?
+Which is the source animal for the mers-cov?
+What is the median time until death in mers-cov?
+What is the incubation period for mers-cov?
+What is the treatment for mers-cov?
+What age group had the most mers-cov infections?
+Why are nucleosides analogs used for chemotheraphy?
+What nucleoside analog is the focus of the current study?
+Gemcitabine has been shown to have antiviral activity against which viruses?
+How does gemcitabine disrupt viral activity?
+Why are cotton rats considered a strong animal model for biomedical research?
+What is the structure of the cd40 ligand?
+What is the effect of cd40l on dendritic cells?
+What is the effect of cd40l on b cells?
+What factor may influence viral replication and gene expression?
+What accounts for the variation of codon usage among open reading frameworks?
+What conditions are considered upper respiratory tracts infections?
+What conditions are considered lower respiratory tract infections?
+What immune cells are primarily involved in eliminating virus-infected cells?
+What molecules have been shown to hinder t cell responses to viral infections?
+The accumulation of what molecule hinders phagocytic activity in t cells?
+When did the last director general of the who resign?
+Why might an organization like the who be necessary?
+Where should the next director general for the who come from?
+What traits should the new director general of the who have?
+What is the hepatitis c virus?
+How many people have persistent hepatitis c virus?
+What is the long-term risk of chronic hepatitis c infection?
+What antiviral treatments are used for hepatitis c infection?
+What is the main cause of death in the neonatal period of calves?
+Where was hepcidin first discovered?
+What is hepcidin?
+What organ produces hepcidin?
+What stimulates the release of hepcidin?
+What element does hepcidin play a roles in regulating during metabolism?
+Is hepcidin toxic?
+Why is iron critical to bacteria?
+How does hepcidin work in the duodenum?
+How does hepcidin affect macrophages?
+What leads to oxidative stress in the body?
+What parameter is used to measure antioxidant levels?
+What is acute hemorrhagic encephalomyelitis?
+What are the salient findings in acute hemorrhagic encephalomyelitis?
+What is ranbp2?
+What is the suggested role of ranbp2 in the cell?
+What is the hallmark finding of acute necrotizing encephalopathy?
+What could trigger acute necrotizing encephalopathy?
+When did she present with rapidly progressive right-hand weakness?
+Compounds from what framework have shown promising anticancer and antiviral properties?
+The replication of what virus is strongly inhibited by 2-(4-hydroxybenzyl)quinazolin-4(3h)-one (1)?
+How many samples were obtained?
+What percentage of patients were positive for at least one respiratory pathogen?
+What percentage of patients tested positive for hbov1?
+When was hbov1 first identified?
+What are the symptoms of hbov1 infection?
+What are the ages of the patients in this study?
+What was the male to female ratio for this study?
+What causes acute respiratory illness in young children?
+What is the molecular structure of the human metapneumovirus (hmpv)?
+What virus is closely related to the human respiratory syncytial virus (rsv)?
+What diseases are caused by hmpv?
+How large is the hmpv genome?
+How many open reading frames are in the hmpv genome?
+What are the two major genotypes of hmpv?
+What is the most common subgroup of hmpv?
+Who accounted for 44% of hmpv positive cases in kenya between 2007 and 2011?
+What does this study describe?
+What was the difference in the group a and b genomes?
+What was the purpose of this study?
+How many control samples were used in this study?
+What was the prevalence of coinfection?
+What risks factors were associated with lower rtis?
+What tests can simultaneously identify and subtype multiple respiratory viruses?
+What was the definition for an immunocompromised state in this study?
+What was the length of the study?
+How many patients had acute rtis?
+What was the most frequent coinfection?
+What health regulations were changes due to the outbreak of c burnetti?
+What was the median seropresence of c burnetti in sheep flocks not linked to human outbreaks?
+What important risk factors to infection were found during the second case-controlled study?
+What was the interquartile range of the incubation period?
+How many controls were used in the second case study?
+What public event was linked with the outbreak?
+What causes q fever?
+What is coxiella burnetii?
+What is the primary reservoir for coxiella burnetii?
+How are humans typically infected with coxiella burnetii?
+What are critical to regulate cellular biological processes?
+How is the hetesim measured used?
+What kind of data is included in the string database?
+What is the function of malat1?
+What test can detect reduced anticoccidial efficacy in the field?
+What is toltrazuril used to treat?
+What is multiple evanescent white dot syndrome?
+What precedes about half of the reported cases of mewds?
+What types of viruses can be diagnosed through serological testing?
+What type of clinical test can differentiate multiple evanescent white dot syndrome (mewds) from optic neuritis?
+What were the most common viruses sampled from nasal swabs in ilorin, nigeria?
+What was the most common virus detected in community members in this sample?
+How bad is the burden of disease in developing countries?
+Where do the majority of all infectious disease outbreaks happen?
+What are some risk factors for countries to experience a high prevalence of acute respiratory infections?
+What symptoms are associated with acute respiratory infections?
+What was the most common virus detected in community samples in ilorin, nigeria?
+What was the prevalence of coronavirus oc43 in community samples in ilorin, nigeria?
+What was the prevalence of coronavirus oc 229 e/nl63 in clinical subjects in ilorin, nigeria?
+What was the difference between community and clinic cases of acute respiratory infections?
+How can countries enhance public health surveillance?
+Why do respiratory tract infections pose major public health problems?
+How much of a greater risk are children than adults to viral infections?
+What is the most common infection in childhood?
+What can respiratory viruses cause?
+When do respiratory infections usually happen?
+What are the most common viruses?
+What is the most common viral infection for infants up to 3 months old?
+What is the incidence of rsv in children older than 3 years of age?
+What is the distance between the p4 7 and p12 7 genes in the irish versus japanese equine coronavirus variants?
+What is the difference between the tokachi09 and irish coronavirus genomic sequences?
+What suggests that irish equine coronaviruses may have a low genetic diversity?
+Where have most outbreaks of equine coronavirus occurred in the united states?
+What kind of pertussis vaccine is used in middle and high income countries?
+Where is the highest rate of childhood pertussis globally?
+What type of pertussis vaccine has been recently recommended by the who?
+What are the clinical symptoms of pertussis?
+What type of swabs are used to sample patients with pertussis?
+How frequently do pertussis outbreaks peak?
+What is the who criteria for a pertussis infection?
+What is used by the canadian public health system to identify periods of influenza activity?
+Why is laboratory confirmation of influenza infection not commonly performed?
+What types of viral infections are monitored through canada's respiratory virus detection surveillance system (rvdss)?
+What is discussed in this publication?
+What is discussed in this publication?
+What is reported in this publication?
+What is the conclusion regarding ire1 and rnasel proteins?
+What is the structure of an echovirus?
+What diseases are associated with echoviruses?
+In california, to where are meningitis cases reported according to the california code of regulations?
+According to the california code of regulations, when should a meningitis case be reported?
+Where is the viral and rickettsial disease laboratory located?
+What type of reference genome was used in the study?
+What was the read coverage for the e-30 genome in this study?
+What are the structural regions of the enterovirus polyprotein in this study?
+What can nuclear receptors regulate?
+What are associated with cancer, diabetes, inflammatory disease, and osteoporosis?
+What are nuclear receptors (nrs)?
+What biological factors for nuclear receptors regulate?
+How many families are in the nr superfamily?
+What is a prerequisite to make a molecular docking study feasible?
+What tool can be used to determine the 3d structure of proteins?
+What are the shortcomings of x-ray crystallography?
+What types of proteins are difficult to crystallize?
+Where were the data collected for this study?
+Who performed the sampling procedures?
+When were the fecal samples collected?
+What reference genome was used in the study?
+What is the length of the replicase gene orf1ab?
+What type of coronavirus was detected in r affinis and r sinicus species?
+What is a natural reservoir of coronavirus?
+What is the genome size of the coronavirus?
+What is the structure of the coronavirus?
+What animals do gamma and delta coronavirus mainly infect?
+How many types of coronaviruses are known to cause human disease?
+What plays a role in regulating the immune response to a viral infection?
+What is the conclusion of the coronavirus long-term surveillance studies?
+What is the cause of feline infectious peritonitis (fip)?
+What is the molecular structure of feline infectious peritonitis virus?
+How is fecv detected in cats?
+What type of vaccine is used to protect against fipv infection?
+Why is their controversy surrounding the fipv vaccine?
+For how long was the denatured polyacrylamide gel polymerized?
+How was the binding strength measured?
+What was the focus of this study?
+What do neuroaminidase inhibitors target?
+What is the function of neuroaminidase in the influenza virus?
+What is tamiflu?
+What was the test for the level of cytotoxicity used in this study?
+What method was used to measure the inhibition of viral replication?
+What was the conclusion of this study?
+Why have nucleic acid amplification tests been restricted to laboratory settings?
+What screening method was evaluated in this study?
+What was used to measure the performance of the nina heaters?
+What percentage of hiv-infected people go undetected in the united states?
+What percentage of patients do not return for followup after hiv testing?
+What statistical tests were used to compare categorical variables?
+What was a severe limitation of this study?
+What followup is needed to confirm the results of the current study?
+What is the conclusion of this study?
+What suggests that ip-10 plays a significant role on the pathogenesis of pneumonia?
+What cell types help prevent pneumococcal and influenza infection in the lungs?
+What is the most common, clinically-relevant multiresistant pathogen in both healthcare and community acquired infections?
+What is the treatment of choice for mrsa infections?
+What enzyme is essential for the metabolism of fatty acids?
+What was the purpose of this research?
+What is the conclusion of the study?
+Why makes the marmoset an appropriate animal model for pathogen research?
+How can the efficacy of daas be diminished?
+Was is the response rate of the hepatitis c virus to direct-acting antiviral treatments?
+How do nonnucleoside ns5b polymerase inhibitors work?
+How many patients were studied?
+Was written consent obtained?
+How much of the rna template was in the reverse transcription reaction mixture?
+How many rass to ns5a inhibitors were identified?
+Why is the substitution e62d important in drug resistance?
+What are the key factors preventing the elimination of hcv infection in some patients?
+What is needed to direct genetic mutations in rna viruses?
+What is the structure of the pestivirus?
+What sequences are critical for the autonomous replication of the pestivirus genome?
+What are the 4 structural proteins of the pestivirus polyprotein?
+The bac differed from the parental cdna sequence by what amino acid substitutions?
+What is the purpose of this research study?
+Why are ssis important to the overall burden on the healthcare system?
+What is the "never event" policy?
+Patients from how many medical centers were studied?
+Which patients were excluded from the study?
+What are the limitations of a deterministic model?
+How does pedv spread?
+How does pedv cause illness?
+What is the size of the pedv genome?
+Which viruses are part of the old world complex of arenaviridae?
+How can old world and new world arenaviruses be differentiated?
+What is the incubation period for arenavirus?
+What is the structure of the arenavirus?
+What proteins does the arenavirus produce?
+What diagnostic test has been show to have excellent sensitivity in detecting viral infections?
+What is the effect of oseltamivir and zanamivir?
+What is glycyrrhizin?
+What is the effect of glycyrrhizin in viral infections?
+What is another word for hypercytokinaemia?
+What has been correlated with the pathogenicity of the h5n1 infection?
+What is the conclusion of the study?
+What is the mean duration of time from single lobe consolidation to bilateral multilobar lung infiltrates in human adenovirus type 55 (hadv-55)?
+What is the mean duration of time from first positive chest x-ray to bilateral multilobar lung infiltrates in human adenovirus type 55 (hadv-55)?
+What are the most frequent clinical manifestations of human adenovirus type 55 (hadv-55) induced ards?
+What do we know about the genomics of human adenovirus type 55 (hadv-55)?
+What are the clinical symptoms of human adenovirus type 55 (hadv-55)?
+What is the mean time from onset of symptoms to dyspnea in human adenovirus type 55 (hadv-55)?
+What is the mean time of onset of symptoms to icu admission in human adenovirus type 55 (hadv-55)?
+What is the mean rate of respiration upon admission to the icu when admitted for human adenovirus type 55 (hadv-55)?
+What is the white blood cell count in severe cases of human adenovirus type 55 (hadv-55)?
+What does a chest x-ray look like for a patient with a severe case of human adenovirus type 55 (hadv-55)?
+What are the high resolution pulmonary ct scan findings for patients with severe cases of human adenovirus type 55 (hadv-55)?
+Where could a clinician acquire a positive viral sample in severe cases of human adenovirus type 55 (hadv-55)?
+How long did it take for patients with positive human adenovirus type 55 (hadv-55) endotracheal aspirates to develop a measurable viremia?
+Does blood type play a role in the severity of human adenovirus type 55 (hadv-55) infection?
+What are the most common clinical manifestations of severe human adenovirus type 55 (hadv-55) induced ards?
+What is the mortality rate of severe ards from human adenovirus type 55 (hadv-55)?
+What role does t-cell count play in severe human adenovirus type 55 (hadv-55) infection?
+How successful are the use of invasive mechanical ventilation (imv) and non-invasive positive pressure ventilation (nppv) in the treatment of severe ards from human adenovirus type 55 infection?
+How many patients were analyzed in the study?
+How many patients with community-acquired pneumonia are hospitalized each year?
+What chest x-ray findings are typically indicative of community-acquired pneumonia?
+When did who declare a pandemic of ph1n1/2009v influenza?
+What is the classical cutoff value for antibody titers?
+What is meant by a protective hia titer?
+What are the results of the study?
+What was the interpretation for the crossreactive antibodies?
+How long did the ph1n1/2009 viral outbreak last?
+What were the aims of this study?
+What network of physicians provides real-time clinical data on the spread of influenza in france?
+What are the criteria used to define an influenza-like illness in france?
+What virus was the most common among the h1n1v negative patients?
+What was the aim of this study?
+Where is the bearded vulture (gypaetus barbatus) commonly found?
+What was the focus of this study?
+What is the third most prevalent cancer in females in the united states?
+What is the 1-year survival rate for colorectal cancer patients?
+What is the 5-year survival rate for colorectal cancer patients?
+How were nuclear morphological changes in ht-29 cells measured?
+What is directly related to nuclear condensation?
+What morphological cell changes are most associated with apoptosis?
+What types of cells are suitable for colon cancer studies?
+What was the goal of this study?
+What is the conclusion of this study?
+What was the conclusion of this study?
+What are the implications of the novel fermentation-based glycosylation strategy described in this study?
+What characteristics does glycosylation have on flavonoids?
+What is fibrinogen-like protein 2 (fgi2)?
+What represses murine hepatitis virus strain 3 (mhv-3) infection?
+What was the goal of this study?
+What is fulminant hepatitis?
+How does prothrombinase fgl2 affect the coagulation process?
+How long after mhv-3 infection were liver samples taken?
+What is the relationship between urbanization and risk of emergence of flu-like diseases?
+What factors and characteristics of semi-urban landscapes promote viral transmission?
+What is the relationship between hin1 viral transmission and poultry production?
+What is the principle behind infection convergence model ?
+What is the boosted regression tree method?
+What is the advantage of boosted regression tree method?
+What is the relationship between land use and emergence of hpai h5n1?
+Where is the highest risk of hpai h5n1 like disease emergence?
+How does land use fragmentation increase the risk of flu-like diseases?
+What is the relationship between the outbreak of hpai h5n1 like diseases and rice cultivation?
+What is the relationship between aquaculture and spread of h5n1 like diseases?
+What is the relationship between proximity ofwater bodies to agricultural lands and spread of h5n1 like diseases?
+What is the effect of diversity of chicken flock on h5n1 disease?
+What is compound topological index and how is it related to the risk of disease transmission?
+In vitro comparison of antiviral activity of chloroquine(cq) and hydroxychloroquine(hcq) against covid-19?
+What will be the drug of choice for treating covid-19 between chloroquine and remdesivir?
+Mechanism of action of chloroquine(cq) and hydroxychloroquine(hcq) against covid-19?
+What is the effect of chloroquine(cq) and hydroxychloroquine(hcq) on endosomal maturation and endocytosis in covid-19 treatment?
+Evidence of hydroxychloroquine(hcq) being anti inflammatory in sars-cov-2 critically ill patients with elevated plasma cytokines?
+What proportion of healthcare workers reported symptoms of depression?
+What proportion of healthcare workers reported symptoms of anxiety?
+What proportion of healthcare workers reported symptoms of insomnia?
+What proportion reported distress?
+What were the generalized anxiety disorder scale scores?
+What were the insomnia severity index scores ?
+What were the impact of event scale-revised scores?
+What were the results of analysis?
+What were the results of analysis?
+What are the conclusions of this study?
+What are microtubule severing enzymes?
+What genetic mutation is associated with hereditary spastic paraplegia?
+What genetic mutation is associated with cerebral malformations?
+What genetic mutation is associated with autism?
+What is katnal1?
+What organ is most associated with the katnal1 gene?
+What cns functions can be measured by studying the movement of mice in a t-maze?
+What cns functions are changed by mutations in the katnal1 gene?
+How is japanese encephalitis transmitted?
+What element is essential to promoting jev infection?
+Where is q130 located in the ns4b protein?
+What is the mechanism of action for manidipine?
+How many different pathogens are members of the flaviviridae family of virus?
+What is the size of a flavivirus?
+How many open reading frames are in the flavivirus genome?
+What are the structural protein elements of a flavivirus?
+What is the function of the nonstructural protein elements of the flavivirus?
+What are rvps?
+What is hts?
+What is the selective index in high throughput screening?
+What is the structure of a recombiant viral particle?
+What measure is used in high-throughput screening to identify potential antiviral compounds?
+How many known species of rotavirus exist?
+Is rotavirus single or double-stranded?
+What structural proteins are coded by rotavirus?
+What non-structural proteins are coded by rotavirus?
+What is qrt-pcr?
+What is required to establish a secondary immune response to a viral infection?
+What do immunoglobulin isotype recombination and somatic hyper mutation depend on?
+What was used to quantify the amount of igm secreting cells?
+Where was the coronavirus discovered?
+What is the number of confirmed cases reached on 8 february 2020?
+What is presented in this study?
+What is the proposed model?
+When is ssa generally employed?
+What is the main idea behind the proposed model?
+What is the proposed model called?
+How is fpassa-anfis model evaluated?
+What did the comparison of the fpassa-anfis model with several existing models, show?
+How was the proposed model tested?
+What were the outcomes of the test?
+What are the large family of viruses, called coronaviruses?
+Among whom are the coronaviruses distributed?
+In what the adaptive neuro-fuzzy inference system (anfis) [22] is widely applied?
+What does anfis offer?
+In which applications has it been applied?
+What is si?
+What is pso?
+What is sca?
+What is mvo?
+For what sca algorithm was applied to improve the anfis model ?
+What may be a problem with individual si algorithm?
+What is owa?
+What is proposed in the current study?
+What is the fpa optimization algorithm inspired by?
+What is the ssa optimization algorithm inspired by?
+What is the proposed fpassa method?
+How does the proposed fpassa start?
+What do the authors propose?
+What is vacuolar-type h(+)-atpase (v-atpase)?
+What is archazolid?
+How many complexes are within v-atpase?
+What is the role of v-atpase in the plasma membrane of osteoclasts and renal epithelial cells?
+What does angiogenesis depend on?
+How were untreated mda-mb-231 cells labeled?
+What was the goal of the study?
+What was the reported infection rate for influenza?
+How many times more likely was an infection found in patients over 85 years old?
+What can be the main challenges in managing a hospital outbreak of covid-19?
+Why early identification of covid-19 patients can be difficult?
+What are the steps that a hospital should take after covid-19 outbreak?
+Why exposure risk of covid-19 is very high for icu staff and what precautions should be taken?
+Use of sir/seir model in statistics-based predictions of coronavirus epidemic spreading?
+What virus are used by the most successful neuronal circuit tracing methods?
+In what direction does the vesicular stomatitis virus spread through the nervous system?
+What determines the whether the spread of vesicular stomatitis virus is monosynaptic or polysynaptic?
+What types of viruses can be used to study the connectivity of neuronal circuitry?
+What is carrageenan?
+What is a potential therapeutic benefit of carageenan?
+What is the optimal window for initiating treatment with carageenan and zanamivir?
+What was the mortality rate of influenza a virus subtype h7n9 (avian or bird flu)?
+How many human cases were there of influenza a virus subtype h7n9?
+How did most patients contract influenza a virus subtype h7n9?
+Can influenza a virus subtype h7n9 be transmit human to human?
+What kind of disease is caused by influenza?
+How many severe cases are there for annual influenza epidemics?
+How many deaths occur annually as a result of annual influenza epidemics?
+Is coinfection common in influenza infection?
+What percentage of people infected with influenza have a viral coinfection?
+What are common concamitant infections during the course of influenza infection?
+What is the anti-viral mechanism of action for carrageenan?
+What is the hypothetical mechanical benefit for carageenan in preventing and treating upper respiratory infections?
+What is carageenan?
+What is the recovery benefit of carageenan in patients with any respiratory virus?
+What is the anti-influenza benefit of carageenan?
+What is the association between influenza viral load and carageenan?
+Is oseltamivir effective when taken intranasally?
+What is the effect of intranasal zanamivir on laboratory confirmed infleunza infection?
+Do carageenan and zanamivir delivered intranasally have a benefit when taken for influenza subtype h7n7 infection?
+Do carageenan and zanamivir delivered intranasally have a benefit when taken for influenza subtype h1n1 infection?
+Is there a dose-dependent response to carageenan and zanamavir intranasal therapy?
+Do carageenan and zanamavir together have a greater benefit than either in monotherapy?
+Did the use of carageenan play a role in pandemic's caused by novel viruses?
+How was ili defined?
+What is this assay based on?
+How was random sampling performed?
+What used to detect pathogens?
+What does the retrospective study use?
+How many swabs were randomly selected and analyzed?
+How were the swabs analyzed?
+What viruses were detected?
+What co-infections were found?
+What seasonal differences were found?
+What does the study highlight?
+What does the study show?
+Which are identified as major viruses mostly responsible for ili and pneumonia in several studies?
+What percentage of these infections are identified?
+What is reunion island?
+What is the number of inhabitants of reunion island?
+Where is reunion island located?
+What is the island's health care system similar to?
+When does influenza activity increase?
+When does the influenza vaccination campaign in reunion island start?
+What is the clinical and biological influenza surveillance has been based on?
+What is this network composed of?
+How are the influenza tests carried out?
+What do 40-50% of the samples test positive for?
+What are the ili samples wich test negative for influence?
+What tool has been developed to identify several viruses simultaneously?
+What are the objectives of the study?
+On which system the reverse transcription and preamplification steps were performed?
+Which two seasons were identified for trends in virus circulation?
+Which were the most frequently identified respiratory pathogens?
+What were detected only in summer?
+What viruses were identified only in winter?
+Respiratory viral pathogens were present in what percentage of samples?
+What did the study highlight?
+How many swabs remained without etiology?
+What hypotheses can explain this result?
+What could not be tested for?
+What does this study highlight?
+What does the study show?
+What would be interesting to do?
+What is it most similar to?
+How many people were affected as of feb 10, 2020?
+How is the sars-cov-2 referred to?
+How much similarity the sars-cov-2 genome sequence has with sars-cov?
+What similarity human sars-cov and palm civet sarslike cov share?
+How much is the difference between the human sars-cov-2 and the bat ratg13-cov?
+Why is it highly unlikely that ratg13 cov is the immediate source of sars-cov-2?
+What are the most revealing signs that sars-cov-2 evolved by natural evolution?
+What did the nature medicine paper report?
+Why does the claim lack any scientific basis?
+How was the mouse-adapted sars virus (ma15) generated?
+How did the sars-cov gain elevated replication and lung pathogenesis in aged mice ?
+Why is it likely that ma15 is highly attenuated to replicate in human cells?
+Why were civets proposed to be an intermediate host of the bat-covs, capable of spreading sars cov to humans?
+What was the finding in 2013?
+Why is it proposed that some bat sl-covs may be able to directly infect human hosts?
+What was done to test if an intermediate host may not be necessary and that some bat sl-covs may be able to directly infect human hosts t?
+What were the results of this test?
+Why were experiments with sl-shc014-ma15 chimeric virus were later restricted?
+Why is there no credible evidence to support the claim that the sars-cov-2 is derived from the chimeric sl-shc014-ma15 virus?
+What did the rumour that the virus was made by humans in the lab, claim?
+What was reported in a rebuttal paper led by an hiv-1 virologist dr feng gao?
+What happened to the report with initial claims?
+What is the difference between evolution and synthetic constructs?
+What is the conclusion of this report?
+What is the conclusion of this report?
+What is the clinical manifestation similar to?
+What was the purpose of the research?
+What preventative measure has been taken to decrease the incidence of diarrhea in children?
+What led to a great increase in their study among virologists worldwide?
+How many hantaviral genotypes have been described?
+How many of them are pathogenic for humans?
+What do hantaviruses cause in their reservoir hosts?
+What does hantavirus human disease manifest as?
+What is the case-fatality ratios, for the most common viral serotypes?
+What are among the factors that may have increased the human caseload of hcps between 1993 and the present?
+What do authors consider in this study?
+What do authors consider in this study?
+Which diseases are a major concern among scientists studying infectious diseases?
+What may alter population disease dynamics and lead to the emergence of zoonotic infections?
+Which are among the conspicuous examples which challenge prevention and control measures of public health systems?
+More recently, what did outbreaks of several viral-related diseases that have emerged or re-emerged, involve?
+What did, in the last century, outbreaks of viral-related diseases that have emerged or re-emerged, involve?
+Among zoonotic diseases, what are hosts of several pathogenic rna viruses?
+Which pathogenic rna viruses are hosted by small mammals?
+When did hantavirus infections became a concern in the americas?
+What was the hantavirus cardiopulmonary syndrome, hcps (or hantavirus pulmonary syndrome), linked to?
+What was identified as the reservoir of snv?
+What did a review of ancient chinese writings in 960 ad, reveal?
+How was hfrs first brought to the attention of western medicine ?
+What is htnv?
+Where was htnv isolated from?
+Which new genus was the virus later found to represent?
+Which was the first hantavirus to be isolated?
+What is the categorization of hantaviruses as belonging to the family bunyaviridae due in part to?
+What was the hairpin morphology first described for?
+How is the the precursor form gpc processed, during virus maturation?
+When does the cleavage appear to be signaled?
+Why must the two proteins gn and gc be co-expressed?
+Which two distinct cellular receptors the glycoproteins are the known or presumed ligands for?
+What is the underlying premise for many of these studies?
+What is the premise for apathogenic forms to blunt any pathological response in the host?
+Which proteins and mrnas prominently induced by hantaviruses include?
+What have hantaviruses been identified as adversely affect?
+What have hantaviruses been identified in potentiating?
+What is n-protein?
+What does the n-protein, as an rna-binding protein, do?
+As an rna-binding protein that engages the hairpin termini of the genomic segments, what does the n-protein of hantavirus do?
+As an rna-binding protein that engages the hairpin termini of the genomic segments, what does the n-protein of hantavirus do?
+What does the n-protein act as?
+What can some of the other activities of n have, be linked to?
+What can some of the other activities of n have, be linked to?
+What is n also reported to interact with?
+How do the viral rnas become concentrated in p bodies during hantavirus infection?
+What have confocal microscopy and biochemical-inhibitor studies shown?
+What have confocal microscopy and biochemical-inhibitor studies shown on what n tracks?
+What is the ultimate destination for n, for its assembly into viral particles?
+How does it traffic?
+What is a dominant negative inhibitor?
+What is dynamitin associated with?
+What is dynamitin associated with?
+What does recent data indicate?
+Why have hantavirus diseases of man been suspected of having an immunopathogenic basis?
+What is a critical feature of both?
+What is the character of he resulting leakage?
+Which is an especially attractive candidate as an important in vivo receptor for hantaviruses?
+What is the likely way that hantaviruses arrive at their target tissues?
+What does the virus seed?
+What happens with the viral seeding at the local endothelium?
+How long does the process of giving rise to primary viremia for hantavirus infections?
+What happens by the time that secondary viremia emerges?
+How is the the expression of proinflammatory cytokines induced?
+For hcps, what does that expression favor?
+For hcps, what does that expression spare?
+What happens for hfrs?
+What is considered to be a requirement for the development of systemic disease symptoms?
+What do those abnormalities sometimes culminate in?
+What leads to death in most fatal cases of hcps?
+What leads to death in most fatal cases of hcps?
+What potential mechanism, could be presumed to underlie the pathogenesis of hcps?
+What potential mechanism, could be presumed to underlie the pathogenesis of hcps?
+What potential mechanism, could be presumed to underlie the pathogenesis of hcps?
+What explanation have some investigators favored for much of the capillary leak?
+What animal models exist for both the asymptomatic carriage of puuv and snv?
+For what can the syrian hamster model used?
+What does the hamster model for hcps caused by?
+Typically how long do the hamsters die post-inoculation?
+What does the microscopic examination of the lung reveal, as with human hcps?
+What do andv-infected hamsters fitted with physiologic monitoring devices exhibit?
+What do diminished pulse pressures, tachycardia, and hypotension in andv infected hamsters appear to closely mimic?
+Compared to humans, what do andv infected hamsters exhibit?
+With what have three studies correlated plasma viral rna?
+What are examples of delivery vectors for commercial anti-salmonella vaccines?
+What can be a factor in using common vectors for the delivery of vaccines?
+Is a pre-existing immune response to commonly used delivery vector an advantage or a disadvantage?
+What bacterial delivery vectors have been tested in animal hosts?
+Which bacteial delivery vectors have gained favor for vaccines?
+Why are e coli and lactic acid are safe choices as delivery vectors for vaccines?
+What is listeria?
+What is the advantage of listeria as a delivery vector for vaccines?
+What are examples of viral vectors for delivering vaccines?
+Which viral vaccine delivery vector was first licensed?
+What are examples of attenuated poxvirus vaccine delivery vectors?
+What is the connection between chicken and salmonella?
+Why are some poxvirus ideally suited as vaccine delivery vectors?
+What is the advantage of adenovirus as vaccine delivery vector?
+What are important criteria for selecting vaccine delivery vectors?
+What are important criteria for selecting vaccine delivery vectors?
+What are important criteria for selecting vaccine delivery vectors?
+What happens when a recipient of a vaccine has immune response to the delivery vector?
+What is the effect of host immune response to the delivery vector on the efficacy of vaccination?
+What is the effect of host immune response to the delivery vector on the efficacy of vaccination?
+What is an example of the effect of immunity to the delivery vector on the efficacy of vaccination?
+What is the effect of host immune response to viral delivery vectors in the efficacy of vaccination?
+What is the effect of host immune response to the viral delivery vector on the efficacy of vaccination?
+What is the effect of host immune response to the delivery vector on the efficacy of vaccination?
+What are methods to avoid the effect vector immunity on the efficacy of vaccination?
+What are methods to avoid the effect of vector immune response on the efficacy of vaccination?
+How does cell-mediated immunity to viral delivery vector, reduce the immune response to vaccine?
+How can vectors for which host has immunity, be used differently to increase the efficacy of vaccination?
+How does the ped virus transmit between animals?
+How can bacilius subtilis be used as an oral vaccine?
+What cells are infected by the ped virus?
+What kind of immune responses are most effective in preventing ped virus?
+What intestinal factors may reduce the effectiveness of orally-administered immunizations?
+What is bacillus subtilis?
+What is the role of dendritic cells in the immune response?
+Where do dendritic cells exist in the body?
+What are the components of the gut-associated lymphoid tissue?
+What type of cells form the intestinal mucosal barrier?
+What factors determine an effective mucosal immune response?
+What is an effective indicator of a vaccine's ability to generate an immune response?
+What is interleukin-1beta?
+When was the first case of covid-19 identified?
+Where did sars-cov-2 originate?
+In what year did the first sars epidemic occur?
+When was world health organization (who) first notified about the sars-cov-2 epidemic in wuhan city, china?
+When did we discover that sars-cov-2, which causes covid-19, was a novel coronavirus?
+How long did it take to identify the cause of covid-19?
+What type of test was initially developed to screen for sars-cov-2?
+How big was the temporary hospital built in wuhan city for treatment of covid-19 patients?
+How long did it take china to build the temporary hospital in wuhan for covid-19 patients?
+What is a key factor in managing emerging infectious disease threats?
+In what year did the mers epidemic occur?
+How long did it take to publish the full genomic sequence of sars-cov-2 after it was identified?
+What was the fatality rate for sars-cov?
+What was the fatality rate for mers?
+What are some challenges associated with using media and social media to capture information about an emerging epidemic?
+What are the risks of health workers failing to wash hands?
+Who is at risk when health workers fail to wash their hands?
+What was the r0 of sars in absence of control measures?
+What is superspreading?
+How many people may have left wuhan before travel restrictions were imposed?
+How many severe cases of influenza-related illnesses are reported per year?
+How many influenza-related deaths are reported each year?
+What is the mortality rate of the h5n1 strain of influenza?
+What cells are the main target of the influenza a virus in the lungs?
+How many extracellular domains are in the ceamcam1 protein?
+Where is ceacam1 expressed in the body?
+What motifs are absent in the short form of ceacam1 protein?
+What are the most common isoforms of ceacam1?
+How do ceacam1 and ceacam5 interact?
+What are the src-family of kinases?
+What triggers the release of pro-inflammatory cytokines/chemokines to assist in viral clearance?
+What mediates the anti-apoptosis of neutrophils?
+How do natural killer cells fight influenza viruses?
+How do influenza viruses escape binding by the natural killer cell activating receptors?
+What is enfuvirtide?
+What is labeled in red?
+What is marked in blue?
+What is marked in green?
+What is labeled in pink?
+How many times was the experiment repeated?
+What was the main finding in the study?
+What do the results suggest?
+What enhanced anti-hiv1 activity?
+What figure shows that ap3 exhibited higher inhibitory activities on infection by hiv-1 iiib and hiv-1 bal strains?
+What is the serum half-life of t20?
+What kind of model best describes the pharmacokinetic profiles of ap3 and ap2?
+What is the in vivo elimination half-life of ap3?
+Why did the t20/n36 complex not show a typical alpha helical conformation?
+What mutations have been typically associated with t20-resistant hiv-1 variants?
+What are main steps for mitigating the covid -19 transmission during transport of suspected and confirmed patients?
+How many deaths each year are caused by gastroenteritis?
+What percentage of sporadic diarrhea are caused by norovirus?
+What is the most common cause of viral gastroenteritis in children?
+Which types of adenovirus are associated with diarrhea?
+When was the first tissue culture system developed?
+What are the most common dna-based techniques for detecting viruses?
+What is universal primer-pcr used for in viral studies?
+What is koch's first postulate?
+What is koch's second postulate?
+What is koch's third postulate?
+If all 3 of koch's postulates are met, what does this indicate?
+Is koch's postulate applicable to enteric viruses?
+What changes do viruses make to be unrecognizable to previously neutralizing antibodies?
+What is hepatitis c?
+How large is the hcv genome?
+What are the non-structural proteins encoded by the hcv genome?
+Why has it been difficult to develop a therapy for the hepatitis c virus?
+An antibody response to which proteins correlates with reduced hcv levels?
+How are type a, b, and c viruses determined?
+Which type of influenza causes epidemics and pandemics?
+When did lions first occupy europe?
+What was the purpose of this study?
+What has been the application of phage display technology?
+What makes phage display technology useful for other applications?
+What are the advantages of phage as a vaccine carrier?
+What is the potential of phage for infectious and chronic diseases?
+What is the regularity of the virion major coat protein lattice useful for?
+Why is the phage ab excellent model system for directed protein evolution?
+What are filamentous bacteriophages genera inovirua and plectrovirus?
+What invention has made bacteriophage useful for research?
+What has the bacteriphage technology and the library of folded protein variants enabled?
+What are the potential novel applications of the filamentous phage?
+What themes are common in the applications of filamentous phage?
+What do applications of filamentous phage depend on?
+What characteristics are determined by the display mode?
+How may the display be achieved?
+What does the term "phage display" refer to?
+What does the term "phage displayed library" refer to?
+What characteristic of filamentous phage has been demonstrated?
+What application is a natural extension of the ability to display recombinant exogenous sequences on its surface?
+What makes it an attractive vaccine carrier?
+What does the display mode determine?
+Why are antibody epitope based peptide vaccines are no longer an active research area?
+What phage may be useful in allergy immunotherapy?
+Which are some phage based contraceptive vaccines for animals?
+Which are some phage based contraceptive vaccines for animals?
+What is one reason for the lack of success of immunization phage displayed peptides with native protein?
+Despite shortcomings, what has the filamentous phage has been useful for?
+What is the result of all species tests of phage particles?
+What are the results of filamentous phage immunizations in mice?
+What is the primary antibody response against the phage?
+Why is phage self-adjuvanting?
+On what does the antibody response to phage depend on?
+What do biodistribution studies of the phage after intravenous injection show?
+What are the merits of the filamentous phage carriers?
+What is a future potential of filamentous phage?
+What were more potent inhibitors of staphylococcus aureus growth than high-concentration free chloramphenicol?
+What killed prostate cancer cells in vitro?
+What was the effect of phage displaying peptides on tumor?
+Why is the phage displaying an scfv against β-amyloid fibrils is a good diagnostic for alzheimers and parkinson's disease?
+What is the structure of a filamentous phage particle?
+What makes filamentous phage ideal scaffold for bioconjugation?
+What trials have been done to demonstrate the potential of phage in applications for nanomaterials?
+What trials have been done to demonstrate the potential of phage in applications for nanomaterials?
+What is the filamentous phage varion is made of?
+What demonstrate the potential of phage in applications for nanomaterials?
+What was investigated in this study?
+What was the range of genomic sequencing depths?
+Which q-score reads were eliminated from the analysis?
+What was the mean length of the sequenced read?
+Which strain was similar to other belgian porcine kobuvirus isolates?
+What is clodstridium difficile?
+What is sporulation?
+What is the key regulator to sporulation?
+What are the main virulence factors in c difficle?
+What laboratory test can be used to monitor protein expression?
+How is venezuelan equine encephalitis virus transmitted?
+What are the symptoms of venezuelan equine encephalitis virus?
+What is the mortality rate of venezuelan equine encephalitis virus in children?
+What is the mortality rate of venezuelan equine encephalitis virus in adults?
+What vaccine can be used to prevent venezuelan equine encephalitis virus?
+What can rna sequencing be used to monitor?
+What activates the upr pathway in the cell?
+What indicators does the upr pathway use to regulate protein folding and secretion in the cell?
+Where does egr1 accumulate in the cell?
+What is egr1?
+What is disease resilience?
+What family of virus does sars reside in?
+What family of virus does mers reside in?
+When was sars-cov first identified?
+How many people did sars-cov infect?
+What percentage of people infected with mers-cov died?
+What percentage of people infected with sars-cov died?
+What was the reservoir for sars-cov and mers-cov?
+What was the primary threatening clinical finding in patients infected with sars-cov and mers-cov?
+What is the relationship between sars-cov and acute lung injury (ali)?
+What is the relationship between sars-cov and acute respiratory distress syndrome (ards)?
+What is required for a person to survive a serious sars-cov infection?
+How does cell-entry differ between sars-cov and mers-cov?
+What is a major difference in clinical progression between sars-cov and mers-cov?
+How does transmission differ between sars-cov and mers-cov?
+How do sars-cov and mers-cov evade the immune system sensing it's genome?
+What role does initial viral titer play in the prognosis of sars-cov and mers-cov?
+What is the timeline of the type i interferon (ifn) response in sars-cov infection?
+How do sars-cov viral proteins interact with the immune response?
+What was the role of corticosteroid use in hospitalized patients with sars-cov?
+What is the role of interferon's (ifns) in the treatment of sars-cov?
+What are some negative effects of decreasing immunopathology by immunomodulation?
+What is the role of topoisomerase i in improving host resilience in viral lung infections?
+What is the role of complement 5a (c5a) in increasing host resilience to viral lung infection?
+What is the role of statins in increasing host resilience to viral lung infections?
+Which medical comorbidities most profoundly influenced mers-cov outcomes?
+Which immune factors were associated with increased sars-cov morbidity and mortality?
+What is the prognostic role of coinfection in sars-cov and mers-cov infections?
+Can host resilience be predicted?
+Can biomarkers be used to predict outcomes in acute respiratory distress (ards) patients?
+What work has been carried out this study?
+How many confirmed cases were identified in february 2020?
+What was the case fatality rate?
+Who are the majority of cases?
+What are the symptoms at the onset?
+What type of virus is 2019-ncov?
+What clade does it belong to?
+What other betacoronaviruses are zoonotic in origin?
+How does the pathogenicity of 2019-ncov compare with other viruses?
+How does the transmissibility of 2019-ncov compare with other viruses?
+Which electronic databases were used for this study?
+What was the purpose of the search?
+What topics were searched for?
+What studies were excluded?
+What did the searches yield?
+What is the the primary means for diagnosing the new virus strain?
+What are roles of the period and type of specimens?
+What are some of the other diagnostic methods?
+How does rt-lamp compare with other methods?
+How do rt-iipcr and a one-step rrt-pcr compare with other methods?
+Why is rt-pcr not the best method sometimes?
+What did the comparison between the molecular test and serological test show?
+What enhancements to the molecular tests were looked at?
+What is the threshold sensitivity of real time pcr?
+How is the reproducibility of real time pcr?
+What are potential vaccines based on?
+Which kit is currently used in china?
+Why were only four studies included?
+Which four studies were included?
+What is te safety of the vaccines?
+What was the performance of the vaccine candidates?
+How many clinical trials are registered?
+What is the status of the nine trials?
+What are the results on seroconversion?
+What were the results on antibodies?
+What were the t-cell responses?
+What were the differences in immune responses?
+What is the observed benefit of the molecules?
+What is the ongoing randomized trial investigating?
+What are the many prospective and restrospective studies conducted on?
+What was the result of the phase 1 trial of igg immunoglobin?
+What role rapid diagnostics plays?
+What other measures rapid diagnostics facilitates?
+What are ways to perform laboratory diagnostics?
+What are key limtations of genetic detection?
+What is a key limitation of serological testing?
+What is the limitation in virus testing?
+What was the result of the treatment?
+What superiority did the treatment with integrative chinese and western medicine treatment have compared with using control treatment alone?
+What was a characteristic of sars-cov and mers-cov, specimens collected from the lower respiratory tract such as sputum and tracheal aspirates?
+How do severe cases compare with mild cases?
+What is the disadvantage of upper respiratory tract specimens?
+What are the existing practices in detecting genetic material of viruses?
+Why are nucleic amplification tests (naat) usually preferred as in the case of mers-cov diagnosis?
+Where was the first validated diagnostic test designed?
+How were the assays selected ?
+How were the assays used?
+What were the results?
+What did the trial on sab-301 demonstrate?
+What conditions are caused by staphylococcus aureus?
+What percentage of healthy adults are asymptotically colonized by pneumococcus bacteria?
+What types of cells follow epithelial cells in the immune response to infections in the lung?
+What enhances the expression of type i interferon?
+What reduces the antimicrobial activities of alveolar macrophages?
+What is pneumolysin?
+What factors make bacterial and viral co-infections so lethal?
+What are inovirus-associated vectors?
+How can random peptide libraries be used in applications?
+Which lactobacililus casei strain does not have the cholera toxin subunit a1 (cta1) on the surface?
+What is the most effective treatment against influenza?
+What is the percentage decrease in influenza antibodies after 8 months after inoculation with the inactivated vaccine?
+Why is matrix protein 2 (m2) an attractive target for a universal influenza vaccine?
+Why have m2-based vaccines been ineffective?
+Why are lactic acid bacteria considered an attractive delivery system for a live influenza vaccine?
+What primer pairs were used for pcr?
+What is considered essential to boost the interaction of the influenza vaccine with the mucosal immune system?
+Name some adjuvants that have been used with an influenza vaccine?
+What was found in the lungs of the control mice in this study?
+What did this study show?
+What regulates the secretion of proinflammatory cytokines?
+Where does the nlrp3 inflammasome activate after a sars-cov infection?
+What ion channel is essential for 3a-mediated il-1beta secretion?
+What are viroporins?
+What is the genus of the sars coronavirus?
+What is the family of the sars coronavirus?
+Is the sars coronavirus enveloped?
+Is the sars coronavirus single-stranded or double-stranded?
+How many laboratory-confirmed cases of sars coronavirus infections were reported between november 2002 and july 2003?
+What was the fatality rate of the sars coronavirus outbreak between november 2002 and july 2003?
+What are examples of proinflammatory cytokines?
+How does nlrp3 detect rna viral infection?
+How many amino acids are in the sars-cov e protein?
+What type of ion channels are formed by the sars-cov e protein?
+What does the sars-cov protein activate?
+What is critical to the development of a protective granuloma in tuberculosis infections?
+What is tumor necrosis factor-alpha?
+What regulates the activity of mapk activity?
+What causes tuberculosis?
+What percentage of the world has been infected by tuberculosis?
+How many new tuberculosis cases are there each year worldwide?
+What are some mitogen activated protein kinases?
+How is mapk activated?
+What enzymes are involved with phosphorylation?
+How many mapk phosphatases exist?
+What is lipopolysaccharide?
+What is staph aureus?
+What protein is in the critical path of immunity and cytokine expression?
+What diminishes the effectiveness of annual influenza vaccinations?
+What new type of influenza vaccines are needed?
+What alternatives to classical vectored vaccines are needed?
+What is the advantage of virus vectored vaccine?
+What is the advantage of virus vectored vaccines?
+What is one of the issues with present vaccines?
+What general types of vaccines are available?
+What inactivated vaccines are available?
+How is the split virus inactivated?
+How is the tiv administered?
+What does the tiv contain?
+How is the tiv efficacy measured?
+Which is the major surface and attachment glycoprotein on influenza virus?
+How is the serum antibody response measured?
+What is a gold standard for correlation with immunity to influenza?
+What is the indication for protection to influenza?
+What gives protection against clinical disease?
+What can give protection against clinical disease?
+How is the laiv administered?
+What does the laiv contain?
+Do laiv replicate at body temperature?
+What is a characteristic of laiv?
+Where do the laiv replicate?
+What does laiv immunization do?
+What do the inactivated vaccines rely on?
+What enables virus invasion from immunity?
+When does the vaccine strain selection occur in the northern hemisphere?
+What is the efficacy of laiv?
+What does laiv rely on?
+What is the laiv replacement schedule?
+Why laiv may provide broader broader protection than tiv?
+What has raised the possibility of universal influenza vaccine?
+What is the advantage of recombinant dna systems?
+What is the advantage of recombinant dna system?
+What is the advantage of recombinant dna systems?
+What is the issue with each of these vaccines?
+What is a concern with these vaccines?
+How many serotypes of adenovirus are there?
+Why adenovirus may be the safest vaccine vector?
+Which is the most studied serotype?
+Why is ad5 is the most studied serotype?
+Why are adenovirus vectors most attractive?
+What is the advantage of the adenovirus ?
+What is the advantage of adenovirus vector?
+What is the advantage of adenovirus?
+What is the advantage of adenovirus vaccines?
+What is the advantage of oral capsule and intranasal deliveries?
+What did the first report on adenovirus as a vector demonstrate?
+Which rad5 delivery has been tested?
+What was the result of the rad5-ha testing?
+What is the result of rad5 trials?
+What is an example of failure of rad5?
+What was the failure of rad5 vaccine for inducing hiv-1 specific t cell response?
+What does immunization with adenovirus induce?
+What is the advantage of inclusion of non-ha antigens to ha based vaccines?
+What is the disadvantage of inclusion of non-ha antigens to ha based vaccines?
+What was the first reported baculovirus vector based vaccine for influenza?
+What is a drawback of ad5 vector?
+What alternatives to ad5 vector have been explored?
+What animal adenoviruses have been shown to induce immunity comparable to rda5-ha?
+What can evade anti-ad5 response and also provide effective antigen delivery and immunogenicity?
+What additional strategies have been explored to avoid preexisting immunity?
+What is the advantage of aav vector?
+What is the advantage of the aav vector?
+What is the advantage of aav vector?
+What is the advantage of aav vector?
+Has aav been studied as vectors for influenza?
+What are alphaviruses?
+What are some alphavirus vectors that have been developed?
+How do the alphavirus vectors work?
+How do the alphavirus vectors work?
+What is an important feature of the replicon system?
+How did the vee based replicon system incorporating ha from pr8perform?
+Why is the vee replicon system particularly appealing?
+What is the advantage of the vee replicon system?
+What were the vrps derived from vee developed for?
+What did the clinical trial with cmv vrp show?
+What did the clinical trial with vrp show?
+Which baculovirus vaccine has been approved for human use?
+What is the advantage of baculoviruses?
+What is the advantage of baculovirus vectors?
+How can baculovirus vectors be improved?
+What baculovirus vector based immunization provided protection from lethal challenge?
+What was the benefit of the robust innate immune response to baculovirus vector?
+What is the newcastle disease virus?
+What are the appealing qualities of the ndv vector?
+What is the appealing quality of the ndv vector?
+What is the appealing quality of the ndv vector?
+What did the first report on the ndv vector test conclude?
+What is the added protection of ndv vector?
+What have the limited ndv human trails shown?
+What are the attractive features of the piv5 vector?
+What was the result of the test of efficacy of piv5 in murine challenge?
+What opportunity has the termination of smallpox vaccination provided?
+What vaccinia vectors were created to address safety concerns?
+How safe is mva?
+What is the status of mva influenza vaccine?
+What is nyvac?
+How is nyvac grown?
+How safe is nyvac?
+What would limit the use of poxvirus vectored vaccines?
+What is the advantage of the nyvac as an influenza virus?
+Where is poxvirus vaccine being used?
+What have the studies on np shown for the protection against influenza challege?
+What is the goal of vaccine?
+What has enabled the development of one size fits all vaccine?
+Why is a revision of current vaccines is needed?
+What is an example of an improved vaccine regime?
+What can provide an improved vaccine regime?
+What features can be created for creating vectored vaccines?
+How can sustained immunity be generated?
+What is the advantage of vectored vaccines?
+What is the enhanced memory immune response linked to?
+What cellular process is the tat protein essential to?
+Where does the tat protein move to in cells?
+What is a nucleolus?
+Where are rrna and ribosomes created?
+How many proteins were shown to change the amount of jurkat t-cell nucleolus significantly?
+What cellular processes occur in the nucleolus?
+Which viruses target the nucleolus as part of their replication strategy?
+What nucleolar antigen is essential of localization of tat and rev proteins?
+What was studied in this report?
+What was studied in this report?
+Which isotope labeled arginine?
+Which isotope labeled lysine?
+How many cells were harvested from each culture?
+How long is the nuclear protein parp-1?
+How long is the protein alpha-tubulin?
+Where was alpha-tubulin found most abundantly in the cell?
+Where was alpha-tubulin found least abundantly in the cell?
+What is shown in table s1?
+What types of cells are used to study tat-mediated pathogenesis?
+How many proteins displayed a significant fold change?
+What is the significance of this study?
+How are mammarenaviruses spread from rodents to humans?
+What are the main groups for mammarenaviruses?
+What is the cause of lassa fever?
+What type of vaccine is junv, candid#1?
+Why was the human a549 cell line chosen for this study?
+For how long were the cells infected before analysis?
+What drug is used to treat congestive heart failure?
+What does ouabain inhibit?
+What method can significantly alleviate the emergence of drug-resistant variants in rna viral infections?
+What factors did this study attribute to the efficient multiplication of mammarenaviruses?
+How do the authors suggest that atp1a1 and phb contribute to the efficient multiplication of mammarenaviruses?
+Which are the most abundant biological entities on earth?
+What contributed to a large part of mammalian genomic sequence?
+What were the earliest replicating entities that fulfill several criteria for life?
+What are some examples of autonomous bacteria that lost their independence and became intracellular parasites or endosymbionts?
+What entities with no genes satisfy the criteria for life?
+Which group of rna quasispecies satisfy criteria for life?
+How are the ribozymes able to replicate, join and create peptide bonds?
+Does rna replication need polymerase enzymes?
+How can dna arise chemically from rna?
+What do ribozymes consist of?
+What do ribozymes lack?
+What do ribozymes exhibit?
+What is chikv marked by?
+What does chikungunya cause?
+What is chikungunya virus?
+Is there a treatment?
+What conclusion is drawn in this report?
+What is chikungunya virus?
+What is chikv?
+How is chikv propagated to humans?
+From what language the disease gets its name?
+What is the word chikungunya mean?
+What does chikungunya mean in swahili?
+How is chikv maintained in africa?
+What is it vectored by, in asia?
+How does the transmission in asia occur?
+What spurred the discovery of the new vector ae albopictus?
+In the epidemic peak how many cases per week were there on the island?
+What does this review detail?
+What dose this review describe?
+How many genotypes of chikv have been isilated?
+What are the genotypes based on?
+Hen did asian genotype emerge?
+When didthe asian genotype diverge from african genotype?
+What is the status of asian chikv since its emergence?
+What are the recent activities of chikv?
+How was the italian isolation found to have evolved from?
+How many days is the incubation period?
+In how many days do the symptoms arise?
+What are exhibited in the two phases?
+What are consequences of infection?
+What percentage of the patients still have the chikv igm after eighteen months?
+What is te chronic stage characterized by?
+What is affected by chikv?
+What explains the pain associated with chikv?
+What percentage of people suffering from the chikf are over 65 years old?
+What percentage die?
+What other group is disproportionately affected?
+What complications are associated with chikv?
+What happens after host infection?
+What did the ae aegypti which is responsible for epidemics in kenya, comoros and seychelles carry?
+What was the result of the decline in population of ae aegyptus when the virus struck the reunion islands, due to massive use dichlorodiphenyltrichloroethane usage?
+What did this mutation allow?
+What vectored the large epidemic in la reunion islands?
+What percentage of population was affected?
+Where were the chikv strain found?
+What is the finding on e1-a226v in indian ocean?
+What has the e1-a226v enabled?
+What has become the preferred and lethal vector?
+What was the finding on the green fluorescent tagged e1-a226v?
+What became the main vector in the indian ocean within 1-2 y after chikv was introduced?
+How long ae aegypti been established in north america?
+What is the presence of ae albopictus in north america?
+What percentage of newborns were infected from their mother?
+What has been some instances of mother to fetus transmission?
+What did the studies reveal regarding transmission from mothers during perinatal period?
+What is theorized regarding transmission?
+What did the study report?
+What is a conclusion of this report?
+What is a conclusion of this report?
+What is the niaid designation of chikv?
+What are the strengths and advantages of dna based vaccine?
+How many facilities were monitored in this study?
+What percentage of facilities believed they were adequately equipped to handle ebola virus disease?
+How many facilities believed they were adequately equipped to handle ebla virus disease?
+How many healthcare workers would be willing to continue working during the ebola virus outbreak?
+What does the study suggest would make healthcare workers more willing to care for patients during an ebola virus outbreak?
+What causes avian infectious bronchitis?
+What differentiated the two chicken lines used in this study?
+Which organ was used for the rna sequencing samples?
+What is needed to elucidate zoonotic emergence?
+What is the conclusion of this report?
+Why have bats received attention in recent years?
+What difference bats demonstrate compared to most non-chiropteran mammals?
+What suite of species-specific mechanisms do bats have to limit viral load?
+How are mammalian cells typically rendered antiviral?
+In non-flying mammals, what what would be elicited by ifn expression upon viral infection?
+What do the bats do instead?
+Why may the bats have this unique adaptation?
+Why was the field of virus dynamics developed?
+How are bats connected to fatal viral diseases?
+What is an example of anti-viral defense in bats?
+What would be caused by this hyper-vigilance in most other mammals?
+How are bats different?
+What bat species cells were compared?
+What was the conclusion of the study ?
+What would be the benefit of learning more about bat's defenses and how they drive virus evolution?
+Which cells are ifn-defective and therefore limited in antiviral capacity?
+What cells demonstrate idiosyncratic interferon response?
+Which cells express constitutive ifn-a?
+How were the spread of gfp-expressing virus-infected cells across tissue monolayers tracked via inverted fluorescence microscopy?
+How were the spread of gfp-expressing virus-infected cells tracked?
+How was the modeling carried out?
+What was the finding in this study?
+What supports the results?
+What was additionally demonstrated?
+What do the studies suggest?
+What was the methodology for this study?
+What was demonstrated in deriving the equation for r 0?
+What is a conclusion of the modeling?
+What is a conclusion of the study?
+What do fits to rvsv-marv infections on pakit01 cells suggest?
+What do the findings indicate?
+What is presented in this study?
+What is a conclusion of this study?
+What age group has the highest rate of severe outcomes?
+How is covid-19 spread?
+How many states in the u s have reported cases of covid-19?
+When did the white house launch the "15 days to slow the spread" program?
+What should mildly-ill patients do?
+What type of virus is sars-cov-2?
+What viruses are similar to the covid-19 coronavirus?
+What are the phases of a pandemic?
+At which phase does the peak of the pandemic occur?
+People with which medical conditions have a higher rate of severe illness?
+What kind of test can diagnose covid-19?
+In what species did the covid-19 virus likely originate?
+What risk factors should be considered in addition to clinical symptoms?
+What is the acronym sars-cov-2?
+When was sars-cov-2 first identified?
+Where was sars-cov-2 first identified?
+What factor positively correlates with imported-and-reported cases counts of sars-cov-2 infection?
+What is the doubling time of the covid-19 pandemic?
+When did the first known cases of middle east respiratory syndrome (mers) occur?
+Where did the first known cases of middle east respiratory syndrome (mers) occur?
+Where was the the case first to be publicly reported was from ?
+In what animals mers-cov sequences have been found ?
+Where is mers-cov is enzootic in dc?
+What does mers-cov cause?
+Precisely how does the virus transmit to humans?
+What appears to be a requirement for transmission?
+What is a focal point of mers?
+What is mers mostly known as?
+What does the mers lrt disease involve?
+Where else mers-cov has also been detected?
+Who suffers severe diseases from mers?
+Compared to severe acute respiratory syndrome (sars) and another sometimes- fatal zoonotic coronavirus disease, how does mers affect the patients?
+To what have most human cases of mers been linked?
+Among whom 20% of the virus detection are reported?
+What have sero-surveys of mers virus found?
+How was the first culture of the new coronavirus announced?
+Where was the email published?
+When was the email published?
+Whose was the first reported case?
+How many viral rna or virus-specific antibodies been detected?
+What is the death rate from mers-cov?
+What did the discovery process over two to three years reveal?
+What does subsequent transmission of mers-cov to other humans require?
+What would restrict access to both the virus and to viral diagnostics ?
+How was the virus then made freely available?
+What has epidemiology and research identified the mers-cov's cell receptor is?
+How does mers-cov compare with sars-cov?
+How does mers-cov compare with sars-cov?
+How does mers-cov spread among people?
+Who gets more severe disease from mers?
+What is the spread of mers-cov among humans, associated with?
+What do the dcs suffer with mers-cov infection?
+What happens to humans infected by mers-cov virus?
+What is the incubation period of mers?
+What is the duration between when illness begins in one person and subsequently spreads to another?
+What is the median time to death in case of progressive illness?
+What is the progression of symptoms to disease?
+What did the later who definition of mers clearly state?
+What percentage of cases ksa has been a source of?
+What is severe mars noted for?
+What symptoms appear among the confirmed cases of mers?
+What do patients often present to a hospital with, in cases of mers?
+What can mers disease progress to?
+What percentage of all reported cases has mers reportedly killed ?
+What percentage of of all reported cases has mers reportedly killed in ksa?
+What was mortality in south korea from mers disease?
+Which are the preferred method for mers-cov detection?
+What have become a key diagnostic and taxonomic target for cov species identification?
+Why it can be concluded that mers-cov is a novel and distinct virus?
+What indicates the likely presence of infectious virus?
+What is the sensitivity with which immunochromatographic tool could detect recombinant mers-cov nucleocapsid protein?
+What is the specificity with which immunochromatographic tool could detect recombinant mers-cov nucleocapsid protein?
+What is a different approach for the detection?
+What is usual in serology testing?
+How have some sero-assays bypassed the risks of working with infectious virus?
+How have some sero-assays bypassed the risks of working with infectious virus?
+What is the detection of mers-cov infection using elisa or s1 subunit protein microarray [84] is usually followed by?
+What does the confirmatory process aim to ensure?
+When does generally mers infection does not trigger a detectable immune response?
+When does the who recommend samlinf from the lrt?
+What do the recommended samples include?
+What are recommended when urt sampling is to be conducted?
+What paired sera are preferable?
+When is a single sample suggested to be sufficient?
+How long human urine and stool have been found to contain mers-cov rna?
+What do individual studies report on viral shedding?
+What fraction of mers cases shed viral rna in their lrt specimens (tracheal aspirates and sputum) ?
+How long mers cases shed viral rna in their lrt specimens (tracheal aspirates and sputum)?
+What percentage of contacts were still shedding rna in their urt specimens?
+What samples returned the highest mers viral load values?
+What is npa?
+What is npa?
+What is bal?
+What is the the proportion of deaths among those infected with mers-cov?
+What is the the proportion of deaths among those infected with mers-cov?
+What has prevented worldwide spread of mers-cov?
+What must be reported to the world organization for animal health as an emerging disease ?
+What are juvenile dcs more often positive for?
+What are older dcs are more likely to be positive for?
+When does the camel calving season?
+Why is there an increased risk to humans of spill-over during calving season?
+Which may be an occupational group with significantly higher incidence of seropositivity to mers-cov ?
+How long after infectious mers-cov added to dc, goat or cow milk and stored at 4°c could be recovered?
+How long after infectious mers-cov added to dc, goat or cow milk and stored at 22°c could be recovered?
+What ablated mers-cov infection completely?
+How long mers-cov remained viable at high ambient temperature (30°c) and low rh (30 %) ?
+How long can pathogenic bacteria remain viable and airborne in a coughed aerosol?
+How far can pathogenic bacteria spread in a coughed aerosol?
+What is considered the mechanism of human-to-human transmission of mers-cov?
+What is the transmission of mers-cov is defined as?
+What is the transmission of mers-cov is defined as?
+What is the transmission of mers-cov is defined as?
+What is the transmission of mers-cov is defined as?
+What is the transmission of mers-cov is defined as?
+What is the the rate of general transmission, even in outbreaks?
+What do the majority of human cases of mers-cov seem not to do?
+What is the basic reproduction number (r 0)?
+What is the basic reproduction number (r 0 ) for mers-cov?
+Why has mers had a constant presence in the arabian peninsula?
+What was the first known mers human-to-human transmission event was one characterized by?
+Where was the first known mers human-to-human transmission event?
+Approximately what percentage of mers cases were fatal in ksa?
+Approximately what percentage of mers cases were died outside ksa?
+What percentage of hcws comprised of mers cases in the ksa and south korea?
+How has most of the analysis of mers-cov genetics been performed?
+What does clade a contain?
+What does clade b comprise?
+How many clades have become apparent in genome of mers-cov from humans and dcs?
+Which city has had has had more mers cases than any other region of the ksa ?
+Which city harbours a wide range of mers-cov variants?
+How has the vast majority of mers-cov transmission occurred?
+How were the transmission circumstances created?
+What percentage of humans have died among all humans reported to be infected?
+What would aid accurate calculation of a case fatality ratio?
+How does mars-cov differ from sars-cov?
+Is there any evidence that mers-cov is a virus of pandemic concern?
+How did the first who case definition define probable cases of mers?
+What is pheic?
+How is pheic defined?
+What platform was instrumental in rapid sharing of covid-19 information?
+What's the recommended procedure to disinfect at ct scanner after a covid-19 exposure?
+What's the recommended method to disinfect floors for covid-19?
+What is the role of computed tomography (ct) in covid-19?
+What kind of masks are recommended to protect healthcare workers from covid-19 exposure?
+What thickness of layers is recommended for ct image reconstruction in covid-19 assessment?
+What must the data gathering include?
+What must be done to assist in recognition of the disease on images and to allow accurate reporting of these findings?
+What is the major role of chest ct?
+What is the reason to adopt low-dose ct?
+What did the emict responsibilities include?
+How were the radiology department areas divided?
+How was the contaminated area connected to the ct room and other facilities?
+What does the clean area include?
+What does the semicontaminated area include?
+What does the buffer area include?
+How was the wearing and removing of the equipment performed?
+What can lower the physical and mental stress levels of staff members?
+Who must be assigned to the clean area?
+What responses must emict consider once a disease has been identified?
+What is the conclusion of the report?
+What were the number of cases in mainland china as of march 11th?
+How many covid deaths occurred in chinese mainland as of march 11th?
+How many people have come in contact and how many of these are in observation?
+When was the novel coronavirus first reported?
+When did china detect the first human case of h7n9 infection?
+How many deaths were associated with mers-cov as of july 2014?
+What illness is caused by the 2019-ncov coronavirus?
+In addition to oral swabs, which tests detected the presence of 2019-ncov virus?
+What is the relationship between the presence of virus in blood and anal swabs and disease severity?
+Which patients were classified as severe in chinese guidelines?
+What is the relationship between the presence of virus in blood sample and disease severity?
+What test could give an indication for special care for 2019-ncov patients?
+What is the relationship between the presence of virus in anal swabs and disease severity in 2019-ncov?
+What could be the implication of 2019-ncov virus in anal swabs?
+What could account for the high transmission rate of the 2019-ncov virus?
+What could account for the dissemination of the 2019-ncov virus across the whole body?
+When did the world health organization declare the ebola epidemic in west africa as a public health emergency of international concern?
+What is ppe?
+Where did the 2014 ebola epidemic in west africa spread to?
+What are the prerequisites for successful emergency preparedness for an epidemic?
+What is the structure of a coronavirus?
+What method is developed in this study?
+What is the model simplified to?
+What is the estimate of r 0?
+What is the conclusion of this study?
+What was the focus of the study?
+What were the model assumptions?
+What compartments were the bats divided into?
+What compartments were the host animals divided into?
+What was the sars-cov-2 reservoir?
+What were the people divided into?
+What was the mean incubation period?
+What was the mean delay from symptom onset to detection/hospitalization of a case?
+How long after onset, the cases detected in thailand and japan were hospitalized?
+What was the duration from illness onset to first medical visit ?
+What was the assumption of transmissibility of asymptomatic infection?
+As of january 17, how many people were tested for body temperature?
+What is mobile population in wuhan?
+What was the r0 of sars?
+What was the value of r0 in other researches?
+What is the reported value of r0 for mers?
+What was r0 for the high transmissibility in south korea?
+What is important for containing the transmission?
+What did this model show?
+What was the objective of the study?
+What are coronaviruses?
+What animals can carry coronavirus?
+How many covid-19 cases were confirmed on the diamond princess cruise ship?
+What was the time period of peak infection of covid-19 on the diamond princess cruise ship?
+With the intervention of movement restrictions starting on 5th february 2020, what were the confirmed cases for covid-19, were limited to?
+Who was the first covid-19 identified case patient on the diamond princess cruise ship?
+When was the first passenger patient on the diamond princess cruise ship diagnosed with covid-19?
+How many covid-19 cases were confirmed on the diamond princess cruise ship?
+What is the estimated mean incubation period for covid-19 infection on the diamond princess cruise ship?
+What was the effect of movement restriction policy on the diamond princess cruise ship started on 5th february 2020?
+What would have the number of confirmed cases on the diamond princess cruise ship, without a movement restriction starting on the 5th february 2020?
+When was the a cluster of pneumonia cases were first reported ?
+What is the number of inbound passengers from china?
+What percent of inbound passengers from china were from wuhan?
+What is the mechanism of action for rupintrivir?
+Has rupintrivir been shown to reduce the symptoms of a rhinoviral infection?
+What is the primary etiology of acute respiratory infection?
+What is rsv?
+What virus is most commonly associated with acute respiratory infections?
+What viruses are most frequently associated with acute respiratory infections?
+What are the clinical characteristics of asthma?
+What risk factor was associated with hospitalization and death during the 2009 h1n1 influence pandemic?
+How many surface proteins are on the h1n1 influenza virus?
+What are the 2 surface proteins on the h1n1 influenza virus?
+What pharmaceutical targets the na glycoprotein of the h1n1 influenza virus?
+What genetic mutation decreases a person's susceptibility to the h1n1 influenza virus?
+Why is ribavirin treatment limited?
+To what the lack of exposure report could be attributed?
+Why is the determination of asymptomatic or pre-symptomatic transmission, an urgent priority?
+When does the infectivity of sars-cov peak?
+How can the 2019-ncov spread?
+What is the estimate of the basic reproduction number?
+What is assumed for the mean serial interval?
+What would a shorter mean serial interval mean?
+What should have reduced the basic reproduction number in january?
+What are the delays between infection to illness and illness to laboratory confirmatiion?
+What is the estimate of number of infections in wuhan on 25 january 2020?
+When is viral shedding the highest?
+How does the transmission of the respiratory virus happen?
+How do some respiratory viruses spread?
+What can also play a role?
+What can play a role in the infection of gastrointestinal tract?
+What was attributed to the spread of sars-cov at amoy gardens?
+How were the first human infections identified?
+What do mild clinical presentations of 2019-ncov indicate?
+Why is important to determine the spectrum of clinical manifestations of 2019-ncov infections?
+What, beyond the assessment of severity, is important?
+For whom would the infections be more severe?
+When is this especially true?
+What is the current understanding on viral-induced exacerbations?
+What have evoked new understandings as to the mechanisms of viral exacerbations?
+What is one of the major sources of exacerbation of chronic airway inflammatory diseases?
+What is the focus of this review?
+What have the authors reviewed?
+What is summarized?
+What is highlighted by the authors?
+What is consolidated in this review?
+What is this disease characterized by ?
+Where can this disease manifest?
+Why do treatment and management vary in efficacy?
+What complicates this further?
+What are such exacerbations due to?
+What do the acute exacerbations cause?
+What are acute exacerbations usually due to ?
+What does the immune response elicited by these agents lead to?
+Among these agents which is a major driver?
+What is the viral involvement in copd exacerbation?
+What is the reason for the involvement of respiratory viruses in exacerbation?
+What does the involvement of respiratory viruses contribute to?
+Why is it important to identify the exact mechanisms underpinning viral exacerbations in susceptible subjects?
+What is the lower airway the site of?
+Where is the the first point of contact with sources of exacerbation?
+What is the focus of this review?
+What is complied by the authors?
+Before linking respiratory viruses, what was linked to acute exacerbations?
+What did the advent of pcr technology lead to?
+What are the predominant viruses linked to airway inflammatory diseases?
+What other viruses are implicated in acute exacerbations but to a much lesser extent?
+What other viruses have been recently reported as contributing to acute exacerbations?
+What are the common feature of these viruses share?
+Where do the respiratory viruses primarily infect and replicate?
+What happens during the replication process?
+What does the inflammation lead to in healthy airways?
+How may the responses be different in a chronically inflamed airway?
+What will the review focus on?
+How will this review serve?
+Why is this approach significant?
+What happens upon infection?
+How does the infected airway cell respond?
+What does the epithelial proteins cause?
+What is the effect of these factors?
+What additional effects are caused in patients with asthma and patients with crs with nasal polyp ?
+What is the result of increased eosinophilia?
+What are the effects for patients with copd and patients with crs without nasal polyp (crssnp) ?
+Which are the type 2 inflammatory cytokines expressed by the epithelial cells upon injury to the epithelial barrier?
+Which cells lacking both b and t cell receptors but play a crucial role in secreting type 2 cytokines to perpetuate type 2 inflammation when activated ?
+What is the effect cell death and injury to the epithelial barrier due to infection?
+What happens when the 3 cytokines are expressed?
+What happens in the case of copd?
+What happens during viral infection of healthy individuals?
+What happens upon viral infection in the airway?
+What is the effect of the inflammation of the airway?
+What increases the severity of exacerbations in the airway?
+Why viruses do not need to directly infect the lower airway to cause an acute exacerbation?
+What is suggested by the fact that not all viral infections of the airway lead to acute exacerbations?
+What is the effect of chronic airway inflammatory disease in patients?
+What is the effect of chronic airway inflammatory disease?
+Why should future studies be performed using metagenomics in addition to pcr analysis ?
+What is highlighted by the authors in this review?
+Who has impaired or reduced ability of viral clearance ?
+What does their impairment stems from?
+Where is this especially evident?
+What are other effects?
+What is the effect of viral components remaining in the airway?
+What do these factors do?
+What is also linked with the chronic inflammation that precedes the malignancies?
+What should be investigated in the future?
+What further can viral persistence lead to?
+What effect the use of steroids to suppress inflammation can have?
+What should be further focus of research?
+Which viruses may not cause prolonged inflammation due to strong induction of antiviral clearance?
+What do these infections cause?
+What do the necroptotic factors such as rip3 do?
+What may the destruction of the epithelial barrier cause?
+What may the epithelial destruction cause?
+What is recommended that patients with chronic airway inflammatory disease?
+What is another mechanism that viral infections use to drive acute exacerbations?
+What does infection of respiratory viruses cause?
+What is an example of this?
+What are also associated with viral infections and pneumonia development, which may worsen inflammation in the lower airway?
+What is another area of interest?
+What is usually linked with the development of chronic airway inflammatory diseases?
+What follows in the event of a viral infection such as rv infection?
+What does the viral infection alter?
+What is the destabilization is further compounded by?
+What does all this gradually lead to?
+Why do these changes may result in more severe and frequent acute exacerbations ?
+How effective are microbiome based trial therapies?
+What can viral infections cause?
+Which is the primary contact/infection site of most respiratory viruses?
+What does the destruction of epithelial barrier, mucociliary function and cell death of the epithelial cells do?
+What are viral infections are usually accompanied with?
+What is the dysregulation of inflammation can be further compounded by?
+What does the change in the local airway environment and inflammation promote?
+What does the the inflammatory environment dispersal of upper airway commensals into the lower airway cause?
+Which are the most commonly studied viruses in chronic airway inflammatory diseases?
+What do the infections such as rsv are shown to do?
+What does mucus overproduction do?
+What does the disruption of the ciliary movement during viral infection may cause?
+What are micrornas(mirna)?
+What are mirnas found to be induced by?
+What were linked to the exacerbation of the airway inflammation disease?
+Where might such mirna changes have originated from?
+What are both ifv and rsv infections shown to do?
+What are ifv infection shown to do?
+What happens in in asthmatic epithelium in ifv infection?
+What do non-coding rnas present as?
+What mechanisms, other than mirna modulation play a role?
+What have recent epigenetic studies indicated?
+What have these studies also shown?
+What has spalluto et al have shown?
+What infections such as rv and rsv that weakly induce antiviral responses may result in?
+What can viral infection result in?
+What sustains the inflammation in the airway?
+What may viral infections of the respiratory epithelium by viruses such as ifv, rv, rsv and hsv do?
+What can happen in response to the infection such as neutrophils?
+In addition to worsening disease symptoms, what do viral-induced exacerbations do?
+What may studies in natural exacerbations and in viral-challenge models using rna-sequencing (rna-seq) or single cell rna-seq on a range of time-points provide?
+What analysis functions may be useful?
+For what purpose animal based models aare developed for?
+What can be used unravel the immune profile of a viral infection in healthy and diseased condition?
+For what purpose controlled in vivo human infections can be performed for mild viruses?
+Why may the mechanisms of exacerbation vary considerably?
+What clinical condition is caused by hantaan virus?
+What is the structure of hantaan virus?
+What the animal vector reservoir for hantaan virus?
+What diagnostic test is correlated with the severity of hfrs?
+How is interferon used in practice?
+What genotypes are associated with the severity of hfrs?
+Which ifitm proteins have been shown to possess antiviral activity?
+What is the hypothesized mechanism by which ifitms work?
+What genotype causes truncation of the ifitm3 protein?
+What can cause a slowing growth in daily reported deaths?
+When did italy go into iockdown?
+Approximately how many deaths have been averted in western europe with current non-pharmaceutical interventions remaining in place until the end of march?
+What are some non-pharmaceutical interventions?
+Type of model used to infer the impact non-pharmaceutical interventions?
+How can a semi-mechanistic bayesian hierarchical model estimate changes to the reproductive number?
+What is a key assumption of a semi-mechanistic bayesian hierarchical model used for coronavirus?
+What is the time lag between when transmission changes occur and when their impact can be observed in trends in mortality?
+What is the key aim of non-pharmaceutical interventions?
+What happens if the reproduction number is greater then 1?
+When did china introduce strict movement restrictions and other measures including case isolation and quarantine?
+What was the result of china's interventions introduced in january?
+What are examples of social distancing?
+What was the estimated effect on china's reproduction number in march based on the intervention introduced in january?
+Why is it challenging to estimate the reproduction number?
+What is an alternative way to estimate the course of an epidemic?
+What is the estimated attack rate in italy?
+As of the end of march what is the proportion of spain's population to be infected?
+Which western european country is estimated to have the lowest attack rate?
+What is austria's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is belgium's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is denmark's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is france's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is germany's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is italy's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is norway's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is spain's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is spain's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is switzerland's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is united kingdom's estimated mean percentage [95% credible interval] of total population infected as of 28th march?
+What is the estimated averaged initial reproduction number [95% credible interval] for western europe as of 28th march?
+Why is there high uncertainty in estimating the impact of interventions against the coronavirus?
+Why is it statistically impossible to determine which individual intervention had the greatest effect on reducing the coronavirus reproduction number?
+What is estimated to drop immediately after an introduction of a non-pharmaceutical intervention?
+One way to understand the impact of interventions?
+What is a lockdown?
+Why is it hard to know the true incidence of infections number?
+What is an example of a case-based measure against coronavirus?
+What is an example of containment phase intervention?
+What does a public events ban intervention mean?
+An example of social distancing?
+Example of social distancing?
+What is a lockdown?
+What is an infection-to-onset-distribution?
+What is an onset-to-death distribution?
+What is the population-averaged infection fatality ratio?
+What is the time-varying reproduction number a function of?
+What is an incubation period?
+What is an incubation period?
+What are the descriptive statistics for the onset-to-death for coronavirus?
+What are the descriptive statistics for the incubation period for coronavirus?
+What is the estimated infection-to-death distribution's mean for coronavirus?
+What is a well known approach to model the true number of infected individuals?
+What is a way to measure virus transmission?
+What term describes when a majority of the population has built an immunity to a virus?
+What is the estimated number of people in italy infected with coronavirus by march 28th?
+In 2009 what was the reported h1n1 vaccination rate in china?
+What is the highest alert level given by the world health organization to a pandemic?
+What does it mean for a pandemic to have a who alert level of 6?
+What was the estimated economic impact in the u s from the 2009 sars pandemic?
+How is 2019-ncov transmitted?
+What are ways in which 2019-ncov is transmitted?
+Is oral swab for detecting 2019-ncov infection, sufficient?
+Is oral swab for detecting 2019-ncov infection, sufficient?
+What other tests should be considered for 2019-ncov epidemiology?
+What tests should be done before a 2019-ncov infected patient is discharged?
+What is a hantavirus?
+What plays a role in innate immunity to hantavirus infection?
+What evidence suggests that rig-i and ddx60 collaborate to exert antiviral effects?
+What was the major contribution of this study?
+What symptoms were reported?
+What did the collected data include?
+When was covid surveillance implemented in european region?
+As of 21 february, how many cases were reported?
+Where were the cases that were studied?
+What was the median case age?
+How many were male?
+How many cases were there on 5 march?
+When did the chinese authorities share the sequence of a novel coronavirus ?
+What is the name of the disease caused buy sars-cov-2?
+What country does this study exclude?
+What does the study include?
+What did the ecdc and who regional office ask the countries?
+What was the overall aim of the surveillance?
+What were the surveillance objectives?
+What is the adopted who case definition?
+When was the first reported death in france?
+What is the presumed incubation period?
+What were the places of infection?
+What places were linked to these?
+How many cases were hospitalised?
+Why were they hospitalised?
+What was time from onset to hospitalisation?
+What was the duration of hospitalisation?
+Why was this?
+How many cases reported symptoms at this point?
+How many cases were asymptomatic?
+What were the asymptomatic cases tested as?
+For how many cases fever reported as the sole symptom?
+In how many cases the symptoms at diagnosis were consistent with the case definition for acute respiratory infection?
+How many cases had data on preexisting conditions?
+How many cases had no pre-existing conditions?
+What other data on pre-existing conditions were reported?
+How many reported viral pneumonia?
+What was the clinical evolution of the hospitalised cases?
+What happened to three cases who were aged 65 years or over?
+What happened to the case who died?
+What was the duration of hospitalisation reported for 16 cases ?
+How were the assays confirmed?
+What were the specimen types for 21 cases?
+As of 5 march 2020, what are the cases in the who european region?
+What were the two contexts for transmission?
+What does the analysis show on the difference between locally acquired cases vs imported cases?
+What is required for locally acquired cases?
+What was common to all imported cases?
+What testing and detection are needed?
+What did the finding prompt ecdc to do?
+Why is understanding the infection-severity critical ?
+Why are serological tests vital?
+How can hospital based surveillance help?
+How can present systems of surveillance be used?
+How will this approach used?
+Why is additional research needed?
+What growing dysjunction has been witnessed?
+What is aiming to incorporate pathways to translation at the earliest stages?
+How much have the number of biomedical research publications targeting 'translational' concepts has increased ?
+What ways to solve the issues are outlined?
+How do these exact processes ultimately restrict viral infectivity?
+What does the author coin this evolutionary dilemma as?
+How do many viruses resolve this ?
+How may this "achilles heel" be safely targeted?
+Why may mmhp-targeting therapies exhibit both robust and broadspectrum antiviral efficacy?
+What will achieving this through drug repurposing do?
+What are also discussed by the author?
+What does the author anticipate international efforts will do?
+What do pathogens do upon infection?
+What is the flip side ?
+What do rbps do?
+What is included in rbps?
+What do tristetraprolin and auf1, do?
+What do rbps include?
+What domembers of the roquin and regnase families do?
+What do the rbps include?
+What is the increasingly apparent role of rna methylation machinery ?
+Where do these activities take place?
+What happens to these activities during infection?
+In this way, what do the mrna-destabilising rbps constitute ?
+What can be done with the 'brake' on the immune system?
+What does the author anticipate that continued efforts will lead to?
+What is another mrna under post-transcriptional regulation by regnase-1 and roquin?
+What does furin encode?
+What are furin, along with other pcsk family members implicated in?
+What do braun and sauter review?
+What dis their recent work reveal?
+What has the increasing abundance of affordable, sensitive, high-throughput genome sequencing technologies led to?
+What was this system used for the first time for?
+What have decades of basic immunology research provided ?
+What has this focus on mammalian defences and pathologies sidelined?
+What has crispr/cas antiviral immune system of prokaryotes been repurposed as?
+What is another case in point?
+What are the ancient lineage of ncldvs?
+What do the recent efforts indicate regarding hundreds of human and avian infectious viruses?
+What is neo-virology?
+What is predicted these efforts on neo-virology will unlock?
+What are the two of the four pillars of the national innovation and science agenda?
+What do australia's medical research and innovation priorities include?
+What is essential for these priority outcomes?
+What is the japan amed tasked with?
+What serious question was raised?
+What is a recent discovery?
+Which bat virus have been found to be linked with diseases?
+What assay played an important role?
+What was the death toll in the 1918-1919 spanish influenza epidemic?
+How many people were infected during the 1918 spanish influenza epidemic?
+What was the case fatality rate in the 1918 spanish influenza epidemic?
+What was the death toll in the 1918-1919 spanish influenza epidemic?
+Are the modern day influenza viruses related to the 1918 spanish influenza virus?
+Why is the spanish influenza virus the mother of the modern influenza viruses?
+When was it determined that the 1918 pandemic was caused by the h1n1 influenza virus?
+Did the spanish influenza or swine flu or the h1n1 virus disappear in humans for some time?
+When did the swine flu (spanish influenza) virus reappear in humans?
+What descendant lineages of the swine flu (spanish influenza) virus were identified in 2006?
+Are the modern descendant influenza viruses as dangerous as the 1918 parent swine flu (spanish influenza) h1n1 virus?
+How dangerous are the modern h1n1 (swine flu) and the h3n2 (influenza a) viruses compared to the 1918 h1n1 (swine flu spanish influenza) viruses?
+Are the descendant h1n1 strains of the 1918 h1n1 swine flu (spanish influenza) virus, still prevalent?
+Is the origin and epidemiology of the 1918 swine flu (spanish influenza) known?
+What is the geographical origin of the h1n1 swine flu ?
+Is the geographical origin of the 1918 h1n1 swine flu known?
+What is an unique feature of the 1918 swine flu?
+What season or time of the year do the new strains of influenza emerge?
+Once appeared, when do the influenza like diseases occur in subsequent years?
+When did the first wave of the h1n1 swine flu (spanish influenza) occur?
+What was the death rate in the first wave of the 1918 swine flu pandemic?
+When were the second and the third wave of the 1918-1919 swine flu pandemic?
+What was the primary difference between the first wave and the 2nd and 3rd wave of the 1918-1919 swine flu pandemic?
+Why the human influenza viruses do not disappear after herd immunity is developed?
+What are the circumstances that promote the spread of influenza virus?
+Do seasonal temperatures and humidity explain the appearance of the three waves of the 1918 swine flu?
+Which virus samples from the 1918 swine flu pandemic have been identified?
+Are viruses in the first and third waves of the 1918 swine flu pandemic same or derived from the virus from the second wave of the swine flu?
+Was the 1918 swine flu virus novel to humans are was it derived from older viruses?
+Do avian flu viruses change over long periods?
+What is the typical age profile of mortality in influenza diseases?
+What was the age profile of mortality in the 1918 swine flu?
+Which age group was most susceptible to die during the 1918 swine flu pandemic?
+What was the death rate among children during the 1918 swine flu pandemic?
+What theory provides partial explanation for the age-specific profile of the death rate in the 1918 swine flu pandemic?
+Is there a difference in the pathologic feature and course of disease between modern influenza pandemics and the 1918 swine flu pandemic?
+Could the 1918 swine flu virus been controlled by modern day drugs or vaccines?
+Why was there such a high death rate in the 19118 swine flu pandemic?
+Is the molecular basis of human adaptation of a virus understood?
+What was the initial growth phase pattern?
+What was the result of under-reporting?
+What is r0?
+What is likely increase of the reporting rate after the 17th january 2020?
+What is the estimated value of r0?
+What is the likely period of under-reporting?
+Where and when was 2019-ncov first identified?
+What are some of the symptoms caused by the virus?
+What was the cumulative number of reported cases by 1 january 2020?
+As of 26 january 2020, what had the outbreak resulted in?
+As of 26 january 2020, what countries had sporadic cases?
+What was the result of the imperial college estimation?
+Who release the time series data from 10th to 20th january 2020?
+Who released the time series data from after 21st january 2020?
+How was the epidemic curve modelled?
+How was the epidemic curve modeled?
+What study is reported in this report?
+How does the genome of 2019-vcov compare with sars like viruses and sars-cov?
+How different is it from sars-related viruses?
+What novel features does the genome have?
+What is important for understanding the origin and evolution of this novel lineage b betacoronavirus?
+What are coronaviruses?
+What are four generas?
+What do evolutionary analyses show?
+What are the examples that have emerged as human pathogens?
+Where did these viruses originate before crossing the barrier to infect humans?
+What covs were known to infect humans before december 2019?
+What do hcov-oc43 and hcov-hku1 cause?
+What is the contrast with sars-cov and mers=cov?
+What was the authors' recent report on?
+What is analyzed in this study?
+What genome sequence was available for this study?
+What strains were included in this study?
+How was the phylogenetic construction done?
+How were the evolutionary distances computed?
+How was the structural analysis of orf8 done?
+What was done for the prediction of protein secondary structures?
+What is the rna of the 2019-ncov?
+What was the g+c content?
+How are 2019-ncov and sars-cov similar?
+Where is the major distinction?
+What do the s1 and s2 subunits of spike glycoprotein contain?
+What are the chacateristics of the s2 subunit?
+What would be the benefit of the identity of the s2 unit?
+How do the s1 subunits compare with that of sars-likecov and human sars-cov?
+Where are the amino acid differences?
+What is responsible for the interaction with host receptor?
+What will the investigation of external subdomain reveal?
+How do most bat sarsr-cov differ from 2019-ncov and human sars-cov?
+Which strains do not have such deletions?
+What is the consequence of lack of deletions in yunnan strains?
+Being closest to 2019-ncov, which species do the two bat sars-related coronavirus zxc21 and zc45 infect?
+What would lessen the likelihood of jumping the barrier?
+What do the results indicate?
+What is orf8?
+What orf8 length do human sars-covs isolated from early-phase patients, all civet sars-covs, and other bat sars-related covs contain?
+From where have the original sars-con orf8 been acquired?
+What does the orf8 derived from 2019-ncov belong to?
+What is the relation between the new2019-ncov and the conserved orf8?
+Orf8 was shown to do what?
+What high possibility does the novel orf8 have?
+What is the summary of this report?
+Where was covid19 first discovered?
+Where can published genomic sequences be found for the 2019-ncov virus?
+What genes have been targeted for the diagnostic rt-pcr tests in 2019-ncov?
+How does being a smoker impact covid-19 patient outcomes?
+Are smokers more likely to contract influenza?
+Why might we underestimate the spread of covid19?
+Where was the first imported case of covid19 in the united states?
+When was the first case of covid19 confirmed in the usa?
+When was the second covid19 case reported in the us?
+Where was the second reported case of covid in the united states?
+When was the first local transmission of covid reported in the united states?
+When did the who declare covid to be a public health emergency of international concern?
+When did the united states declare covid19 a public health emergency?
+What are the most common symptoms of covid19?
+What symptoms might people experience with covid19?
+Who is at greater risk of dying from covid19?
+How long is the incubation time for covid19?
+How does covid19 get spread?
+Is it possible to get infected with covid and another virus?
+How many people are estimated to need humanitarian assistance in 2020?
+For whom does the sars-cov-2 pose a great threat?
+What can undermine interventions?
+Who are expected to be particularly susceptible?
+Why populations may be particularly susceptible?
+What is the impact of disease outbreaks?
+What represents a barrier to testing?
+Where are difficulties are exacerbated during humanitarian crises?
+What can prevent contact tracing?
+What is an example of intractable structural challenge?
+What should be the priority of the national and international bodies trying to prevent the pandemic?
+What resources need to be identified?
+What is an effective public health hygiene?
+What has been demonstrated to be effective for prevention?
+What has increased hand washing?
+What is hand washing to protect one's own health consistent with?
+What is possible in many resource -limited settings?
+What is the foremost authority on minimum standards for humanitarian assistance?
+For what there is evidence for the efficacy of hand washing?
+What are humanitarian wash standards based on?
+What confers a high risk of gender based violence?
+What is the deterrent effect of gender based violence around latrines?
+What will maximize the effectiveness of interventions?
+What will happen without the adaptation of existing standards?
+What is essential when pandemics threaten vulnerable populations?
+What is a necessary component of effective health governance?
+Approximately how many people died during the 1918-1919 influenza pandemic?
+What social and economic factors contributed to the large fatality rate in the 1918 influenza pandemic?
+What problems were faced by medical staff during the 1918 epidemic?
+What helpful drugs are available now to control the disease or to provide palliative care for influenza patients?
+How has the mortality rate due to influenza declined in usa over past decades?
+Is there an influenza vaccine?
+For the 2009 influenza pandemic, what were the case fatality rates?
+What factors would contribute now to the faster rates of influenza infections?
+What factors would be responsible in future for the prevention of an influenza pandemic?
+What was the detected fatality rate of h7n9 avian flu?
+Why would real case fatality rate for the h7n9 be lower than detected rate?
+What is the structure of the ebolavirus?
+When was the west african ebolavirus outbreak?
+What animals are considered to be maintenance hosts to the ebolavirus?
+What do circles indicate in figure 1?
+What do arrows indicate in figure 1?

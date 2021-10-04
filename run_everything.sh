@@ -1,44 +1,388 @@
 #!/bin/bash
 
-#Training optimal distmult for MT
-#python ../Train_KGE/pykg2vec/scripts/pykg2vec_train.py -mn DistMult -ds UMLS_KG_MT -dsp /home/Train_KGE/UMLS_KG_MT -device cuda -b 3213 -l 10 -k 8 -lr 0.006543608492240101 -lmda 6.082386885464442e-05 -opt rms
+export CUDA_VISIBLE_DEVICES=0,1
 
-#Homogenize using Mikolov Strategy
-#python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2
+######BERT Experiments######
 
-export CUDA_VISIBLE_DEVICES=3,5
-nohup python run_modeling.py --batch_size 40 \
-                       --model_name 'phiyodr/bert-base-finetuned-squad2' \
-                       --dte_lookup_table_fp 'Mikolov_to_MT_phiyodr_bert-base-finetuned-squad2.pkl' \
+#Mikolov Replace BERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "phiyodr/bert-base-finetuned-squad2" \
+                       --dte_lookup_table_fp "Mikolov_to_phiyodr_bert-base-finetuned-squad2.pkl" \
                        --lr 3e-5 \
-                       --n_epochs 3 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov++ Replace BERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "phiyodr/bert-base-finetuned-squad2" \
+                       --dte_lookup_table_fp "Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+######RoBERTa Experiments######
+
+#Random Concat with RoBERTa
+python run_modeling.py --batch_size 40 \
+                       --model_name "navteca/roberta-base-squad2" \
+                       --dte_lookup_table_fp "Mikolov_to_navteca_roberta-base-squad2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
                        --max_len 384 \
                        --n_stride 196 \
                        --warmup_proportion 0.1 \
                        --use_kge T \
                        --concat_kge T \
-                       --n_neg_records 5 \
-                       --gpus 3 5\
+                       --random_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 1 \
                        --seed 16 \
-                       --port 42069 > "bert_MIK_MT.out" &
+                       --port 42069
 
-#### One done
-#python Mikolov\(E-BERT\)\ approach/Translation_Approach.py --UMLS_Path ../Train_KGE/UMLS_KG_SN --BERT_Variant phiyodr/bert-base-finetuned-squad2
-
-export CUDA_VISIBLE_DEVICES=3,5
-nohup python run_modeling.py --batch_size 40 \
-                       --model_name 'phiyodr/bert-base-finetuned-squad2' \
-                       --dte_lookup_table_fp 'Mikolov_to_SN_phiyodr_bert-base-finetuned-squad2.pkl' \
+#Mikolov Replace RoBERTa
+python run_modeling.py --batch_size 40 \
+                       --model_name "navteca/roberta-base-squad2" \
+                       --dte_lookup_table_fp "Mikolov_to_navteca_roberta-base-squad2.pkl" \
                        --lr 3e-5 \
-                       --n_epochs 3 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov Concat RoBERTa
+python run_modeling.py --batch_size 40 \
+                       --model_name "navteca/roberta-base-squad2" \
+                       --dte_lookup_table_fp "Mikolov_to_navteca_roberta-base-squad2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
                        --max_len 384 \
                        --n_stride 196 \
                        --warmup_proportion 0.1 \
                        --use_kge T \
                        --concat_kge T \
-                       --n_neg_records 5 \
-                       --gpus 3 5\
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
                        --seed 16 \
-                       --port 42069 > "bert_MIK_SN.out" &
+                       --port 42069
 
-####Next
+#Mikolov++ Replace RoBERTa
+python run_modeling.py --batch_size 40 \
+                       --model_name "navteca/roberta-base-squad2" \
+                       --dte_lookup_table_fp "Mikolov++_to_navteca_roberta-base-squad2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 1 \
+                       --seed 16 \
+                       --port 42066
+
+######BioBERT Experiments######
+
+#Vanilla BioBERT FT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/biobert_v1.1_pubmed_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --n_neg_records 10 \
+                       --gpus 0 1 \
+                       --seed 16 \
+                       --port 42069
+
+#Random Concat with BioBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/biobert_v1.1_pubmed_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --random_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov Replace BioBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/biobert_v1.1_pubmed_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov Concat BioBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/biobert_v1.1_pubmed_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov++ Replace BioBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/biobert_v1.1_pubmed_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov++_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov++ Concat BioBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/biobert_v1.1_pubmed_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov++_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+######SciBERT Experiments######
+
+#Vanilla SciBERT FT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/scibert_scivocab_uncased_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --n_neg_records 10 \
+                       --gpus 0 1 \
+                       --seed 16 \
+                       --port 42069
+
+#Random Concat with SciBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/scibert_scivocab_uncased_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --random_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov Replace SciBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/scibert_scivocab_uncased_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov Concat SciBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/scibert_scivocab_uncased_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov++ Replace SciBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/scibert_scivocab_uncased_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov++_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov++ Concat SciBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "ktrapeznikov/scibert_scivocab_uncased_squad_v2" \
+                       --dte_lookup_table_fp "Mikolov++_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+######PubMedBERT Experiments######
+
+#Vanilla PubMedBERT FT
+python run_modeling.py --batch_size 40 \
+                       --model_name "franklu/pubmed_bert_squadv2" \
+                       --dte_lookup_table_fp "Mikolov_to_franklu_pubmed_bert_squadv2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --n_neg_records 10 \
+                       --gpus 0 1 \
+                       --seed 16 \
+                       --port 42069
+
+#Random Concat with PubMedBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "franklu/pubmed_bert_squadv2" \
+                       --dte_lookup_table_fp "Mikolov_to_franklu_pubmed_bert_squadv2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --random_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov Replace PubMedBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "franklu/pubmed_bert_squadv2" \
+                       --dte_lookup_table_fp "Mikolov_to_franklu_pubmed_bert_squadv2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov Concat PubMedBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "franklu/pubmed_bert_squadv2" \
+                       --dte_lookup_table_fp "Mikolov_to_franklu_pubmed_bert_squadv2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov++ Replace PubMedBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "franklu/pubmed_bert_squadv2" \
+                       --dte_lookup_table_fp "Mikolov++_to_franklu_pubmed_bert_squadv2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+#Mikolov++ Concat PubMedBERT
+python run_modeling.py --batch_size 40 \
+                       --model_name "franklu/pubmed_bert_squadv2" \
+                       --dte_lookup_table_fp "Mikolov++_to_franklu_pubmed_bert_squadv2.pkl" \
+                       --lr 3e-5 \
+                       --n_epochs 2 \
+                       --max_len 384 \
+                       --n_stride 196 \
+                       --warmup_proportion 0.1 \
+                       --use_kge T \
+                       --concat_kge T \
+                       --n_neg_records 10 \
+                       --gpus 0 7 \
+                       --seed 16 \
+                       --port 42069
+
+
+

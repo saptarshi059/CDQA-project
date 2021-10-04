@@ -61,10 +61,6 @@ P, R, F1 = score(scibert_answers, all_answers, lang='en-sci', verbose=True)
 print(f'F1 score of ktrapeznikov/scibert_scivocab_uncased_squad_v2 with bert_score: {F1.mean():.3f}')
 '''
 
-biobert_answers = gen_answers('ktrapeznikov/biobert_v1.1_pubmed_squad_v2')
-P, R, F1 = score(biobert_answers, all_answers, model_type='biobert-base-cased' ,verbose=True)
-print(f'F1 score of ktrapeznikov/biobert_v1.1_pubmed_squad_v2 with bert_score: {F1.mean():.3f}')
-
 def incorrect_compute(model_name, model_answers):
     model_incorrect = {}
     for index, (Q, TA, PA) in tqdm(enumerate(zip(all_questions, all_answers, model_answers))):
@@ -80,4 +76,18 @@ def incorrect_compute(model_name, model_answers):
 
 #incorrect_compute('phiyodr/bert-base-finetuned-squad2', bert_answers)
 #incorrect_compute('ktrapeznikov/scibert_scivocab_uncased_squad_v2', scibert_answers)
-incorrect_compute('ktrapeznikov/biobert_v1.1_pubmed_squad_v2')
+
+bert_answers = gen_answers('phiyodr/bert-base-finetuned-squad2')
+scibert_answers = gen_answers('ktrapeznikov/scibert_scivocab_uncased_squad_v2')
+
+def save_answers(model_name, predicted_answers):
+    full_set = {}
+    for Q, TA, PA in tqdm(zip(all_questions, all_answers, predicted_answers)):
+        full_set[Q] = (TA, PA)
+
+    mn = model_name.replace('/','_')
+    with open(f'{mn}_answers.txt', 'w') as f:
+        f.write(json.dumps(full_set))
+
+save_answers('phiyodr/bert-base-finetuned-squad2', bert_answers)
+save_answers('ktrapeznikov/scibert_scivocab_uncased_squad_v2', scibert_answers)

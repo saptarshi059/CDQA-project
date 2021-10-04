@@ -1,7 +1,7 @@
 pykg2vec/
 .ipynb_checkpoints/
-KG_Covid/
-UMLS_KG/
-metamap_output.json
-covidquestions.txt
+UMLS_KG_MT/
+UMLS_KG_SN/
+UMLS_KG_MT+SN/
+metamap_output-old.json
 umls.db
