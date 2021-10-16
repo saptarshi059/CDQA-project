@@ -1773,8 +1773,8 @@ When was the first reported death in France?
 What is the presumed incubation period?
 What were the places of infection?
 What places were linked to these?
-How many cases were hospitalised?
-Why were they hospitalised?
+How many cases were hospitalized?
+Why were they hospitalized?
 What was the time from onset to hospitalisation?
 What was the duration of hospitalisation?
 Why was this?
@@ -1787,7 +1787,7 @@ How many cases had data on preexisting conditions?
 How many cases had no pre-existing conditions?
 What other data on pre-existing conditions were reported?
 How many reported viral pneumonia?
-What was the clinical evolution of the hospitalised cases?
+What was the clinical evolution of the hospitalized cases?
 What happened to three cases WHO were aged 65 years or over?
 What happened to the case WHO died?
 What was the duration of hospitalisation reported for 16 cases?
