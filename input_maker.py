@@ -44,247 +44,274 @@ class InputMaker(object):
         self.pad_id = self.tokenizer.pad_token_id
         self.n_contextual_embds = self.model.get_input_embeddings().weight.shape[0]
 
-    def make_inputs(self, ques, context, verbosity=0):
-        ques = re.sub(' +', ' ', ques).strip()
-        tup = self.metamap_tokenizations.query("Question==@ques")
-        if verbosity > 0:
-            print('tup: {}'.format(tup))
-        metamap_tokenized_question = tup['Tokenization'].values[0]
-        n_original_tokens = len(metamap_tokenized_question)
-        n_dte_hits = 0
-
-        # Removing punctuations/spaces from domain-terms for easy comparison
-        mappings = tup['Mappings'].values[0]
-        if verbosity > 0:
-            print('mappings: {}'.format(mappings))
-
-        for i, x in enumerate(mappings):
-            mappings[i][0] = clean_term(x[0])
-
-        domain_terms = [x[0] for x in mappings]
-
-        question_embeddings = []
-        input_ids = [self.cls_id]
-        new_question_text = []
-        for word in metamap_tokenized_question:
-            '''
-            This is done to easily check if the current word is a DT or not since DT form of the same word 
-            are obtained bit differently.
-            '''
-            filtered_word = clean_term(word)
-
-            '''
-            This means that the filtered_word has to be a domain term which also has a KG expansion. If if does not,
-            then use its BERT embeddings.
-            '''
-            if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
-                mapped_concept = mappings[domain_terms.index(filtered_word)][2]
-                # question_embeddings.append(
-                #     self.DTE_model_lookup_table.query("Entity==@mapped_concept")['Embedding'].values[0].to('cpu'))
-                custom_input_id = self.n_contextual_embds + self.all_entities.index(mapped_concept)
-                if verbosity > 0:
-                    print('filtered_word: \"{}\"\tconcept: \"{}\"\tcustom ID: {}'.format(filtered_word, mapped_concept,
-                                                                                     custom_input_id))
-                input_ids.append(custom_input_id)
-                new_question_text.append('a')
-
-                n_dte_hits += 1
-                # print('DTE HIT!')
-
-                if self.concat_kge:
-                    # print('$$ concatenating KGE $$')
-                    subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
-                    input_ids.extend(subword_indices)
-                    # for index in subword_indices:
-                    #     question_embeddings.append(model_embeddings(torch.LongTensor([index])))
-
-                    new_question_text.append(word)
-
-            # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
-            else:
-                subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
-                if verbosity > 0:
-                    print('word: \"{}\"\tsubword_indices: {}'.format(word, subword_indices))
-                input_ids.extend(subword_indices)
-                # for index in subword_indices:
-                #     question_embeddings.append(model_embeddings(torch.LongTensor([index])))
-
-                new_question_text.append(word)
-
-        new_question_text = ' '.join(new_question_text)
-
-        if self.concat_kge:
-            effective_max_length = self.max_len + 15
-        else:
-            effective_max_length = self.max_len
-
-        # Since our total i/p's can only be 512 tokens long, the context has to be adjusted accordingly.
-        len_custom_question = len(question_embeddings)
-        # max_length = 512
-        limit_for_context = effective_max_length - (len_custom_question + 3)  # 2 to account for [CLS] & [SEP]
-
-        context_embeddings = []
-        input_ids.append(self.sep_id)
-
-        # Taking all tokens b/w 1 & limit_for_context
-        # reduced_context_indices = self.tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
-        reduced_context_indices = self.tokenizer(context, truncation=True, max_length=self.max_len)['input_ids'][1:-1]
-        input_ids.extend(reduced_context_indices)
-        if len(input_ids) >= self.max_len:
-            input_ids = input_ids[:self.max_len - 1]
-
-        # for index in reduced_context_indices:
-        #     context_embeddings.append(model_embeddings(torch.LongTensor([index])))
-        input_ids.append(self.sep_id)
-        og_input_ids = self.tokenizer(ques, context)['input_ids']
-        if verbosity > 0:
-            print('Raw question: {}'.format(ques))
-            print('og_input_ids: {}\ncustom input_ids: {}'.format(og_input_ids, input_ids))
-        token_diff = len(og_input_ids) - len(question_embeddings)
-        n_pad = effective_max_length - len(input_ids)
-        attn_mask = torch.ones((effective_max_length, effective_max_length))
-        for mask_idx in range(n_pad):
-            attn_mask[-(mask_idx + 1), :] = 0
-            attn_mask[:, -(mask_idx + 1)] = 0
-
-        while len(input_ids) < effective_max_length:
-            input_ids.append(self.pad_id)
-
-        input_ids = torch.tensor(input_ids)
-
-        return token_diff, attn_mask, new_question_text, input_ids, n_original_tokens, n_dte_hits
-
-    def make_pipeline_inputs(self, ques, context, verbosity=0):
-        print('ques: \"{}\"'.format(ques))
-        print('context: \"{}\"'.format(context))
-
-        ques = re.sub(' +', ' ', ques).strip()
-        tup = self.metamap_tokenizations.query("Question==@ques")
-        if verbosity > 0:
-            print('tup: {}'.format(tup))
-        metamap_tokenized_question = tup['Tokenization'].values[0]
-
-        # Removing punctuations/spaces from domain-terms for easy comparison
-        mappings = tup['Mappings'].values[0]
-        if verbosity > 0:
-            print('mappings: {}'.format(mappings))
-
-        for i, x in enumerate(mappings):
-            mappings[i][0] = clean_term(x[0])
-
-        domain_terms = [x[0] for x in mappings]
-        q_input_ids = [self.cls_id]
-        new_question_text = []
-
-        print('Iterating over question words...')
-        for word in metamap_tokenized_question:
-            '''
-            This is done to easily check if the current word is a DT or not since DT form of the same word 
-            are obtained bit differently.
-            '''
-            filtered_word = clean_term(word)
-
-            '''
-            This means that the filtered_word has to be a domain term which also has a KG expansion. If if does not,
-            then use its BERT embeddings.
-            '''
-            if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
-                mapped_concept = mappings[domain_terms.index(filtered_word)][2]
-                custom_input_id = self.n_contextual_embds + self.all_entities.index(mapped_concept)
-                if verbosity > 0:
-                    print('filtered_word: \"{}\"\tconcept: \"{}\"\tcustom ID: {}'.format(filtered_word, mapped_concept,
-                                                                                         custom_input_id))
-                q_input_ids.append(custom_input_id)
-                new_question_text.append('a')
-
-                if self.concat_kge:
-                    if verbosity > 0:
-                        print('$$ concatenating KGE $$')
-                    subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
-                    q_input_ids.extend(subword_indices)
-
-                    new_question_text.append(word)
-            else:
-                subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
-                if verbosity > 0:
-                    print('word: \"{}\"\tsubword_indices: {}'.format(word, subword_indices))
-                q_input_ids.extend(subword_indices)
-                # for index in subword_indices:
-                #     question_embeddings.append(model_embeddings(torch.LongTensor([index])))
-
-                new_question_text.append(word)
-
-        print('Iterating over context w/ stride...')
-        new_question_text = ' '.join(new_question_text)
-        q_input_ids.append(self.sep_id)
-        # context_ids = self.tokenizer(context, truncation=True, max_length=self.max_len,  stride=self.n_stride)['input_ids'][1:-1]
-        context_ids = self.tokenizer(context, max_length=9999999)['input_ids']
-        print('context_ids: {}'.format(len(context_ids)))
-        n_context_ids_for_sample = self.max_len - len(q_input_ids) - 1
-        print('n_context_ids_for_sample: {}'.format(n_context_ids_for_sample))
-        comb_input_ids = []
-        comb_attn_masks = []
-        curr_context_start_idx = 0
-        while curr_context_start_idx < len(context_ids):
-            these_input_ids = q_input_ids[:]
-            these_input_ids.extend(context_ids[curr_context_start_idx:curr_context_start_idx+n_context_ids_for_sample])
-            these_input_ids.append(self.sep_id)
-            n_pad = self.max_len - len(these_input_ids)
-            print('n_pad: {}'.format(n_pad))
-            curr_context_start_idx += n_context_ids_for_sample - self.n_stride
-
-            while len(these_input_ids) < self.max_len:
-                these_input_ids.append(self.pad_id)
-
-            these_input_ids = torch.tensor(these_input_ids).unsqueeze(0)
-
-            this_attn_mask = torch.ones((self.max_len, self.max_len))
-            for mask_idx in range(n_pad):
-                this_attn_mask[-(mask_idx + 1), :] = 0
-                this_attn_mask[:, -(mask_idx + 1)] = 0
-
-            comb_input_ids.append(these_input_ids)
-            comb_attn_masks.append(this_attn_mask.unsqueeze(0))
-
-        comb_input_ids = torch.cat(comb_input_ids, dim=0)
-        comb_attn_masks = torch.cat(comb_attn_masks, dim=0)
-
-        return comb_input_ids, comb_attn_masks
+    # def make_inputs(self, ques, context, verbosity=0):
+    #     ques = re.sub(' +', ' ', ques).strip()
+    #     tup = self.metamap_tokenizations.query("Question==@ques")
+    #     if verbosity > 0:
+    #         print('tup: {}'.format(tup))
+    #     metamap_tokenized_question = tup['Tokenization'].values[0]
+    #     n_original_tokens = len(metamap_tokenized_question)
+    #     n_dte_hits = 0
+    #
+    #     # Removing punctuations/spaces from domain-terms for easy comparison
+    #     mappings = tup['Mappings'].values[0]
+    #     if verbosity > 0:
+    #         print('mappings: {}'.format(mappings))
+    #
+    #     for i, x in enumerate(mappings):
+    #         mappings[i][0] = clean_term(x[0])
+    #
+    #     domain_terms = [x[0] for x in mappings]
+    #
+    #     question_embeddings = []
+    #     input_ids = [self.cls_id]
+    #     new_question_text = []
+    #     for word in metamap_tokenized_question:
+    #         '''
+    #         This is done to easily check if the current word is a DT or not since DT form of the same word
+    #         are obtained bit differently.
+    #         '''
+    #         filtered_word = clean_term(word)
+    #
+    #         '''
+    #         This means that the filtered_word has to be a domain term which also has a KG expansion. If if does not,
+    #         then use its BERT embeddings.
+    #         '''
+    #         if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
+    #             mapped_concept = mappings[domain_terms.index(filtered_word)][2]
+    #             # question_embeddings.append(
+    #             #     self.DTE_model_lookup_table.query("Entity==@mapped_concept")['Embedding'].values[0].to('cpu'))
+    #             custom_input_id = self.n_contextual_embds + self.all_entities.index(mapped_concept)
+    #             if verbosity > 0:
+    #                 print('filtered_word: \"{}\"\tconcept: \"{}\"\tcustom ID: {}'.format(filtered_word, mapped_concept,
+    #                                                                                  custom_input_id))
+    #             input_ids.append(custom_input_id)
+    #             new_question_text.append('a')
+    #
+    #             n_dte_hits += 1
+    #             # print('DTE HIT!')
+    #
+    #             if self.concat_kge:
+    #                 # print('$$ concatenating KGE $$')
+    #                 subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
+    #                 input_ids.extend(subword_indices)
+    #                 # for index in subword_indices:
+    #                 #     question_embeddings.append(model_embeddings(torch.LongTensor([index])))
+    #
+    #                 new_question_text.append(word)
+    #
+    #         # The mapped_concept doesn't have an expansion in the KG or the term isn't a DT. Thus, its BERT embeddings are used.
+    #         else:
+    #             subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
+    #             if verbosity > 0:
+    #                 print('word: \"{}\"\tsubword_indices: {}'.format(word, subword_indices))
+    #             input_ids.extend(subword_indices)
+    #             # for index in subword_indices:
+    #             #     question_embeddings.append(model_embeddings(torch.LongTensor([index])))
+    #
+    #             new_question_text.append(word)
+    #
+    #     new_question_text = ' '.join(new_question_text)
+    #
+    #     if self.concat_kge:
+    #         effective_max_length = self.max_len + 15
+    #     else:
+    #         effective_max_length = self.max_len
+    #
+    #     # Since our total i/p's can only be 512 tokens long, the context has to be adjusted accordingly.
+    #     len_custom_question = len(question_embeddings)
+    #     # max_length = 512
+    #     limit_for_context = effective_max_length - (len_custom_question + 3)  # 2 to account for [CLS] & [SEP]
+    #
+    #     context_embeddings = []
+    #     input_ids.append(self.sep_id)
+    #
+    #     # Taking all tokens b/w 1 & limit_for_context
+    #     # reduced_context_indices = self.tokenizer(context, truncation=True)['input_ids'][1:limit_for_context + 1]
+    #     reduced_context_indices = self.tokenizer(context, truncation=True, max_length=self.max_len)['input_ids'][1:-1]
+    #     input_ids.extend(reduced_context_indices)
+    #     if len(input_ids) >= self.max_len:
+    #         input_ids = input_ids[:self.max_len - 1]
+    #
+    #     # for index in reduced_context_indices:
+    #     #     context_embeddings.append(model_embeddings(torch.LongTensor([index])))
+    #     input_ids.append(self.sep_id)
+    #     og_input_ids = self.tokenizer(ques, context)['input_ids']
+    #     if verbosity > 0:
+    #         print('Raw question: {}'.format(ques))
+    #         print('og_input_ids: {}\ncustom input_ids: {}'.format(og_input_ids, input_ids))
+    #     token_diff = len(og_input_ids) - len(question_embeddings)
+    #     n_pad = effective_max_length - len(input_ids)
+    #     attn_mask = torch.ones((effective_max_length, effective_max_length))
+    #     for mask_idx in range(n_pad):
+    #         attn_mask[-(mask_idx + 1), :] = 0
+    #         attn_mask[:, -(mask_idx + 1)] = 0
+    #
+    #     while len(input_ids) < effective_max_length:
+    #         input_ids.append(self.pad_id)
+    #
+    #     input_ids = torch.tensor(input_ids)
+    #
+    #     return token_diff, attn_mask, new_question_text, input_ids, n_original_tokens, n_dte_hits
+    #
+    # def make_pipeline_inputs(self, ques, context, verbosity=0):
+    #     print('ques: \"{}\"'.format(ques))
+    #     print('context: \"{}\"'.format(context))
+    #
+    #     ques = re.sub(' +', ' ', ques).strip()
+    #     tup = self.metamap_tokenizations.query("Question==@ques")
+    #     if verbosity > 0:
+    #         print('tup: {}'.format(tup))
+    #     metamap_tokenized_question = tup['Tokenization'].values[0]
+    #
+    #     # Removing punctuations/spaces from domain-terms for easy comparison
+    #     mappings = tup['Mappings'].values[0]
+    #     if verbosity > 0:
+    #         print('mappings: {}'.format(mappings))
+    #
+    #     for i, x in enumerate(mappings):
+    #         mappings[i][0] = clean_term(x[0])
+    #
+    #     domain_terms = [x[0] for x in mappings]
+    #     q_input_ids = [self.cls_id]
+    #     new_question_text = []
+    #
+    #     print('Iterating over question words...')
+    #     for word in metamap_tokenized_question:
+    #         '''
+    #         This is done to easily check if the current word is a DT or not since DT form of the same word
+    #         are obtained bit differently.
+    #         '''
+    #         filtered_word = clean_term(word)
+    #
+    #         '''
+    #         This means that the filtered_word has to be a domain term which also has a KG expansion. If if does not,
+    #         then use its BERT embeddings.
+    #         '''
+    #         if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
+    #             mapped_concept = mappings[domain_terms.index(filtered_word)][2]
+    #             custom_input_id = self.n_contextual_embds + self.all_entities.index(mapped_concept)
+    #             if verbosity > 0:
+    #                 print('filtered_word: \"{}\"\tconcept: \"{}\"\tcustom ID: {}'.format(filtered_word, mapped_concept,
+    #                                                                                      custom_input_id))
+    #             q_input_ids.append(custom_input_id)
+    #             new_question_text.append('a')
+    #
+    #             if self.concat_kge:
+    #                 if verbosity > 0:
+    #                     print('$$ concatenating KGE $$')
+    #                 subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
+    #                 q_input_ids.extend(subword_indices)
+    #
+    #                 new_question_text.append(word)
+    #         else:
+    #             subword_indices = self.tokenizer(word)['input_ids'][1:-1]  # Take all tokens between [CLS] & [SEP]
+    #             if verbosity > 0:
+    #                 print('word: \"{}\"\tsubword_indices: {}'.format(word, subword_indices))
+    #             q_input_ids.extend(subword_indices)
+    #             # for index in subword_indices:
+    #             #     question_embeddings.append(model_embeddings(torch.LongTensor([index])))
+    #
+    #             new_question_text.append(word)
+    #
+    #     print('Iterating over context w/ stride...')
+    #     new_question_text = ' '.join(new_question_text)
+    #     q_input_ids.append(self.sep_id)
+    #     # context_ids = self.tokenizer(context, truncation=True, max_length=self.max_len,  stride=self.n_stride)['input_ids'][1:-1]
+    #     context_ids = self.tokenizer(context, max_length=9999999)['input_ids']
+    #     print('context_ids: {}'.format(len(context_ids)))
+    #     n_context_ids_for_sample = self.max_len - len(q_input_ids) - 1
+    #     print('n_context_ids_for_sample: {}'.format(n_context_ids_for_sample))
+    #     comb_input_ids = []
+    #     comb_attn_masks = []
+    #     curr_context_start_idx = 0
+    #     while curr_context_start_idx < len(context_ids):
+    #         these_input_ids = q_input_ids[:]
+    #         these_input_ids.extend(context_ids[curr_context_start_idx:curr_context_start_idx+n_context_ids_for_sample])
+    #         these_input_ids.append(self.sep_id)
+    #         n_pad = self.max_len - len(these_input_ids)
+    #         print('n_pad: {}'.format(n_pad))
+    #         curr_context_start_idx += n_context_ids_for_sample - self.n_stride
+    #
+    #         while len(these_input_ids) < self.max_len:
+    #             these_input_ids.append(self.pad_id)
+    #
+    #         these_input_ids = torch.tensor(these_input_ids).unsqueeze(0)
+    #
+    #         this_attn_mask = torch.ones((self.max_len, self.max_len))
+    #         for mask_idx in range(n_pad):
+    #             this_attn_mask[-(mask_idx + 1), :] = 0
+    #             this_attn_mask[:, -(mask_idx + 1)] = 0
+    #
+    #         comb_input_ids.append(these_input_ids)
+    #         comb_attn_masks.append(this_attn_mask.unsqueeze(0))
+    #
+    #     comb_input_ids = torch.cat(comb_input_ids, dim=0)
+    #     comb_attn_masks = torch.cat(comb_attn_masks, dim=0)
+    #
+    #     return comb_input_ids, comb_attn_masks
 
     def convert_questions_to_kge(self, q_text):
-        print('** raw q_text: {} **'.format(q_text))
+        # print('** raw q_text: {} **'.format(q_text))
         q_text = re.sub(' +', ' ', q_text).strip()
-        print('** q_text: \'{}\' **'.format(q_text))
+        q_text = '{} '.format(q_text)
+        # print('** q_text: \'{}\' **'.format(q_text))
         tup = self.metamap_tokenizations.query("Question==@q_text")
         # metamap_tokenized_question = tup['Tokenization'].values[0]
-        print('tup: {}'.format(tup))
+        # print('tup: {}'.format(tup))
+        # print('tup.empty: {}'.format(tup.empty))
+        if not tup.empty:
+            mappings = tup['Mappings'].values[0]
 
-        mappings = tup['Mappings'].values[0]
-        for i, x in enumerate(mappings):
-            mappings[i][0] = clean_term(x[0])
-        domain_terms = [x[0] for x in mappings]
+            for text_str, _, domain_term in mappings:
+                q_text = self.add_kge_to_text(q_text, text_str, domain_term)
+            # print('** new q_text: {} **'.format(q_text))
+        else:
+            print('Question \'{}\' does not have mappings!'.format(q_text))
+        # new_question_text = []
+        # for word in metamap_tokenized_question:
+        #     filtered_word = clean_term(word)
+        #
+        #     if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
+        #         mapped_concept = mappings[domain_terms.index(filtered_word)][2]
+        #         custom_concept_token = '[{}]'.format(mapped_concept)
+        #         new_question_text.append(custom_concept_token)
+        #
+        #         if self.concat_kge:
+        #             new_question_text.append('/')
+        #             new_question_text.append(word)
+        #     else:
+        #         new_question_text.append(word)
+        # new_question_text = ' '.join(new_question_text)
+        # # print('new_question_text: {}'.format(new_question_text))
+        #
+        # return new_question_text
+        return q_text
 
-        print('q_text: {}'.format(q_text))
-        input('mappings: {}'.format(mappings))
+    def add_kge_to_text(self, q_text, text_to_match, domain_term):
+        text_components = []
+        curr_text = q_text
 
-        new_question_text = []
-        for word in metamap_tokenized_question:
-            filtered_word = clean_term(word)
+        while text_to_match in curr_text:
+            dt_index = curr_text.index(text_to_match)
+            prefix = curr_text[:dt_index].strip()
+            text_components.append(prefix)
 
-            if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
-                mapped_concept = mappings[domain_terms.index(filtered_word)][2]
-                custom_concept_token = '[{}]'.format(mapped_concept)
-                new_question_text.append(custom_concept_token)
-
-                if self.concat_kge:
-                    new_question_text.append('/')
-                    new_question_text.append(word)
+            if self.concat_kge:
+                kge_text = '{} / [{}]'.format(text_to_match, domain_term)
             else:
-                new_question_text.append(word)
-        new_question_text = ' '.join(new_question_text)
-        # print('new_question_text: {}'.format(new_question_text))
+                kge_text = '[{}]'.format(domain_term)
+            text_components.append(kge_text)
 
-        return new_question_text
+            curr_text = curr_text[dt_index + len(text_to_match):].strip()
+        text_components.append(curr_text)
+
+        # print('text_components: {}'.format(text_components))
+        new_text = ' '.join(text_components)
+        # input('new_text: {}'.format(new_text))
+        return new_text
+
+
 
 
 
