@@ -326,7 +326,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--data',
-                        default='data/COVID-QA_cleaned.json',
+                        default='data/COVID-QA_cleaned_final.json',
                         # default='data/200423_covidQA.json',
                         help='Filepath to CovidQA dataset')
     parser.add_argument('--out', default='out', help='Directory to put output')

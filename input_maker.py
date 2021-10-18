@@ -252,15 +252,20 @@ class InputMaker(object):
         return comb_input_ids, comb_attn_masks
 
     def convert_questions_to_kge(self, q_text):
-        # print('** q_text: {} **'.format(q_text))
+        print('** raw q_text: {} **'.format(q_text))
         q_text = re.sub(' +', ' ', q_text).strip()
+        print('** q_text: \'{}\' **'.format(q_text))
         tup = self.metamap_tokenizations.query("Question==@q_text")
-        metamap_tokenized_question = tup['Tokenization'].values[0]
+        # metamap_tokenized_question = tup['Tokenization'].values[0]
+        print('tup: {}'.format(tup))
 
         mappings = tup['Mappings'].values[0]
         for i, x in enumerate(mappings):
             mappings[i][0] = clean_term(x[0])
         domain_terms = [x[0] for x in mappings]
+
+        print('q_text: {}'.format(q_text))
+        input('mappings: {}'.format(mappings))
 
         new_question_text = []
         for word in metamap_tokenized_question:
