@@ -104,6 +104,11 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1, mak
     #     all_questions_ = [maker.convert_questions_to_kge(q) for q in all_questions_]
     #     dataset['question'] = all_questions_
 
+    print('*** preprocess_input ***')
+    print('n_stride: {}'.format(n_stride))
+    print('max_len: {}'.format(max_len))
+    print('************************')
+
     encodings = tokenizer_(
         dataset['question'].to_list() if pad_on_right else dataset['context'].to_list(),
         dataset['context'].to_list() if pad_on_right else dataset['question'].to_list(),
@@ -332,10 +337,10 @@ if __name__ == '__main__':
     parser.add_argument('--out', default='out', help='Directory to put output')
 
     parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
-    parser.add_argument('--batch_size', default=4, help='How many items to process as once', type=int)
+    parser.add_argument('--batch_size', default=40, help='How many items to process as once', type=int)
     parser.add_argument('--lr', default=5e-5, help='How many items to process as once', type=float)
     parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform', type=int)
-    parser.add_argument('--n_stride', default=164, type=int)
+    parser.add_argument('--n_stride', default=196, type=int)
     parser.add_argument('--max_len', default=384, type=int)
     parser.add_argument('--model_name',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
