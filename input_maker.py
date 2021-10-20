@@ -262,6 +262,7 @@ class InputMaker(object):
         # print('tup.empty: {}'.format(tup.empty))
         if not tup.empty:
             mappings = tup['Mappings'].values[0]
+            mappings = list(sorted(mappings, key=lambda x: len(x[0])))
 
             for text_str, _, domain_term in mappings:
                 q_text = self.add_kge_to_text(q_text, text_str, domain_term)
