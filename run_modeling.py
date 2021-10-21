@@ -104,6 +104,21 @@ def preprocess_input(dataset, tokenizer_, n_stride=64, max_len=512, n_neg=1, mak
     #     all_questions_ = [maker.convert_questions_to_kge(q) for q in all_questions_]
     #     dataset['question'] = all_questions_
 
+    print('*** preprocess_input ***')
+    print('n_stride: {}'.format(n_stride))
+    print('max_len: {}'.format(max_len))
+    print('************************')
+
+    q_lens = [len(q) for q in dataset['question'].to_list()]
+    max_q_len = max(q_lens)
+    min_q_len = min(q_lens)
+    print('min_q_len: {} max_q_len: {}'.format(min_q_len, max_q_len))
+
+    c_lens = [len(c) for c in dataset['context'].to_list()]
+    max_c_len = max(c_lens)
+    min_c_len = min(c_lens)
+    print('min_c_len: {} max_c_len: {}'.format(min_c_len, max_c_len))
+
     encodings = tokenizer_(
         dataset['question'].to_list() if pad_on_right else dataset['context'].to_list(),
         dataset['context'].to_list() if pad_on_right else dataset['question'].to_list(),
@@ -332,16 +347,16 @@ if __name__ == '__main__':
     parser.add_argument('--out', default='out', help='Directory to put output')
 
     parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
-    parser.add_argument('--batch_size', default=4, help='How many items to process as once', type=int)
+    parser.add_argument('--batch_size', default=40, help='How many items to process as once', type=int)
     parser.add_argument('--lr', default=5e-5, help='How many items to process as once', type=float)
     parser.add_argument('--n_epochs', default=3, help='If training/fine-tuning, how many epochs to perform', type=int)
-    parser.add_argument('--n_stride', default=164, type=int)
+    parser.add_argument('--n_stride', default=196, type=int)
     parser.add_argument('--max_len', default=384, type=int)
     parser.add_argument('--model_name',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
                         # default='clagator/biobert_squad2_cased',
-                        # default='navteca/roberta-base-squad2',
-                        default='phiyodr/bert-base-finetuned-squad2',
+                        default='navteca/roberta-base-squad2',
+                        # default='phiyodr/bert-base-finetuned-squad2',
                         # default='ktrapeznikov/biobert_v1.1_pubmed_squad_v2',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
                         help='Type of model to use from HuggingFace')
