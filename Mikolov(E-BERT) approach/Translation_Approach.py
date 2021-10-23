@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Translation_Approach.py --UMLS_Path ../../Train_KGE/UMLS_KG_MT --BERT_Variant franklu/pubmed_bert_squadv2
+#python Translation_Approach.py --UMLS_Path ../../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2
 
 import pandas as pd
 import pickle5 as pickle
