@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant transe --THROUGH False --TRIPLES False --HS False --PO False
+#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant transe --THROUGH True --TRIPLES False --HS False --PO True
 
 
 import pickle5 as pickle
