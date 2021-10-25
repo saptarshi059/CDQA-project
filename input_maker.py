@@ -27,6 +27,8 @@ class InputMaker(object):
         self.max_len = getattr(self.args, 'max_len', 384)
         self.n_stride = getattr(self.args, 'n_stride', 164)
         self.concat_kge = getattr(self.args, 'concat_kge', False)
+        self.fancy_concat = getattr(self.args, 'fancy_concat', False)
+        assert not (self.concat_kge and self.fancy_concat), 'Can only select one of concat_kge or fancy_concat'
 
         print('InputMaker reading metamap...')
         self.metamap_tokenizations = pickle.load(open(self.metamap_tokenizations_pkl_fp, 'rb'))
@@ -41,6 +43,7 @@ class InputMaker(object):
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         self.cls_id = self.tokenizer.cls_token_id
         self.sep_id = self.tokenizer.sep_token_id
+        self.sep_token = self.tokenizer.sep_token
         self.pad_id = self.tokenizer.pad_token_id
         self.n_contextual_embds = self.model.get_input_embeddings().weight.shape[0]
 
@@ -257,36 +260,21 @@ class InputMaker(object):
         q_text = '{} '.format(q_text)
         # print('** q_text: \'{}\' **'.format(q_text))
         tup = self.metamap_tokenizations.query("Question==@q_text")
-        # metamap_tokenized_question = tup['Tokenization'].values[0]
-        # print('tup: {}'.format(tup))
-        # print('tup.empty: {}'.format(tup.empty))
+
         if not tup.empty:
             mappings = tup['Mappings'].values[0]
-            mappings = list(sorted(mappings, key=lambda x: len(x[0])))
+            if self.fancy_concat:
+                domain_terms = ' '.join(['[{}]'.format(m[2]) for m in mappings])
+                q_text = '{} {} {}'.format(q_text.strip(), self.sep_token, domain_terms)
 
-            for text_str, _, domain_term in mappings:
-                q_text = self.add_kge_to_text(q_text, text_str, domain_term)
-            # print('** new q_text: {} **'.format(q_text))
+            else:
+                mappings = list(sorted(mappings, key=lambda x: len(x[0])))
+
+                for text_str, _, domain_term in mappings:
+                    q_text = self.add_kge_to_text(q_text, text_str, domain_term)
+                # print('** new q_text: {} **'.format(q_text))
         else:
             print('Question \'{}\' does not have mappings!'.format(q_text))
-        # new_question_text = []
-        # for word in metamap_tokenized_question:
-        #     filtered_word = clean_term(word)
-        #
-        #     if filtered_word in domain_terms and mappings[domain_terms.index(filtered_word)][2] in self.all_entities:
-        #         mapped_concept = mappings[domain_terms.index(filtered_word)][2]
-        #         custom_concept_token = '[{}]'.format(mapped_concept)
-        #         new_question_text.append(custom_concept_token)
-        #
-        #         if self.concat_kge:
-        #             new_question_text.append('/')
-        #             new_question_text.append(word)
-        #     else:
-        #         new_question_text.append(word)
-        # new_question_text = ' '.join(new_question_text)
-        # # print('new_question_text: {}'.format(new_question_text))
-        #
-        # return new_question_text
         return q_text
 
     def add_kge_to_text(self, q_text, text_to_match, domain_term):

@@ -364,6 +364,7 @@ if __name__ == '__main__':
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
                         type=str2bool)
     parser.add_argument('--concat_kge', default=False, type=str2bool)
+    parser.add_argument('--fancy_concat', default=False, type=str2bool)
     parser.add_argument('--random_kge', default=False, type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
