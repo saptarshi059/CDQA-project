@@ -1,0 +1,739 @@
+Immune system	finding_site_of	Feline infectious peritonitis
+Base Sequence	inverse_isa	RNA Sequence
+Antigens, Viral	has_permuted_term	Antigens, Viral
+human urine	has_expanded_form	human urine
+Inflammatory airway disease	has_associated_morphology	Inflammation
+Pertussis	has_pathological_process	Communicable Diseases
+neutrophil	part_of	Blood
+Variation (Genetics)	has_finding_method	Interventional procedure
+Asthma	expanded_form_of	Asthma
+Vaccinia	mapped_to	Vaccinia
+Upper Respiratory Infections	entry_version_of	Upper Respiratory Infections
+Time of onset	isa	Time
+Recombinant Proteins	mapped_from	Recombinant Proteins
+Influenza	may_be_treated_by	oseltamivir
+intensive care unit	mapped_from	intensive care unit
+Biological Factors	nichd_parent_of	Vaccines
+Local	possibly_equivalent_to	Local
+Angiogenic Process	interprets	Angiogenic Process
+Other activity	expanded_form_of	Other activity
+Therapeutic procedure	referred_to_by	Therapeutic procedure
+Genetic Translation Process	biological_process_involves_gene_product	DDX58 protein, human
+Health care facility	mapped_to	Hospitals
+Malaise	expanded_form_of	Malaise
+Practice Experience	use	Practice Experience
+Scheuermann's Disease	has_expanded_form	Scheuermann's Disease
+Hantavirus	causative_agent_of	Hemorrhagic Fever with Renal Syndrome
+Weekly	replaced_by	Weekly
+Isolation procedure	inverse_isa	Quarantine
+Vaccines	system_of	Type:ID:Pt:Vaccine:Nom
+Immunology	entry_version_of	Immunology
+Thrombocythemia, Essential	use	Thrombocythemia, Essential
+Smoker	same_as	Smoker
+Name	inverse_isa	Acronyms
+Acute Lung Injury	classifies	Acute Lung Injury
+Seizures	same_as	Seizures
+therapeutic aspects	has_expanded_form	therapeutic aspects
+Redness	interprets	Evaluation procedure
+Drug Repositioning	has_permuted_term	Drug Repositioning
+Influenza A Virus, H1N1 Subtype	has_permuted_term	Influenza A Virus, H1N1 Subtype
+Threshold	isa	Concept Attribute
+GDC Tissue or Organ of Origin Terminology	subset_includes_concept	Intestines
+Account number:Identifier:Point in time:^Patient:Nominal	has_supersystem	Patients
+Disease Progression	classified_as	Disease Progression
+Virologists	mapped_to	Science of Virology
+Bronchoalveolar Lavage	has_direct_procedure_site	Lower respiratory tract structure
+Hemorrhagic Fever with Renal Syndrome	expanded_form_of	Hemorrhagic Fever with Renal Syndrome
+Fibril - cell component	sib_in_isa	Anatomical compartments
+X-Ray Computed Tomography	has_method	Evaluation procedure
+Child	has_nichd_parent	Persons
+Lower respiratory tract infection	inverse_was_a	Lower respiratory tract infection
+Fowls, Domestic	mapped_to	Fowls, Domestic
+Trees (plant)	has_permuted_term	Trees (plant)
+rupintrivir	isa	Antiviral Agents
+proline	inverse_isa	proline
+Plants	permuted_term_of	Plants
+Spastic Paraplegia, Hereditary	mapped_from	Spastic Paraplegia, Hereditary
+Genome, Human	mapped_to	Genome, Human
+Quarantine	mapped_to	Quarantine
+Wiskott-Aldrich Syndrome	mapped_to	Wiskott-Aldrich Syndrome
+Helping Behavior	has_permuted_term	Helping Behavior
+Social Networks	permuted_term_of	Social Networks
+Variation (Genetics)	interprets	Laboratory Procedures
+Lactobacillus casei	mapped_to	Lactobacillus casei
+Surgical Replantation	method_of	Surgical Replantation
+Trait	isa	Characteristics
+Redness	possibly_equivalent_to	Redness
+Virus	inverse_isa	Human virus
+Cell Nucleolus	part_of	Cell Nucleus
+Hantavirus Pulmonary Syndrome	has_entry_version	Hantavirus Pulmonary Syndrome
+Pharmacotherapy	classifies	Pharmacotherapy
+neutrophil	anatomic_structure_is_physical_part_of	Immune system
+Inflammation	inverse_isa	Infected
+Thinking, function	same_as	Thinking, function
+Glycoproteins	mapped_to	Glycoproteins
+SARS coronavirus	entry_version_of	SARS coronavirus
+Bunyaviridae	causative_agent_of	Chikungunya Fever
+Antiviral Agents	therapeutic_class_of	remdesivir
+Method of detection	isa	Methods
+Blood	has_part	neutrophil
+Recognition, Psychology	has_permuted_term	Recognition, Psychology
+diagnostic procedure	has_expanded_form	diagnostic procedure
+Upper respiratory tract	sib_in_part_of	Lower respiratory tract structure
+Aluminum measurement	has_consumer_friendly_form	Aluminum measurement
+Interferon Type I	has_permuted_term	Interferon Type I
+Virus	causative_agent_of	Influenza in Birds
+Environment	isa	Therapeutic procedure
+Vaccination	use	Immunization
+Japanese Encephalitis	mapped_from	Japanese Encephalitis
+Respiratory Distress Syndrome, Adult	has_finding_site	Lung
+X-Ray Computed Tomography	see	X-Ray Computed Tomography
+Two	same_as	Two
+DNA	has_expanded_form	DNA
+Communicable Diseases	focus_of	Quarantine
+Identification (Psychology)	has_permuted_term	Identification (Psychology)
+Handwashing	has_permuted_term	Handwashing
+Intestines	finding_site_of	Trichohepatoenteric Syndrome
+Membrane Proteins	mapped_to	Membrane Proteins
+Technology	mapped_to	Technology
+infection risk factor	expanded_form_of	infection risk factor
+Oxidative Stress	permuted_term_of	Oxidative Stress
+Cells	inverse_isa	macrophage
+Meningitis	expanded_form_of	Meningitis
+Knowledge acquisition	used_for	Knowledge acquisition
+Senility	has_expanded_form	Senility
+Microbiome	permuted_term_of	Microbiome
+Aves	used_for	Aves
+Severe Acute Respiratory Syndrome	isa	Pneumonia
+Nasal Polyps	permuted_term_of	Nasal Polyps
+Disease	inverse_isa	Autoimmune Diseases
+Longitudinal Studies	use	Longitudinal Studies
+Account number:Identifier:Point in time:^Patient:Nominal	common_name_of	Account number:Identifier:Point in time:^Patient:Nominal
+Hantavirus Infections	mapped_to	Hemorrhagic Fever with Renal Syndrome
+Pneumonia, Bacterial	classified_as	Pneumonia, Bacterial
+Persons	subject_relationship_context_of	Laboratory Procedures
+Virus Diseases	see_from	Virus Diseases
+disease transmission	use	disease transmission
+Simplexvirus	possibly_equivalent_to	Simplexvirus
+Heel	isa	Heel
+Cytomegalovirus	see	Cytomegalovirus
+Immunoglobulin Isotypes	has_permuted_term	Immunoglobulin Isotypes
+Pharmacotherapy	isa	Pharmacotherapy
+Chest CT	has_multi_level_category	Chest CT
+Influenza vaccination	isa	Vaccination
+Evaluation	same_as	Evaluation procedure
+Ebolavirus	permuted_term_of	Ebolavirus
+Staphylococcus aureus	mapped_from	Staphylococcus aureus
+Thromboplastin	has_entry_version	Thromboplastin
+Body tissue	specimen_source_topography_of	Tissue specimen from liver
+Optic Neuritis	isa	Optic Neuritis
+Zoonoses	nichd_parent_of	Q Fever
+Virulence Factors	has_permuted_term	Virulence Factors
+Cytotoxicity assay	has_component	Immunologic Factors
+Chronic Obstructive Airway Disease	use	Chronic Obstructive Airway Disease
+NLRP3 gene	gene_plays_role_in_process	Apoptosis
+Virus Diseases	related_to	Influenza
+Low dose computed tomography of thorax	isa	X-Ray Computed Tomography
+Enzyme-Linked Immunosorbent Assay	has_permuted_term	Enzyme-Linked Immunosorbent Assay
+Mucous Membrane	mapped_from	Mucous Membrane
+Influenza	has_causative_agent	Virus
+Gene Silencing	has_permuted_term	Gene Silencing
+immunopathology specialty	same_as	immunopathology specialty
+Gardening	mapped_to	Gardening
+Dendritic Cells	mapped_from	Dendritic Cells
+Microorganism	used_for	Microorganism
+immunoglobulin G	see	immunoglobulin G
+Serum	part_of	Blood
+Zoonoses	nichd_parent_of	Middle East Respiratory Syndrome
+Influenza vaccination	mth_british_form_of	Influenza vaccination
+Disease susceptibility	use	Disease susceptibility
+Microscopy, Confocal	has_permuted_term	Microscopy, Confocal
+Acute respiratory infections	has_course	acute
+Social Role	used_for	Social Role
+Involvement with	possibly_equivalent_to	Involvement with
+Communicable Diseases, Emerging	mapped_from	Communicable Diseases, Emerging
+Macrophage Inflammatory Protein 1 Alpha measurement	classifies	Macrophage Inflammatory Protein 1 Alpha measurement
+Cell Death	inverse_isa	Apoptosis
+Ligands	mapped_from	Ligands
+ZC3H12A gene	gene_plays_role_in_process	Cell Death
+Patients	isa	Persons
+Respiration Disorders	inverse_isa	Viral respiratory infection
+Oral swab (specimen)	replaces	Oral swab (specimen)
+Asians	has_permuted_term	Asians
+Adenovirus Vaccine	has_permuted_term	Adenovirus Vaccine
+Hantavirus	isa	Bunyaviridae
+Microorganism	inverse_isa	Intracellular parasite
+Viral gastroenteritis	expanded_form_of	Viral gastroenteritis
+Lassa Fever	classified_as	Virus Diseases
+RNA	inverse_isa	RNA, Messenger
+Catalytic RNA	mapped_from	Catalytic RNA
+Parkinson Disease	use	Parkinson Disease
+Libraries	mapped_to	Libraries
+Malignant neoplasm of prostate	has_expanded_form	Malignant neoplasm of prostate
+Medical Devices	entry_version_of	Medical Devices
+Polymerase Chain Reaction	used_for	Reverse Transcriptase Polymerase Chain Reaction
+Rhinovirus infection	isa	Rhinovirus infection
+Empyema	mapped_from	Empyema
+Neurology speciality	has_expanded_form	Neurology speciality
+chloramphenicol	active_ingredient_of	chloramphenicol
+Influenza A	isa	Influenza
+Malaise	inverse_isa	Malaise
+Human to human transmission	has_permuted_term	Human to human transmission
+Persons	nichd_parent_of	Fetus
+Amino Acids	mapped_from	Amino Acids
+floor (object)	has_permuted_term	floor (object)
+RC3H1 gene	prev_name_of	RC3H1 gene
+Personal status - Adopted	same_as	Personal status - Adopted
+Pneumonia	isa	Pneumonia
+Asymptomatic Infections	isa	Communicable Diseases
+Hypersensitivity	inverse_was_a	Hypersensitivity
+Persons	inverse_isa	Recipient
+Viremia	due_to	Communicable Diseases
+HIV	has_entry_version	HIV
+Publications	mapped_from	Publications
+Flavonoids	active_ingredient_of	Flavonoids
+Virion	isa	Virus
+B-Lymphocytes	has_sort_version	B-Lymphocytes
+lysine	mapped_to	lysine
+Jumping	isa	Moving
+hydroxychloroquine	use	chloroquine
+Author	use	Author
+Encephalitis	has_permuted_term	Encephalitis
+Homo sapiens	organism_has_gene	GOLPH3 gene
+Upper Respiratory Infections	has_permuted_term	Upper Respiratory Infections
+Author	used_for	Author
+Chiroptera	mapped_from	Chiroptera
+Hemorrhagic Fever, Ebola	entry_version_of	Hemorrhagic Fever, Ebola
+Taxonomic	has_expanded_form	Taxonomic
+Tuberculosis	inverse_was_a	Tuberculosis
+Biological Processes	inverse_isa	Exertion
+Encephalitis Virus, Eastern Equine	use	Encephalitis Virus, Eastern Equine
+Viral Structures	permuted_term_of	Viral Structures
+Fowls, Domestic	has_permuted_term	Fowls, Domestic
+Palliative Care	mapped_to	Palliative Care
+Mus	replaces	Mus
+Woman	mapped_from	Woman
+Pharmacotherapy	has_permuted_term	Pharmacotherapy
+Extent	inverse_isa	Involvement with
+Males	used_for	Male population group
+Disease Outbreaks	has_permuted_term	Disease Outbreaks
+Immunologic Memory	used_for	Immunologic Memory
+Hydranencephaly with Renal Aplasia-Dysplasia	has_alias	Hydranencephaly with Renal Aplasia-Dysplasia
+Immunologic Factors	inverse_isa	Complement C5a
+Viral gastroenteritis	has_pathological_process	Communicable Diseases
+Respiration Disorders	nichd_parent_of	Asthma
+Testing	isa	Evaluation procedure
+Arenavirus	mapped_to	Arenaviridae
+Virus Diseases	related_to	Hantavirus Infections
+Interferon-alpha	use	Interferon-alpha
+Organ	inverse_isa	Lung
+Biological Assay	permuted_term_of	Biological Assay
+Apoptosis	has_permuted_term	Apoptosis
+Diarrhea	expanded_form_of	Diarrhea
+Spinal Anesthesia	classifies	Spinal Anesthesia
+RESF1 gene	prev_symbol_of	RESF1 gene
+Medical Devices	expanded_form_of	Medical Devices
+Patients	permuted_term_of	Patients
+Bacteria	has_entry_version	Bacteria
+Hepatitis C, Chronic	mapped_from	Hepatitis C
+Communicable Diseases	pathological_process_of	Viral gastroenteritis
+Lung	finding_site_of	Lung consolidation
+Numbers	inverse_isa	Eighteen
+Pertussis	has_expanded_form	Pertussis
+Females	inverse_isa	Females
+Thromboplastin	isa	Thromboplastin
+Basic Reproduction Number	permuted_term_of	Basic Reproduction Number
+Smoker	has_permuted_term	Smoker
+Lower respiratory tract infection	isa	Disorder of lower respiratory system
+Viral gastroenteritis	same_as	Viral gastroenteritis
+Heart	inverse_isa	Heart
+Unmarried person	has_permuted_term	Unmarried person
+Complex	isa	Relationships
+ouabain	sort_version_of	ouabain
+Clinical Trials	mapped_from	Clinical Trials
+Child	inverse_isa	Infant
+SCGB3A1 gene	alias_of	SCGB3A1 gene
+Respiratory Syncytial Virus Infections	has_entry_version	Respiratory Syncytial Virus Infections
+Negative	same_as	Negative
+Statistical Test	use	Statistical Test
+X-Ray Computed Tomography	mth_british_form_of	X-Ray Computed Tomography
+Dyspnea	same_as	Dyspnea
+Laboratory Procedures	is_interpreted_by	DNA Replication
+At risk of infection	same_as	At risk of infection
+Africa	has_conceptual_part	Kenya
+Communicable Diseases	pathological_process_of	Viremia
+Malaria	mapped_from	Malaria
+Palliative Care	has_expanded_form	Palliative Care
+Nucleotides	mapped_to	Nucleotides
+Osteoporosis	has_multi_level_category	Osteoporosis
+Age	mapped_to	Senility
+Diagnosis	mapped_from	Diagnosis
+Intestines	isa	Organ
+glycosylation	has_permuted_term	glycosylation
+Heart	finding_site_of	Cardiac Arrest
+Disease susceptibility	mapped_from	Disease susceptibility
+Dyspnea	has_associated_finding	Symptoms
+delivery method	has_method	Obstetric Delivery
+Signs and Symptoms	has_permuted_term	Signs and Symptoms
+Obstetric Delivery	has_permuted_term	Obstetric Delivery
+iron	permuted_term_of	iron
+Hepatitis B	mapped_from	Hepatitis B
+Neoplasm Metastasis	has_permuted_term	Neoplasm Metastasis
+Empyema	isa	Inflammatory disorder
+White Blood Cell Count procedure	has_permuted_term	White Blood Cell Count procedure
+Priorities	same_as	Priorities
+Pharmaceutical Preparations	direct_substance_of	Pharmacotherapy
+Ventilator - respiratory equipment	possibly_equivalent_to	Mechanical Ventilator
+Malaria	has_permuted_term	Malaria
+Hypersensitivity	has_finding_site	Immune system
+GYPC gene	has_alias	GYPC gene
+Dyspnea	see	Dyspnea
+Vaccines	inverse_isa	pertussis vaccine
+Response to treatment	was_a	Response to treatment
+Hantavirus Infections	mapped_from	Hantavirus Infections
+Health	mapped_from	Health
+Disease	mapped_from	Disease
+Palliative Care	same_as	Palliative Care
+Science of Virology	has_entry_version	Science of Virology
+Elements	mapped_to	Elements
+Evaluation procedure	method_of	Biological Assay
+Chikungunya virus	causative_agent_of	Chikungunya Fever
+Virus	causative_agent_of	Virus Diseases
+Respiration Disorders	mapped_from	Disorder of lower respiratory system
+Genetic Translation Process	biological_process_is_part_of_process	Gene Expression
+Diarrhea	mapped_to	Gastrointestinal infection
+Pharmacotherapy	was_a	Pharmacotherapy
+Japan	isa	Country
+Pneumonia, Bacterial	has_causative_agent	Bacteria
+Gene Expression	has_permuted_term	Gene Expression
+Pharmacotherapy	isa	Therapeutic procedure
+Viral Components	part_of	Entire body as a whole
+Recent	replaces	Recent
+Nasal Polyps	same_as	Nasal Polyps
+Surgical Replantation	same_as	Surgical Replantation
+Hemorrhagic Fever, Ebola	permuted_term_of	Hemorrhagic Fever, Ebola
+Blood Group (classification)	isa	Classification
+Colorectal Carcinoma	disease_has_associated_anatomic_site	Intestines
+Syndrome	isa	Disease
+Evaluation procedure	has_method	Evaluation procedure
+Genomics	mapped_to	Genomics
+NLRP3 gene	has_prev_symbol	NLRP3 gene
+Inflammatory disorder	inverse_isa	Chikungunya Fever
+Protein Structure, Secondary	entry_version_of	Protein Structure, Secondary
+iron	isa	iron
+Virus Diseases	inverse_isa	Severe Acute Respiratory Syndrome
+Aves	same_as	Aves
+Recombinant Proteins	mapped_to	Recombinant Proteins
+Chronic inflammatory disorder	isa	Inflammatory disorder
+Hemorrhagic Fever, Ebola	has_pathological_process	Communicable Diseases
+Exertion	isa	Function (attribute)
+Scheuermann's Disease	same_as	Scheuermann's Disease
+More	possibly_equivalent_to	Numerous
+immunoglobulin G	permuted_term_of	immunoglobulin G
+Alphavirus	use	Alphavirus
+Enzymes	mapped_from	Enzymes
+Anti-Inflammatory Agents	inverse_isa	glycyrrhizic acid
+Cell Nucleus	is_associated_anatomy_of_gene_product	Receptors, Nuclear
+Genome, Human	isa	Genes
+Nasal Polyps	primary_mapped_to	Nasal Polyps
+Classification	has_entry_version	Classification
+Characteristics	nichd_parent_of	Length
+chloroquine	mapped_from	chloroquine
+Classification	inverse_isa	Blood Group (classification)
+T-Cell Receptor	permuted_term_of	T-Cell Receptor
+SARS coronavirus	permuted_term_of	SARS coronavirus
+Quarantine	classified_as	Quarantine
+Cell Differentiation process	biological_process_has_associated_location	Cells
+Home environment	inverse_isa	Home environment
+Macrophages, Alveolar	has_permuted_term	Macrophages, Alveolar
+Chickens	isa	Chickens
+Vaccines	inverse_isa	Vaccination
+Genus: Coronavirus	inverse_isa	Equine coronavirus
+Cause of Death	same_as	Cause of Death
+Growth Inhibitors	permuted_term_of	Growth Inhibitors
+Concept Attribute	inverse_isa	Mechanism (attribute)
+Enzymes	same_as	Enzymes
+DNA-Directed RNA Polymerase	gene_product_plays_role_in_biological_process	Polymerization
+Thrombocythemia, Essential	has_expanded_form	Thrombocythemia, Essential
+Malignant Neoplasms	use	Neoplasms
+France	isa	Western Europe
+Infiltration	expanded_form_of	Infiltration
+Chickens	mapped_to	Chickens
+MALAT1 gene	prev_name_of	MALAT1 gene
+Homo sapiens	has_permuted_term	Homo sapiens
+Virus Diseases	classified_as	Virus Diseases
+Serologic tests	permuted_term_of	Serologic tests
+Evaluation procedure	inverse_isa	Evaluation
+Wiskott-Aldrich Syndrome	has_permuted_term	Wiskott-Aldrich Syndrome
+Proteins	mapped_from	Proteins
+HNRNPD gene	prev_name_of	HNRNPD gene
+phosphoethanolamine	isa	Amino Acids
+Obstetric Delivery	classified_as	Obstetric Delivery
+Interpretation Process	biological_process_has_associated_location	Nervous system structure
+Viral Structures	has_permuted_term	Viral Structures
+infection risk factor	has_expanded_form	infection risk factor
+Biological Factors	active_ingredient_of	Biological Factors
+Malignant tumor of colon	primary_mapped_from	Malignant tumor of colon
+Communicable Diseases	inverse_isa	Zoonoses
+Bunyaviridae	use	Bunyaviridae
+Drug resistance	classifies	Drug resistance
+Viremia	classifies	Viremia
+Communicable Diseases	pathological_process_of	Influenza
+ouabain	replaced_by	ouabain
+immunoglobulin G	has_sort_version	immunoglobulin G
+Base Sequence	entry_version_of	Base Sequence
+Tuberculosis	classifies	Tuberculosis
+Malignant tumor of colon	permuted_term_of	Malignant tumor of colon
+Pain	classifies	Pain
+Lower respiratory tract infection	isa	Respiratory Tract Infections
+Murine hepatitis virus	used_for	Murine hepatitis virus
+Antioxidants	mapped_to	Antioxidants
+Thrombocythemia, Essential	mapped_to	Thrombocythemia, Essential
+Coughing	replaced_by	Coughing
+Vaccinia	permuted_term_of	Vaccinia
+Transmembrane Domain	is_structural_domain_or_motif_of_gene_product	CCR5 protein, human
+House mice	replaced_by	House mice
+Infant	mapped_to	Infant
+GORAB gene	expanded_form_of	GORAB gene
+Macrophages, Alveolar	part_of	Lung
+Escherichia coli	mapped_from	Escherichia coli
+Alzheimer disease, familial, type 3	disease_has_associated_anatomic_site	Nervous system structure
+Flavonoids	mapped_from	Flavonoids
+Respiratory Distress Syndrome, Adult	mapped_from	Respiratory Distress Syndrome, Adult
+risk factors	permuted_term_of	risk factors
+Viral Vector	inverse_isa	Adenovirus Vector
+Polymerase Chain Reaction	see	Polymerase Chain Reaction
+Cardiac Arrest	was_a	Cardiac Arrest
+Nervous system structure	finding_site_of	Seizures
+Lower respiratory tract structure	procedure_site_of	Bronchoalveolar Lavage
+Chickens	isa	Aves
+Pharmaceutical Preparations	replaced_by	Pharmaceutical Preparations
+Woman	possibly_equivalent_to	Homo sapiens
+T lymphocyte count	has_component	T-Lymphocyte
+Influenza due to Influenza A virus subtype H1N1	has_causative_agent	Virus
+Panthera leo	mapped_from	Panthera leo
+Osteoporosis	classifies	Osteoporosis
+Therapeutic procedure	same_as	Therapeutic procedure
+Neoplasm Metastasis	biological_process_has_initiator_process	Pathologic Processes
+Tick-Borne Encephalitis Viruses	has_permuted_term	Tick-Borne Encephalitis Viruses
+Mechanical Ventilator	possibly_equivalent_to	Ventilator - respiratory equipment
+Immune system	finding_site_of	Wiskott-Aldrich Syndrome
+Protein Truncation	biological_process_has_associated_location	Ribosomes
+CD40 Ligand	has_permuted_term	CD40 Ligand
+Status	isa	Concept Attribute
+DDT (Insecticide)	see	DDT (Insecticide)
+Communicable Diseases	inverse_isa	types of infections
+Half-Life	permuted_term_of	Half-Life
+Response to treatment	isa	Response to treatment
+Biological Processes	inverse_isa	Growth
+Thrombocythemia, Essential	inverse_isa	Thrombocythemia, Essential
+Menopause	possibly_equivalent_to	Menopause
+Administration procedure	possibly_equivalent_to	Administration occupational activities
+Statistical Significance	used_for	Statistical Significance
+Drug resistance	permuted_term_of	Drug resistance
+RNA Virus Infections	permuted_term_of	RNA Virus Infections
+Cardiac Arrest	has_expanded_form	Cardiac Arrest
+Mammarenavirus	permuted_term_of	Mammarenavirus
+arginine	inverse_isa	arginine
+Tristetraprolin	permuted_term_of	Tristetraprolin
+Coinfection	same_as	Coinfection
+Calpain	has_permuted_term	Calpain
+Blood specimen	specimen_of	Aluminum measurement
+Geographic Locations	entry_version_of	Geographic Locations
+Gastroenteritis	classified_as	Gastroenteritis
+Hepatitis C	has_pathological_process	Communicable Diseases
+Masks	mapped_from	Masks
+Cell Nucleolus	has_permuted_term	Cell Nucleolus
+receptor	isa	Biological Factors
+Hantavirus Pulmonary Syndrome	has_associated_morphology	Inflammation
+Viral gastroenteritis	has_finding_site	Intestines
+Intermediate	sib_in_isa	Extrinsic
+Hemorrhagic Fever with Renal Syndrome	has_permuted_term	Hemorrhagic Fever with Renal Syndrome
+CFLAR gene	has_prev_name	CFLAR gene
+Associated with	inverse_isa	During
+Languages	has_permuted_term	Languages
+Interventional procedure	finding_method_of	Gene Expression
+FGL2 gene	has_expanded_form	FGL2 gene
+Bacteria	possibly_equivalent_to	Prokaryote
+Encephalitis	has_entry_version	Encephalitis
+Structural protein	isa	Protein, Organized by Function
+Flavonoids	has_permuted_term	Flavonoids
+Vaccinia	has_permuted_term	Vaccinia
+Pathologic Processes	inverse_isa	Disease Progression
+Tumor Cell Invasion	mth_british_form_of	Tumor Cell Invasion
+Virion	permuted_term_of	Virion
+Nervous system structure	is_associated_anatomic_site_of	Spastic Paraplegia, Hereditary
+Intestinal Mucosa	isa	Mucous Membrane
+Ion Channel	permuted_term_of	Ion Channel
+Enzyme-Linked Immunosorbent Assay	mapped_to	Enzyme-Linked Immunosorbent Assay
+Started	isa	status - In progress
+Phagocytes	has_permuted_term	Phagocytes
+Track (course)	has_permuted_term	Track (course)
+Age	inverse_isa	Age
+Emergency Preparedness	has_permuted_term	Emergency Preparedness
+Lung	finding_site_of	Hantavirus Pulmonary Syndrome
+Rickettsia Infections	use	Rickettsia Infections
+Antigens	used_for	Antigens
+Laboratory Procedures	classifies	Laboratory Procedures
+Neoplasms	isa	Disease
+Acclimatization	mapped_to	Acclimatization
+Cell Death	use	Cell Death
+Influenza	has_expanded_form	Influenza
+Mammarenavirus	has_permuted_term	Mammarenavirus
+Inflammation	associated_morphology_of	Multiple Evanescent White Dot Syndrome
+Persons	inverse_isa	Responsible to
+Pneumonia, Viral	isa	Viral respiratory infection
+Immunologic Memory	entry_version_of	Immunologic Memory
+Spur (body structure)	replaces	Spur (body structure)
+RNA-Binding Proteins	permuted_term_of	RNA-Binding Proteins
+Biological Processes	inverse_isa	Response to treatment
+Epithelial Cells	inverse_isa	Renal epithelial cell
+Inflammation	associated_morphology_of	Community acquired pneumonia
+Biological Markers	has_entry_version	Biological Markers
+Proteins	isa	Amino Acids
+Viremia	isa	Virus Diseases
+Viremia	permuted_term_of	Viremia
+Obstetric Delivery	mapped_from	Obstetric Delivery
+Pertussis	has_permuted_term	Pertussis
+Safety	mapped_from	Safety
+Nasal Polyps	has_expanded_form	Nasal Polyps
+Long-term	isa	Course
+Member of large family	has_subject_of_information	Family
+Protein Isoforms	has_permuted_term	Protein Isoforms
+Depressive Symptoms	permuted_term_of	Depressive Symptoms
+Numbers	inverse_isa	Nine
+Epitopes	permuted_term_of	Epitopes
+Genetic Materials	permuted_term_of	Genetic Materials
+arginine	has_permuted_term	arginine
+Serologic tests	entry_version_of	Serologic tests
+Severe Acute Respiratory Syndrome	isa	Coronavirus Infections
+Respiration Disorders	inverse_isa	Infectious Lung Disorder
+Protein Domain	inverse_isa	Epitopes
+Orthomyxoviridae	mapped_from	Orthomyxoviridae
+Influenza vaccination	mth_has_british_form	Influenza vaccination
+Variation (Genetics)	has_permuted_term	Variation (Genetics)
+Identity, Genetic	permuted_term_of	Identity, Genetic
+Upper respiratory tract	specimen_source_topography_of	Sputum specimen
+Immune system	finding_site_of	Hypersensitivity
+Immunization	mth_has_british_form	Immunization
+Genes	inverse_isa	Genome, Human
+Encephalitis	inverse_isa	Encephalitis
+Time of symptom onset	interprets	Time of symptom onset
+Surgical Replantation	isa	Surgical Replantation
+Therapeutic procedure	used_for	Therapeutic procedure
+Genome Size	has_permuted_term	Genome Size
+Lung	is_associated_anatomic_site_of	Community acquired pneumonia
+DNA Replication	biological_process_involves_gene_product	prohibitin
+Sheep	mapped_from	Sheep
+Fever	has_interpretation	Increased
+Beginning	inverse_isa	Homo sapiens
+Ebolavirus	causative_agent_of	Hemorrhagic Fever, Ebola
+Molecular Structure	mapped_from	Molecular Structure
+RNA Virus Infections	has_permuted_term	RNA Virus Infections
+Infection	same_as	Communicable Diseases
+Metapneumovirus	inverse_isa	Human Metapneumovirus
+EGR1 gene	expanded_form_of	EGR1 gene
+Seizures	mapped_to	Seizures
+Animals	referred_to_by	Animals
+proline	mapped_from	proline
+Behavior	has_permuted_term	Behavior
+Done (qualifier value)	inverse_isa	Implemented
+Followed by	possibly_equivalent_to	Followed by
+Virus Diseases	inverse_isa	Coronavirus Infections
+White Blood Cell Count procedure	classified_as	White Blood Cell Count procedure
+Present	inverse_isa	trace amount
+Autonomous Replication	permuted_term_of	Autonomous Replication
+Interventional procedure	finding_method_of	DNA Replication
+trends qualifier	entry_version_of	trends qualifier
+Lassa Fever	has_causative_agent	Arenavirus
+Hepatitis C, Chronic	has_associated_morphology	Chronic inflammation
+Symptoms	associated_finding_of	Symptoms
+Infant, Newborn	use	Infant, Newborn
+Malignant Neoplasms	permuted_term_of	Malignant Neoplasms
+Chronic Obstructive Airway Disease	see_from	Chronic Obstructive Airway Disease
+H1N1	isa	Serotype
+Respiratory rate	permuted_term_of	Respiratory rate
+First Birth	has_permuted_term	First Birth
+Course	inverse_isa	acute
+Interventional procedure	classified_as	Interventional procedure
+Quantity	possibly_equivalent_to	Quantity
+Immune system	has_permuted_term	Immune system
+Seizures	replaces	Seizures
+Evaluation procedure	method_of	HIV screen
+Obstetric Delivery	inverse_isa	Obstetric Delivery
+Dyspnea	mapped_from	Dyspnea
+Infiltration	classified_as	Infiltration
+Regression Analysis	use	Regression Analysis
+Anti-Inflammatory Agents	active_ingredient_of	Anti-Inflammatory Agents
+Pneumonia	expanded_form_of	Pneumonia
+Computed Tomography Scanning Systems	entry_version_of	Computed Tomography Scanning Systems
+Vaccines, Inactivated	permuted_term_of	Vaccines, Inactivated
+Community-Acquired Infections	permuted_term_of	Community-Acquired Infections
+ERN1 gene	expanded_form_of	ERN1 gene
+Mortality Vital Statistics	has_entry_version	Mortality Vital Statistics
+Cytokinesis	permuted_term_of	Cytokinesis
+Lower respiratory tract structure	direct_procedure_site_of	Bronchoalveolar Lavage
+Recognition, Psychology	use	Memory
+Genome, Human	has_permuted_term	Genome, Human
+Optic Neuritis	expanded_form_of	Optic Neuritis
+Lower respiratory tract infection	classified_as	Lower respiratory tract infection
+Sputum	mapped_to	Sputum
+Hantavirus Pulmonary Syndrome	mapped_from	Hantavirus Pulmonary Syndrome
+Proteins	see_from	Proteins
+Peptides	active_ingredient_of	Peptides
+Fetus	isa	Persons
+Hepatitis C	entry_version_of	Hepatitis C
+Influenza virus vaccine	isa	Viral Vaccines
+Crystallography, X-Ray	has_permuted_term	Crystallography, X-Ray
+MAP kinase activity	exhibited_by	Mitogen-Activated Protein Kinases
+cytokine	inverse_isa	Interferons
+Neoplasms	has_nichd_parent	Disease
+Consistency	has_finding_method	Interventional procedure
+Protein, Organized by Structure	inverse_isa	Glycoproteins
+chemokine	gene_product_plays_role_in_biological_process	Biologic Development
+Comprehension	see	Comprehension
+Optic Neuritis	has_associated_morphology	Inflammation
+interleukin-1, beta	has_permuted_term	interleukin-1, beta
+Immunologic Factors	has_permuted_term	Immunologic Factors
+FGL2 gene	expanded_form_of	FGL2 gene
+Adult Children	mapped_from	Adult Children
+travel	mapped_from	travel
+Rhinovirus	mapped_to	Rhinovirus
+Surgical Replantation	entry_version_of	Surgical Replantation
+Vaccination	has_permuted_term	Vaccination
+Mammals	inverse_isa	Family suidae
+travel	permuted_term_of	travel
+Immunologic Adjuvants	inverse_isa	Immunologic Adjuvants
+Optic Neuritis	was_a	Optic Neuritis
+Chest CT	has_expanded_form	Chest CT
+neutrophil	use	neutrophil
+Pneumonia	has_expanded_form	Pneumonia
+Meningitis	same_as	Meningitis
+Dendritic Cells	anatomic_structure_is_physical_part_of	Immune system
+Molecular Conformation	interprets	Laboratory Procedures
+Immunization	classified_as	Immunization
+Cytomegalovirus	permuted_term_of	Cytomegalovirus
+Genetic Carriers	has_expanded_form	Genetic Carriers
+Optic Neuritis	inverse_was_a	Optic Neuritis
+parent	mapped_from	parent
+T-Cell Receptor	mapped_from	T-Cell Receptor
+Palliative Care	classifies	Palliative Care
+Cellular Immunity	biological_process_has_initiator_chemical_or_drug	Antigens
+Malaria	has_interpretation	Increased
+Biological Assay	has_method	Evaluation procedure
+Biological Response Modifiers	inverse_isa	Mannose Binding Lectin
+immunoglobulin G	see_from	immunoglobulin G
+Bronchoalveolar Lavage	has_permuted_term	Bronchoalveolar Lavage
+Relationships	inverse_isa	Same
+Frequency of Responses	used_for	Frequency of Responses
+Serotype	has_permuted_term	Serotype
+Palliative Care	has_entry_version	Palliative Care
+Pain	has_expanded_form	Pain
+Virus Replication	see_from	Science of Virology
+Malaria	primary_mapped_from	Malaria
+Field	isa	Area
+Macrophages, Alveolar	anatomic_structure_is_physical_part_of	Immune system
+Adenovirus Vaccine	isa	Viral Vaccines
+Communicable Diseases, Emerging	has_permuted_term	Communicable Diseases, Emerging
+Child Mortality	permuted_term_of	Child Mortality
+Anti-Retroviral Agents	mapped_from	Anti-Retroviral Agents
+Infectious Disease Contact Tracing	has_permuted_term	Infectious Disease Contact Tracing
+Evaluation procedure	classifies	Evaluation procedure
+Seroconversion	has_permuted_term	Seroconversion
+GDC Tissue or Organ of Origin Terminology	subset_includes_concept	Duodenum
+Evaluation	method_of	Evaluation procedure
+Pertussis	primary_mapped_from	Pertussis
+Pregnancy	same_as	Pregnancy
+Community-Acquired Infections	has_permuted_term	Community-Acquired Infections
+Infection	classifies	Infection
+Chronic Obstructive Airway Disease	has_clinical_course	chronic
+Plasma	sib_in_isa	Serum
+Real-Time Polymerase Chain Reaction	permuted_term_of	Real-Time Polymerase Chain Reaction
+Plant seeds	has_expanded_form	Plant seeds
+Macrophages, Alveolar	entry_version_of	Macrophages, Alveolar
+Attention	inverse_isa	Mental concentration
+Streptococcus pneumoniae	entry_version_of	Streptococcus pneumoniae
+Part	inverse_isa	Residue
+Respiration Disorders	expanded_form_of	Respiration Disorders
+Health care facility	mapped_to	Health care facility
+Interferons	isa	Antiviral Agents
+pertussis vaccine	inverse_isa	pertussis vaccine
+Cholera Toxin	permuted_term_of	Cholera Toxin
+Replication-Associated Process	inverse_isa	DNA Replication
+Administration occupational activities	entry_version_of	Administration occupational activities
+Pain	same_as	Pain
+Coronavirus Infections	has_permuted_term	Coronavirus Infections
+Leukoencephalitis, Acute Hemorrhagic	temporally_follows	Communicable Diseases
+Policy	has_context_binding	Policy
+Serum	use	Serum
+Persistent	possibly_equivalent_to	Continuous
+Gardening	mapped_from	Gardening
+Vaccination against smallpox	expanded_form_of	Vaccination against smallpox
+Arenaviridae	inverse_isa	Arenavirus
+Pneumonia, Bacterial	mapped_to	Pneumonia, Bacterial
+Virus Diseases	has_entry_version	Virus Diseases
+cytokine	isa	Proteins
+Temperature	isa	Characteristics
+Limit setting	expanded_form_of	Limit setting
+Middle East Respiratory Syndrome	classifies	Middle East Respiratory Syndrome
+Virus Diseases	classifies	Virus Diseases
+Immunoglobulin Isotypes	entry_version_of	Immunoglobulin Isotypes
+Epidemiology	mapped_from	Epidemiology
+Viral Shedding	has_permuted_term	Viral Shedding
+Nucleic Acid Amplification Tests	inverse_isa	Loop-mediated Isothermal Amplification
+Intravenous Injections	same_as	Intravenous Injections
+Immune system	has_physical_part_of_anatomic_structure	Phagocytes
+lanthanum	has_active_ingredient	lanthanum
+CEACAM5 protein, human	gene_product_expressed_in_tissue	Epithelial Cells
+Virus Diseases	nichd_parent_of	Severe Acute Respiratory Syndrome
+Immunity, Innate	isa	Immunity
+Molecular Structure	inverse_isa	Base Sequence
+Epitopes	isa	Protein Domain
+HIV	has_sort_version	HIV
+public health medicine (field)	mapped_from	public health medicine (field)
+Enzymes	has_active_ingredient	Enzymes
+oseltamivir	may_treat	Influenza
+Adenoviruses	mapped_from	Adenoviruses
+Hypersensitivity	possibly_equivalent_to	Hypersensitivity
+Nervous system structure	is_associated_anatomic_site_of	Optic Neuritis
+Acute respiratory distress	same_as	Acute respiratory distress
+Physicians	same_as	Physicians
+Quarantine	permuted_term_of	Quarantine
+Dying Process	has_expected_outcome	Improved
+Cellular Immunity	permuted_term_of	Cellular Immunity
+Information	inverse_isa	Data
+Interventional procedure	nichd_parent_of	Pharmacotherapy
+Disease	inverse_isa	Respiration Disorders
+Autistic Disorder	possibly_equivalent_to	Autistic Disorder
+Blood Circulation	has_entry_version	Blood Circulation
+Acute respiratory distress	isa	Dyspnea
+Medical Devices	same_as	Medical Devices
+Malignant neoplasm of prostate	inverse_isa	Malignant neoplasm of prostate
+Adult	use	Adult
+Severe Acute Respiratory Syndrome	isa	Severe Acute Respiratory Syndrome
+STMN1 gene	prev_name_of	STMN1 gene
+Plasma	part_of	Blood
+Bronchoalveolar Lavage	use	Bronchoalveolar Lavage
+Communicable Diseases	occurs_before	Leukoencephalitis, Acute Hemorrhagic
+Malignant Neoplasms	mapped_to	Neoplasms
+Feces	see	Feces
+Antiviral Agents	inverse_isa	enfuvirtide
+Immune system	has_part	Macrophages, Alveolar
+ATP1A1 gene	gene_found_in_organism	Homo sapiens
+Screening Method	inverse_isa	Screening Method
+Consistent with	isa	Probable diagnosis
+Malignant neoplasm of prostate	classifies	Malignant neoplasm of prostate
+Cell Nucleus	is_associated_anatomy_of_gene_product	Nuclear Proteins
+Witnesses	used_for	Witnesses
+Distributing	subset_includes_concept	Singular
+Cell physiology	entry_version_of	Cell physiology
+Flaviviridae	used_for	Flavivirus
+gemcitabine	has_active_ingredient	gemcitabine
+cytokine	mapped_to	cytokine
+glycosylation	isa	Metabolism
+X-Ray Computed Tomography	isa	X-Ray Computed Tomography
+Nucleoside Analogs	inverse_isa	remdesivir
+Radiology Specialty	mapped_to	Radiology Specialty
+Cell Communication	mapped_from	Cell Communication
+Human Age Group	permuted_term_of	Human Age Group
+Cell Nucleolus	sib_in_isa	Region of fibrillar component of nucleolus
