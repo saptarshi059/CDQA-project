@@ -18,6 +18,7 @@ import pandas as pd
 import pickle5 as pickle
 
 import torch.nn as nn
+from torch.optim import Adam
 import torch.distributed as dist
 import torch.multiprocessing as mp
 from torch.utils.data import DataLoader
@@ -26,7 +27,6 @@ from torch.utils.tensorboard import SummaryWriter
 from transformers import get_constant_schedule_with_warmup
 from torch.nn.parallel import DistributedDataParallel as DDP
 from transformers import AdamW, AutoTokenizer, AutoModelForQuestionAnswering
-
 # from custom_input import custom_input_rep
 
 
@@ -305,7 +305,12 @@ class DistributedFoldTrainer(object):
         ]
 
         self.n_iters = int(math.ceil(len(self.dataset) / (self.batch_size * self.world_size)))
-        self.optim = AdamW(optimizer_grouped_parameters, lr=self.lr)
+        if self.args.vanilla_adam:
+            print('** Using vanilla Adam **')
+            self.optim = Adam(optimizer_grouped_parameters, lr=self.lr)
+        else:
+            print('** Using AdamA **')
+            self.optim = AdamW(optimizer_grouped_parameters, lr=self.lr)
         self.scheduler = None
         if self.warmup_proportion > 0.0:
             n_warmup_iters = int(

@@ -368,6 +368,7 @@ if __name__ == '__main__':
     parser.add_argument('--random_kge', default=False, type=str2bool)
     parser.add_argument('--seed', default=16, type=int)
     parser.add_argument('--warmup_proportion', default=0.1, help='Fuck Timo Moller', type=float)
+    parser.add_argument('--vanilla_adam', default=False, type=str2bool)
 
     parser.add_argument('--dte_lookup_table_fp',
                         default='Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl'
