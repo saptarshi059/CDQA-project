@@ -344,9 +344,10 @@ class DistributedFoldTrainer(object):
 
     def run_one_epoch(self, epoch):
         n_orig_token_counts, n_dte_hit_counts = [], []
+        losses = []
 
         for batch_idx, batch in enumerate(self.data_loader):
-            # if batch_idx > 2:
+            # if batch_idx > 4:
             #     break
             batch_start_time = time.time()
             # input('batch.keys(): {}'.format(batch.keys()))
@@ -377,6 +378,7 @@ class DistributedFoldTrainer(object):
 
             loss = outputs[0]
             loss.backward()
+            losses.append(loss)
 
             if self.rank == 0:
                 batch_elapsed_time = time.time() - batch_start_time
@@ -400,5 +402,11 @@ class DistributedFoldTrainer(object):
         avg_n_hits = sum(n_dte_hit_counts) / len(n_dte_hit_counts) if len(n_dte_hit_counts) > 0 else 0.0
         pct_replaced = [x / y if y is not 0 else 0.0 for x, y in zip(n_orig_token_counts, n_dte_hit_counts)]
         avg_pct_replaced = sum(pct_replaced) / len(pct_replaced) if len(pct_replaced) > 0 else 0.0
+        avg_loss = sum(losses) / len(losses)
+
+        print_str = '*** Avg loss: {0:1.4f} ***'.format(avg_loss)
+        print('*' * len(print_str))
+        print(print_str)
+        print('*' * len(print_str))
 
 
