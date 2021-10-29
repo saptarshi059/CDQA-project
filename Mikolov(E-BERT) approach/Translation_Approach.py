@@ -23,7 +23,7 @@ UMLS_path = os.path.abspath(args.UMLS_Path)
 with open(os.path.join(UMLS_path, 'entity2idx.pkl'), 'rb') as file:
     entity2id = pickle.load(file)
 
-entity_embeddings = pd.read_csv(os.path.join(UMLS_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
+entity_embeddings = pd.read_csv(os.path.join(UMLS_path, os.path.relpath('embeddings/transe/ent_embedding.tsv')), sep='\t', header=None)
 
 all_entities = set(entity2id.keys())
 
