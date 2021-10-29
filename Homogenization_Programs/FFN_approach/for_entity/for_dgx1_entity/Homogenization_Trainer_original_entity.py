@@ -48,10 +48,10 @@ input_dimension = homogenization_dataset.x[0].shape[0]
 output_dimension = homogenization_dataset.y[0].shape[0]
 
 #Play with this
-number_of_hidden_layers = 5
+number_of_hidden_layers = 3
 
 #Size of embedding required by BERT variant (usually 768)
-hidden_dimension = 768
+hidden_dimension = 300
 
 #Initializing the network
 model = FFNN(input_dimension, output_dimension, number_of_hidden_layers, hidden_dimension)
