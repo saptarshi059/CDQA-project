@@ -33,8 +33,8 @@ with open('Entity_Homogenization_data.pkl', 'rb') as f:
 input_dimension = dataset['train'].iloc[0].shape[0]
 output_dimension = dataset['test'].iloc[0].shape[0]
 
-number_of_hidden_layers = 5
-hidden_dimension = 768
+number_of_hidden_layers = 3
+hidden_dimension = 300
 
 device = torch.device('cpu')
 
