@@ -23,7 +23,7 @@ print(f'Model loaded on device: {device}')
 
 model_embeddings = model.get_input_embeddings()
 
-UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG_MT-original/')
+UMLS_KG_path = os.path.abspath('../../../../../Train_KGE/UMLS_KG_MT-original/')
 
 with open(os.path.join(UMLS_KG_path, 'entity2idx.pkl'), 'rb') as f:
     entity2id = pickle.load(f)

@@ -18,7 +18,7 @@ BERT_variant = 'phiyodr/bert-base-finetuned-squad2'
 
 #ent_embeddings = pd.read_csv(os.path.join(UMLS_KGE_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
 
-UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG_MT-original/')
+UMLS_KG_path = os.path.abspath('../../../../../Train_KGE/UMLS_KG_MT-original/')
 
 with open(os.path.join(UMLS_KG_path, 'entity2idx.pkl'), 'rb') as f:
     entity2id = pickle.load(f)
