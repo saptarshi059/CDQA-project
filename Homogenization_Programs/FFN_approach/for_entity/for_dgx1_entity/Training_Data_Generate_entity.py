@@ -17,18 +17,18 @@ BERT_variant = 'phiyodr/bert-base-finetuned-squad2'
 tokenizer = AutoTokenizer.from_pretrained(BERT_variant)
 model = AutoModel.from_pretrained(BERT_variant)
 
-device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
+device = ('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 print(f'Model loaded on device: {device}')
 
 model_embeddings = model.get_input_embeddings()
 
-UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG/')
+UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG_MT-original/')
 
 with open(os.path.join(UMLS_KG_path, 'entity2idx.pkl'), 'rb') as f:
     entity2id = pickle.load(f)
 
-ent_embeddings = pd.read_csv(os.path.join(UMLS_KG_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
+ent_embeddings = pd.read_csv(os.path.join(UMLS_KG_path, os.path.relpath('embeddings/transe/ent_embedding.tsv')), sep='\t', header=None)
 
 print('Loaded all necessary files...')
 

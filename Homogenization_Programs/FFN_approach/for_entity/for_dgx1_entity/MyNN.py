@@ -23,6 +23,5 @@ class FFNN(torch.nn.Module):
         '''
         hidden_states[-1] is the softmax o/p which we need to train the n/w with.
         hidden_states[-3] will be used during inference time to obtain the equivalent BERT variant embedding. 
-        It's '-3' & not '-2' since the 2nd to last layer is linear o/p layer of size vocab_size.
         '''
-        return hidden_states[-1], hidden_states[-3]
+        return hidden_states[-1], hidden_states[-1]

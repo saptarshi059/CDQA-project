@@ -59,7 +59,7 @@ model = FFNN(input_dimension, output_dimension, number_of_hidden_layers, hidden_
 #We have to make send the model to device before creating the optimizer since parameters of a model after 
 #.cuda() will be different objects with those before the call (https://pytorch.org/docs/stable/optim.html)
 
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
 criterion = torch.nn.MSELoss()

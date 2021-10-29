@@ -18,12 +18,12 @@ BERT_variant = 'phiyodr/bert-base-finetuned-squad2'
 
 #ent_embeddings = pd.read_csv(os.path.join(UMLS_KGE_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
 
-UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG/')
+UMLS_KG_path = os.path.abspath('../Train_KGE/UMLS_KG_MT-original/')
 
 with open(os.path.join(UMLS_KG_path, 'entity2idx.pkl'), 'rb') as f:
     entity2id = pickle.load(f)
 
-ent_embeddings = pd.read_csv(os.path.join(UMLS_KG_path, os.path.relpath('embeddings/distmult/ent_embedding.tsv')), sep='\t', header=None)
+ent_embeddings = pd.read_csv(os.path.join(UMLS_KG_path, os.path.relpath('embeddings/transe/ent_embedding.tsv')), sep='\t', header=None)
 
 with open('Entity_Homogenization_data.pkl', 'rb') as f:
     dataset = pickle.load(f)
