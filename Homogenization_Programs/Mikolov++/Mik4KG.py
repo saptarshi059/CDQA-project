@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT-no_prune --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant transe --THROUGH True --TRIPLES False --HS False --PO True
+#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT-original --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant transe --THROUGH False --TRIPLES False --HS False --PO True
 #phiyodr/bert-base-finetuned-squad2
 #navteca/roberta-base-squad2
 
@@ -59,8 +59,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 model_embeddings = model.get_input_embeddings()
 
-#device = ('cuda:0' if torch.cuda.is_available() else 'cpu')
-device=torch.device('cpu')
+device = ('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 print(f'Model loaded on device: {device}')
 
