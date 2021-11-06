@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT-original --BERT_Variant phiyodr/bert-base-finetuned-squad2 --KGE_Variant transe --THROUGH False --TRIPLES False --HS False --PO True
+#python Mik4KG.py --UMLS_Path ../../../Train_KGE/UMLS_KG_MT-original --BERT_Variant ktrapeznikov/scibert_scivocab_uncased_squad_v2 --KGE_Variant transe --THROUGH True --TRIPLES False --HS False --PO True
 #phiyodr/bert-base-finetuned-squad2
 #navteca/roberta-base-squad2
 
