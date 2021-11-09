@@ -363,6 +363,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--use_kge', default=False, help='If KGEs should be place in input',
                         type=str2bool)
+    parser.add_argument('--use_dict', default=False, help='If KGEs should be place in input',
+                        type=str2bool)
     parser.add_argument('--concat_kge', default=False, type=str2bool)
     parser.add_argument('--fancy_concat', default=False, type=str2bool)
     parser.add_argument('--random_kge', default=False, type=str2bool)
@@ -371,7 +373,7 @@ if __name__ == '__main__':
     parser.add_argument('--vanilla_adam', default=False, type=str2bool)
 
     parser.add_argument('--dte_lookup_table_fp',
-                        default='Mikolov++_to_phiyodr_bert-base-finetuned-squad2.pkl'
+                        default='NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl'
                         # default='DTE_to_phiyodr_bert-base-finetuned-squad2.pkl',
                         # default='DTE_to_ktrapeznikov_biobert_v1.1_pubmed_squad_v2.pkl',
                         # default='DTE_to_ktrapeznikov_scibert_scivocab_uncased_squad_v2.pkl'
@@ -418,7 +420,7 @@ if __name__ == '__main__':
         for k, v in args_d.items():
             f.write('{} = {}\n'.format(k, v))
 
-    USE_KGE = args.use_kge
+    USE_KGE = args.use_kge or args.use_dict
     effective_model_name = args.model_name.replace('/', '-')
     curr_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     model_out_fname = '{}{}_{}.txt'.format(effective_model_name,
@@ -428,15 +430,29 @@ if __name__ == '__main__':
     print('*** model_out_fp: {} ***'.format(model_out_fp))
 
     DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
-    dtes = DTE_Model_Lookup_Table['Embedding'].tolist()
+    dtes = []
+    umls_dtes = DTE_Model_Lookup_Table['UMLS_Embedding'].tolist()
+    dict_dtes = DTE_Model_Lookup_Table['Dictionary_Embedding'].tolist()
+    
+    if args.use_kge:
+        dtes.extend(umls_dtes)
+    if args.use_dict:
+        dtes.extend(dict_dtes)
+    
     if args.random_kge:
         print('Replacing DTEs with random tensors...')
         dtes = [torch.rand(1, 768) for _ in dtes]
 
     dtes = torch.cat(dtes, dim=0).to('cpu')
-
+    
+    custom_domain_term_tokens = []
     domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
-    custom_domain_term_tokens = ['[{}]'.format(dt) for dt in domain_terms]
+    custom_umls_tokens = ['[{}]'.format(dt) for dt in domain_terms]
+    custom_dict_tokens = ['#{}#'.format(dt) for dt in domain_terms]
+    if args.use_kge:
+        custom_domain_term_tokens.extend(custom_umls_tokens)
+    if args.use_dict:
+        custom_domain_term_tokens.extend(custom_dict_tokens)
     # input('dtes: {}'.format(dtes.shape))
 
     kfold = KFold(n_splits=args.n_splits, shuffle=True, random_state=args.seed)
@@ -473,6 +489,7 @@ if __name__ == '__main__':
         if USE_KGE:
             print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
             print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
+            print('\tcustom_domain_term_tokens[-6:]: {}'.format(custom_domain_term_tokens[-6:]))
             tokenizer.add_tokens(custom_domain_term_tokens)
 
         dataset = CovidQADataset(preprocess_input(full_dataset.iloc[train_ids], tokenizer,
@@ -543,6 +560,7 @@ if __name__ == '__main__':
         if USE_KGE:
             print('Adding {} custom domain tokens to tokenizer...'.format(len(custom_domain_term_tokens)))
             print('\tcustom_domain_term_tokens[:6]: {}'.format(custom_domain_term_tokens[:6]))
+            print('\tcustom_domain_term_tokens[-6:]: {}'.format(custom_domain_term_tokens[-6:]))
             tokenizer.add_tokens(custom_domain_term_tokens)
 
         nlp = QuestionAnsweringPipeline(model=model, tokenizer=tokenizer,
