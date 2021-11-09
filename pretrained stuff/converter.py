@@ -44,10 +44,12 @@ from tqdm import tqdm
 
 entity_names = []
 converted_embeddings = []
+CUI = []
 loss_vals = []
 
 with torch.no_grad():
     for row in tqdm(dataset.itertuples(index=False)):
+        CUI.append(row.CUI)
         entity_names.append(row.PC)
         ent_embed = torch.FloatTensor(row.train).reshape(1,-1)
         _, homogenized_embedding = model(ent_embed)
@@ -56,6 +58,6 @@ with torch.no_grad():
         loss_vals.append(criterion(torch.FloatTensor(homogenized_embedding).reshape(1,-1), torch.FloatTensor(row.test).reshape(1,-1)).item())
 
 print('Saving Homogenized Embeddings...')
-pd.DataFrame(zip(entity_names, converted_embeddings), columns = ['Entity', 'Embedding']).to_pickle(f"NN-DTE-to-{BERT_variant.replace('/','-')}.pkl")
+pd.DataFrame(zip(CUI, entity_names, converted_embeddings), columns = ['CUI', 'Entity', 'UMLS_Embedding']).to_pickle(f"NN-DTE-to-{BERT_variant.replace('/','-')}.pkl")
 
 print(f'Average Test Loss: {np.mean(loss_vals)}')

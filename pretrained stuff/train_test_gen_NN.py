@@ -1,4 +1,5 @@
-#python train_test_gen_NN.py -b phiyodr/bert-base-finetuned-squad2 -d test_data.pkl -Th True
+#python train_test_gen_NN.py -b phiyodr/bert-base-finetuned-squad2 -d training_data.pkl
+#python train_test_gen_NN.py -b phiyodr/bert-base-finetuned-squad2 -d test_data.pkl
 #navteca/roberta-base-squad2
 
 import argparse
@@ -50,7 +51,9 @@ print('Loaded all necessary files & processed DataFrame...')
 src = []
 tgt = []
 PC = []
+CUI = []
 for row in tqdm(df.itertuples(index=False)):
+    CUI.append(row.CUI)
     PC.append(row.PC)
     src.append(row.Embedding)
     if args.through == False:
@@ -72,6 +75,6 @@ for row in tqdm(df.itertuples(index=False)):
 if 'train' in args.data_file:
     pd.DataFrame(zip(src, tgt), columns=['train', 'test']).to_pickle(f'{args.data_file.replace(".pkl","")}_Homogenization_data.pkl')
 else:
-    pd.DataFrame(zip(PC, src, tgt), columns=['PC', 'train', 'test']).to_pickle(f'{args.data_file.replace(".pkl","")}_Homogenization_data.pkl')
+    pd.DataFrame(zip(CUI, PC, src, tgt), columns=['CUI', 'PC', 'train', 'test']).to_pickle(f'{args.data_file.replace(".pkl","")}_Homogenization_data.pkl')
 
 print('Dataset created...')

@@ -8,7 +8,7 @@ class FFNN(torch.nn.Module):
             self.custom_nn.add_module(f'Dropout{i}', torch.nn.Dropout(p=0.25))
             self.custom_nn.add_module(f'LL{i}', torch.nn.Linear(input_dim, hidden_dim))
             self.custom_nn.add_module(f'LN{i}', torch.nn.LayerNorm(hidden_dim))
-            self.custom_nn.add_module(f'activation{i}', torch.nn.ReLU())
+            self.custom_nn.add_module(f'activation{i}', torch.nn.Tanh())
             input_dim = hidden_dim
         self.custom_nn.add_module(f'Output Layer', torch.nn.Linear(hidden_dim, output_dim))
         #self.custom_nn.add_module(f'Softmax', torch.nn.Softmax(dim=1))

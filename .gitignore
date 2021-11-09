@@ -6,3 +6,8 @@ UMLS_KG_MT+SN/
 metamap_output.json
 umls.db
 MM_NEW.json
+our_entities.pkl
+pretrained stuff/Entity_Definition.csv
+pretrained stuff/cuis.csv
+pretrained stuff/their_CUI_PC.csv
+

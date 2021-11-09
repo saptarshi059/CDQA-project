@@ -39,10 +39,8 @@ embeddings.reset_index(inplace=True)
 embeddings = aggregate_vals(embeddings, data_type='train')
 train_data = embeddings.merge(their_CUI_PC, on='CUI', how='inner') #Collecting the PC's for the CUI's
 
-test_data.drop(columns='CUI', inplace=True)
 test_data.to_pickle('test_data.pkl')
 print('Test data saved...')
 
-train_data.drop(columns='CUI', inplace=True)
 train_data.to_pickle('training_data.pkl')
 print('Training data saved...')
