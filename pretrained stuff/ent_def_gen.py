@@ -1,9 +1,19 @@
-import sqlite3
-import pandas as pd
-from tqdm import tqdm
+#python ent_def_gen.py -f NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl
 
-s = pd.read_pickle('NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl')
-conn = sqlite3.connect('umls.db')
+import sqlite3
+import pickle5 as pickle
+from tqdm import tqdm
+import pandas as pd
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-f', '--file_name', required=True)
+args = parser.parse_args()
+
+with open(args.file_name, 'rb') as file:
+    s = pickle.load(file)
+
+conn = sqlite3.connect('../umls.db')
 cursor = conn.cursor()
 
 entity = []
@@ -21,5 +31,5 @@ for row in tqdm(s.itertuples(index=False)):
         definition.append(results[0][0])
     
 print(f"Number of entities with no definition: {c}")            
-pd.DataFrame(zip(entity, UMLS_Embedding, definition), columns=['Entity', 'UMLS_Embedding' ,'Definition']).to_csv('Entity_Definition.csv', index=False)
+pd.DataFrame(zip(entity, UMLS_Embedding, definition), columns=['Entity', 'UMLS_Embedding' ,'Definition']).to_pickle('Entity_Definition.pkl')
 conn.close()

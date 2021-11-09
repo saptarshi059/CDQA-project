@@ -2,6 +2,7 @@
 
 from transformers import AutoModel, AutoTokenizer, logging
 import argparse
+import pickle5 as pickle
 import pandas as pd
 from tqdm import tqdm
 import torch
@@ -19,7 +20,7 @@ device = ('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 print(f'{args.bert_variant} loaded on device: {device}')
 
-dataframe = pd.read_csv('Entity_Definition.csv')
+dataframe = pickle.load(open('Entity_Definition.pkl', 'rb'))
 definition_embeddings = []
 for row in tqdm(dataframe.itertuples(index=False)):
 	inputs = tokenizer(row.Definition, return_tensors='pt', truncation=True)
