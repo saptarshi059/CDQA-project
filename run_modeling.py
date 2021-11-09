@@ -442,7 +442,7 @@ if __name__ == '__main__':
     if args.random_kge:
         print('Replacing DTEs with random tensors...')
         dtes = [torch.rand(1, 768) for _ in dtes]
-
+    print('dtes[0]: {}'.format(dtes[0])
     dtes = torch.cat(dtes, dim=0).to('cpu')
     
     custom_domain_term_tokens = []
