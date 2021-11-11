@@ -1,6 +1,18 @@
 #python train_test_gen_NN.py -b phiyodr/bert-base-finetuned-squad2 -d training_data.pkl
 #python train_test_gen_NN.py -b phiyodr/bert-base-finetuned-squad2 -d test_data.pkl
+
+#python train_test_gen_NN.py -b navteca/roberta-base-squad2 -d training_data.pkl
+#python train_test_gen_NN.py -b navteca/roberta-base-squad2 -d test_data.pkl
+
+#python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d training_data.pkl
+#python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d test_data.pkl
+
+#python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d training_data.pkl
+#python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d test_data.pkl
+
 #navteca/roberta-base-squad2
+#ktrapeznikov/biobert_v1.1_pubmed_squad_v2
+#ktrapeznikov/scibert_scivocab_uncased_squad_v2
 
 import argparse
 import pickle5 as pickle
@@ -57,7 +69,7 @@ for row in tqdm(df.itertuples(index=False)):
     PC.append(row.PC)
     src.append(row.Embedding)
     if args.through == False:
-        entity_tokens = tokenizer(row.PC, return_tensors='pt')['input_ids'][0]
+        entity_tokens = tokenizer(row.PC, return_tensors='pt', max_length=512, truncation=True, padding='max_length')['input_ids'][0]
         sw_embds = []
         for index in range(1, len(entity_tokens)-1):
             sw_embds.append(model_embeddings(entity_tokens[index].to(device)))

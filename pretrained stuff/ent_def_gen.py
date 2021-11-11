@@ -1,4 +1,4 @@
-#python ent_def_gen.py -f NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl
+#python ent_def_gen.py -f NN-DTE-to-ktrapeznikov-scibert_scivocab_uncased_squad_v2.pkl
 
 import sqlite3
 import pickle5 as pickle

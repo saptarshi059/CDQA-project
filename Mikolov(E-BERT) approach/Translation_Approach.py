@@ -1,69 +1,60 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Translation_Approach.py --UMLS_Path ../../Train_KGE/UMLS_KG_MT-original --BERT_Variant phiyodr/bert-base-finetuned-squad2
+#python Translation_Approach.py --BERT_Variant phiyodr/bert-base-finetuned-squad2
 
 import pandas as pd
 import pickle5 as pickle
-import os
 import numpy as np
 import torch
-from transformers import AutoTokenizer
-from transformers import AutoModelForQuestionAnswering
+from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 from tqdm import tqdm
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--UMLS_Path', type=str)
-parser.add_argument('--BERT_Variant', type=str)
+parser.add_argument('-b', '--BERT_Variant', type=str)
 args = parser.parse_args()
 
-UMLS_path = os.path.abspath(args.UMLS_Path)
+embeddings = pd.read_csv('embeddings.csv',header=None)
+their_CUI_PC = pd.read_csv('their_CUI_PC.csv')
 
-with open(os.path.join(UMLS_path, 'entity2idx.pkl'), 'rb') as file:
-    entity2id = pickle.load(file)
+embeddings.rename(columns={0:'CUI'}, inplace=True)
+print('Necessary files loaded...')
 
-entity_embeddings = pd.read_csv(os.path.join(UMLS_path, os.path.relpath('embeddings/transe/ent_embedding.tsv')), sep='\t', header=None)
+CUI_PC_Emb = their_CUI_PC.merge(embeddings, on='CUI', how='inner')
 
-all_entities = set(entity2id.keys())
+embs = []
+for row in tqdm(CUI_PC_Emb.itertuples(index=False)):
+    embs.append(np.array(list(row[2:])))
 
-print('All Files Loaded...')
+CUI_PC_Emb['Embedding'] = embs
+CUI_PC_Emb.drop(columns=range(1,51), inplace=True)
 
-def common_terms_gen(model_name):
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model_vocab = set(tokenizer.get_vocab().keys())
-    common_terms = list(all_entities.intersection(model_vocab))
-    print(f"Number of KGE's common with {model_name} vocabulary: {len(common_terms)}")
-    return common_terms
+all_entities = set(CUI_PC_Emb.PC.to_list())
 
-def data_gen(common_terms, model_name):
-    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-    model_embeddings = model.get_input_embeddings()
-    
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model_vocab = tokenizer.get_vocab()
-    
-    src = []
-    tgt = []
-    for term in tqdm(common_terms):
-        src.append(entity_embeddings.iloc[entity2id[term]].to_numpy())
-        tgt.append(model_embeddings(torch.LongTensor([model_vocab[term]])).detach().cpu().numpy())
-    
-    return src, tgt
+tokenizer = AutoTokenizer.from_pretrained(args.BERT_Variant)
+model_vocab = set(tokenizer.get_vocab().keys())
+common_terms = list(all_entities.intersection(model_vocab))
+print(f"Number of KGE's common with {args.BERT_Variant} vocabulary: {len(common_terms)}")
 
-def weight_matrix_compute(model_name):
-    KGE_embeddings, Model_embeddings = data_gen(common_terms_gen(model_name), model_name)
-    W = np.linalg.lstsq(np.vstack(KGE_embeddings),np.vstack(Model_embeddings), rcond=None)[0]
-    return W
+#For faster access
+CUI_PC_Emb.set_index('PC', inplace=True)
 
-WT_Matrix = weight_matrix_compute(args.BERT_Variant)
+model = AutoModelForQuestionAnswering.from_pretrained(args.BERT_Variant)
+model_embeddings = model.get_input_embeddings()
+model_vocab = tokenizer.get_vocab()
 
-def homogenizer(weight_matrix, model_name):
-    homogenized_embeddings = {}
-    for entity_name, index in entity2id.items():
-        homogenized_embeddings[entity_name] = torch.FloatTensor(np.matmul(weight_matrix.T, entity_embeddings.iloc[index].to_numpy()).reshape(1,-1))
-    
-    print(f'Saving Homogenized Embeddings for {model_name}...')
-    pd.DataFrame(list(homogenized_embeddings.items()), columns = ['Entity', 'Embedding']).to_pickle(f'Mikolov_to_{model_name.replace("/","_")}.pkl')
+KGE_embeddings = []
+Model_embeddings = []
+for term in tqdm(common_terms):
+    KGE_embeddings.append(CUI_PC_Emb.loc[term].Embedding)
+    Model_embeddings.append(model_embeddings(torch.LongTensor([model_vocab[term]])).detach().cpu().numpy())
 
-homogenizer(WT_Matrix, args.BERT_Variant)
+Weight_Matrix = np.linalg.lstsq(np.vstack(KGE_embeddings),np.vstack(Model_embeddings), rcond=None)[0]
+
+homogenized_embeddings = {}
+for term in tqdm(common_terms):
+    homogenized_embeddings[term] = torch.FloatTensor(np.matmul(Weight_Matrix.T, CUI_PC_Emb.loc[term].Embedding).reshape(1,-1))
+
+print(f'Saving Homogenized Embeddings for {model_name}...')
+pd.DataFrame(list(homogenized_embeddings.items()), columns = ['Entity', 'UMLS_Embedding']).to_pickle(f'Mikolov_to_{model_name.replace("/","_")}.pkl')
