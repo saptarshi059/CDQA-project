@@ -8,7 +8,6 @@
 import torch
 import pandas as pd
 import os
-from transformers import AutoTokenizer
 from MyNN import FFNN
 import matplotlib.pyplot as plt
 import numpy as np
@@ -18,10 +17,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-b', '--batch_size', default=64, type=int)
-parser.add_argument('-hl', '--num_hidden_layers', default=5, type=int)
+parser.add_argument('-b', '--batch_size', default=256, type=int)
+parser.add_argument('-hl', '--num_hidden_layers', default=1, type=int)
 parser.add_argument('-hd', '--hidden_dim', default=300, type=int)
-parser.add_argument('-e', '--epochs', default=300, type=int)
+parser.add_argument('-e', '--epochs', default=30, type=int)
 
 args = parser.parse_args()
 
@@ -63,7 +62,7 @@ model.to(device)
 criterion = torch.nn.MSELoss()
 
 #Adam optimizer
-optimizer = torch.optim.Adam(model.parameters())
+optimizer = torch.optim.Adam(model.parameters(), weight_decay=0.001)
 
 print(f'FFN architecture: \n {model} \n Loss Function: {criterion} \n Optimizer: {optimizer}')
 print(f'Device being used: {device}')

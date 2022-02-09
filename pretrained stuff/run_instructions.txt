@@ -1,0 +1,22 @@
+remove excess spaces
+captialize acronyms
+remove duplicate words
+fix spellings
+fix grammar
+
+pipeline for PT programs
+
+1st 4 programs & 8 - run on dgx1
+6 - local
+
+our_cui_pc - generated from Train_KGE.ipynb
+
+
+1. train_test_gen.py - once (to generate the train/test samples overall)
+2. train_test_gen_NN.py - can repeat this to get the desired number of samples for the NN
+3. trainer.py - trains the NN, can run multiple times
+4. converter.py - generates the homogenized UMLS_Embeddings, can run multiple times depending on trainer.py -- stop here for only converted UMLS_Embeddings; Continue for dictionary_embeds too
+5. scp NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl to local
+6. ent_def_gen.py - once to add defintions to our NN matrix
+7. scp Entity_Definition.pkl to dgx1
+8. def_embed.py - run once to generate definition embeddings

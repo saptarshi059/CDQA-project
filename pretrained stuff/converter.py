@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python converter.py -d test_data_Homogenization_data.pkl -b ktrapeznikov/scibert_scivocab_uncased_squad_v2
+#python converter.py -d test_data_Homogenization_data.pkl -b phiyodr/bert-base-finetuned-squad2
 
 #Loading trained model & setting it to eval mode
 from MyNN import FFNN

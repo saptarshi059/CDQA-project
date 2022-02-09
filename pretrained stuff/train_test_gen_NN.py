@@ -7,12 +7,8 @@
 #python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d training_data.pkl
 #python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d test_data.pkl
 
-#python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d training_data.pkl
-#python train_test_gen_NN.py -b ktrapeznikov/biobert_v1.1_pubmed_squad_v2 -d test_data.pkl
-
-#navteca/roberta-base-squad2
-#ktrapeznikov/biobert_v1.1_pubmed_squad_v2
-#ktrapeznikov/scibert_scivocab_uncased_squad_v2
+#python train_test_gen_NN.py -b ktrapeznikov/scibert_scivocab_uncased_squad_v2 -d training_data.pkl
+#python train_test_gen_NN.py -b ktrapeznikov/scibert_scivocab_uncased_squad_v2 -d test_data.pkl
 
 import argparse
 import pickle5 as pickle

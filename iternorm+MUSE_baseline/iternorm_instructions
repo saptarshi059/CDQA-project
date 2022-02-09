@@ -1,0 +1,3 @@
+1. Run data_gen.py first - this will generate the required PC-source (UMLS embeddings)-target (model embeddings)
+2. Run iternorm.py -this will generate the normalized embeddings
+3. python supervised.py --src_lang en --tgt_lang en --src_emb ../norm_embs.txt --tgt_emb ../target_embeds.txt --n_refinement 5 --dico_train identical_char --export pth --emb_dim 50 --cuda False

@@ -1,4 +1,4 @@
-#python def_embed.py -b ktrapeznikov/scibert_scivocab_uncased_squad_v2 -av 0
+#python def_embed.py -b phiyodr/bert-base-finetuned-squad2 -av 0
 
 from transformers import AutoModel, AutoTokenizer, logging
 import argparse
@@ -34,6 +34,8 @@ for row in tqdm(dataframe.itertuples(index=False)):
 		avg_emb.append(torch.mean(torch.vstack([row.UMLS_Embedding, output['pooler_output'].detach().cpu()]), dim=0).reshape(1,-1))
 
 if args.avg_emb == 1:
-	pd.DataFrame(zip(dataframe.Entity, dataframe.UMLS_Embedding, definition_embeddings), columns=['Entity', 'UMLS_Embedding', 'Dictionary_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl")
+	#pd.DataFrame(zip(dataframe.Entity, dataframe.UMLS_Embedding, definition_embeddings), columns=['Entity', 'UMLS_Embedding', 'Dictionary_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl")
+	pd.DataFrame(zip(dataframe.Entity, definition_embeddings), columns=['Entity', 'UMLS_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl") #Trying only definition embeddings
 else:
+	#I'm just calling it UMLS_Embedding so that it runs easily with run_modelling.py
 	pd.DataFrame(zip(dataframe.Entity, avg_emb), columns=['Entity', 'UMLS_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl")
