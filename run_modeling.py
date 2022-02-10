@@ -34,6 +34,8 @@ from input_maker import InputMaker
 # from custom_qa_pipeline import CustomQuestionAnsweringPipeline
 from distributed_fold_trainer import DistributedFoldTrainer
 
+from datasets import CovidQADataset
+
 
 def str2bool(v):
     if isinstance(v, bool):
@@ -325,16 +327,7 @@ def compute_f1_main(df):
     return np.mean(F1)
 
 
-class CovidQADataset(torch.utils.data.Dataset):
-    def __init__(self, encodings):
-        self.encodings = encodings
 
-    def __getitem__(self, idx):
-        return {key: torch.tensor(val[idx]) if key not in ['question_texts', 'context_texts'] else val[idx] for key, val
-                in self.encodings.items()}
-
-    def __len__(self):
-        return len(self.encodings.input_ids)
 
 
 if __name__ == '__main__':
