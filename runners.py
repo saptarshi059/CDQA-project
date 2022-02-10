@@ -4,13 +4,15 @@ import os
 import math
 import time
 import torch
+import torch.nn as nn
 from torch import optim
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from sklearn.metrics import f1_score
 
-import torch.distributed as dist
+import pickle5 as pickle
 from torch.nn.parallel import DistributedDataParallel as DDP
+import torch.distributed as dist
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, get_constant_schedule_with_warmup
 
@@ -59,6 +61,35 @@ class PubmedQARunner(object):
 
         print('PubmedQARunner on device {} creating datasets...'.format(gpu))
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        self.dtes = None
+        if self.use_kge:
+            DTE_Model_Lookup_Table = pickle.load(open(args.dte_lookup_table_fp, 'rb'))
+            custom_domain_term_tokens = []
+            domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
+            custom_umls_tokens = ['[{}]'.format(dt) for dt in domain_terms]
+            custom_dict_tokens = ['#{}#'.format(dt) for dt in domain_terms]
+            if args.use_kge:
+                custom_domain_term_tokens.extend(custom_umls_tokens)
+            if args.use_dict:
+                custom_domain_term_tokens.extend(custom_dict_tokens)
+
+            self.tokenizer.add_tokens(custom_domain_term_tokens)
+
+            self.dtes = []
+            umls_dtes = DTE_Model_Lookup_Table['UMLS_Embedding'].tolist()
+            dict_dtes = DTE_Model_Lookup_Table['Dictionary_Embedding'].tolist()
+
+            if args.use_kge:
+                self.dtes.extend(umls_dtes)
+            if args.use_dict:
+                self.dtes.extend(dict_dtes)
+
+            if args.random_kge:
+                print('Replacing DTEs with random tensors...')
+                dtes = [torch.rand(1, 768) for _ in self.dtes]
+
+            print('dtes[0]: {}'.format(self.dtes[0]))
+            self.dtes = torch.cat(dtes, dim=0).to(self.device)
 
         train_data_fp = os.path.join(self.fold_dir, 'train_set.json')
         self.dataset = PubmedQADataset(self.args, train_data_fp, self.tokenizer)
@@ -90,7 +121,14 @@ class PubmedQARunner(object):
 
         print('PubmedQARunner on device {} creating model...'.format(gpu))
         self.model = AutoModelForSequenceClassification.from_pretrained(self.model_name, num_labels=3)
+        if self.use_kge:
+            initial_input_embeddings = self.model.get_input_embeddings().weight
+            new_input_embedding_weights = torch.cat([initial_input_embeddings, self.dtes], dim=0)
+            new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
+            self.model.set_input_embeddings(new_input_embeddings)
+
         self.model = self.model.to(self.device)
+
         if not self.args.on_cpu:
             self.model = DDP(self.model, device_ids=[self.rank], find_unused_parameters=True)
 

@@ -11,3 +11,4 @@ pretrained stuff/Entity_Definition.csv
 pretrained stuff/cuis.csv
 pretrained stuff/their_CUI_PC.csv
 tmp/
+out/

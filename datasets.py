@@ -1,8 +1,10 @@
 __author__ = 'Connor Heaton and Saptarshi Sengupta'
 
-import torch
 import json
+import torch
+import pickle5 as pickle
 
+from input_maker import InputMaker
 from torch.utils.data import Dataset
 
 
@@ -18,13 +20,16 @@ class CovidQADataset(Dataset):
         return len(self.encodings.input_ids)
 
 
-def load_pubmed_data(data_fp):
+def load_pubmed_data(data_fp, maker=None):
     data = []
     j = json.load(open(data_fp))
     label_map = {'yes': 0, 'no': 1, 'maybe': 2}
 
     for q_id, q_d in j.items():
         question = q_d['QUESTION']
+        if maker is not None:
+            question = maker.convert_questions_to_kge(question)
+
         labels = q_d['LABELS']
         contexts = q_d['CONTEXTS']
         context = ['{}: {}'.format(label_.capitalize(), context_) for label_, context_ in zip(labels, contexts)]
@@ -48,8 +53,14 @@ class PubmedQADataset(Dataset):
         self.tokenizer = tokenizer
 
         self.max_seq_len = self.args.max_seq_len
+        self.use_kge = self.args.use_kge
+        if self.use_kge:
+            # In dataset, we just need to adjust question text, tokenizer already updated
+            my_maker = InputMaker(args)
+        else:
+            my_maker = None
 
-        self.items = load_pubmed_data(self.data_fp)
+        self.items = load_pubmed_data(self.data_fp, maker=my_maker)
 
     def __len__(self):
         return len(self.items)
