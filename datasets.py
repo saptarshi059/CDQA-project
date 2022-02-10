@@ -25,7 +25,10 @@ def load_pubmed_data(data_fp):
 
     for q_id, q_d in j.items():
         question = q_d['QUESTION']
-        context = ' '.join(q_d['CONTEXTS'])
+        labels = q_d['LABELS']
+        contexts = q_d['CONTEXTS']
+        context = ['{}: {}'.format(label_.capitalize(), context_) for label_, context_ in zip(labels, contexts)]
+        context = ' '.join(context)
         label = label_map[q_d['final_decision']]
         this_item = {
             'id': q_id,

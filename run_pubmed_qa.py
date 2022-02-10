@@ -5,8 +5,11 @@ import os
 import argparse
 import datetime
 
-from runners import PubmedQARunner
+import pandas as pd
 import torch.multiprocessing as mp
+
+from runners import PubmedQARunner
+from sklearn.metrics import f1_score
 
 
 def str2bool(v):
@@ -28,14 +31,14 @@ if __name__ == '__main__':
     parser.add_argument('--data',
                         default='/home/czh/nvme1/pubmedqa/data',
                         # default='data/200423_covidQA.json',
-                        help='Filepath to CovidQA dataset')
+                        help='Filepath to PubmedQA dataset')
     parser.add_argument('--out', default='out', help='Directory to put output')
 
     # parser.add_argument('--n_splits', default=5, help='How many folds to use for cross val', type=int)
     parser.add_argument('--batch_size', default=32, help='How many items to process as once', type=int)
-    parser.add_argument('--lr', default=5e-4, help='How many items to process as once', type=float)
-    parser.add_argument('--l2', default=0.001, help='How many items to process as once', type=float)
-    parser.add_argument('--n_epochs', default=10, help='If training/fine-tuning, how many epochs to perform', type=int)
+    parser.add_argument('--lr', default=1e-5, help='How many items to process as once', type=float)
+    parser.add_argument('--l2', default=0.00001, help='How many items to process as once', type=float)
+    parser.add_argument('--n_epochs', default=8, help='If training/fine-tuning, how many epochs to perform', type=int)
     parser.add_argument('--n_stride', default=196, type=int)
     parser.add_argument('--max_seq_len', default=512, type=int)
     parser.add_argument('--model_name',
@@ -71,15 +74,15 @@ if __name__ == '__main__':
     parser.add_argument('--port', default='14345', help='Port to use for DDP')
     parser.add_argument('--n_data_workers', default=2, help='# threads used to fetch data *PER DEVICE/GPU*', type=int)
 
-
     parser.add_argument('--grad_summary', default=True, type=str2bool)
-    parser.add_argument('--grad_summary_every', default=75, type=int)
+    parser.add_argument('--grad_summary_every', default=999999, type=int)
     parser.add_argument('--save_model_every', default=1, type=int)
     parser.add_argument('--print_every', default=1, type=int)
-    parser.add_argument('--log_every', default=25, type=int)
-    parser.add_argument('--summary_every', default=15, type=int)
+    parser.add_argument('--log_every', default=9999999, type=int)
+    parser.add_argument('--summary_every', default=9999999, type=int)
     parser.add_argument('--n_grad_accum', default=1, type=int)
     parser.add_argument('--ckpt_file_tmplt', default='fold{}_model_{}e.pt')
+    parser.add_argument('--arg_out_file', default='args.txt', help='File to write cli args to')
 
     args = parser.parse_args()
     args.world_size = len(args.gpus)
@@ -101,6 +104,12 @@ if __name__ == '__main__':
     args.model_log_dir = os.path.join(args.out, 'logs')
     os.makedirs(args.model_log_dir)
 
+    args.arg_out_file = os.path.join(args.out, args.arg_out_file)
+    args_d = vars(args)
+    with open(args.arg_out_file, 'w+') as f:
+        for k, v in args_d.items():
+            f.write('{} = {}\n'.format(k, v))
+
     fold_dirs = [os.path.join(args.data, dir_) for dir_ in os.listdir(args.data) if dir_.startswith('pqal_fold')]
     fold_dirs = list(sorted(fold_dirs, key=lambda x: int(x[-1])))
 
@@ -109,7 +118,38 @@ if __name__ == '__main__':
     for fold_dir in fold_dirs:
         print('Creating {} distributed models for fold {}...'.format(len(args.gpus), fold_dir[-1]))
         mp.spawn(PubmedQARunner, nprocs=len(args.gpus), args=(fold_dir, args))
-        break
+
+    print('Evaluating stats...')
+    preds_dir = os.path.join(args.out, 'preds')
+    stat_lines = []
+    print('Evaluating predictions...')
+    for epoch_no in range(args.n_epochs):
+        # print('Evaluating predictions for epoch {}...'.format(epoch_no))
+        pred_fps = [
+            os.path.join(preds_dir, fp) for fp in os.listdir(preds_dir) if fp.endswith('{}.csv'.format(epoch_no))
+                                                                           and 'train-dev' in fp
+        ]
+        stats = {'acc': [], 'f1': []}
+        for pred_fp in pred_fps:
+            pred_df = pd.read_csv(pred_fp)
+            preds = pred_df['pred'].tolist()
+            labels = pred_df['label'].tolist()
+
+            f1 = f1_score(labels, preds, average='macro')
+            matches = [1 if p == l else 0 for p, l in zip(preds, labels)]
+            acc = sum(matches) / len(matches)
+
+            stats['f1'].append(f1)
+            stats['acc'].append(acc)
+
+        epoch_avg_acc = sum(stats['acc']) / len(stats['acc'])
+        epoch_avg_f1 = sum(stats['f1']) / len(stats['f1'])
+        stat_line = 'Epoch {0} Accuracy: {1:3.4f}% F1: {2:2.4f}'.format(epoch_no, epoch_avg_acc * 100, epoch_avg_f1)
+        stat_lines.append(stat_line)
+        print('\t{}'.format(stat_line))
+
+    with open(os.path.join(args.out, 'fold_avg_stats.txt'), 'w+') as f:
+        f.write('\n'.join(stat_lines))
 
     print('all done :)')
 

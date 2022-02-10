@@ -7,6 +7,7 @@ import torch
 from torch import optim
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
+from sklearn.metrics import f1_score
 
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
@@ -47,7 +48,7 @@ class PubmedQARunner(object):
         self.concat_kge = getattr(self.args, 'concat_kge', False)
         self.fancy_concat = getattr(self.args, 'fancy_concat', False)
         self.random_kge = getattr(self.args, 'random_kge', False)
-        self.n_warmup_iters = getattr(self.args, 'n_warmup_iters', 100)
+        self.n_warmup_iters = getattr(self.args, 'n_warmup_iters', 0)
         self.dte_lookup_table_fp = getattr(self.args, 'dte_lookup_table_fp', 0.1)
         self.on_cpu = getattr(self.args, 'on_cpu', False)
 
@@ -159,6 +160,7 @@ class PubmedQARunner(object):
         iter_since_grad_accum = 1
         last_batch_end_time = None
         agg_correct_ps = []
+        pred_list, label_list = [], []
         for batch_idx, batch_data in enumerate(dataset):
             global_item_idx = (epoch * n_iters) + batch_idx
             batch_start_time = time.time()
@@ -212,6 +214,7 @@ class PubmedQARunner(object):
             labels = labels.view(-1)
             item_ids = item_ids.view(-1)
             correct_ps = []
+            batch_pred_list, batch_label_list = [], []
 
             for i in range(preds.shape[0]):
                 this_line = '{},{},{}'.format(
@@ -219,9 +222,14 @@ class PubmedQARunner(object):
                 )
                 write_lines.append(this_line)
                 correct_ps.append(1 if preds[i].item() == labels[i].item() else 0)
+                pred_list.append(preds[i].item())
+                batch_pred_list.append(preds[i].item())
+                label_list.append(labels[i].item())
+                batch_label_list.append(labels[i].item())
 
             batch_acc = sum(correct_ps) / len(correct_ps)
             agg_correct_ps.extend(correct_ps)
+            f1 = f1_score(batch_label_list, batch_pred_list, average='macro')
 
             if global_item_idx % self.args.grad_summary_every == 0 \
                     and self.summary_writer is not None and mode == 'train' \
@@ -240,8 +248,8 @@ class PubmedQARunner(object):
                 else:
                     time_btw_batches = 0.0
 
-                print_str = 'Fold {0} {1} - epoch: {2}/{3} iter: {4}/{5} loss: {6:2.4f} Acc: {7:3.4f}%'.format(
-                    self.fold_no, mode, epoch, self.n_epochs, batch_idx, n_iters, loss, batch_acc * 100
+                print_str = 'Fold {0} {1} - epoch: {2}/{3} iter: {4}/{5} loss: {6:2.4f} Acc: {7:3.4f}% F1: {8:.3f}'.format(
+                    self.fold_no, mode, epoch, self.n_epochs, batch_idx, n_iters, loss, batch_acc * 100, f1
                 )
                 print_str = '{0} Time: {1:.2f}s ({2:.2f}s)'.format(print_str, batch_elapsed_time, time_btw_batches)
                 print(print_str)
@@ -256,6 +264,8 @@ class PubmedQARunner(object):
                                                    (epoch * n_iters) + batch_idx)
                     self.summary_writer.add_scalar('batch_acc/{}'.format(mode), batch_acc,
                                                    (epoch * n_iters) + batch_idx)
+                    self.summary_writer.add_scalar('f1/{}'.format(mode), f1,
+                                                   (epoch * n_iters) + batch_idx)
 
             if iter_since_grad_accum == self.args.n_grad_accum and mode == 'train':
                 # print('OPTIMIZER STEP')
@@ -269,8 +279,9 @@ class PubmedQARunner(object):
 
         if self.rank == 0:
             agg_acc = sum(agg_correct_ps) / len(agg_correct_ps)
-            print_str = '* Fold {0} Epoch {1} {2} Avg acc: {3:3.4f}% *'.format(
-                self.fold_no, epoch, mode, agg_acc * 100
+            agg_f1 = f1_score(label_list, pred_list, average='macro')
+            print_str = '* Fold {0} Epoch {1} {2} Avg acc: {3:3.4f}% F1: {4:2.4f} *'.format(
+                self.fold_no, epoch, mode, agg_acc * 100, agg_f1
             )
             print('*' * len(print_str))
             print(print_str)
