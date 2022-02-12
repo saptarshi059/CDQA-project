@@ -6,6 +6,7 @@ UMLS_KG_MT+SN/
 metamap_output.json
 umls.db
 MM_NEW.json
+MM_PubMed.json
 our_entities.pkl
 pretrained stuff/Entity_Definition.csv
 pretrained stuff/cuis.csv

@@ -1,10 +1,7 @@
 # CDQA-project #
 
-Programs to execute in order:
-KG_Constructor.ipynb \
-Train_KGE.ipynb \
-Entity_Expansion.ipynb \
-KGE_Homogenization.ipynb
+# While it says ori_pqal.json in the data folder, it is actually the cleaned version of the file. It's just given that name to be compatible with other code #
+
 
 
 # Commands #

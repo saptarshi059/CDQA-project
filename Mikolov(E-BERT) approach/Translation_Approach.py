@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Translation_Approach.py --BERT_Variant phiyodr/bert-base-finetuned-squad2
+#python Translation_Approach.py --BERT_Variant phiyodr/bert-base-finetuned-squad2 --cui_pc_file their_CUI_PC.csv -- use this for regular Mikolov approach (when doing covidqa & pubmedqa)
 
 import pandas as pd
 import pickle5 as pickle
@@ -13,15 +13,17 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-b', '--BERT_Variant', type=str)
+parser.add_argument('-cpf', '--cui_pc_file', type=str)
 args = parser.parse_args()
 
 embeddings = pd.read_csv('embeddings.csv',header=None)
-their_CUI_PC = pd.read_csv('their_CUI_PC.csv')
+CUI_PC = pd.read_csv(args.cui_pc_file)
 
 embeddings.rename(columns={0:'CUI'}, inplace=True)
+CUI_PC.rename(columns={'Preferred_Concept':'PC'}, inplace=True)
 print('Necessary files loaded...')
 
-CUI_PC_Emb = their_CUI_PC.merge(embeddings, on='CUI', how='inner')
+CUI_PC_Emb = CUI_PC.merge(embeddings, on='CUI', how='inner')
 
 embs = []
 for row in tqdm(CUI_PC_Emb.itertuples(index=False)):
@@ -56,5 +58,5 @@ homogenized_embeddings = {}
 for term in tqdm(common_terms):
     homogenized_embeddings[term] = torch.FloatTensor(np.matmul(Weight_Matrix.T, CUI_PC_Emb.loc[term].Embedding).reshape(1,-1))
 
-print(f'Saving Homogenized Embeddings for {model_name}...')
-pd.DataFrame(list(homogenized_embeddings.items()), columns = ['Entity', 'UMLS_Embedding']).to_pickle(f'Mikolov_to_{model_name.replace("/","_")}.pkl')
+print(f'Saving Homogenized Embeddings for {args.BERT_Variant}...')
+pd.DataFrame(list(homogenized_embeddings.items()), columns = ['Entity', 'UMLS_Embedding']).to_pickle(f'Mikolov_to_{args.BERT_Variant.replace("/","_")}.pkl')

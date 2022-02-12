@@ -1,7 +1,7 @@
 #python ent_def_gen.py -f NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl
 
 import sqlite3
-import pickle5 as pickle
+import pickle
 from tqdm import tqdm
 import pandas as pd
 import argparse

@@ -1,0 +1,1898 @@
+CUI,Preferred_Concept
+C0205225,Primary
+C0015127,Etiology aspects
+C0276500,Human immunodeficiency virus I infection
+C0008059,Child
+C0600138,Does play
+C1705810,Generic Role
+C0282474,Maternal-Fetal Infection Transmission
+C0019704,HIV-1
+C0205217,Increased
+C0035647,Risk
+C1514562,Protein Domain
+C2825898,Macrophage Inflammatory Protein 1 Alpha measurement
+C0150312,Present
+C4321351,Low Level
+C2349975,Enhance (action)
+C0439165,Percent (qualifier value)
+C0184661,Interventional procedure
+C3711103,"CCR5 protein, human"
+C0040722,disease transmission qualifier
+C0065661,Mannose Binding Lectin
+C1280500,Effect
+C0392756,Reduced
+C0010654,cysteine
+C1709915,Residue
+C0332256,Containing (qualifier)
+C0205435,First (number)
+C1519623,Transmembrane Domain
+C0028778,Obstruction
+C0598435,Palmitoylation
+C1704675,Interaction
+C0311403,inhibited
+C0001128,Acids
+C0031843,physiological aspects
+C0332281,Associated with
+C1825562,IFITM5 gene
+C0003451,Antiviral Agents
+C0205177,Active
+C0027365,Name
+C0185117,Expression procedure
+C1518422,Negation
+C0033414,Promotion (action)
+C0021747,Interferons
+C0002520,Amino Acids
+C2348205,Similarity
+C0033684,Proteins
+C1312248,"IFITM1 protein, human"
+C1415897,IFITM2 gene
+C1415898,IFITM3 gene
+C1516144,Calcium Binding
+C1707271,Carboxy-Terminal Amino Acid
+C0456389,size
+C0027610,Bovine coronavirus
+C0026383,Molecular Structure
+C0028630,Nucleotides
+C0017337,Genes
+C0444930,End
+C0017428,Genome
+C0392171,Influenza-like symptoms
+C0686747,Well adolescent
+C0001675,Adult
+C0449450,Presentation
+C0582103,Medical Examination
+C0205214,Common (qualifier value)
+C1705920,Species
+C0206422,Human coronavirus
+C0205369,Specific qualifier value
+C0683325,clinical aspects
+C0012652,Disease Outbreaks
+C1175175,Severe Acute Respiratory Syndrome
+C3694279,Middle East Respiratory Syndrome
+C0282250,Case Fatality Rate
+C0456178,Microbiology subtype strains
+C0041703,United States
+C3258203,Study year
+C0205172,More
+C5204628,Prevalent
+C0205082,Severe (severity modifier)
+C1514873,Requirement
+C0019163,Hepatitis B
+C0007634,Cells
+C0332464,Widening
+C1520023,Virus-Cell Membrane Interaction
+C0009450,Communicable Diseases
+C0242821,Human body
+C0086597,Mediate
+C0205410,Sufficient
+C0039869,"Thinking, function"
+C0332307,Type - attribute
+C0042776,Virus
+C0014047,Japanese encephalitis virus
+C0014052,Tick-Borne Encephalitis Viruses
+C0014046,"Encephalitis Virus, Eastern Equine"
+C0037170,Sindbis Virus
+C0011315,Dengue Virus
+C0470187,Availability of
+C0025663,Methods
+C0442726,Detected (finding)
+C0014038,Encephalitis
+C0003342,"Antigens, Viral"
+C2987476,Exist
+C0439064,Numerous
+C0003320,Antigens
+C0521115,Simultaneous
+C0205447,One
+C0370003,Specimen
+C0022885,Laboratory Procedures
+C0014441,Enzyme-Linked Immunosorbent Assay
+C0003241,Antibodies
+C5139976,CAPTURE
+C0869040,use studies
+C0086045,Mental concentration
+C1514721,Range
+C0025874,Metrorrhagia
+C0521095,Determined by
+C0010357,Cross Reactions
+C1511790,Detection
+C0868928,Case (situation)
+C0041296,Tuberculosis
+C0750572,Estimated
+C0008115,China
+C0032659,geographic population
+C1514578,Province
+C0681832,Study Purpose
+C0038951,Surveys
+C1707689,Design
+C0242618,Sample Size
+C1555715,entry - cluster
+C1707391,Choose (action)
+C0027361,Persons
+C0009462,Community
+C0332196,Exclude
+C2603343,Study
+C0004927,Behavior
+C0009458,Communications Media
+C1273517,Used by
+C0444159,Sputum specimen
+C0237629,Frequency of Responses
+C0001779,Age
+C0681850,Study Subject
+C0033105,Statistical Prevalence
+C0871208,Rating (action)
+C0038056,Sputum
+C0037088,Signs and Symptoms
+C0030705,Patients
+C0562483,Persistent cough
+C0347984,During
+C4699618,>65 years
+C0580836,Old
+C0014442,Enzymes
+C0684224,Report (document)
+C1517892,Links List
+C0517627,Infection status
+C3540008,various antiinfectives and antiseptics for local oral treatment
+C0030660,Pathologic Processes
+C0445623,Microorganism
+C0039476,Temperature
+C0005507,Biological Assay
+C0205197,Complete
+C0243161,criteria
+C0036849,Set (Psychology)
+C0162791,Guidelines
+C0013227,Pharmaceutical Preparations
+C0871161,Property (attribute)
+C0205314,New
+C4527371,Candidate
+C0006784,Calpain
+C0332325,Resistant (qualifier value)
+C3827682,Useful
+C1533734,Administration procedure
+C1328819,Small Molecule
+C0011209,Obstetric Delivery
+C0027428,Structure of mucous membrane of nose
+C0565867,delivery method
+C0004048,Inspiration function
+C0205170,Good
+C1555307,promise
+C1515655,In Vivo
+C1967611,Dry Powder Inhaler (device)
+C1099354,"RNA, Small Interfering"
+C1705822,Transfer Technique
+C0205373,Systemic
+C0678594,Structure
+C0348078,Qualitative form
+C0086418,Homo sapiens
+C0178987,Artificial Airways
+C0030608,Particle Size
+C0205393,Most
+C1280519,Effectiveness
+C0441994,Lower - spatial qualifier
+C0012634,Disease
+C0598496,Gene Silencing
+C0024109,Lung
+C0205166,Long
+C0079941,Open Reading Frames
+C1551058,are unit of measure
+C1522666,Closest
+C0017390,"Identity, Genetic"
+C0181758,Surgical face mask
+C0042497,Mechanical Ventilator
+C1444637,In the past
+C0947630,Scientific Study
+C0016538,Projections and Predictions
+C1615608,Pandemics
+C1956259,Acronyms
+C1511545,Critical
+C1521761,Factor
+C0014499,Epidemic
+C0043237,World Health Organization
+C5203676,2019 novel coronavirus
+C0034019,public health medicine (field)
+C0029341,Orthomyxoviridae
+C0205396,Identified
+C0035168,research
+C0037179,Unmarried person
+C0683920,attack rate
+C0205210,Clinical
+C0580264,H1N1
+C5203670,COVID-19
+C0087153,Ventilator - respiratory equipment
+C1629517,Exhaled breath condensate (substance)
+C0521026,Viral
+C1707478,Conclusion
+C0225386,Breath
+C0332283,Followed by
+C0035380,Reverse Transcription
+C1261552,Step (specific stage)
+C0002778,Analysis of substances
+C0422392,Screening Method
+C0332152,Before
+C0007465,Cause of Death
+C3844033,Child 1
+C0332177,Monthly (qualifier value)
+C0237753,Numbers
+C0747676,pneumonia childhood
+C0011065,Cessation of life
+C0678226,Due to
+C0032285,Pneumonia
+C0231335,Childhood
+C0205448,Two
+C2981279,Decade
+C0301630,Reduction (chemical)
+C4281574,Much
+C0021162,Income
+C0205251,low
+C0227972,Structure of median lobe of prostate
+C0454664,Country
+C1709305,Occur (action)
+C0205101,Extrinsic
+C0019994,Hospitals
+C0205250,High
+C0332282,Following
+C0018684,Health
+C0442805,Increase
+C0035204,Respiration Disorders
+C1522427,best (quality)
+C1273518,Responsible to
+C0034599,Radiology Specialty
+C0042196,Vaccination
+C1527075,Revision procedure
+C1550452,definition - ActMoodCompletionTrack
+C0021149,Incidence
+C0014009,Empyema
+C0332185,Recent
+C0439849,Relationships
+C0549646,chest disorders
+C0027552,Needs
+C0034571,roentgenographic
+C0042210,Vaccines
+C0043167,Pertussis
+C0020964,Immunity
+C0021270,Infant
+C0205216,Decreased
+C0035648,risk factors
+C0001873,Air Pollution
+C1551362,coverage - financial contract
+C0021400,Influenza
+C0042200,Influenza vaccination
+C0233324,Term Birth
+C0521530,Lung consolidation
+C1552738,described
+C0011900,Diagnosis
+C1881534,Make - Instruction Imperative
+C0016627,Influenza in Birds
+C0749385,threat
+C0683368,Symptoms aspect
+C0087111,Therapeutic procedure
+C0439801,Limited (extensiveness)
+C0814225,Benefit
+C0205234,Focal
+C0521116,Current (present time)
+C0683954,research results
+C0032594,Polysaccharides
+C0032098,Plants
+C0301872,Immune response
+C0039798,therapeutic aspects
+C0038952,Continuance of life
+C0339901,Acute respiratory infections
+C0597404,Respiratory viruses
+C0004611,Bacteria
+C0013203,Drug resistance
+C0332148,Probable diagnosis
+C0183319,Sinks
+C0332261,Spreading (qualifier value)
+C0450254,Pathogenic organism
+C0542559,contextual factors
+C0457463,types of infections
+C0183185,Screens (device)
+C3179032,Multiplex Polymerase Chain Reaction
+C1706214,Creation
+C0033213,Problem
+C0039421,Technology
+C3494260,Inventions
+C0009013,Clone Cells
+C1710548,Unique
+C0030551,parent
+C0441712,Mechanism (attribute)
+C0441513,Surgical construction
+C0243107,development aspects
+C0332149,Possible
+C0004561,B-Lymphocytes
+C0521114,Infrequent
+C5197773,Broadly Neutralizing Antibodies
+C1269765,Assisted (qualifier value)
+C0597634,Vaccine Development
+C0032214,Play
+C0024530,Malaria
+C0199176,Prophylactic treatment
+C3698360,Middle East Respiratory Syndrome Coronavirus
+C0205409,Isolated
+C0079399,Gender
+C0035243,Respiratory Tract Infections
+C0449416,Source
+C0003062,Animals
+C0549183,Midline (qualifier value)
+C1301931,Time of death
+C0439531,per period (qualifier value)
+C0027362,Human Age Group
+C3714514,Infection
+C1579410,Nucleoside Analogs
+C0013216,Pharmacotherapy
+C0045093,gemcitabine
+C0332454,disrupted
+C0243052,Virus Physiological Phenomena
+C0034695,"Rats, Cotton"
+C0750591,consider
+C0599779,Animal Model
+C0167627,CD40 Ligand
+C3887583,"CD40 Ligand, human"
+C0011306,Dendritic Cells
+C0042774,Virus Replication
+C0017262,Gene Expression
+C2741673,Account number:Identifier:Point in time:^Patient:Nominal
+C0205419,Variant
+C5197798,Codon Usage
+C0175566,Open
+C0034754,Reading (activity)
+C0041912,Upper Respiratory Infections
+C0149725,Lower respiratory tract infection
+C4330475,Immune Cell
+C0439663,Infected
+C0567416,Molecule
+C0039194,T-Lymphocyte
+C0871261,Response process
+C0042769,Virus Diseases
+C4055506,Accumulation
+C0031307,Phagocytes
+C0424575,General health
+C0205117,Adjacent
+C0599883,Trait
+C0019196,Hepatitis C
+C0205322,Persistent
+C0443252,Long-term
+C0524910,"Hepatitis C, Chronic"
+C0582147,At risk of infection
+C0935562,neonatal period
+C0036310,Scheuermann's Disease
+C0966897,hepcidin
+C1880355,Discover
+C0178784,Organ
+C0030685,Patient Discharge
+C0013879,Elements
+C0025519,Metabolism
+C0600688,Toxic effect
+C0302583,iron
+C0043227,Work
+C0013303,Duodenum
+C0024432,macrophage
+C1442948,"Plumbum metallicum, homeopathic preparation"
+C0242606,Oxidative Stress
+C0549193,Parameter Value
+C0079809,Measures
+C0003402,Antioxidants
+C0441889,Levels (qualifier value)
+C0014077,"Leukoencephalitis, Acute Hemorrhagic"
+C2607943,findings aspects
+C0299456,ran-binding protein 2
+C1855020,Acute necrotizing encephalopathy
+C0032930,Precipitating Factors
+C1838681,Rapidly progressive
+C0230370,Structure of right hand
+C0427053,Weakness present
+C0205198,Compound
+C1442460,3 Hours
+C1301820,Obtain
+C0439178,percent positive cells
+C0392366,Tests (qualifier value)
+C4698447,Patient age
+C0086582,Males
+C4061114,Acute illness
+C0521346,respiratory
+C0728836,young child
+C1258014,Human Metapneumovirus
+C0206545,Human respiratory syncytial virus
+C0035236,Respiratory syncytial virus
+C0549177,Large
+C0017429,"Genome, Human"
+C1625778,Human metapneumovirus genotype
+C1079230,Subgroup A Nepoviruses
+C0205103,Intermediate
+C0022558,Kenya
+C0025320,Menopause
+C0441835,Group A (qualifier value)
+C1550040,Control specimen
+C0275524,Coinfection
+C2986911,Nonclinical Study Length
+C0332183,Frequently
+C0220905,regulatory
+C0392747,Changing
+C0036945,Sheep
+C1633987,Flock
+C3898777,Important
+C0850774,infection risk factor
+C0205436,second (number)
+C0007328,Case-Control Studies
+C1711350,Interquartile Range
+C0243148,control aspects
+C0085973,Case Study
+C0441471,Event
+C0034362,Q Fever
+C0010240,Coxiella burnetii
+C0442537,Reservoir (environment)
+C3714634,Biological Processes
+C0444706,Measured
+C1511726,Data
+C0332257,Including (qualifier)
+C0183652,String (device)
+C0242356,Databases
+C3539073,In the Field
+C0146196,toltrazuril
+C0730322,Multiple Evanescent White Dot Syndrome
+C0449572,Virus type
+C0205473,Serologic
+C0039593,Testing
+C0449570,Test type
+C0205615,Well Differentiated
+C0029134,Optic Neuritis
+C0441621,Sampling - Surgical action
+C0879240,Nasal Swabs
+C0028075,Nigeria
+C0680022,member
+C0205169,Bad
+C2828008,Burden
+C0011750,Developing Countries
+C0680220,majority
+C0205392,Some (qualifier value)
+C1512456,High Prevalence
+C4699345,Coronavirus OC43
+C1478824,Human coronavirus NL63
+C1744103,OC 229
+C1997894,Clinical trial participant (person)
+C0002424,Ambulatory Care Facilities
+C3494318,Public Health Surveillance
+C1704243,Greater
+C0683572,Adult Children
+C3538928,Usual
+C1442461,3 Months
+C0231337,Senility
+C0012751,Distance
+C1539372,EXOSC10 gene
+C0525037,CDKN2A gene
+C0087186,Irish race
+C0376247,Japanese language
+C3686947,Equine coronavirus
+C0206419,Genus: Coronavirus
+C0162326,DNA Sequence
+C1705535,suggestion
+C0042333,Variation (Genetics)
+C0031237,pertussis vaccine
+C1114743,Type:ID:Pt:Vaccine:Nom
+C0034866,Recommendation
+C0183753,Swab specimen
+C0444505,Peak level
+C3272598,WHO Temperature/Humidity Storage Condition
+C0521091,Confirmation of
+C0022882,Laboratory Infection
+C0884358,Performed
+C2584313,Discussion (communication)
+C0034036,Publications
+C1414444,ERN1 gene
+C0013534,Echovirus
+C0006754,California
+C0025289,Meningitis
+C0680240,Agreement
+C0009219,Coding
+C0035585,Rickettsia Infections
+C0022877,Laboratory
+C0017446,Geographic Locations
+C0014378,Enterovirus Infections
+C0206588,"Receptors, Nuclear"
+C0006826,Malignant Neoplasms
+C0011847,Diabetes
+C1290884,Inflammatory disorder
+C0029456,Osteoporosis
+C0005515,Biological Factors
+C0015576,Family
+C0027496,Nauru
+C1883220,Superfamily
+C0679209,prerequisite
+C1521991,Molecular
+C0442632,Boat dock
+C0336791,"Tool, device (physical object)"
+C0450363,Three-dimensional
+C0175168,"Protein, Organized by Structure"
+C0206755,"Crystallography, X-Ray"
+C0332218,Difficult (qualifier value)
+C1516695,Collected
+C1292744,Specimen procedure
+C0015733,Feces
+C1514811,Bibliographic Reference
+C1444754,Length
+C0178827,replicase
+C0684010,Rabbi
+C0205296,Natural
+C3178847,Genome Size
+C0017011,Gamma Rays
+C0439097,Delta - greek letter
+C0205309,Known
+C0023981,Longitudinal Studies
+C0085306,Feline infectious peritonitis
+C0085305,Feline infectious peritonitis virus
+C0936087,"Coronavirus, Feline"
+C0007450,Felis catus
+C0680243,controversy
+C1282914,Surrounding (qualifier value)
+C0071500,polyacrylamide gels
+C0314672,Polymerization
+C1145667,Binding action
+C0237897,Physical Strength
+C2266933,Neuraminidase Inhibitors [MoA]
+C1521840,Target
+C0876173,Tamiflu
+C0201622,Cytotoxicity assay
+C3895557,inhibition of viral replication
+C0200932,Nucleic Acid Amplification Tests
+C0443288,Restricted
+C0220825,Evaluation
+C0597198,Performance
+C0336757,"Heater, device"
+C0019682,HIV
+C1822658,GORAB gene
+C0589120,Follow-up status
+C0459958,HIV screen
+C0237913,Statistical Test
+C1707455,Comparison
+C0439828,Variable (uniformity)
+C0521093,Confirmed by
+C1522712,Recombinant Interferon-alpha Inducible Protein 10
+C0237881,Statistical Significance
+C0038410,Streptococcus pneumoniae
+C0876973,Infectious Lung Disorder
+C0018704,Health care facility
+C0206171,Community-Acquired Infections
+C0086965,Selection for Treatment
+C0343401,MRSA - Methicillin resistant Staphylococcus aureus infection
+C0015686,"Fatty Acids, Essential"
+C1285529,Purpose
+C0006764,Callithrix
+C1155328,Antiviral Response
+C1335439,Polymerase
+C0243077,inhibitors
+C0043266,Writing (occupation or discipline)
+C1511481,Consent
+C0035668,RNA
+C0728990,Clinical Use Template
+C0043194,Wiskott-Aldrich Syndrome
+C0443286,Reaction
+C0439962,Mixture
+C1514727,Ras Inhibitor
+C1555721,Substitution - ActClass
+C0439851,Direct type of relationship
+C0026882,Mutation
+C0035691,RNA Viruses
+C0031254,Pestivirus
+C0004793,Base Sequence
+C0004390,Autonomous Replication
+C0582263,Structural protein
+C4553150,BAC Regimen
+C0006556,"DNA, Complementary"
+C0525038,Amino Acid Substitution
+C0282416,Overall Publication Type
+C0018696,Health Care Systems
+C4045987,Never Event
+C0242456,Policy
+C0565990,Medical center
+C0449295,Limitation
+C3161035,Model
+C0318855,Porcine epidemic diarrhea virus
+C0221423,Illness (finding)
+C1292711,part of
+C0439855,Complex
+C0003755,Arenaviridae
+C2700280,World
+C0019094,Tacaribe Complex Viruses
+C0007589,Cell Differentiation process
+C1320226,Incubation period
+C0206497,Arenavirus
+C0086143,Diagnostic tests
+C0036667,Statistical sensitivity
+C0874161,oseltamivir
+C0216660,zanamivir
+C0061751,glycyrrhizic acid
+C1705313,Term (lexical)
+C0030657,Pathogenicity Aspects
+C0444504,Statistical mean
+C0449238,Duration (temporal concept)
+C0040223,Time
+C1517320,From
+C4086921,Unilobular
+C0332448,Infiltration
+C4510762,Human adenovirus 55
+C0039985,Plain chest X-ray
+C1280464,Manifestation of
+C0205263,Induce (action)
+C0035222,"Respiratory Distress Syndrome, Adult"
+C0887950,Genomics
+C1320528,Time of symptom onset
+C0013404,Dyspnea
+C0583239,Admission to intensive care unit
+C0231832,Respiratory rate
+C1720176,Upon - dosing instruction fragment
+C0184666,Hospital admission
+C0023508,White Blood Cell Count procedure
+C0233426,Personal appearance
+C1550335,Patient type
+C0277876,Pulmonary sign AND/OR symptom
+C0871685,Clinician
+C1706701,Acquisition (action)
+C2347029,Biospecimen Type
+C1515187,Take
+C0444137,Specimen from endotracheal tube
+C1513040,Measurable
+C0042749,Viremia
+C0005810,Blood Group (classification)
+C1062667,Human mastadenovirus A
+C0026565,Mortality Vital Statistics
+C1167909,T lymphocyte count
+C0597535,Success
+C1524063,Use of
+C2349751,Invasive positive pressure ventilation
+C0001487,"Adenovirus Infections, Human"
+C0936012,Analysis
+C0694549,Community acquired pneumonia
+C0701159,Patient in hospital
+C0439234,year
+C0150872,chest findings
+C2062441,Influenza A
+C1442160,Cutoff
+C1522609,Numerical value
+C0474643,Antibody titer measurement
+C0475208,Titer
+C0459471,Interpretation Process
+C1517741,Last
+C1947946,Aim (idea)
+C0150775,Social Networks
+C0359589,Provide (product)
+C1516606,Clinical Data
+C0016674,France
+C0325552,Lammergeier
+C0086287,Females
+C1516232,Cancer Survivorship Research
+C0038954,Survival Rate
+C0543482,morphological
+C0282639,HT29 Cells
+C1947931,Direct (qualifier)
+C0521447,Nuclear (nucleus)
+C0233656,Mental condensation
+C0162638,Apoptosis
+C0449475,cell type
+C3900053,Amenable
+C0007102,Malignant tumor of colon
+C0018017,objective (goal)
+C0015852,Fermentation
+C0017982,glycosylation
+C1521970,Characteristics
+C3154893,Possess
+C0596577,Flavonoids
+C1451210,"FGL2 protein, human"
+C0019185,Murine hepatitis virus
+C1518614,Organism Strain
+C0302809,Fulminant Hepatitis
+C0040048,Thromboplastin
+C1414609,FGL2 gene
+C0005778,Blood coagulation
+C0586688,Tissue specimen from liver
+C1883727,Taken
+C1281905,At risk of disease
+C0442529,Urban environment
+C0870781,Landscapes
+C1160716,viral transmission
+C0032850,"Fowls, Domestic"
+C0033268,production
+C0443193,Convergence - direction
+C1511253,Boost
+C0034980,Regression Analysis
+C0040811,Trees (plant)
+C2248788,4-hydroxy-2-ketopimelate aldolase activity
+C0332167,High risk of
+C0814835,land use
+C0332472,abnormal fragmented structure
+C0035567,Rice (Dietary)
+C1263424,LYSP100-associated nuclear domain
+C0008051,Chickens
+C0600653,Indexes
+C0242781,disease transmission
+C0021135,In Vitro [Publication Type]
+C1705968,Cartridge Dosing Unit
+C0020336,hydroxychloroquine
+C0008300,Choice Behavior
+C0521125,Preposition For
+C1522326,Treating
+C0008269,chloroquine
+C4726677,remdesivir
+C0031327,Drug Kinetics
+C0678723,Biologic Development
+C0014139,Endocytosis
+C3887511,Evidence
+C0003209,Anti-Inflammatory Agents
+C0010340,Critical Illness
+C0032105,Plasma
+C0079189,cytokine
+C1709707,Proportion
+C0018724,Health Personnel
+C0086132,Depressive Symptoms
+C0860603,Anxiety symptoms
+C0917801,Sleeplessness
+C0231303,Distress
+C3483978,Anxiety score
+C4706228,ISI (Insomnia Severity Index) score
+C0451226,Impact of event scale
+C0449820,Score
+C1274040,Result
+C0037773,"Spastic Paraplegia, Hereditary"
+C1838626,Cerebral malformations
+C0004352,Autistic Disorder
+C1428695,KATNAL1 gene
+C0683212,central nervous system function
+C0026649,Movement
+C0025914,House mice
+C0193959,Tonsillectomy and adenoidectomy
+C0083355,amsacrine/azacitidine/etoposide
+C0014057,Japanese Encephalitis
+C0205224,Essential
+C0065656,manidipine
+C1705242,Different
+C0086282,Family member
+C0016215,Flavivirus
+C4277569,Protein Structural Elements
+C0815043,"Protein, Organized by Function"
+C0872187,High Throughput Screening
+C1514798,Recombinants
+C2717802,Viral Structures
+C3245505,Potential
+C0035870,Rotavirus
+C1979882,Double strand
+C0032520,Polymerase Chain Reaction
+C0443211,Established
+C0442886,Secondary Infections
+C0021017,Immunoglobulin Isotypes
+C0034865,"Recombination, Genetic"
+C5206618,Somatic Hypermutation
+C0725813,depend
+C1709793,Quantitation
+C1265611,Quantity
+C0074257,secretory IgM
+C4698719,Confirmed case
+C2584321,Reaching
+C3830166,February
+C0014003,Employment
+C1553874,Concept Status - Proposed
+C0679006,Decision
+C0027855,Neurology speciality
+C0026339,Biological Models
+C0456984,Test Result
+C0424972,Member of large family
+C1704711,Distribution
+C0231193,adaptive
+C0085104,Drug Delivery Systems
+C4048755,Apply
+C0185125,Application procedure
+C0018790,Cardiac Arrest
+C0002045,algorithm
+C2698650,Optimization
+C0439659,Beginning
+C3812881,Author
+C0379099,vacuolar H+-ATPase
+C0001473,Adenosine Triphosphatases
+C1704241,complex (molecular entity)
+C2338615,Plasma membrane of osteoclast
+C0806036,Renal epithelial cell
+C0302600,Angiogenic Process
+C0332155,Did not receive therapy or drug for
+C0000379,"3,4-Methylenedioxyamphetamine"
+C1708632,Labeled (qualifier)
+C0805586,Challenge
+C1273870,Management procedure
+C0619485,A 19
+C0814435,early identification
+C0274281,Injury due to exposure to external cause
+C0442804,Very high
+C0021708,intensive care unit
+C1882442,Precaution
+C0038215,Science of Statistics
+C0681842,Prediction
+C0449738,Direction
+C0042587,Vesicular stomatitis Indiana virus
+C0027763,Nervous system structure
+C1707489,Connectivity
+C0599854,neuronal circuitry
+C0007289,carrageenan
+C0557702,Window (physical object)
+C0005595,Aves
+C3658219,"Influenza A Virus, H7N9 Subtype"
+C0856238,influenza (epidemic)
+C0332181,Annual
+C0443254,Mechanical Methods
+C0237820,Recovery - action
+C0004083,Mental association
+C0308779,DELIVER (veterinary product)
+C0449560,Subtype (attribute)
+C2076600,Influenza due to Influenza A virus subtype H1N1
+C0009649,"Conditioning, Classical"
+C1883357,Together
+C0439093,Greater Than
+C4763675,Single Agent Therapy
+C1704788,Definition
+C1527178,Basis - conceptual entity
+C0150105,Random Sampling
+C0439601,Seasonal course
+C1705241,Delta (difference)
+C0035373,Reunion Island
+C4279933,Vaccination Campaign
+C0005532,biology (field)
+C0220920,surveillance aspects
+C0206243,Carrying
+C0439787,Out (direction)
+C0205160,Negative
+C2985627,Study Objective
+C0036497,Seasons
+C0040833,trends qualifier
+C0005775,Blood Circulation
+C4267729,Respiratory pathogens
+C0205171,Singular
+C0241301,Summer
+C0241737,Winter
+C1512571,Hypothesis
+C0543488,Interested
+C0392760,Affecting
+C3843933,Feb.
+C0034927,Patient referral
+C3539897,Have
+C0325069,"Palm civet, NOS"
+C0237876,Sharing (Social Behavior)
+C0008139,Chiroptera
+C0750558,Unlikely
+C0220912,Aspects of signs
+C0332253,Evolving
+C0015219,Biological Evolution
+C0349590,Nature
+C4518065,Paper report
+C0332268,Lacking
+C0036397,Science
+C1175743,SARS coronavirus
+C3146294,Generation (action)
+C0598312,DNA Replication
+C0543483,pathogenic aspects
+C1518039,Mouse Lung
+C0332161,Attenuated by (contextual qualifier)
+C0205173,Duplicate
+C0427861,Human cells
+C0524523,Civets
+C4086523,Intermediate Host
+C4761558,Salar Chinese
+C0085732,Ability
+C1167395,Host (organism)
+C2603360,T prime
+C0681814,research study
+C0008109,Chimera organism
+C0205087,Late
+C0183683,"Support, device"
+C1441547,Derivation
+C0871282,rumors
+C1708698,Light Emitting Diode Device
+C0031831,Physicians
+C0205265,Initially
+C0598279,synthetic construct
+C0205319,Manifest
+C0011991,Diarrhea
+C0260319,Virologists
+C0017431,Genotype
+C0019092,Hantavirus
+C0456603,Ratio
+C0449943,Serotype
+C0814777,caseload
+C0243025,Hantavirus Pulmonary Syndrome
+C2699424,Concern
+C0402112,Scientist
+C0032667,Population Dynamics
+C0181586,Leads (device)
+C0043528,Zoonoses
+C1707959,Example
+C0556581,Retinol equivalents
+C4760114,Century (brand of cigarette)
+C0682447,virus by host
+C0700321,Small
+C0024660,Mammals
+C0242994,Hantavirus Infections
+C0002454,Americas
+C0553534,Cardiopulmonary
+C0039082,Syndrome
+C0018787,Heart
+C0282443,Review [Publication Type]
+C0008120,Chinese Language
+C1843013,"Alzheimer disease, familial, type 3"
+C0443289,Revealed
+C0019101,Hemorrhagic Fever with Renal Syndrome
+C0332302,Brought on by
+C0004268,Attention
+C1879848,Biomedicine
+C0086384,Hantaan virus
+C1708235,Genus
+C1882932,Representation (action)
+C0008902,Classification
+C0006395,Bunyaviridae
+C0449719,Part
+C0332437,Morphology
+C1415375,GYPC gene
+C1522240,Process
+C1160692,virus maturation
+C0010813,Cytokinesis
+C0700364,Appearance
+C1710082,Signal
+C0018381,Guinea (geographic area)
+C3537453,GBA wt Allele
+C3245499,Colombia
+C0597357,receptor
+C0017968,Glycoproteins
+C4684849,Presumed
+C0023688,Ligands
+C4722602,Underlying
+C1997138,Blunted
+C1552551,Any
+C0030664,Pathology
+C0035696,"RNA, Messenger"
+C0065827,Measles Virus Nucleoprotein
+C0085177,RNA-Binding Proteins
+C1517520,Genomic Segment
+C0079613,Adoptive Immunotherapy
+C2712604,Other activity
+C0369718,N not otherwise specified Antibody
+C0035736,"RNA, Viral"
+C1880165,Concentrate Dosage Form
+C0242842,"Microscopy, Confocal"
+C0205474,Biochemical
+C1999216,Inhibitor
+C0040594,Track (course)
+C0079220,Destination
+C0282629,Virus Assembly
+C3840880,Traffic
+C1512032,Dominant-Negative Mutation
+C0332147,Suspected diagnosis
+C0007952,Personality Character
+C0015376,Extravasation
+C2346874,Attractive
+C0040300,Body tissue
+C0036563,Plant seeds
+C1705192,Seeding
+C0205276,Local
+C0014257,Endothelium
+C1184743,bony process
+C1947971,Give - dosing instruction imperative
+C4321377,Relational and Item-Specific Encoding Task
+C0027627,Neoplasm Metastasis
+C0309049,favor
+C0442893,Systemic disease
+C0000768,Congenital Abnormality
+C1998882,Sometimes
+C0681841,Explanation
+C0035173,Research Personnel
+C1382398,Increased capillary permeability (finding)
+C0231221,Asymptomatic
+C0018557,Hamsters
+C0687676,Post
+C0026018,Microscopy
+C0052432,artesunate
+C0887913,Andes Virus
+C0036572,Seizures
+C0026429,"Monitoring, Physiologic"
+C0015272,Exhibits as Topic
+C0232132,Weak arterial pulse
+C0039231,Tachycardia
+C0020649,Hypotension
+C0205449,Three
+C1707520,Correlation
+C0442335,Vectors
+C0680536,commercial
+C0597420,Salmonella Vaccines
+C0050325,A-factor (Streptomyces)
+C0597641,plasmid vaccine
+C2347662,Pre-existing
+C0012656,Disease Vectors
+C0521009,Bacterial
+C1517378,Gain
+C0014834,Escherichia coli
+C0064582,lactic acid
+C0023859,Listeria
+C1520007,Viral Vector
+C0023636,License
+C1331096,vaccine delivery
+C0449379,Connection
+C0036111,Salmonella
+C0032868,Poxviridae
+C0001483,Adenoviruses
+C1709854,Recipient
+C0020966,Cellular Immunity
+C4321235,OCA2 wt Allele
+C0332289,Transmitted by
+C0004595,Bacillus subtilis
+C1527415,Oral Route of Drug administration
+C0021853,Intestines
+C0442027,Oral
+C0020971,Immunization
+C0449432,Component object
+C0596638,Gut associated lymphoid tissue
+C0021839,Intestinal Mucosa
+C1706912,BARRIER
+C0282557,"Immune Response, Mucosal"
+C0021212,Indicators
+C0021753,"interleukin-1, beta"
+C0422202,Notifications (procedure)
+C0008848,Cities
+C0020029,"Hospitals, Urban"
+C1707059,Pre-release version of a computer program
+C0205374,Transitory
+C0679238,disease factor
+C0034037,Publishing
+C1857276,Trichohepatoenteric Syndrome
+C3179065,Social Media
+C1533716,Information
+C0018721,Health Workforce
+C0231175,Failed
+C0700382,"Washing hands, function"
+C1444641,At risk
+C0018563,Hand
+C0332197,Absent
+C0205091,Left
+C0040802,travel
+C0029347,influenza A virus
+C1517050,Extracellular Domain
+C0378910,Lymphocyte antigen CD66A
+C0597298,Protein Isoforms
+C2352715,"CEACAM5 protein, human"
+C0282625,src-Family Kinases
+C0018896,Helping Behavior
+C0449297,Clearance
+C1326212,neutrophil apoptotic process
+C0022688,Natural Killer Cells
+C0424324,Fighting
+C0870509,Escape (mental process)
+C2611765,KILLER binding
+C0537439,enfuvirtide
+C0332575,Redness
+C0522501,Massive
+C1260957,Blue color
+C0332583,Green color
+C0332585,Pink color
+C0205341,Repeat
+C4699623,High activity
+C3463820,Inhibition
+C2981707,Stage IIB Uveal Melanoma AJCC v7
+C1535502,Bronchoalveolar Lavage
+C0229671,Serum
+C0018517,Half-Life
+C0201734,Pharmacokinetic study
+C1979963,Profile (lab procedure)
+C1707995,FABP4 wt Allele
+C2348397,Elimination Half Life
+C0439095,Greek letter alpha (qualifier value)
+C0026377,Molecular Conformation
+C5203671,Suspected COVID-19
+C0017160,Gastroenteritis
+C0949920,Norovirus
+C0152517,Viral gastroenteritis
+C0884118,adenovirus type
+C0040284,Tissue culture
+C0695341,common procedures
+C0175671,Universal
+C0206415,Oligonucleotide Primers
+C1273421,Viral studies (procedure)
+C0205437,Third
+C0444868,All
+C0428210,Methionine measurement
+C1272460,Not Applicable
+C0475463,"Antibodies, Neutralizing"
+C0679058,encoding mental process
+C1445860,Protein antibody
+C4264487,Type A
+C0023756,Panthera leo
+C0015176,Europe
+C3494191,Phage Display Techniques
+C0004651,Bacteriophages
+C0007294,Genetic Carriers
+C0008679,Chronic disease
+C0205272,Regular
+C0042760,Virion
+C1423498,GOLPH3 gene
+C1113686,directed evolution
+C0206397,Inovirus
+C0206398,Plectrovirus
+C0023621,Libraries
+C1564139,Mutant Proteins
+C0562342,Empowered
+C1623051,Filamentous bacteriophage (species)
+C1705417,Device Display Device
+C1513371,Mode
+C0205543,Referring
+C0231448,Extension
+C0205148,Surface
+C0003316,Epitopes
+C0599934,"Vaccines, Peptide"
+C0002111,Allergy Specialty
+C0005525,Biological Response Modifiers
+C0282115,"Vaccines, Contraceptive"
+C0030956,Peptides
+C0302891,Native (qualifier value)
+C0003261,Antibody Formation
+C0001551,Immunologic Adjuvants
+C0021494,Intravenous Injections
+C5142938,Merit
+C0016884,Future
+C0018282,Growth Inhibitors
+C0038172,Staphylococcus aureus
+C0008168,chloramphenicol
+C0162388,Killing
+C0334227,"Tumor cells, malignant"
+C0027651,Neoplasms
+C0870432,Display - arrangement
+C1883036,Single-Chain Antibodies
+C1449651,Amyloid Fibrils
+C0030567,Parkinson Disease
+C0597177,Particle
+C1512612,Ideal
+C0337143,Scaffold
+C0008976,Clinical Trials
+C1450053,Nanostructured Materials
+C3687625,Demonstrates
+C1292732,Investigates
+C0849355,Removed
+C4727198,Read Length
+C0337797,Belgians
+C0039005,Family suidae
+C1216700,Kobuvirus
+C0079134,Clostridium difficile
+C2613267,sporulation
+C0182953,Regulators (device)
+C1136170,Virulence Factors
+C0030695,Patient Monitoring
+C1171362,protein expression
+C0014049,Venezuelan equine encephalitis virus
+C0162327,RNA Sequence
+C1515877,activate biological process
+C1155342,cellular response to unfolded protein
+C1704259,Biochemical Pathway
+C0042153,utilization qualifier
+C0162847,protein folding
+C1327616,Cell secretion
+C1414314,EGR1 gene
+C2982691,Reside
+C3258060,Primary sign and symptom
+C0242488,Acute Lung Injury
+C0310255,survive
+C0205404,Serious
+C1705654,Entry (data)
+C3845593,Major change
+C0242656,Disease Progression
+C0020962,Immune system
+C0036658,Esthesia
+C0033325,Forecast of outcome
+C0145943,TimeLine Fluoride Releasing Resin
+C0021743,Interferon Type I
+C0042736,Viral Proteins
+C0239126,corticosteroid use
+C0870668,hospitalized patients
+C0678889,Immunoregulation
+C0012920,"DNA Topoisomerases, Type I"
+C0009521,Complement C5a
+C0360714,Hydroxymethylglutaryl-CoA Reductase Inhibitors
+C0199168,Medical service
+C0009488,Comorbidity
+C0021054,Immunologic Factors
+C0220901,prognostic
+C0005516,Biological Markers
+C0748355,Acute respiratory distress
+C4086878,Symptom Onset
+C2806453,Betacoronavirus
+C0079946,National origin
+C1552603,search - EntityNameUse
+C1522168,Topical Route of Drug Administration
+C1706202,Search - action
+C1704970,Means
+C0035820,Social Role
+C0456204,Specimen type
+C0430022,diagnostic procedure
+C3539922,Loop-mediated Isothermal Amplification
+C0599161,Reverse Transcriptase Polymerase Chain Reaction
+C0036743,Serologic tests
+C1627358,Refractive surgery enhancement
+C1514863,Reproducibility
+C1709846,Real-Time Polymerase Chain Reaction
+C0812225,Kit device
+C0205450,Four
+C0036043,Safety
+C1514821,Registration
+C0449438,Status
+C0205455,Nine
+C4042908,Seroconversion
+C1441672,Observed
+C0549178,Continuous
+C0206034,"Clinical Trials, Randomized"
+C0035363,Retrospective Studies
+C0920321,Phase I Clinical Trials
+C0456962,Rapid
+C0017296,gene therapy
+C0085415,Treatment outcome
+C0680218,superiority
+C0458579,Lower respiratory tract structure
+C1547923,"Aspirate, Tracheal - specimen source code"
+C2945599,Mild (qualifier value)
+C0458578,Upper respiratory tract
+C0237607,Practice Experience
+C0440471,Genetic Materials
+C0007610,Cell Nucleus
+C0558295,preference
+C0002928,Spinal Anesthesia
+C0686750,Well adult
+C1271650,Antimicrobial activity
+C0085236,"Macrophages, Alveolar"
+C0071313,"plY protein, Streptococcus pneumoniae"
+C3151529,Lethal
+C0376435,Random Peptide Library
+C0022940,Lactobacillus casei
+C0008356,Cholera Toxin
+C4050014,Unknown GENC
+C0087113,Treatment Effectiveness
+C0236493,Influenza antibody
+C0231290,Status post
+C0439231,month
+C0042212,"Vaccines, Inactivated"
+C1704640,Matrix Array
+C0457242,square metres
+C0021403,Influenza virus vaccine
+C3242229,ineffective
+C1210581,Lactobacillales
+C0449914,Delivery system
+C1330623,Live Influenza Vaccines
+C1709450,Pair
+C1327414,cytokine secretion
+C1424250,NLRP3 gene
+C2936529,Inflammasomes
+C0022009,Ion Channel
+C1979975,Single strand
+C3828767,November
+C3829447,July
+C0035690,RNA Virus Infections
+C0599561,e protein
+C0205431,Formed
+C0018188,Granuloma
+C1168005,Alpha tumour necrosis factor measurement
+C1150579,MAP kinase activity
+C0752312,Mitogen-Activated Protein Kinases
+C1879547,Activation action
+C1314939,Involvement with
+C0031715,Phosphorylation
+C1956001,Mitogen-Activated Protein Kinase Phosphatases
+C0023810,Lipopolysaccharides
+C0282655,Critical Pathways
+C1523987,Alternative
+C0439858,Conventional
+C0205246,Generalized
+C1534709,Splitting
+C5206843,FDA Inactivation
+C0770694,trivalent influenza vaccine
+C1521801,Having administered
+C1721019,Virus Attachment
+C0150110,gold standard
+C0332287,In addition to
+C0392360,Indication of (contextual qualifier)
+C1545588,Protection
+C3272757,Live Attenuated Influenza Vaccine
+C0005903,Body Temperature
+C1456404,Trivalent Live Attenuated Influenza Vaccine
+C1269955,Tumor Cell Invasion
+C0036576,Genetic Selection
+C1709269,North
+C0035139,Surgical Replantation
+C0086960,Schedule (document type)
+C1999230,Providing (action)
+C0442818,Raised
+C0012931,Recombinant DNA
+C1627932,Adenovirus serotype
+C1510800,Adenovirus Vector
+C1552907,Adenovirus Vaccine
+C0991533,Oral Capsule
+C0231174,Failure (biologic function)
+C0521819,Vaccination failure
+C0007637,Inclusion Bodies
+C0814942,Han Chinese
+C4054739,Immunogenicity Study
+C1524062,Additional
+C0679199,Strategy
+C4709333,Adeno-associated Virus Vector
+C1564874,Adeno-Associated Virus
+C0002331,Alphavirus
+C0035142,Replicon
+C0680651,appeal
+C0010825,Cytomegalovirus
+C0333785,Virus-like particles
+C0079005,Baculoviridae
+C4055445,Approved for Human Use Product
+C0184511,Improved
+C2986815,Robust
+C0020969,"Immunity, Innate"
+C0027984,Newcastle disease virus
+C0332306,Quality
+C0917903,Conclude Resin
+C1143949,"TNFSF10 protein, human"
+C0026809,Mus
+C1549081,Termination - Inactive Reason Code
+C0042207,Vaccination against smallpox
+C0042214,Vaccinia
+C0376649,Addresses (publication format)
+C0586139,Influenza vaccination status
+C2349186,Fit (action)
+C0439617,Revision
+C0443318,Sustained
+C0025260,Memory
+C0007613,Cell physiology
+C0039341,tat Protein
+C0560560,Moving
+C0007609,Cell Nucleolus
+C0035701,Ribosomal RNA
+C0035553,Ribosomes
+C1179105,Region of fibrillar component of nucleolus
+C0521448,nucleolar
+C0475264,localization
+C0574204,Tatar language
+C0017282,"Gene Products, rev"
+C1317750,Study report
+C0022262,Isotopes
+C0181496,Labels (device)
+C0003765,arginine
+C0024337,lysine
+C0010453,Anthropological Culture
+C0028589,Nuclear Proteins
+C1428200,TIPARP gene
+C0002318,alpha-Tubulin
+C0039224,Table - furniture
+C3715215,S1
+C1880833,Fold Change
+C4193472,Mammarenavirus
+C0035804,Rodent
+C0441833,Groups
+C0023092,Lassa Fever
+C0682523,Human Cell Line
+C0018802,Congestive heart failure
+C0029904,ouabain
+C0449234,Concept Attribute
+C0442799,Efficient
+C1412628,ATP1A1 gene
+C0084178,prohibitin
+C1880177,Contribution
+C2911648,Multiplication
+C1551338,Entity
+C0242744,"Earth, Planet"
+C1279919,Early
+C1550543,Fulfill
+C0376558,Life
+C0745777,Lost
+C0085862,Independence
+C0562630,Intracellular parasite
+C0080125,Catalytic RNA
+C0678595,peptide bond
+C0012854,DNA
+C0220806,Chemicals
+C0332529,Consistency
+C0008056,Chikungunya virus
+C0008055,Chikungunya Fever
+C0023008,Languages
+C1824356,RESF1 gene
+C1314677,Maintaining (action)
+C0001737,Africa
+C0003980,Asia
+C0222032,Spur (body structure)
+C0332174,Weekly
+C0022130,Islands
+C1522508,Details
+C0078988,Asians
+C0027567,African race
+C0441655,Activities
+C0022275,Italian language
+C0204727,Isolation procedure
+C0439228,day
+C0585064,Numerical phases
+C0686907,Consequence of
+C2734086,Chikungunya virus IgM
+C3715206,Eighteen
+C0457343,Chronic phase
+C1880022,Characterization
+C0030193,Pain
+C0009566,Complication
+C3887670,AE synonym fragment
+C0009490,Comoros
+C0036919,Seychelles
+C0275626,Struck
+C0011041,DDT (Insecticide)
+C0457083,Usage
+C0023031,lanthanum
+C4521003,VACUOLAR-TYPE PROTON-TRANSLOCATING ATPase SUBUNIT E1
+C0376441,Indian Ocean
+C0303920,Fluorescent stain
+C1292748,Introduces
+C0028405,North America
+C0021289,"Infant, Newborn"
+C0026591,Mother (person)
+C1550608,Instance
+C0015965,Fetus
+C0242648,Vertical Disease Transmission
+C0178795,Perinatal period
+C1513895,National Institute of Allergy and Infectious Diseases (U.S.)
+C0600091,Identifier
+C0808080,STRENGTH (attribute)
+C0376613,"Vaccines, DNA"
+C1547538,Facility
+C1521743,"Monitor, occupation"
+C0282687,"Hemorrhagic Fever, Ebola"
+C0600109,Willing
+C0013480,Ebola virus
+C0017313,patient care
+C0276472,Avian infectious bronchitis
+C0205132,Linear
+C1514756,Receive
+C1553446,Suite
+C0376705,Viral Load result
+C1512977,Mammalian Cell
+C0441659,Recreational flying
+C0449265,Elicited by
+C0000934,Acclimatization
+C1521738,Field
+C2986575,Connect (action)
+C1302234,Fatal
+C1880266,Defense
+C0424295,Hyperactive behavior
+C0043012,Wakefulness
+C0013621,Knowledge acquisition
+C0013126,Intrinsic drive
+C0332452,defective
+C1516240,Capacity
+C0002199,Interferon-alpha
+C0427529,Smear cell
+C0120285,Green Fluorescent Proteins
+C0872351,monolayer
+C2349984,Inversion
+C0026022,"Microscopy, Fluorescence"
+C0870071,Modeling
+C0969625,Methodology aspects
+C1711343,Deriving
+C0552449,Equation
+C1522410,Highest
+C1301808,Geographic state
+C0007320,Case Reports Publication Type
+C0007457,Caucasoid Race
+C0442519,Home environment
+C0439834,Slow
+C0376691,Programs - Publication Format
+C0750532,MILDLY
+C0231218,Malaise
+C0205390,Phase
+C4745084,Medical Condition
+C0699788,Import
+C0439157,counts
+C2986483,Doubling Time
+C0598394,enzootic
+C0035242,Respiratory Tract Diseases
+C3842296,Else
+C0683278,Mental Suffering
+C1836348,Severe disorder
+C1154657,perception of virus
+C1315072,Serology (antibodies and most antigens except blood bank and infectious agents)
+C0013849,Email
+C0443640,Specific antibody
+C0444454,Access
+C1883708,Then
+C1879743,As Much as Desired
+C0014507,Epidemiology
+C0205329,Progressive
+C0036243,Saudi Arabia
+C4288581,Notable
+C1272688,status - In progress
+C0022773,South Korea
+C0449335,Method of detection
+C0008903,Taxonomic
+C0020792,Identification (Psychology)
+C1272318,Presence of virus (procedure)
+C0034861,Recombinant Proteins
+C0037791,Specificity
+C0449445,Approach
+C0036745,Study of serum
+C0741847,Bypass
+C0599220,Protein Subunits
+C1136348,Protein Microarrays
+C0218063,Ensure (product)
+C0885847,human urine
+C0162633,Viral Shedding
+C1264633,Fraction of
+C4036459,Contacts
+C0332156,Return to (contextual qualifier) (qualifier value)
+C0042295,Values
+C0006801,Camels
+C4699158,Increased risk
+C0027363,Occupational Group
+C0018019,Capra hircus
+C0349374,Cow's milk
+C1698986,Storage
+C0439237,degrees Celsius
+C0521108,Recovering from
+C0443348,Viable
+C0428692,Ambient temperature
+C0428696,Relative humidity
+C3242389,Airborne exposure
+C0010200,Coughing
+C0001712,Aerosols
+C0205108,Distal (qualifier value)
+C1444005,Human to human transmission
+C1564867,Basic Reproduction Number
+C0003671,Arabian Peninsula
+C1320717,Respiratory event
+C0332232,Approximate
+C0730559,Respiratory percentage
+C2700400,Contain (action)
+C0750489,apparent
+C0205394,Other
+C0475311,Harbor
+C0449435,Manufactured aid
+C0443131,Accurate (qualifier)
+C1441506,Calculation
+C3274649,Probable Case Status
+C1710360,Technology Platform
+C4330491,Instrumental Activities Domain
+C2713449,Information Sharing
+C0936234,Computed Tomography Scanning Systems
+C0016249,floor (object)
+C0040405,X-Ray Computed Tomography
+C0024861,Masks
+C1280412,Thick
+C0934502,anatomical layer
+C0020912,Optical Image Reconstruction
+C1261322,Evaluation procedure
+C0524637,"Recognition, Psychology"
+C1704254,Medical Image
+C0700287,Reporting
+C0202823,Chest CT
+C0425382,Personal status - Adopted
+C4075962,Low dose computed tomography of thorax
+C0678341,Responsibility
+C0587500,Radiology department
+C0205146,Area
+C0332849,Divide
+C0205279,Contaminated
+C1547703,Room
+C1947930,Cleaning (activity)
+C0006353,Buffers
+C0014672,Equipment
+C0031809,Physical Examination
+C1319127,Level of stress
+C1552089,Staff Member
+C1516050,Assignment - action
+C0585347,Single event
+C1856053,Hydranencephaly with Renal Aplasia-Dysplasia
+C0332158,Contact with
+C0302523,Observation in research
+C1629510,Oral swab (specimen)
+C0005767,Blood
+C0444214,Anal swab
+C0521117,Severity of illness
+C0178913,Blood specimen
+C1718344,Special care (attribute)
+C0439793,Severities
+C0205221,Disseminated
+C0229960,Entire body as a whole
+C0001747,"Africa, Western"
+C0013956,Emergency Situation
+C1443871,Personal protective equipment
+C1956344,Emergency Preparedness
+C1185625,Anatomical compartments
+C0205421,Deferred
+C0019993,Hospitalization
+C0206132,Age of Onset
+C0039725,Thailand
+C0022341,Japan
+C3176590,Illness duration
+C0545082,Visit
+C0275522,Asymptomatic Infections
+C3829466,January
+C0886414,Body temperature measurement
+C0231435,Mobile
+C0057717,diamond
+C0036971,Ships
+C0557989,Restriction of movement
+C0205439,Fifth
+C1272689,Started
+C0332288,Without
+C0450048,Passenger
+C2350739,rupintrivir
+C0276447,Rhinovirus infection
+C0544076,"Etiology, primary"
+C0004096,Asthma
+C0025252,Membrane Proteins
+C1135440,Procedures involving the use of pharmaceuticals
+C0012655,Disease susceptibility
+C0231220,Symptomatic
+C0439609,Urgent
+C0549179,Priority
+C0031082,Periodicals
+C1272706,Interval
+C4082764,Gastrointestinal infection
+C0868963,Gardening
+C2708283,Clinical presentation
+C1883073,Electromagnetic Spectrum
+C0205238,True
+C0162340,Comprehension
+C1444748,Triggered by
+C3266261,One chronic disease
+C0702117,consolidated
+C0001554,Administration occupational activities
+C0231242,Complicated
+C1517331,Further
+C4086268,Exacerbation
+C0743630,exacerbation acute
+C0450442,Agent
+C0684312,Drivers of Vehicles
+C0740304,copd exacerbation
+C2828393,Exact (qualifier)
+C0220898,Predisposition -- attribute
+C2945843,Site of
+C0725694,comply
+C1542147,Main
+C4523782,Inflammatory airway disease
+C0233535,Butting
+C0547044,Smaller
+C0439792,Extent
+C1514849,Replication-Associated Process
+C0021368,Inflammation
+C3898900,Healthy
+C0333348,Inflammatory
+C0221908,Epithelial
+C0149516,Chronic sinusitis
+C0027430,Nasal Polyps
+C0014457,Eosinophilia
+C0024117,Chronic Obstructive Airway Disease
+C0441730,Type 2
+C0014597,Epithelial Cells
+C3263722,Traumatic AND/OR non-traumatic injury
+C0034790,T-Cell Receptor
+C0007587,Cell Death
+C4522252,Foundation for the Accreditation of Cellular Therapy
+C2717799,Metagenomics
+C0200931,Polymerase chain reaction analysis
+C0221099,Impaired
+C0242767,Stem of plant
+C1268456,Viral Components
+C1527428,Remaining
+C0021376,Chronic inflammation
+C0546816,Persistence
+C0281991,steroid use
+C1260953,Suppressed
+C1567292,"Myosin Phosphatase Rho-Interacting Protein, human"
+C1261381,Destructive procedure (surgical)
+C0683521,Patient Physiological Condition
+C0729531,Viral respiratory infection
+C0332271,Worsening pattern
+C1290886,Chronic inflammatory disorder
+C0578491,Infection by site
+C0014406,Environment
+C0225377,Structure of upper respiratory tract cavity
+C0231202,Symbiotic
+C0035235,Respiratory Syncytial Virus Infections
+C0026727,Mucous body substance
+C0332453,Disruption
+C0015422,Eyelash
+C1101610,MicroRNAs
+C0699949,airway disease
+C0014609,Epithelium
+C0887909,"RNA, Untranslated"
+C0443264,Modulated
+C1655731,study of epigenetics
+C1444656,Indicated
+C0040028,"Thrombocythemia, Essential"
+C0202311,Aluminum measurement
+C0851901,Rhinovirus infections
+C0035473,Rhinovirus
+C0206558,Simplexvirus
+C0027950,neutrophil
+C1515981,And
+C1292424,Single point in time
+C0542341,Function (attribute)
+C0439662,Immune
+C2587213,Control function
+C0850310,Possessed
+C1514568,Protein Truncation
+C0018270,Growth
+C0022277,Italy
+C0043129,Western Europe
+C1273869,Intervention regimes
+C0442504,Place
+C1720302,Until
+C0679201,Inference
+C1825598,IMPACT gene
+C3274659,Model Number
+C0035150,Reproduction
+C1416797,STMN1 gene
+C0034386,Quarantine
+C0037412,Social Distance
+C0750729,Course
+C0454713,European country
+C3258257,Total population
+C0087130,Uncertainty
+C4743675,Impossible
+C1321095,Drop Dosing Unit
+C0205548,Stat (do immediately)
+C0018599,Hardness
+C0009847,containment
+C1292431,Procedure phase
+C0520511,Distributing
+C0678257,Description
+C0206750,Coronavirus Infections
+C1549735,Identifier type - Person number
+C1547761,Alert level
+C1442162,GIVEN
+C0681024,economic impact
+C0815353,Male external urethral sphincter
+C1272695,Done (qualifier value)
+C1310468,"DDX58 protein, human"
+C2239342,DDX60 gene
+C0015264,Exertion
+C0239307,ethnic european
+C0599437,Authority
+C1273802,Regional office
+C0449244,Time of onset
+C0015967,Fever
+C0230463,Sole of Foot
+C1457887,Symptoms
+C0332290,Consistent with
+C1114752,"Pre-existing physician-diagnosed allergies, birth defects, medical conditions:Finding:Point in time:^Patient:Nominal"
+C0032310,"Pneumonia, Viral"
+C0449255,Context
+C1517927,Locally
+C0439661,Acquired (qualifier value)
+C0871157,Prompting
+C0442732,Vital (qualifier value)
+C0682356,Witnesses
+C1514537,Protein Biosynthesis Pathway
+C1517886,Limited stage (cancer stage)
+C0005540,Biomedical Research
+C1519614,Genetic Translation Process
+C0178566,concept
+C0600661,Outlines (document)
+C0524669,Coins
+C2699488,Resolution
+C0001074,Structure of achilles tendon
+C0018870,Heel
+C1080058,This (eukaryote)
+C2936405,Drug Repositioning
+C1512888,International
+C2828361,Do (activity)
+C1413357,CFLAR gene
+C0441987,Side
+C0084795,Tristetraprolin
+C1415638,HNRNPD gene
+C1826784,RC3H1 gene
+C0035342,Retinol Binding Proteins
+C0597415,RNA methylation
+C0337076,Industrial machine
+C0337108,Brake device
+C1514248,Post-Transcriptional Regulation
+C1823924,ZC3H12A gene
+C0287990,paired basic amino acid cleaving enzyme
+C2700640,Encode (action)
+C2346714,Abundance
+C0872047,high throughput technology
+C0681833,Basic Research
+C0152036,Immunology
+C3658355,CRISPR-Cas Systems
+C1881379,Lineage
+C0030391,"Parainfluenza Virus 2, Human"
+C1366752,Neomycin resistance gene
+C0042762,Science of Virology
+C0039828,Theses
+C1550031,Unlock
+C0681473,agenda
+C0079816,Medical Research activity
+C0439607,Priorities
+C3540678,Task
+C1522634,Question (inquiry)
+C1321919,"TLR4 protein, human"
+C0037750,Spanish Language
+C0332173,Daily
+C1615607,"Influenza A Virus, H1N1 Subtype"
+C1707686,Descendent
+C0029345,"Orthomyxovirus Type A, Porcine"
+C0556970,times/year
+C0678544,wave - physical agent
+C1135927,"Immunity, Herd"
+C0020167,Humidity
+C0445247,Same
+C0029343,"Influenza A Virus, Avian"
+C0008083,Child Mortality
+C0871935,Theory
+C0001790,Age-Specific Death Rate
+C1521733,Pathologic
+C0332298,Controlled by
+C0242324,"Medicine, Modern"
+C1853126,MOLECULAR BASIS
+C0318356,Human virus
+C1156245,Growth pattern
+C3533081,Reporting rate
+C4738108,Cumulative cases:Number:Point in time:^Event:Quantitative
+C0205422,Sporadic (qualifier value)
+C0557806,College
+C0871939,time series
+C0391871,Released (action)
+C0205134,Curved
+C2828360,Traverse
+C3830550,December
+C0949881,"Coronavirus OC43, Human"
+C4698071,OC43
+C1979874,Contrast
+C1441526,Computed (procedure)
+C0204514,Structural analysis
+C0162807,"Protein Structure, Secondary"
+C1135899,G+C Composition
+C1179705,S2 innervation
+C0439148,Unit
+C1953353,Amino acid change
+C1442161,Gene Deletion Abnormality
+C0033204,Probability
+C0221189,Jumping
+C1875400,ISOLATE COMPOUND
+C0205313,Original
+C0242482,Summary Report
+C0337664,Smoker
+C1547647,Patient Outcome
+C0184532,Dying Process
+C4279946,Humanitarian Assistance
+C1517001,Expected
+C1444749,Exacerbated
+C0231224,Crisis
+C0079161,Infectious Disease Contact Tracing
+C0035201,Resources
+C0020405,Hygiene
+C0018581,Handwashing
+C0150269,Limit setting
+C1524031,Minimum
+C0038137,standards characteristics
+C4505226,Gender-Based Violence
+C0023124,Latrines
+C1512173,Effectiveness of Interventions
+C0949366,Vulnerable Populations
+C0728831,Social
+C0205749,"Factors, Economic"
+C0025106,Medical Staff
+C3898897,Helpful
+C1948052,Now (temporal qualifier)
+C0030231,Palliative Care
+C0237400,Actual
+C0949892,Ebolavirus
+C0238606,West Africans
+C0024501,Maintenance
+C1282913,Circular
