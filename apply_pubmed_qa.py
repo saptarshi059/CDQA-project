@@ -8,6 +8,8 @@ import argparse
 import datetime
 
 import pandas as pd
+import torch.nn as nn
+import pickle5 as pickle
 from torch.utils.data import DataLoader
 
 from argparse import Namespace
@@ -86,6 +88,36 @@ if __name__ == '__main__':
     ckpts_to_apply = list(sorted(ckpts_to_apply, key=lambda x: int(x[4])))
     # print('ckpts_to_apply: {}'.format(ckpts_to_apply))
     tokenizer = AutoTokenizer.from_pretrained(model_name)
+    dtes = None
+    if model_args.use_kge:
+        DTE_Model_Lookup_Table = pickle.load(open(model_args.dte_lookup_table_fp, 'rb'))
+        custom_domain_term_tokens = []
+        domain_terms = DTE_Model_Lookup_Table['Entity'].tolist()
+        custom_umls_tokens = ['[{}]'.format(dt) for dt in domain_terms]
+        custom_dict_tokens = ['#{}#'.format(dt) for dt in domain_terms]
+        if model_args.use_kge:
+            custom_domain_term_tokens.extend(custom_umls_tokens)
+        if model_args.use_dict:
+            custom_domain_term_tokens.extend(custom_dict_tokens)
+
+        tokenizer.add_tokens(custom_domain_term_tokens)
+
+        dtes = []
+
+        if args.use_kge:
+            umls_dtes = DTE_Model_Lookup_Table['UMLS_Embedding'].tolist()
+            dtes.extend(umls_dtes)
+        if args.use_dict:
+            dict_dtes = DTE_Model_Lookup_Table['Dictionary_Embedding'].tolist()
+            dtes.extend(dict_dtes)
+
+        if args.random_kge:
+            print('Replacing DTEs with random tensors...')
+            dtes = [torch.rand(1, 768) for _ in dtes]
+
+        print('dtes[0]: {}'.format(dtes[0]))
+        dtes = torch.cat(dtes, dim=0)  # .to(self.device)
+
     dataset = PubmedQADataset(model_args, args.data, tokenizer)
 
     data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False,
@@ -99,6 +131,12 @@ if __name__ == '__main__':
 
         print('Applying ckpt from fold {} epoch {}...'.format(fold_no, args.epoch))
         model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3)
+        if model_args.use_kge:
+            initial_input_embeddings = model.get_input_embeddings().weight
+            new_input_embedding_weights = torch.cat([initial_input_embeddings, dtes], dim=0)
+            new_input_embeddings = nn.Embedding.from_pretrained(new_input_embedding_weights, freeze=False)
+            model.set_input_embeddings(new_input_embeddings)
+
         map_location = {'cuda:0': 'cpu'}
         state_dict = torch.load(ckpt_fp, map_location=map_location)
         model.load_state_dict(state_dict, strict=True)
