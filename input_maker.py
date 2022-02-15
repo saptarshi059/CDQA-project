@@ -51,7 +51,7 @@ class InputMaker(object):
 
     def convert_questions_to_kge(self, q_text):
         # print('** raw q_text: {} **'.format(q_text))
-        q_text = re.sub(' +', ' ', q_text).strip()
+        #q_text = re.sub(' +', ' ', q_text).strip()
         q_text = '{} '.format(q_text)
         # print('** q_text: \'{}\' **'.format(q_text))
         tup = self.metamap_tokenizations.query("Question==@q_text")
