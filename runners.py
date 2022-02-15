@@ -75,20 +75,20 @@ class PubmedQARunner(object):
 
             self.tokenizer.add_tokens(custom_domain_term_tokens)
 
-            self.dtes = []
+            dtes = []
 
             if args.use_kge:
                 umls_dtes = DTE_Model_Lookup_Table['UMLS_Embedding'].tolist()
-                self.dtes.extend(umls_dtes)
+                dtes.extend(umls_dtes)
             if args.use_dict:
                 dict_dtes = DTE_Model_Lookup_Table['Dictionary_Embedding'].tolist()
-                self.dtes.extend(dict_dtes)
+                dtes.extend(dict_dtes)
 
             if args.random_kge:
                 print('Replacing DTEs with random tensors...')
                 dtes = [torch.rand(1, 768) for _ in self.dtes]
 
-            print('dtes[0]: {}'.format(self.dtes[0]))
+            print('dtes[0]: {}'.format(dtes[0]))
             self.dtes = torch.cat(dtes, dim=0).to(self.device)
 
         train_data_fp = os.path.join(self.fold_dir, 'train_set.json')
