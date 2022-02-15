@@ -104,14 +104,14 @@ if __name__ == '__main__':
 
         dtes = []
 
-        if args.use_kge:
+        if model_args.use_kge:
             umls_dtes = DTE_Model_Lookup_Table['UMLS_Embedding'].tolist()
             dtes.extend(umls_dtes)
-        if args.use_dict:
+        if model_args.use_dict:
             dict_dtes = DTE_Model_Lookup_Table['Dictionary_Embedding'].tolist()
             dtes.extend(dict_dtes)
 
-        if args.random_kge:
+        if model_args.random_kge:
             print('Replacing DTEs with random tensors...')
             dtes = [torch.rand(1, 768) for _ in dtes]
 
