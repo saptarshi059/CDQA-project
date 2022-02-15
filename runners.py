@@ -89,7 +89,7 @@ class PubmedQARunner(object):
                 dtes = [torch.rand(1, 768) for _ in dtes]
 
             print('dtes[0]: {}'.format(dtes[0]))
-            self.dtes = torch.cat(dtes, dim=0).to(self.device)
+            self.dtes = torch.cat(dtes, dim=0)  # .to(self.device)
 
         train_data_fp = os.path.join(self.fold_dir, 'train_set.json')
         self.dataset = PubmedQADataset(self.args, train_data_fp, self.tokenizer)
