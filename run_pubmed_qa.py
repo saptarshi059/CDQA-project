@@ -38,14 +38,14 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', default=32, help='How many items to process as once', type=int)
     parser.add_argument('--lr', default=1e-5, help='How many items to process as once', type=float)
     parser.add_argument('--l2', default=0.00001, help='How many items to process as once', type=float)
-    parser.add_argument('--n_epochs', default=8, help='If training/fine-tuning, how many epochs to perform', type=int)
+    parser.add_argument('--n_epochs', default=10, help='If training/fine-tuning, how many epochs to perform', type=int)
     parser.add_argument('--n_stride', default=196, type=int)
     parser.add_argument('--max_seq_len', default=512, type=int)
     parser.add_argument('--model_name',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
-                        default='clagator/biobert_squad2_cased',
+                        # default='clagator/biobert_squad2_cased',
                         # default='navteca/roberta-base-squad2',
-                        # default='phiyodr/bert-base-finetuned-squad2',
+                        default='phiyodr/bert-base-finetuned-squad2',
                         # default='ktrapeznikov/biobert_v1.1_pubmed_squad_v2',
                         # default='ktrapeznikov/scibert_scivocab_uncased_squad_v2',
                         help='Type of model to use from HuggingFace')

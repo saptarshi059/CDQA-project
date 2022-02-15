@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--data', default='/home/czh/nvme1/pubmedqa/data/test_set.json')
 
-    parser.add_argument('--model_id', default='20220210-135500')
+    parser.add_argument('--model_id', default='20220210-170238')
     parser.add_argument('--epoch', default=6, type=int)
     parser.add_argument('--batch_size', default=96, type=int)
 

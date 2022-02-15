@@ -76,12 +76,12 @@ class PubmedQARunner(object):
             self.tokenizer.add_tokens(custom_domain_term_tokens)
 
             self.dtes = []
-            umls_dtes = DTE_Model_Lookup_Table['UMLS_Embedding'].tolist()
-            dict_dtes = DTE_Model_Lookup_Table['Dictionary_Embedding'].tolist()
 
             if args.use_kge:
+                umls_dtes = DTE_Model_Lookup_Table['UMLS_Embedding'].tolist()
                 self.dtes.extend(umls_dtes)
             if args.use_dict:
+                dict_dtes = DTE_Model_Lookup_Table['Dictionary_Embedding'].tolist()
                 self.dtes.extend(dict_dtes)
 
             if args.random_kge:
