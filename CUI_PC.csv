@@ -1,1898 +1,2783 @@
 CUI,Preferred_Concept
-C0205225,Primary
-C0015127,Etiology aspects
-C0276500,Human immunodeficiency virus I infection
-C0008059,Child
-C0600138,Does play
-C1705810,Generic Role
-C0282474,Maternal-Fetal Infection Transmission
-C0019704,HIV-1
-C0205217,Increased
-C0035647,Risk
-C1514562,Protein Domain
-C2825898,Macrophage Inflammatory Protein 1 Alpha measurement
-C0150312,Present
-C4321351,Low Level
-C2349975,Enhance (action)
-C0439165,Percent (qualifier value)
-C0184661,Interventional procedure
-C3711103,"CCR5 protein, human"
-C0040722,disease transmission qualifier
-C0065661,Mannose Binding Lectin
-C1280500,Effect
-C0392756,Reduced
-C0010654,cysteine
-C1709915,Residue
-C0332256,Containing (qualifier)
-C0205435,First (number)
-C1519623,Transmembrane Domain
-C0028778,Obstruction
-C0598435,Palmitoylation
-C1704675,Interaction
-C0311403,inhibited
-C0001128,Acids
-C0031843,physiological aspects
-C0332281,Associated with
-C1825562,IFITM5 gene
-C0003451,Antiviral Agents
-C0205177,Active
-C0027365,Name
-C0185117,Expression procedure
-C1518422,Negation
-C0033414,Promotion (action)
-C0021747,Interferons
-C0002520,Amino Acids
-C2348205,Similarity
-C0033684,Proteins
-C1312248,"IFITM1 protein, human"
-C1415897,IFITM2 gene
-C1415898,IFITM3 gene
-C1516144,Calcium Binding
-C1707271,Carboxy-Terminal Amino Acid
-C0456389,size
-C0027610,Bovine coronavirus
-C0026383,Molecular Structure
-C0028630,Nucleotides
-C0017337,Genes
-C0444930,End
-C0017428,Genome
-C0392171,Influenza-like symptoms
-C0686747,Well adolescent
-C0001675,Adult
-C0449450,Presentation
-C0582103,Medical Examination
-C0205214,Common (qualifier value)
-C1705920,Species
-C0206422,Human coronavirus
-C0205369,Specific qualifier value
-C0683325,clinical aspects
-C0012652,Disease Outbreaks
-C1175175,Severe Acute Respiratory Syndrome
-C3694279,Middle East Respiratory Syndrome
-C0282250,Case Fatality Rate
-C0456178,Microbiology subtype strains
-C0041703,United States
-C3258203,Study year
-C0205172,More
-C5204628,Prevalent
-C0205082,Severe (severity modifier)
-C1514873,Requirement
-C0019163,Hepatitis B
-C0007634,Cells
-C0332464,Widening
-C1520023,Virus-Cell Membrane Interaction
-C0009450,Communicable Diseases
-C0242821,Human body
-C0086597,Mediate
-C0205410,Sufficient
-C0039869,"Thinking, function"
-C0332307,Type - attribute
-C0042776,Virus
-C0014047,Japanese encephalitis virus
-C0014052,Tick-Borne Encephalitis Viruses
-C0014046,"Encephalitis Virus, Eastern Equine"
-C0037170,Sindbis Virus
-C0011315,Dengue Virus
-C0470187,Availability of
-C0025663,Methods
-C0442726,Detected (finding)
-C0014038,Encephalitis
-C0003342,"Antigens, Viral"
-C2987476,Exist
-C0439064,Numerous
-C0003320,Antigens
-C0521115,Simultaneous
-C0205447,One
-C0370003,Specimen
-C0022885,Laboratory Procedures
-C0014441,Enzyme-Linked Immunosorbent Assay
-C0003241,Antibodies
-C5139976,CAPTURE
-C0869040,use studies
-C0086045,Mental concentration
-C1514721,Range
-C0025874,Metrorrhagia
-C0521095,Determined by
-C0010357,Cross Reactions
-C1511790,Detection
-C0868928,Case (situation)
-C0041296,Tuberculosis
-C0750572,Estimated
-C0008115,China
-C0032659,geographic population
-C1514578,Province
-C0681832,Study Purpose
-C0038951,Surveys
-C1707689,Design
-C0242618,Sample Size
-C1555715,entry - cluster
-C1707391,Choose (action)
-C0027361,Persons
-C0009462,Community
-C0332196,Exclude
-C2603343,Study
-C0004927,Behavior
-C0009458,Communications Media
-C1273517,Used by
-C0444159,Sputum specimen
-C0237629,Frequency of Responses
-C0001779,Age
-C0681850,Study Subject
-C0033105,Statistical Prevalence
-C0871208,Rating (action)
-C0038056,Sputum
-C0037088,Signs and Symptoms
-C0030705,Patients
-C0562483,Persistent cough
-C0347984,During
-C4699618,>65 years
-C0580836,Old
-C0014442,Enzymes
-C0684224,Report (document)
-C1517892,Links List
-C0517627,Infection status
-C3540008,various antiinfectives and antiseptics for local oral treatment
-C0030660,Pathologic Processes
-C0445623,Microorganism
-C0039476,Temperature
-C0005507,Biological Assay
-C0205197,Complete
-C0243161,criteria
-C0036849,Set (Psychology)
-C0162791,Guidelines
-C0013227,Pharmaceutical Preparations
-C0871161,Property (attribute)
-C0205314,New
-C4527371,Candidate
-C0006784,Calpain
-C0332325,Resistant (qualifier value)
-C3827682,Useful
-C1533734,Administration procedure
-C1328819,Small Molecule
-C0011209,Obstetric Delivery
-C0027428,Structure of mucous membrane of nose
-C0565867,delivery method
-C0004048,Inspiration function
-C0205170,Good
-C1555307,promise
-C1515655,In Vivo
-C1967611,Dry Powder Inhaler (device)
-C1099354,"RNA, Small Interfering"
-C1705822,Transfer Technique
-C0205373,Systemic
-C0678594,Structure
-C0348078,Qualitative form
-C0086418,Homo sapiens
-C0178987,Artificial Airways
-C0030608,Particle Size
-C0205393,Most
-C1280519,Effectiveness
-C0441994,Lower - spatial qualifier
-C0012634,Disease
-C0598496,Gene Silencing
-C0024109,Lung
-C0205166,Long
-C0079941,Open Reading Frames
-C1551058,are unit of measure
-C1522666,Closest
-C0017390,"Identity, Genetic"
-C0181758,Surgical face mask
-C0042497,Mechanical Ventilator
-C1444637,In the past
-C0947630,Scientific Study
-C0016538,Projections and Predictions
-C1615608,Pandemics
-C1956259,Acronyms
-C1511545,Critical
-C1521761,Factor
-C0014499,Epidemic
-C0043237,World Health Organization
-C5203676,2019 novel coronavirus
-C0034019,public health medicine (field)
-C0029341,Orthomyxoviridae
-C0205396,Identified
-C0035168,research
-C0037179,Unmarried person
-C0683920,attack rate
-C0205210,Clinical
-C0580264,H1N1
-C5203670,COVID-19
-C0087153,Ventilator - respiratory equipment
-C1629517,Exhaled breath condensate (substance)
-C0521026,Viral
-C1707478,Conclusion
-C0225386,Breath
-C0332283,Followed by
-C0035380,Reverse Transcription
-C1261552,Step (specific stage)
-C0002778,Analysis of substances
-C0422392,Screening Method
-C0332152,Before
-C0007465,Cause of Death
-C3844033,Child 1
-C0332177,Monthly (qualifier value)
-C0237753,Numbers
-C0747676,pneumonia childhood
-C0011065,Cessation of life
-C0678226,Due to
-C0032285,Pneumonia
-C0231335,Childhood
-C0205448,Two
-C2981279,Decade
-C0301630,Reduction (chemical)
-C4281574,Much
-C0021162,Income
-C0205251,low
-C0227972,Structure of median lobe of prostate
-C0454664,Country
-C1709305,Occur (action)
-C0205101,Extrinsic
-C0019994,Hospitals
-C0205250,High
-C0332282,Following
-C0018684,Health
-C0442805,Increase
-C0035204,Respiration Disorders
-C1522427,best (quality)
-C1273518,Responsible to
-C0034599,Radiology Specialty
-C0042196,Vaccination
-C1527075,Revision procedure
-C1550452,definition - ActMoodCompletionTrack
-C0021149,Incidence
-C0014009,Empyema
-C0332185,Recent
-C0439849,Relationships
-C0549646,chest disorders
-C0027552,Needs
-C0034571,roentgenographic
-C0042210,Vaccines
-C0043167,Pertussis
-C0020964,Immunity
-C0021270,Infant
-C0205216,Decreased
-C0035648,risk factors
-C0001873,Air Pollution
-C1551362,coverage - financial contract
-C0021400,Influenza
-C0042200,Influenza vaccination
-C0233324,Term Birth
-C0521530,Lung consolidation
-C1552738,described
-C0011900,Diagnosis
-C1881534,Make - Instruction Imperative
-C0016627,Influenza in Birds
-C0749385,threat
-C0683368,Symptoms aspect
-C0087111,Therapeutic procedure
-C0439801,Limited (extensiveness)
-C0814225,Benefit
-C0205234,Focal
-C0521116,Current (present time)
-C0683954,research results
-C0032594,Polysaccharides
-C0032098,Plants
-C0301872,Immune response
-C0039798,therapeutic aspects
-C0038952,Continuance of life
-C0339901,Acute respiratory infections
-C0597404,Respiratory viruses
-C0004611,Bacteria
-C0013203,Drug resistance
-C0332148,Probable diagnosis
-C0183319,Sinks
-C0332261,Spreading (qualifier value)
-C0450254,Pathogenic organism
-C0542559,contextual factors
-C0457463,types of infections
-C0183185,Screens (device)
-C3179032,Multiplex Polymerase Chain Reaction
-C1706214,Creation
-C0033213,Problem
-C0039421,Technology
-C3494260,Inventions
-C0009013,Clone Cells
-C1710548,Unique
-C0030551,parent
-C0441712,Mechanism (attribute)
-C0441513,Surgical construction
-C0243107,development aspects
-C0332149,Possible
-C0004561,B-Lymphocytes
-C0521114,Infrequent
-C5197773,Broadly Neutralizing Antibodies
-C1269765,Assisted (qualifier value)
-C0597634,Vaccine Development
+C0026237,Mitochondria
 C0032214,Play
-C0024530,Malaria
-C0199176,Prophylactic treatment
-C3698360,Middle East Respiratory Syndrome Coronavirus
-C0205409,Isolated
-C0079399,Gender
-C0035243,Respiratory Tract Infections
-C0449416,Source
-C0003062,Animals
-C0549183,Midline (qualifier value)
-C1301931,Time of death
-C0439531,per period (qualifier value)
-C0027362,Human Age Group
-C3714514,Infection
-C1579410,Nucleoside Analogs
-C0013216,Pharmacotherapy
-C0045093,gemcitabine
-C0332454,disrupted
-C0243052,Virus Physiological Phenomena
-C0034695,"Rats, Cotton"
-C0750591,consider
-C0599779,Animal Model
-C0167627,CD40 Ligand
-C3887583,"CD40 Ligand, human"
-C0011306,Dendritic Cells
-C0042774,Virus Replication
-C0017262,Gene Expression
-C2741673,Account number:Identifier:Point in time:^Patient:Nominal
-C0205419,Variant
-C5197798,Codon Usage
-C0175566,Open
-C0034754,Reading (activity)
-C0041912,Upper Respiratory Infections
-C0149725,Lower respiratory tract infection
-C4330475,Immune Cell
-C0439663,Infected
-C0567416,Molecule
-C0039194,T-Lymphocyte
-C0871261,Response process
-C0042769,Virus Diseases
-C4055506,Accumulation
-C0031307,Phagocytes
-C0424575,General health
-C0205117,Adjacent
-C0599883,Trait
-C0019196,Hepatitis C
-C0205322,Persistent
-C0443252,Long-term
-C0524910,"Hepatitis C, Chronic"
-C0582147,At risk of infection
-C0935562,neonatal period
-C0036310,Scheuermann's Disease
-C0966897,hepcidin
-C1880355,Discover
-C0178784,Organ
-C0030685,Patient Discharge
-C0013879,Elements
-C0025519,Metabolism
-C0600688,Toxic effect
-C0302583,iron
-C0043227,Work
-C0013303,Duodenum
-C0024432,macrophage
-C1442948,"Plumbum metallicum, homeopathic preparation"
-C0242606,Oxidative Stress
-C0549193,Parameter Value
-C0079809,Measures
-C0003402,Antioxidants
-C0441889,Levels (qualifier value)
-C0014077,"Leukoencephalitis, Acute Hemorrhagic"
-C2607943,findings aspects
-C0299456,ran-binding protein 2
-C1855020,Acute necrotizing encephalopathy
-C0032930,Precipitating Factors
-C1838681,Rapidly progressive
-C0230370,Structure of right hand
-C0427053,Weakness present
-C0205198,Compound
-C1442460,3 Hours
-C1301820,Obtain
-C0439178,percent positive cells
-C0392366,Tests (qualifier value)
-C4698447,Patient age
-C0086582,Males
-C4061114,Acute illness
-C0521346,respiratory
-C0728836,young child
-C1258014,Human Metapneumovirus
-C0206545,Human respiratory syncytial virus
-C0035236,Respiratory syncytial virus
-C0549177,Large
-C0017429,"Genome, Human"
-C1625778,Human metapneumovirus genotype
-C1079230,Subgroup A Nepoviruses
-C0205103,Intermediate
-C0022558,Kenya
-C0025320,Menopause
-C0441835,Group A (qualifier value)
-C1550040,Control specimen
-C0275524,Coinfection
-C2986911,Nonclinical Study Length
-C0332183,Frequently
-C0220905,regulatory
-C0392747,Changing
-C0036945,Sheep
-C1633987,Flock
-C3898777,Important
-C0850774,infection risk factor
-C0205436,second (number)
-C0007328,Case-Control Studies
-C1711350,Interquartile Range
-C0243148,control aspects
-C0085973,Case Study
-C0441471,Event
-C0034362,Q Fever
-C0010240,Coxiella burnetii
-C0442537,Reservoir (environment)
-C3714634,Biological Processes
-C0444706,Measured
-C1511726,Data
-C0332257,Including (qualifier)
-C0183652,String (device)
-C0242356,Databases
-C3539073,In the Field
-C0146196,toltrazuril
-C0730322,Multiple Evanescent White Dot Syndrome
-C0449572,Virus type
-C0205473,Serologic
-C0039593,Testing
-C0449570,Test type
-C0205615,Well Differentiated
-C0029134,Optic Neuritis
-C0441621,Sampling - Surgical action
-C0879240,Nasal Swabs
-C0028075,Nigeria
-C0680022,member
-C0205169,Bad
-C2828008,Burden
-C0011750,Developing Countries
-C0680220,majority
-C0205392,Some (qualifier value)
-C1512456,High Prevalence
-C4699345,Coronavirus OC43
-C1478824,Human coronavirus NL63
-C1744103,OC 229
-C1997894,Clinical trial participant (person)
-C0002424,Ambulatory Care Facilities
-C3494318,Public Health Surveillance
-C1704243,Greater
-C0683572,Adult Children
-C3538928,Usual
-C1442461,3 Months
-C0231337,Senility
-C0012751,Distance
-C1539372,EXOSC10 gene
-C0525037,CDKN2A gene
-C0087186,Irish race
-C0376247,Japanese language
-C3686947,Equine coronavirus
-C0206419,Genus: Coronavirus
-C0162326,DNA Sequence
-C1705535,suggestion
-C0042333,Variation (Genetics)
-C0031237,pertussis vaccine
-C1114743,Type:ID:Pt:Vaccine:Nom
-C0034866,Recommendation
-C0183753,Swab specimen
-C0444505,Peak level
-C3272598,WHO Temperature/Humidity Storage Condition
-C0521091,Confirmation of
-C0022882,Laboratory Infection
-C0884358,Performed
-C2584313,Discussion (communication)
-C0034036,Publications
-C1414444,ERN1 gene
-C0013534,Echovirus
-C0006754,California
-C0025289,Meningitis
-C0680240,Agreement
-C0009219,Coding
-C0035585,Rickettsia Infections
-C0022877,Laboratory
-C0017446,Geographic Locations
-C0014378,Enterovirus Infections
-C0206588,"Receptors, Nuclear"
-C0006826,Malignant Neoplasms
-C0011847,Diabetes
-C1290884,Inflammatory disorder
-C0029456,Osteoporosis
-C0005515,Biological Factors
-C0015576,Family
-C0027496,Nauru
-C1883220,Superfamily
-C0679209,prerequisite
-C1521991,Molecular
-C0442632,Boat dock
-C0336791,"Tool, device (physical object)"
-C0450363,Three-dimensional
-C0175168,"Protein, Organized by Structure"
-C0206755,"Crystallography, X-Ray"
-C0332218,Difficult (qualifier value)
-C1516695,Collected
-C1292744,Specimen procedure
-C0015733,Feces
-C1514811,Bibliographic Reference
-C1444754,Length
-C0178827,replicase
-C0684010,Rabbi
-C0205296,Natural
-C3178847,Genome Size
-C0017011,Gamma Rays
-C0439097,Delta - greek letter
-C0205309,Known
-C0023981,Longitudinal Studies
-C0085306,Feline infectious peritonitis
-C0085305,Feline infectious peritonitis virus
-C0936087,"Coronavirus, Feline"
-C0007450,Felis catus
-C0680243,controversy
-C1282914,Surrounding (qualifier value)
-C0071500,polyacrylamide gels
-C0314672,Polymerization
-C1145667,Binding action
-C0237897,Physical Strength
-C2266933,Neuraminidase Inhibitors [MoA]
-C1521840,Target
-C0876173,Tamiflu
-C0201622,Cytotoxicity assay
-C3895557,inhibition of viral replication
-C0200932,Nucleic Acid Amplification Tests
-C0443288,Restricted
-C0220825,Evaluation
-C0597198,Performance
-C0336757,"Heater, device"
-C0019682,HIV
-C1822658,GORAB gene
-C0589120,Follow-up status
-C0459958,HIV screen
-C0237913,Statistical Test
-C1707455,Comparison
-C0439828,Variable (uniformity)
-C0521093,Confirmed by
-C1522712,Recombinant Interferon-alpha Inducible Protein 10
-C0237881,Statistical Significance
-C0038410,Streptococcus pneumoniae
-C0876973,Infectious Lung Disorder
-C0018704,Health care facility
-C0206171,Community-Acquired Infections
-C0086965,Selection for Treatment
-C0343401,MRSA - Methicillin resistant Staphylococcus aureus infection
-C0015686,"Fatty Acids, Essential"
-C1285529,Purpose
-C0006764,Callithrix
-C1155328,Antiviral Response
-C1335439,Polymerase
-C0243077,inhibitors
-C0043266,Writing (occupation or discipline)
-C1511481,Consent
-C0035668,RNA
-C0728990,Clinical Use Template
-C0043194,Wiskott-Aldrich Syndrome
-C0443286,Reaction
-C0439962,Mixture
-C1514727,Ras Inhibitor
-C1555721,Substitution - ActClass
-C0439851,Direct type of relationship
-C0026882,Mutation
-C0035691,RNA Viruses
-C0031254,Pestivirus
-C0004793,Base Sequence
-C0004390,Autonomous Replication
-C0582263,Structural protein
-C4553150,BAC Regimen
-C0006556,"DNA, Complementary"
-C0525038,Amino Acid Substitution
-C0282416,Overall Publication Type
-C0018696,Health Care Systems
-C4045987,Never Event
-C0242456,Policy
-C0565990,Medical center
-C0449295,Limitation
-C3161035,Model
-C0318855,Porcine epidemic diarrhea virus
-C0221423,Illness (finding)
-C1292711,part of
-C0439855,Complex
-C0003755,Arenaviridae
-C2700280,World
-C0019094,Tacaribe Complex Viruses
-C0007589,Cell Differentiation process
-C1320226,Incubation period
-C0206497,Arenavirus
-C0086143,Diagnostic tests
-C0036667,Statistical sensitivity
-C0874161,oseltamivir
-C0216660,zanamivir
-C0061751,glycyrrhizic acid
-C1705313,Term (lexical)
-C0030657,Pathogenicity Aspects
-C0444504,Statistical mean
-C0449238,Duration (temporal concept)
-C0040223,Time
-C1517320,From
-C4086921,Unilobular
-C0332448,Infiltration
-C4510762,Human adenovirus 55
-C0039985,Plain chest X-ray
-C1280464,Manifestation of
-C0205263,Induce (action)
-C0035222,"Respiratory Distress Syndrome, Adult"
-C0887950,Genomics
-C1320528,Time of symptom onset
-C0013404,Dyspnea
-C0583239,Admission to intensive care unit
-C0231832,Respiratory rate
-C1720176,Upon - dosing instruction fragment
-C0184666,Hospital admission
-C0023508,White Blood Cell Count procedure
-C0233426,Personal appearance
-C1550335,Patient type
-C0277876,Pulmonary sign AND/OR symptom
-C0871685,Clinician
-C1706701,Acquisition (action)
-C2347029,Biospecimen Type
-C1515187,Take
-C0444137,Specimen from endotracheal tube
-C1513040,Measurable
-C0042749,Viremia
-C0005810,Blood Group (classification)
-C1062667,Human mastadenovirus A
-C0026565,Mortality Vital Statistics
-C1167909,T lymphocyte count
-C0597535,Success
-C1524063,Use of
-C2349751,Invasive positive pressure ventilation
-C0001487,"Adenovirus Infections, Human"
-C0936012,Analysis
-C0694549,Community acquired pneumonia
-C0701159,Patient in hospital
-C0439234,year
-C0150872,chest findings
-C2062441,Influenza A
-C1442160,Cutoff
-C1522609,Numerical value
-C0474643,Antibody titer measurement
-C0475208,Titer
-C0459471,Interpretation Process
-C1517741,Last
-C1947946,Aim (idea)
-C0150775,Social Networks
-C0359589,Provide (product)
-C1516606,Clinical Data
-C0016674,France
-C0325552,Lammergeier
-C0086287,Females
-C1516232,Cancer Survivorship Research
-C0038954,Survival Rate
-C0543482,morphological
-C0282639,HT29 Cells
-C1947931,Direct (qualifier)
-C0521447,Nuclear (nucleus)
-C0233656,Mental condensation
+C1705810,Generic Role
+C0280109,cyclophosphamide/doxorubicin/etoposide/interleukin-2
+C0242724,Plant Leaves
 C0162638,Apoptosis
-C0449475,cell type
-C3900053,Amenable
-C0007102,Malignant tumor of colon
-C0018017,objective (goal)
-C0015852,Fermentation
-C0017982,glycosylation
-C1521970,Characteristics
-C3154893,Possess
-C0596577,Flavonoids
-C1451210,"FGL2 protein, human"
-C0019185,Murine hepatitis virus
-C1518614,Organism Strain
-C0302809,Fulminant Hepatitis
-C0040048,Thromboplastin
-C1414609,FGL2 gene
-C0005778,Blood coagulation
-C0586688,Tissue specimen from liver
-C1883727,Taken
-C1281905,At risk of disease
-C0442529,Urban environment
-C0870781,Landscapes
-C1160716,viral transmission
-C0032850,"Fowls, Domestic"
-C0033268,production
-C0443193,Convergence - direction
-C1511253,Boost
-C0034980,Regression Analysis
-C0040811,Trees (plant)
-C2248788,4-hydroxy-2-ketopimelate aldolase activity
-C0332167,High risk of
-C0814835,land use
-C0332472,abnormal fragmented structure
-C0035567,Rice (Dietary)
-C1263424,LYSP100-associated nuclear domain
-C0008051,Chickens
-C0600653,Indexes
-C0242781,disease transmission
-C0021135,In Vitro [Publication Type]
-C1705968,Cartridge Dosing Unit
-C0020336,hydroxychloroquine
-C0008300,Choice Behavior
-C0521125,Preposition For
-C1522326,Treating
-C0008269,chloroquine
-C4726677,remdesivir
-C0031327,Drug Kinetics
-C0678723,Biologic Development
-C0014139,Endocytosis
-C3887511,Evidence
-C0003209,Anti-Inflammatory Agents
-C0010340,Critical Illness
-C0032105,Plasma
-C0079189,cytokine
-C1709707,Proportion
-C0018724,Health Personnel
-C0086132,Depressive Symptoms
-C0860603,Anxiety symptoms
-C0917801,Sleeplessness
-C0231303,Distress
-C3483978,Anxiety score
-C4706228,ISI (Insomnia Severity Index) score
-C0451226,Impact of event scale
-C0449820,Score
-C1274040,Result
-C0037773,"Spastic Paraplegia, Hereditary"
-C1838626,Cerebral malformations
-C0004352,Autistic Disorder
-C1428695,KATNAL1 gene
-C0683212,central nervous system function
-C0026649,Movement
-C0025914,House mice
-C0193959,Tonsillectomy and adenoidectomy
-C0083355,amsacrine/azacitidine/etoposide
-C0014057,Japanese Encephalitis
-C0205224,Essential
-C0065656,manidipine
-C1705242,Different
-C0086282,Family member
-C0016215,Flavivirus
-C4277569,Protein Structural Elements
-C0815043,"Protein, Organized by Function"
-C0872187,High Throughput Screening
-C1514798,Recombinants
-C2717802,Viral Structures
-C3245505,Potential
-C0035870,Rotavirus
-C1979882,Double strand
-C0032520,Polymerase Chain Reaction
-C0443211,Established
-C0442886,Secondary Infections
-C0021017,Immunoglobulin Isotypes
-C0034865,"Recombination, Genetic"
-C5206618,Somatic Hypermutation
-C0725813,depend
-C1709793,Quantitation
-C1265611,Quantity
-C0074257,secretory IgM
-C4698719,Confirmed case
-C2584321,Reaching
-C3830166,February
-C0014003,Employment
-C1553874,Concept Status - Proposed
-C0679006,Decision
-C0027855,Neurology speciality
-C0026339,Biological Models
-C0456984,Test Result
-C0424972,Member of large family
-C1704711,Distribution
-C0231193,adaptive
-C0085104,Drug Delivery Systems
-C4048755,Apply
-C0185125,Application procedure
-C0018790,Cardiac Arrest
-C0002045,algorithm
-C2698650,Optimization
-C0439659,Beginning
-C3812881,Author
-C0379099,vacuolar H+-ATPase
-C0001473,Adenosine Triphosphatases
-C1704241,complex (molecular entity)
-C2338615,Plasma membrane of osteoclast
-C0806036,Renal epithelial cell
-C0302600,Angiogenic Process
-C0332155,Did not receive therapy or drug for
-C0000379,"3,4-Methylenedioxyamphetamine"
-C1708632,Labeled (qualifier)
-C0805586,Challenge
-C1273870,Management procedure
-C0619485,A 19
-C0814435,early identification
-C0274281,Injury due to exposure to external cause
-C0442804,Very high
-C0021708,intensive care unit
-C1882442,Precaution
-C0038215,Science of Statistics
-C0681842,Prediction
-C0449738,Direction
-C0042587,Vesicular stomatitis Indiana virus
-C0027763,Nervous system structure
-C1707489,Connectivity
-C0599854,neuronal circuitry
-C0007289,carrageenan
-C0557702,Window (physical object)
-C0005595,Aves
-C3658219,"Influenza A Virus, H7N9 Subtype"
-C0856238,influenza (epidemic)
-C0332181,Annual
-C0443254,Mechanical Methods
-C0237820,Recovery - action
-C0004083,Mental association
-C0308779,DELIVER (veterinary product)
-C0449560,Subtype (attribute)
-C2076600,Influenza due to Influenza A virus subtype H1N1
-C0009649,"Conditioning, Classical"
-C1883357,Together
-C0439093,Greater Than
-C4763675,Single Agent Therapy
-C1704788,Definition
-C1527178,Basis - conceptual entity
-C0150105,Random Sampling
-C0439601,Seasonal course
+C1827708,Snellen visual acuity
 C1705241,Delta (difference)
-C0035373,Reunion Island
-C4279933,Vaccination Campaign
-C0005532,biology (field)
-C0220920,surveillance aspects
-C0206243,Carrying
-C0439787,Out (direction)
-C0205160,Negative
-C2985627,Study Objective
-C0036497,Seasons
-C0040833,trends qualifier
-C0005775,Blood Circulation
-C4267729,Respiratory pathogens
-C0205171,Singular
-C0241301,Summer
-C0241737,Winter
-C1512571,Hypothesis
-C0543488,Interested
-C0392760,Affecting
-C3843933,Feb.
-C0034927,Patient referral
-C3539897,Have
-C0325069,"Palm civet, NOS"
-C0237876,Sharing (Social Behavior)
-C0008139,Chiroptera
-C0750558,Unlikely
-C0220912,Aspects of signs
-C0332253,Evolving
-C0015219,Biological Evolution
-C0349590,Nature
-C4518065,Paper report
-C0332268,Lacking
-C0036397,Science
-C1175743,SARS coronavirus
-C3146294,Generation (action)
-C0598312,DNA Replication
-C0543483,pathogenic aspects
-C1518039,Mouse Lung
-C0332161,Attenuated by (contextual qualifier)
-C0205173,Duplicate
-C0427861,Human cells
-C0524523,Civets
-C4086523,Intermediate Host
-C4761558,Salar Chinese
-C0085732,Ability
-C1167395,Host (organism)
-C2603360,T prime
-C0681814,research study
-C0008109,Chimera organism
-C0205087,Late
-C0183683,"Support, device"
-C1441547,Derivation
-C0871282,rumors
-C1708698,Light Emitting Diode Device
-C0031831,Physicians
-C0205265,Initially
-C0598279,synthetic construct
-C0205319,Manifest
-C0011991,Diarrhea
-C0260319,Virologists
-C0017431,Genotype
-C0019092,Hantavirus
-C0456603,Ratio
-C0449943,Serotype
-C0814777,caseload
-C0243025,Hantavirus Pulmonary Syndrome
-C2699424,Concern
-C0402112,Scientist
-C0032667,Population Dynamics
-C0181586,Leads (device)
-C0043528,Zoonoses
-C1707959,Example
-C0556581,Retinol equivalents
-C4760114,Century (brand of cigarette)
-C0682447,virus by host
-C0700321,Small
-C0024660,Mammals
-C0242994,Hantavirus Infections
-C0002454,Americas
-C0553534,Cardiopulmonary
-C0039082,Syndrome
-C0018787,Heart
-C0282443,Review [Publication Type]
-C0008120,Chinese Language
-C1843013,"Alzheimer disease, familial, type 3"
-C0443289,Revealed
-C0019101,Hemorrhagic Fever with Renal Syndrome
-C0332302,Brought on by
-C0004268,Attention
-C1879848,Biomedicine
-C0086384,Hantaan virus
-C1708235,Genus
-C1882932,Representation (action)
-C0008902,Classification
-C0006395,Bunyaviridae
-C0449719,Part
-C0332437,Morphology
-C1415375,GYPC gene
-C1522240,Process
-C1160692,virus maturation
-C0010813,Cytokinesis
-C0700364,Appearance
-C1710082,Signal
-C0018381,Guinea (geographic area)
-C3537453,GBA wt Allele
-C3245499,Colombia
-C0597357,receptor
-C0017968,Glycoproteins
-C4684849,Presumed
-C0023688,Ligands
-C4722602,Underlying
-C1997138,Blunted
-C1552551,Any
-C0030664,Pathology
-C0035696,"RNA, Messenger"
-C0065827,Measles Virus Nucleoprotein
-C0085177,RNA-Binding Proteins
-C1517520,Genomic Segment
-C0079613,Adoptive Immunotherapy
-C2712604,Other activity
-C0369718,N not otherwise specified Antibody
-C0035736,"RNA, Viral"
-C1880165,Concentrate Dosage Form
-C0242842,"Microscopy, Confocal"
-C0205474,Biochemical
-C1999216,Inhibitor
-C0040594,Track (course)
-C0079220,Destination
-C0282629,Virus Assembly
-C3840880,Traffic
-C1512032,Dominant-Negative Mutation
-C0332147,Suspected diagnosis
-C0007952,Personality Character
-C0015376,Extravasation
-C2346874,Attractive
-C0040300,Body tissue
-C0036563,Plant seeds
-C1705192,Seeding
-C0205276,Local
-C0014257,Endothelium
-C1184743,bony process
-C1947971,Give - dosing instruction imperative
-C4321377,Relational and Item-Specific Encoding Task
-C0027627,Neoplasm Metastasis
-C0309049,favor
-C0442893,Systemic disease
-C0000768,Congenital Abnormality
-C1998882,Sometimes
-C0681841,Explanation
-C0035173,Research Personnel
-C1382398,Increased capillary permeability (finding)
-C0231221,Asymptomatic
-C0018557,Hamsters
-C0687676,Post
-C0026018,Microscopy
-C0052432,artesunate
-C0887913,Andes Virus
-C0036572,Seizures
-C0026429,"Monitoring, Physiologic"
-C0015272,Exhibits as Topic
-C0232132,Weak arterial pulse
-C0039231,Tachycardia
-C0020649,Hypotension
-C0205449,Three
-C1707520,Correlation
-C0442335,Vectors
-C0680536,commercial
-C0597420,Salmonella Vaccines
-C0050325,A-factor (Streptomyces)
-C0597641,plasmid vaccine
-C2347662,Pre-existing
-C0012656,Disease Vectors
-C0521009,Bacterial
-C1517378,Gain
-C0014834,Escherichia coli
-C0064582,lactic acid
-C0023859,Listeria
-C1520007,Viral Vector
-C0023636,License
-C1331096,vaccine delivery
-C0449379,Connection
-C0036111,Salmonella
-C0032868,Poxviridae
-C0001483,Adenoviruses
-C1709854,Recipient
-C0020966,Cellular Immunity
-C4321235,OCA2 wt Allele
-C0332289,Transmitted by
-C0004595,Bacillus subtilis
-C1527415,Oral Route of Drug administration
-C0021853,Intestines
-C0442027,Oral
-C0020971,Immunization
-C0449432,Component object
-C0596638,Gut associated lymphoid tissue
-C0021839,Intestinal Mucosa
-C1706912,BARRIER
-C0282557,"Immune Response, Mucosal"
-C0021212,Indicators
-C0021753,"interleukin-1, beta"
-C0422202,Notifications (procedure)
-C0008848,Cities
-C0020029,"Hospitals, Urban"
-C1707059,Pre-release version of a computer program
-C0205374,Transitory
-C0679238,disease factor
-C0034037,Publishing
-C1857276,Trichohepatoenteric Syndrome
-C3179065,Social Media
-C1533716,Information
-C0018721,Health Workforce
-C0231175,Failed
-C0700382,"Washing hands, function"
-C1444641,At risk
-C0018563,Hand
-C0332197,Absent
-C0205091,Left
-C0040802,travel
-C0029347,influenza A virus
-C1517050,Extracellular Domain
-C0378910,Lymphocyte antigen CD66A
-C0597298,Protein Isoforms
-C2352715,"CEACAM5 protein, human"
-C0282625,src-Family Kinases
-C0018896,Helping Behavior
-C0449297,Clearance
-C1326212,neutrophil apoptotic process
-C0022688,Natural Killer Cells
-C0424324,Fighting
-C0870509,Escape (mental process)
-C2611765,KILLER binding
-C0537439,enfuvirtide
-C0332575,Redness
-C0522501,Massive
-C1260957,Blue color
-C0332583,Green color
-C0332585,Pink color
-C0205341,Repeat
-C4699623,High activity
-C3463820,Inhibition
-C2981707,Stage IIB Uveal Melanoma AJCC v7
-C1535502,Bronchoalveolar Lavage
-C0229671,Serum
-C0018517,Half-Life
-C0201734,Pharmacokinetic study
-C1979963,Profile (lab procedure)
-C1707995,FABP4 wt Allele
-C2348397,Elimination Half Life
-C0439095,Greek letter alpha (qualifier value)
-C0026377,Molecular Conformation
-C5203671,Suspected COVID-19
-C0017160,Gastroenteritis
-C0949920,Norovirus
-C0152517,Viral gastroenteritis
-C0884118,adenovirus type
-C0040284,Tissue culture
-C0695341,common procedures
-C0175671,Universal
-C0206415,Oligonucleotide Primers
-C1273421,Viral studies (procedure)
-C0205437,Third
-C0444868,All
-C0428210,Methionine measurement
-C1272460,Not Applicable
-C0475463,"Antibodies, Neutralizing"
-C0679058,encoding mental process
-C1445860,Protein antibody
-C4264487,Type A
-C0023756,Panthera leo
-C0015176,Europe
-C3494191,Phage Display Techniques
-C0004651,Bacteriophages
-C0007294,Genetic Carriers
-C0008679,Chronic disease
-C0205272,Regular
-C0042760,Virion
-C1423498,GOLPH3 gene
-C1113686,directed evolution
-C0206397,Inovirus
-C0206398,Plectrovirus
-C0023621,Libraries
-C1564139,Mutant Proteins
-C0562342,Empowered
-C1623051,Filamentous bacteriophage (species)
-C1705417,Device Display Device
-C1513371,Mode
-C0205543,Referring
-C0231448,Extension
-C0205148,Surface
-C0003316,Epitopes
-C0599934,"Vaccines, Peptide"
-C0002111,Allergy Specialty
-C0005525,Biological Response Modifiers
-C0282115,"Vaccines, Contraceptive"
-C0030956,Peptides
-C0302891,Native (qualifier value)
-C0003261,Antibody Formation
-C0001551,Immunologic Adjuvants
-C0021494,Intravenous Injections
-C5142938,Merit
-C0016884,Future
-C0018282,Growth Inhibitors
-C0038172,Staphylococcus aureus
-C0008168,chloramphenicol
-C0162388,Killing
-C0334227,"Tumor cells, malignant"
-C0027651,Neoplasms
-C0870432,Display - arrangement
-C1883036,Single-Chain Antibodies
-C1449651,Amyloid Fibrils
-C0030567,Parkinson Disease
-C0597177,Particle
-C1512612,Ideal
-C0337143,Scaffold
-C0008976,Clinical Trials
-C1450053,Nanostructured Materials
-C3687625,Demonstrates
-C1292732,Investigates
-C0849355,Removed
-C4727198,Read Length
-C0337797,Belgians
-C0039005,Family suidae
-C1216700,Kobuvirus
-C0079134,Clostridium difficile
-C2613267,sporulation
-C0182953,Regulators (device)
-C1136170,Virulence Factors
-C0030695,Patient Monitoring
-C1171362,protein expression
-C0014049,Venezuelan equine encephalitis virus
-C0162327,RNA Sequence
-C1515877,activate biological process
-C1155342,cellular response to unfolded protein
-C1704259,Biochemical Pathway
-C0042153,utilization qualifier
-C0162847,protein folding
-C1327616,Cell secretion
-C1414314,EGR1 gene
-C2982691,Reside
-C3258060,Primary sign and symptom
-C0242488,Acute Lung Injury
-C0310255,survive
-C0205404,Serious
-C1705654,Entry (data)
-C3845593,Major change
-C0242656,Disease Progression
-C0020962,Immune system
-C0036658,Esthesia
-C0033325,Forecast of outcome
-C0145943,TimeLine Fluoride Releasing Resin
-C0021743,Interferon Type I
-C0042736,Viral Proteins
-C0239126,corticosteroid use
-C0870668,hospitalized patients
-C0678889,Immunoregulation
-C0012920,"DNA Topoisomerases, Type I"
-C0009521,Complement C5a
-C0360714,Hydroxymethylglutaryl-CoA Reductase Inhibitors
-C0199168,Medical service
-C0009488,Comorbidity
-C0021054,Immunologic Factors
-C0220901,prognostic
-C0005516,Biological Markers
-C0748355,Acute respiratory distress
-C4086878,Symptom Onset
-C2806453,Betacoronavirus
-C0079946,National origin
-C1552603,search - EntityNameUse
-C1522168,Topical Route of Drug Administration
-C1706202,Search - action
-C1704970,Means
-C0035820,Social Role
-C0456204,Specimen type
-C0430022,diagnostic procedure
-C3539922,Loop-mediated Isothermal Amplification
-C0599161,Reverse Transcriptase Polymerase Chain Reaction
-C0036743,Serologic tests
-C1627358,Refractive surgery enhancement
-C1514863,Reproducibility
-C1709846,Real-Time Polymerase Chain Reaction
-C0812225,Kit device
-C0205450,Four
-C0036043,Safety
-C1514821,Registration
-C0449438,Status
-C0205455,Nine
-C4042908,Seroconversion
-C1441672,Observed
-C0549178,Continuous
-C0206034,"Clinical Trials, Randomized"
-C0035363,Retrospective Studies
-C0920321,Phase I Clinical Trials
-C0456962,Rapid
-C0017296,gene therapy
-C0085415,Treatment outcome
-C0680218,superiority
-C0458579,Lower respiratory tract structure
-C1547923,"Aspirate, Tracheal - specimen source code"
-C2945599,Mild (qualifier value)
-C0458578,Upper respiratory tract
-C0237607,Practice Experience
-C0440471,Genetic Materials
-C0007610,Cell Nucleus
-C0558295,preference
-C0002928,Spinal Anesthesia
-C0686750,Well adult
-C1271650,Antimicrobial activity
-C0085236,"Macrophages, Alveolar"
-C0071313,"plY protein, Streptococcus pneumoniae"
-C3151529,Lethal
-C0376435,Random Peptide Library
-C0022940,Lactobacillus casei
-C0008356,Cholera Toxin
-C4050014,Unknown GENC
-C0087113,Treatment Effectiveness
-C0236493,Influenza antibody
-C0231290,Status post
-C0439231,month
-C0042212,"Vaccines, Inactivated"
-C1704640,Matrix Array
-C0457242,square metres
-C0021403,Influenza virus vaccine
-C3242229,ineffective
-C1210581,Lactobacillales
-C0449914,Delivery system
-C1330623,Live Influenza Vaccines
-C1709450,Pair
-C1327414,cytokine secretion
-C1424250,NLRP3 gene
-C2936529,Inflammasomes
-C0022009,Ion Channel
-C1979975,Single strand
-C3828767,November
-C3829447,July
-C0035690,RNA Virus Infections
-C0599561,e protein
-C0205431,Formed
-C0018188,Granuloma
-C1168005,Alpha tumour necrosis factor measurement
-C1150579,MAP kinase activity
-C0752312,Mitogen-Activated Protein Kinases
-C1879547,Activation action
-C1314939,Involvement with
-C0031715,Phosphorylation
-C1956001,Mitogen-Activated Protein Kinase Phosphatases
-C0023810,Lipopolysaccharides
-C0282655,Critical Pathways
-C1523987,Alternative
-C0439858,Conventional
-C0205246,Generalized
-C1534709,Splitting
-C5206843,FDA Inactivation
-C0770694,trivalent influenza vaccine
-C1521801,Having administered
-C1721019,Virus Attachment
-C0150110,gold standard
-C0332287,In addition to
-C0392360,Indication of (contextual qualifier)
-C1545588,Protection
-C3272757,Live Attenuated Influenza Vaccine
-C0005903,Body Temperature
-C1456404,Trivalent Live Attenuated Influenza Vaccine
-C1269955,Tumor Cell Invasion
-C0036576,Genetic Selection
-C1709269,North
-C0035139,Surgical Replantation
-C0086960,Schedule (document type)
-C1999230,Providing (action)
-C0442818,Raised
-C0012931,Recombinant DNA
-C1627932,Adenovirus serotype
-C1510800,Adenovirus Vector
-C1552907,Adenovirus Vaccine
-C0991533,Oral Capsule
-C0231174,Failure (biologic function)
-C0521819,Vaccination failure
-C0007637,Inclusion Bodies
-C0814942,Han Chinese
-C4054739,Immunogenicity Study
-C1524062,Additional
-C0679199,Strategy
-C4709333,Adeno-associated Virus Vector
-C1564874,Adeno-Associated Virus
-C0002331,Alphavirus
-C0035142,Replicon
-C0680651,appeal
-C0010825,Cytomegalovirus
-C0333785,Virus-like particles
-C0079005,Baculoviridae
-C4055445,Approved for Human Use Product
-C0184511,Improved
-C2986815,Robust
-C0020969,"Immunity, Innate"
-C0027984,Newcastle disease virus
-C0332306,Quality
-C0917903,Conclude Resin
-C1143949,"TNFSF10 protein, human"
-C0026809,Mus
-C1549081,Termination - Inactive Reason Code
-C0042207,Vaccination against smallpox
-C0042214,Vaccinia
-C0376649,Addresses (publication format)
-C0586139,Influenza vaccination status
-C2349186,Fit (action)
-C0439617,Revision
-C0443318,Sustained
-C0025260,Memory
-C0007613,Cell physiology
-C0039341,tat Protein
-C0560560,Moving
-C0007609,Cell Nucleolus
-C0035701,Ribosomal RNA
-C0035553,Ribosomes
-C1179105,Region of fibrillar component of nucleolus
-C0521448,nucleolar
-C0475264,localization
-C0574204,Tatar language
-C0017282,"Gene Products, rev"
-C1317750,Study report
-C0022262,Isotopes
-C0181496,Labels (device)
-C0003765,arginine
-C0024337,lysine
-C0010453,Anthropological Culture
-C0028589,Nuclear Proteins
-C1428200,TIPARP gene
-C0002318,alpha-Tubulin
-C0039224,Table - furniture
-C3715215,S1
-C1880833,Fold Change
-C4193472,Mammarenavirus
-C0035804,Rodent
-C0441833,Groups
-C0023092,Lassa Fever
-C0682523,Human Cell Line
-C0018802,Congestive heart failure
-C0029904,ouabain
-C0449234,Concept Attribute
-C0442799,Efficient
-C1412628,ATP1A1 gene
-C0084178,prohibitin
-C1880177,Contribution
-C2911648,Multiplication
-C1551338,Entity
-C0242744,"Earth, Planet"
-C1279919,Early
-C1550543,Fulfill
-C0376558,Life
-C0745777,Lost
-C0085862,Independence
-C0562630,Intracellular parasite
-C0080125,Catalytic RNA
-C0678595,peptide bond
-C0012854,DNA
-C0220806,Chemicals
-C0332529,Consistency
-C0008056,Chikungunya virus
-C0008055,Chikungunya Fever
-C0023008,Languages
-C1824356,RESF1 gene
-C1314677,Maintaining (action)
-C0001737,Africa
-C0003980,Asia
-C0222032,Spur (body structure)
-C0332174,Weekly
-C0022130,Islands
-C1522508,Details
-C0078988,Asians
-C0027567,African race
-C0441655,Activities
-C0022275,Italian language
-C0204727,Isolation procedure
-C0439228,day
-C0585064,Numerical phases
-C0686907,Consequence of
-C2734086,Chikungunya virus IgM
-C3715206,Eighteen
-C0457343,Chronic phase
-C1880022,Characterization
-C0030193,Pain
-C0009566,Complication
-C3887670,AE synonym fragment
-C0009490,Comoros
-C0036919,Seychelles
-C0275626,Struck
-C0011041,DDT (Insecticide)
-C0457083,Usage
-C0023031,lanthanum
-C4521003,VACUOLAR-TYPE PROTON-TRANSLOCATING ATPase SUBUNIT E1
-C0376441,Indian Ocean
-C0303920,Fluorescent stain
-C1292748,Introduces
-C0028405,North America
-C0021289,"Infant, Newborn"
-C0026591,Mother (person)
-C1550608,Instance
-C0015965,Fetus
-C0242648,Vertical Disease Transmission
-C0178795,Perinatal period
-C1513895,National Institute of Allergy and Infectious Diseases (U.S.)
-C0600091,Identifier
-C0808080,STRENGTH (attribute)
-C0376613,"Vaccines, DNA"
-C1547538,Facility
-C1521743,"Monitor, occupation"
-C0282687,"Hemorrhagic Fever, Ebola"
-C0600109,Willing
-C0013480,Ebola virus
-C0017313,patient care
-C0276472,Avian infectious bronchitis
-C0205132,Linear
-C1514756,Receive
-C1553446,Suite
-C0376705,Viral Load result
-C1512977,Mammalian Cell
-C0441659,Recreational flying
-C0449265,Elicited by
-C0000934,Acclimatization
-C1521738,Field
-C2986575,Connect (action)
-C1302234,Fatal
-C1880266,Defense
-C0424295,Hyperactive behavior
-C0043012,Wakefulness
-C0013621,Knowledge acquisition
-C0013126,Intrinsic drive
-C0332452,defective
-C1516240,Capacity
-C0002199,Interferon-alpha
-C0427529,Smear cell
-C0120285,Green Fluorescent Proteins
-C0872351,monolayer
-C2349984,Inversion
-C0026022,"Microscopy, Fluorescence"
-C0870071,Modeling
-C0969625,Methodology aspects
-C1711343,Deriving
-C0552449,Equation
-C1522410,Highest
-C1301808,Geographic state
-C0007320,Case Reports Publication Type
-C0007457,Caucasoid Race
-C0442519,Home environment
-C0439834,Slow
-C0376691,Programs - Publication Format
-C0750532,MILDLY
-C0231218,Malaise
-C0205390,Phase
-C4745084,Medical Condition
-C0699788,Import
-C0439157,counts
-C2986483,Doubling Time
-C0598394,enzootic
-C0035242,Respiratory Tract Diseases
-C3842296,Else
-C0683278,Mental Suffering
-C1836348,Severe disorder
-C1154657,perception of virus
-C1315072,Serology (antibodies and most antigens except blood bank and infectious agents)
-C0013849,Email
-C0443640,Specific antibody
-C0444454,Access
-C1883708,Then
-C1879743,As Much as Desired
-C0014507,Epidemiology
-C0205329,Progressive
-C0036243,Saudi Arabia
-C4288581,Notable
-C1272688,status - In progress
-C0022773,South Korea
-C0449335,Method of detection
-C0008903,Taxonomic
-C0020792,Identification (Psychology)
-C1272318,Presence of virus (procedure)
-C0034861,Recombinant Proteins
-C0037791,Specificity
-C0449445,Approach
-C0036745,Study of serum
-C0741847,Bypass
-C0599220,Protein Subunits
-C1136348,Protein Microarrays
-C0218063,Ensure (product)
-C0885847,human urine
-C0162633,Viral Shedding
-C1264633,Fraction of
-C4036459,Contacts
-C0332156,Return to (contextual qualifier) (qualifier value)
-C0042295,Values
-C0006801,Camels
-C4699158,Increased risk
-C0027363,Occupational Group
-C0018019,Capra hircus
-C0349374,Cow's milk
-C1698986,Storage
-C0439237,degrees Celsius
-C0521108,Recovering from
-C0443348,Viable
-C0428692,Ambient temperature
-C0428696,Relative humidity
-C3242389,Airborne exposure
-C0010200,Coughing
-C0001712,Aerosols
-C0205108,Distal (qualifier value)
-C1444005,Human to human transmission
-C1564867,Basic Reproduction Number
-C0003671,Arabian Peninsula
-C1320717,Respiratory event
-C0332232,Approximate
-C0730559,Respiratory percentage
-C2700400,Contain (action)
-C0750489,apparent
-C0205394,Other
-C0475311,Harbor
-C0449435,Manufactured aid
-C0443131,Accurate (qualifier)
-C1441506,Calculation
-C3274649,Probable Case Status
-C1710360,Technology Platform
-C4330491,Instrumental Activities Domain
-C2713449,Information Sharing
-C0936234,Computed Tomography Scanning Systems
-C0016249,floor (object)
-C0040405,X-Ray Computed Tomography
-C0024861,Masks
-C1280412,Thick
-C0934502,anatomical layer
-C0020912,Optical Image Reconstruction
-C1261322,Evaluation procedure
-C0524637,"Recognition, Psychology"
-C1704254,Medical Image
-C0700287,Reporting
-C0202823,Chest CT
-C0425382,Personal status - Adopted
-C4075962,Low dose computed tomography of thorax
-C0678341,Responsibility
-C0587500,Radiology department
-C0205146,Area
-C0332849,Divide
-C0205279,Contaminated
-C1547703,Room
-C1947930,Cleaning (activity)
-C0006353,Buffers
-C0014672,Equipment
-C0031809,Physical Examination
-C1319127,Level of stress
-C1552089,Staff Member
-C1516050,Assignment - action
-C0585347,Single event
-C1856053,Hydranencephaly with Renal Aplasia-Dysplasia
-C0332158,Contact with
-C0302523,Observation in research
-C1629510,Oral swab (specimen)
-C0005767,Blood
-C0444214,Anal swab
-C0521117,Severity of illness
-C0178913,Blood specimen
-C1718344,Special care (attribute)
-C0439793,Severities
-C0205221,Disseminated
-C0229960,Entire body as a whole
-C0001747,"Africa, Western"
-C0013956,Emergency Situation
-C1443871,Personal protective equipment
-C1956344,Emergency Preparedness
-C1185625,Anatomical compartments
-C0205421,Deferred
-C0019993,Hospitalization
-C0206132,Age of Onset
-C0039725,Thailand
-C0022341,Japan
-C3176590,Illness duration
-C0545082,Visit
-C0275522,Asymptomatic Infections
-C3829466,January
-C0886414,Body temperature measurement
-C0231435,Mobile
-C0057717,diamond
-C0036971,Ships
-C0557989,Restriction of movement
-C0205439,Fifth
-C1272689,Started
-C0332288,Without
-C0450048,Passenger
-C2350739,rupintrivir
-C0276447,Rhinovirus infection
-C0544076,"Etiology, primary"
-C0004096,Asthma
-C0025252,Membrane Proteins
-C1135440,Procedures involving the use of pharmaceuticals
-C0012655,Disease susceptibility
-C0231220,Symptomatic
-C0439609,Urgent
-C0549179,Priority
-C0031082,Periodicals
-C1272706,Interval
-C4082764,Gastrointestinal infection
-C0868963,Gardening
-C2708283,Clinical presentation
-C1883073,Electromagnetic Spectrum
-C0205238,True
-C0162340,Comprehension
-C1444748,Triggered by
-C3266261,One chronic disease
-C0702117,consolidated
-C0001554,Administration occupational activities
-C0231242,Complicated
-C1517331,Further
-C4086268,Exacerbation
-C0743630,exacerbation acute
-C0450442,Agent
-C0684312,Drivers of Vehicles
-C0740304,copd exacerbation
-C2828393,Exact (qualifier)
-C0220898,Predisposition -- attribute
-C2945843,Site of
-C0725694,comply
-C1542147,Main
-C4523782,Inflammatory airway disease
-C0233535,Butting
-C0547044,Smaller
-C0439792,Extent
-C1514849,Replication-Associated Process
-C0021368,Inflammation
-C3898900,Healthy
-C0333348,Inflammatory
-C0221908,Epithelial
-C0149516,Chronic sinusitis
-C0027430,Nasal Polyps
-C0014457,Eosinophilia
-C0024117,Chronic Obstructive Airway Disease
-C0441730,Type 2
-C0014597,Epithelial Cells
-C3263722,Traumatic AND/OR non-traumatic injury
-C0034790,T-Cell Receptor
-C0007587,Cell Death
-C4522252,Foundation for the Accreditation of Cellular Therapy
-C2717799,Metagenomics
-C0200931,Polymerase chain reaction analysis
-C0221099,Impaired
-C0242767,Stem of plant
-C1268456,Viral Components
-C1527428,Remaining
-C0021376,Chronic inflammation
-C0546816,Persistence
-C0281991,steroid use
-C1260953,Suppressed
-C1567292,"Myosin Phosphatase Rho-Interacting Protein, human"
-C1261381,Destructive procedure (surgical)
-C0683521,Patient Physiological Condition
-C0729531,Viral respiratory infection
-C0332271,Worsening pattern
-C1290886,Chronic inflammatory disorder
-C0578491,Infection by site
-C0014406,Environment
-C0225377,Structure of upper respiratory tract cavity
-C0231202,Symbiotic
-C0035235,Respiratory Syncytial Virus Infections
-C0026727,Mucous body substance
-C0332453,Disruption
-C0015422,Eyelash
-C1101610,MicroRNAs
-C0699949,airway disease
-C0014609,Epithelium
-C0887909,"RNA, Untranslated"
-C0443264,Modulated
-C1655731,study of epigenetics
-C1444656,Indicated
-C0040028,"Thrombocythemia, Essential"
-C0202311,Aluminum measurement
-C0851901,Rhinovirus infections
-C0035473,Rhinovirus
-C0206558,Simplexvirus
-C0027950,neutrophil
-C1515981,And
-C1292424,Single point in time
-C0542341,Function (attribute)
-C0439662,Immune
-C2587213,Control function
-C0850310,Possessed
-C1514568,Protein Truncation
-C0018270,Growth
-C0022277,Italy
-C0043129,Western Europe
+C0038379,Strabismus
+C0002418,Amblyopia
+C0039070,Syncope
+C0150141,Bathing
+C0021270,Infant
+C0348078,Qualitative form
+C0443252,Long-term
+C1274040,Result
+C0589371,Transanal approach
+C0580846,Does pull
+C0205163,Equal
+C0205496,Abdominal approach
+C0402883,tailor
 C1273869,Intervention regimes
-C0442504,Place
-C1720302,Until
-C0679201,Inference
-C1825598,IMPACT gene
-C3274659,Model Number
-C0035150,Reproduction
-C1416797,STMN1 gene
-C0034386,Quarantine
-C0037412,Social Distance
-C0750729,Course
-C0454713,European country
-C3258257,Total population
-C0087130,Uncertainty
-C4743675,Impossible
-C1321095,Drop Dosing Unit
-C0205548,Stat (do immediately)
-C0018599,Hardness
-C0009847,containment
-C1292431,Procedure phase
-C0520511,Distributing
-C0678257,Description
-C0206750,Coronavirus Infections
-C1549735,Identifier type - Person number
-C1547761,Alert level
-C1442162,GIVEN
-C0681024,economic impact
-C0815353,Male external urethral sphincter
-C1272695,Done (qualifier value)
-C1310468,"DDX58 protein, human"
-C2239342,DDX60 gene
-C0015264,Exertion
-C0239307,ethnic european
-C0599437,Authority
-C1273802,Regional office
-C0449244,Time of onset
-C0015967,Fever
-C0230463,Sole of Foot
-C1457887,Symptoms
-C0332290,Consistent with
-C1114752,"Pre-existing physician-diagnosed allergies, birth defects, medical conditions:Finding:Point in time:^Patient:Nominal"
-C0032310,"Pneumonia, Viral"
-C0449255,Context
-C1517927,Locally
-C0439661,Acquired (qualifier value)
-C0871157,Prompting
-C0442732,Vital (qualifier value)
-C0682356,Witnesses
-C1514537,Protein Biosynthesis Pathway
-C1517886,Limited stage (cancer stage)
-C0005540,Biomedical Research
-C1519614,Genetic Translation Process
-C0178566,concept
-C0600661,Outlines (document)
-C0524669,Coins
-C2699488,Resolution
-C0001074,Structure of achilles tendon
-C0018870,Heel
-C1080058,This (eukaryote)
-C2936405,Drug Repositioning
-C1512888,International
-C2828361,Do (activity)
-C1413357,CFLAR gene
-C0441987,Side
-C0084795,Tristetraprolin
-C1415638,HNRNPD gene
-C1826784,RC3H1 gene
-C0035342,Retinol Binding Proteins
-C0597415,RNA methylation
-C0337076,Industrial machine
-C0337108,Brake device
-C1514248,Post-Transcriptional Regulation
-C1823924,ZC3H12A gene
-C0287990,paired basic amino acid cleaving enzyme
-C2700640,Encode (action)
-C2346714,Abundance
-C0872047,high throughput technology
-C0681833,Basic Research
-C0152036,Immunology
-C3658355,CRISPR-Cas Systems
-C1881379,Lineage
-C0030391,"Parainfluenza Virus 2, Human"
-C1366752,Neomycin resistance gene
-C0042762,Science of Virology
-C0039828,Theses
-C1550031,Unlock
-C0681473,agenda
-C0079816,Medical Research activity
-C0439607,Priorities
-C3540678,Task
-C1522634,Question (inquiry)
-C1321919,"TLR4 protein, human"
-C0037750,Spanish Language
+C0442805,Increase
+C0042153,utilization qualifier
+C0018720,Health Maintenance Organizations
+C2936452,Double-Balloon Enteroscopy
+C0009462,Community
+C0542559,contextual factors
 C0332173,Daily
-C1615607,"Influenza A Virus, H1N1 Subtype"
-C1707686,Descendent
-C0029345,"Orthomyxovirus Type A, Porcine"
-C0556970,times/year
-C0678544,wave - physical agent
-C1135927,"Immunity, Herd"
-C0020167,Humidity
-C0445247,Same
-C0029343,"Influenza A Virus, Avian"
-C0008083,Child Mortality
-C0871935,Theory
-C0001790,Age-Specific Death Rate
-C1521733,Pathologic
-C0332298,Controlled by
-C0242324,"Medicine, Modern"
-C1853126,MOLECULAR BASIS
-C0318356,Human virus
-C1156245,Growth pattern
-C3533081,Reporting rate
-C4738108,Cumulative cases:Number:Point in time:^Event:Quantitative
-C0205422,Sporadic (qualifier value)
-C0557806,College
-C0871939,time series
-C0391871,Released (action)
-C0205134,Curved
-C2828360,Traverse
-C3830550,December
-C0949881,"Coronavirus OC43, Human"
-C4698071,OC43
-C1979874,Contrast
-C1441526,Computed (procedure)
-C0204514,Structural analysis
-C0162807,"Protein Structure, Secondary"
-C1135899,G+C Composition
-C1179705,S2 innervation
-C0439148,Unit
-C1953353,Amino acid change
-C1442161,Gene Deletion Abnormality
-C0033204,Probability
-C0221189,Jumping
-C1875400,ISOLATE COMPOUND
-C0205313,Original
-C0242482,Summary Report
-C0337664,Smoker
-C1547647,Patient Outcome
-C0184532,Dying Process
-C4279946,Humanitarian Assistance
-C1517001,Expected
-C1444749,Exacerbated
-C0231224,Crisis
-C0079161,Infectious Disease Contact Tracing
-C0035201,Resources
-C0020405,Hygiene
-C0018581,Handwashing
-C0150269,Limit setting
-C1524031,Minimum
-C0038137,standards characteristics
-C4505226,Gender-Based Violence
-C0023124,Latrines
-C1512173,Effectiveness of Interventions
-C0949366,Vulnerable Populations
-C0728831,Social
-C0205749,"Factors, Economic"
-C0025106,Medical Staff
-C3898897,Helpful
-C1948052,Now (temporal qualifier)
+C0026565,Mortality Vital Statistics
+C3842536,Surgery 1
+C0017446,Geographic Locations
+C2699424,Concern
+C0027552,Needs
+C2986411,Improvement
+C0376209,Individual Adjustment
+C0019409,Heterogeneity
+C0851578,Sleep Disorders
+C0026882,Mutation
+C0678227,Causing
+C0151691,Decreased HDL cholesterol concentration
+C0033414,Promotion (action)
+C1960466,Carotid Intima-Media Thickness
+C1698490,short stay encounter
+C0439227,Hour
+C0043030,"Wards, General"
+C1510747,Academia (organization)
+C0020017,"Hospitals, Pediatric"
+C1280519,Effectiveness
+C3840880,Traffic
+C0162469,Law Enforcement
+C1719958,Push - dosing instruction imperative
+C0085098,Police
+C0003281,Anticoagulation Therapy
+C0007589,Cell Differentiation process
+C2718067,Alcoholic Steatohepatitis
+C0162490,"Markers, Laboratory"
+C3827682,Useful
+C0871157,Prompting
+C1547431,Primary Care Provider - Provider role
+C0241889,Family history
+C0043227,Work
+C0013956,Emergency Situation
+C0041618,Ultrasonography
+C0015770,Fellowships
+C0376691,Programs - Publication Format
+C0013621,Knowledge acquisition
+C0039798,therapeutic aspects
+C0013404,Dyspnea
 C0030231,Palliative Care
+C0205314,New
+C0087111,Therapeutic procedure
+C0178566,concept
+C0001554,Administration occupational activities
+C0439849,Relationships
+C0023911,Transplantation of liver
+C0008059,Child
+C0449774,Patterns
+C0376554,Knowledge
+C0004271,Attitude
+C2987476,Exist
+C1705825,Senior - Suffix
+C3161035,Model
+C0039401,Educational process of instructing
+C0237607,Practice Experience
+C2960519,Retroperitoneoscopic total excision of kidney
+C0007226,Cardiovascular system
+C0242444,Population at Risk
+C1821417,RESTING HEART RATE
+C2347946,Relevance
+C0240069,Israeli
+C0019994,Hospitals
+C1318963,Readiness
+C0039565,Terrorism
+C2350593,Surge Capacity
+C4521243,Injury severity
+C0520511,Distributing
+C0332272,Better
+C0681842,Prediction
+C0035222,"Respiratory Distress Syndrome, Adult"
+C0006826,Malignant Neoplasms
+C0037370,"Smoking, Passive"
+C0035647,Risk
+C0030685,Patient Discharge
+C0021709,"Intensive Care Units, Neonatal"
+C3245505,Potential
+C0237881,Statistical Significance
+C1171307,health disparity
+C1450294,Nomograms
+C1707689,Design
+C2985506,PSA Failure
+C0028811,Occupations
+C0376358,Malignant neoplasm of prostate
+C0684224,Report (document)
+C1881717,Medical Device Mechanical Issue
+C2316650,Chronic pain in face
+C0521363,Oro-
+C0149779,Somatization
+C0456909,Blindness
+C0205355,Permanent
+C1708476,Implementation
+C0002769,"Analgesia, Epidural"
+C0022864,Labor (Childbirth)
+C1442989,Standard (qualifier)
+C0002766,Pain management
+C0043210,Woman
+C0069515,erbB-2 Receptor
+C0597879,immunoreactivity
+C1999230,Providing (action)
+C0220901,prognostic
+C1533716,Information
+C1517927,Locally
+C0205179,Advanced phase
+C0007138,"Carcinoma, Transitional Cell"
+C0030705,Patients
+C1514756,Receive
+C0085533,"Chemotherapy, Adjuvant"
+C0120726,halofantrine
+C1563740,Visceral Fat
+C0242485,Measurement
+C0445260,Single area
+C0441889,Levels (qualifier value)
+C1882932,Representation (action)
+C0449468,Volume
+C0238124,Necrotizing fasciitis
+C0392360,Indication of (contextual qualifier)
+C0020431,Hyperbaric oxygenation therapy
+C0311392,Physical findings
+C0085732,Ability
+C0027540,Necrosis
+C0262414,Fracture of cervical spine
+C0039277,Talus
+C1274039,General surgery specialty
+C0035868,Rotation
+C0543467,Operative Surgical Procedures
+C0001299,Acupuncture therapy discipline
+C1522326,Treating
+C0205382,vocal
+C0030664,Pathology
+C0189661,Repair of aneurysm
+C1552821,justify
+C0001779,Age
+C0580836,Old
+C0751530,"Subarachnoid Hemorrhage, Aneurysmal"
+C0015607,family medicine (field)
+C1521970,Characteristics
+C0243144,Uptake
+C0033137,Primary Health Care
+C0033325,Forecast of outcome
+C3273033,Well Differentiated Hepatocellular Carcinoma
+C1279919,Early
+C0589120,Follow-up status
+C0034866,Recommendation
+C0476427,Abnormal cervical smear
+C1321605,Compliance behavior
+C0020792,Identification (Psychology)
+C0032385,Pollen
+C0150369,Preventive monitoring
+C0011849,Diabetes Mellitus
+C3641247,FDG-Positron Emission Tomography
+C0920688,Cancer Diagnosis
+C0043240,Wound Healing
+C0010031,Cornea
+C0023087,Laser Surgery
+C0487919,Surface delta
+C0547070,Ablation
+C0542339,Inferior
+C0339022,Keratomileusis
+C0920418,cancer radiation therapy
+C0030788,Pelvic Exenteration
+C0278554,Recurrent Rectal Cancer
+C0582175,Surgeon
+C0442726,Detected (finding)
+C0024236,Lymphedema
+C0009402,Colorectal Carcinoma
+C0026598,Motion Perception
+C0162429,Malnutrition
+C0036341,Schizophrenia
+C0686907,Consequence of
+C0015393,Eye Abnormalities
+C0546881,Tracking
+C0442355,Transgastric approach
+C0014245,Endoscopy (procedure)
+C0037995,Splenectomy
+C0332149,Possible
+C0238419,Fournier Gangrene
+C1548787,Appropriate
+C0021102,Implants
+C0001792,Elderly (population group)
+C1313935,Encounter due to kidney donor status
+C0332239,Young
+C1709854,Recipient
+C1138603,Provider
+C0557854,Services
+C1882071,Network
+C0441994,Lower - spatial qualifier
+C0015316,Expenditures
+C1707455,Comparison
+C4545157,Primary care management
+C2349220,Assessment of carotid
+C0010055,Coronary Artery Bypass Surgery
+C2003902,Always (frequency)
+C0439851,Direct type of relationship
+C0025483,Mesocolon
+C1269955,Tumor Cell Invasion
+C0332257,Including (qualifier)
+C0521125,Preposition For
+C2231098,Gastric Cancer staging
+C4053457,Surrogate
+C0243132,occurrence characteristics
+C0029396,Heterotopic Ossification
+C0150312,Present
+C0347804,Fracture of acetabulum
+C1550147,Pretreatment (substance)
+C0205210,Clinical
+C0038454,Cerebrovascular accident
+C1709694,Processing (action)
+C0870569,fluency
+C1280500,Effect
+C0423896,Feeling content
+C0449450,Presentation
+C0679646,Participant
+C0439643,Sheets (formation)
+C2949735,Recruitment
+C0679823,Participation
+C0184661,Interventional procedure
+C0238436,Fracture of sternum
+C0521114,Infrequent
+C0332183,Frequently
+C0016658,Fracture
+C1707520,Correlation
+C0002844,Androgens
+C0023618,Libido
+C0205253,Immediate
+C0085076,Mammaplasty
+C2945640,compromise
+C0011209,Obstetric Delivery
+C0021344,human papillomavirus
+C0033999,Pterygium
+C0042776,Virus
+C0035648,risk factors
+C0814195,Psychiatric Res. Interview f. Substance and Mental Disorders
+C0023303,Length of Stay
+C2711836,Percutaneous replacement of aortic valve using fluoroscopic guidance
+C0750563,omit
+C0004044,Asphyxia
+C1424652,SCGN gene
+C0679105,pleasurable emotion
+C3151529,Lethal
+C0041696,Unipolar Depression
+C0001956,Alcohol Use Disorder
+C0009488,Comorbidity
+C0181586,Leads (device)
+C3806166,Poor outcome
+C0011570,Mental Depression
+C0728836,young child
+C0041714,United States Food and Drug Administration
+C0871599,Cautionary Warning
+C0681494,Diagram
+C0024763,Manuals as Topic
+C0562342,Empowered
+C3242339,operate
+C0162645,Laryngeal Masks
+C3282376,Supreme
+C0684010,Rabbi
+C0079809,Measures
+C0517965,Size of pupil
+C0303896,Blue light
+C0419360,Slit lamp biomicroscopy (procedure)
+C0008819,Male Circumcision
+C0884358,Performed
+C0231335,Childhood
+C0009378,colonoscopy
+C0518989,acute diverticulitis
+C0150641,Instrumental activities of daily living (assessment scale)
+C0011265,Presenile dementia
+C0439234,year
+C0205420,Concurrent
+C1524063,Use of
+C1257922,Neuroendoscopes
+C0021149,Incidence
+C2317361,Infection of ventriculoperitoneal shunt
+C0242821,Human body
+C0030971,Perception
+C0030551,parent
+C0031831,Physicians
+C0005891,Body Image
+C0040607,Training Programs
+C1510627,Phonological Awareness
+C0008100,"Child, Preschool"
+C0026769,Multiple Sclerosis
+C0205195,Combined
+C0178602,Dosage
+C0086418,Homo sapiens
+C0851682,Ovarian Treatment
+C1516048,Assessed
+C0205132,Linear
+C0733755,Positioning Attribute
+C0441988,Contralateral
+C0022742,Knee
+C0449445,Approach
+C0032074,Cognitive function: planning
+C0035110,Repeat Surgery
+C3645606,Component type
+C0443254,Mechanical Methods
+C1706765,Alignment
+C0864243,"Arthroplasty, Replacement, Partial Knee"
+C0027651,Neoplasms
+C0185117,Expression procedure
+C1256770,Vascular Endothelial Growth Factors
+C0332281,Associated with
+C1710625,Venous Invasion
+C0007620,Cell Survival
+C3263722,Traumatic AND/OR non-traumatic injury
+C0032343,Poisoning
+C0025266,Male population group
+C0205214,Common (qualifier value)
+C1521761,Factor
+C3900053,Amenable
+C0199176,Prophylactic treatment
+C0032961,Pregnancy
+C0001617,Adrenal Cortex Hormones
+C3844638,Either
+C0028754,Obesity
+C0520679,"Sleep Apnea, Obstructive"
+C0439793,Severities
+C0871261,Response process
+C0681850,Study Subject
+C2708283,Clinical presentation
+C0332152,Before
+C0151526,Premature Birth
+C0332282,Following
+C0404588,Finding related to risk factor in pregnancy
+C0012751,Distance
+C0299792,aripiprazole
+C0030662,"Gambling, Pathological"
+C0021079,Therapeutic immunosuppression
+C0002508,Amines
+C0010592,cyclosporine
+C0039194,T-Lymphocyte
+C0026193,Minor (person)
+C0205082,Severe (severity modifier)
+C0019628,Histocompatibility Antigens
+C3179010,Induction Chemotherapy
+C2931822,Nasopharyngeal carcinoma
+C0021289,"Infant, Newborn"
+C0037856,Spermatic Cord Torsion
+C0439092,Less Than
+C0042789,Vision
+C0221099,Impaired
+C0150108,Blinded
+C0450063,Pedestrians
+C0443131,Accurate (qualifier)
+C3858758,Reliable
+C0011109,Decision Making
+C0442658,Street (environment)
+C0010346,Crohn Disease
+C0085999,Pan Genus
+C0018684,Health
+C0033972,"Psychotherapy, Multiple"
+C0027530,Neck
+C0040264,Tinnitus
+C1257909,Diploid Cell
+C0002778,Analysis of substances
+C0038056,Sputum
+C0205373,Systemic
+C0021368,Inflammation
+C0004096,Asthma
+C0031437,Phenotype
+C0442743,Noninflammatory
+C0243148,control aspects
+C1881534,Make - Instruction Imperative
+C0210666,Panton-Valentine leukocidin
+C0543483,pathogenic aspects
+C1142423,Bacteremia due to Staphylococcus aureus
+C0428568,Fasting blood glucose measurement
+C0205217,Increased
+C0038894,Surgery specialty
+C0032743,Positron-Emission Tomography
+C4704810,Change Management
+C1306294,Primary malignant neoplasm of rectum
+C0308779,DELIVER (veterinary product)
+C0040210,Tidal Volume
+C0677453,Cigarette
+C0681054,tax rate
+C0680894,retailing
+C0080045,Prices
+C0205128,Vertical
+C0205108,Distal (qualifier value)
+C0227176,Esophageal mucous membrane
+C0205238,True
+C1280464,Manifestation of
+C0014868,Esophagitis
+C0020615,Hypoglycemia
+C1273410,Cardiovascular event risk
+C1517912,Liver Acinus Zone 2
+C0019569,Hirschsprung Disease
+C1720176,Upon - dosing instruction fragment
+C0370003,Specimen
+C0011777,dexamethasone
+C1523987,Alternative
+C0442027,Oral
+C0032952,prednisone
+C0220908,Screening procedure
+C0009932,Control Groups
+C0086749,Outcome Measures
+C4054723,Influence
+C0015031,Ethnic group
+C3830326,Electrochemiluminescence
+C0005507,Biological Assay
+C0040223,Time
+C0011854,"Diabetes Mellitus, Insulin-Dependent"
+C0004358,Autoantibodies
+C0439178,percent positive cells
+C1261322,Evaluation procedure
+C0003232,Antibiotics
+C0278329,Prescribed
+C3641827,Agree
+C3640814,Favorable
+C1515021,Subgroup
+C0010586,Cycloplegics
+C0238598,Young Adult
+C1514873,Requirement
+C0220920,surveillance aspects
+C0279000,Liver and Intrahepatic Biliary Tract Carcinoma
+C0037361,Smell Perception
+C0035853,Rosa
+C1883708,Then
+C2584314,Throwing
+C1704729,Department
+C0040756,Transportation
+C0011000,Data Reporting
+C0000932,Traffic accidents
+C0004379,Automobile Driving
+C0206194,Survivors
+C0600558,Neoadjuvant Therapy
+C0935989,imatinib
+C0238198,Gastrointestinal Stromal Tumors
+C5204061,KIT Mutation Analysis
+C0023779,Lipids
+C0166418,Peroxisome Proliferator-Activated Receptors
+C0005330,bezafibrate
+C0007102,Malignant tumor of colon
+C0010054,Coronary Arteriosclerosis
+C0600564,Self Efficacy
+C0086597,Mediate
+C0034379,Quality of Health Care
+C2984813,Microbial Contamination
+C0597535,Success
+C0472699,Hemopoietic stem cell transplant
+C4321397,Very High Level
+C4763513,Serum CA 19-9 Measurement
+C0522473,Contraindication
+C0085162,Pancreaticoduodenectomy
+C0178478,animal care
+C0000726,Abdomen
+C0445204,Preoperative
+C0015663,Fasting
+C0004448,Awareness
+C0001688,aspects of adverse effects
+C0003015,Angiotensin-Converting Enzyme Inhibitors
+C0016823,Structure of fundus of eye
+C1960816,Laparoscopic sleeve gastrectomy
+C0581122,Asthma severity
+C0005680,Black race
+C0007457,Caucasoid Race
+C0751429,"Surgical Procedures, Laparoscopic"
+C0392756,Reduced
+C0004238,Atrial Fibrillation
+C0205225,Primary
+C0039082,Syndrome
+C0577559,Mass of body structure
+C1301627,Format
+C0009460,Communication impairment
+C0231448,Extension
+C0681246,musical - genre
+C0470166,Message
+C0003873,Rheumatoid Arthritis
+C0443211,Established
+C0025677,methotrexate
+C1128066,Folic Acid 5 MG
+C0549178,Continuous
+C0016410,folic acid
+C0242295,Dietary Supplements
+C1881209,Infundibulum
+C0489786,Height
+C0449297,Clearance
+C0015359,Extracorporeal Shockwave Lithotripsy
+C0920711,lung ischemia
+C0035124,Reperfusion Therapy
+C1825598,IMPACT gene
+C0232177,Cardiac flow
+C0681906,Patient Self-Report
+C4279947,Health-Related Quality Of Life
+C1514474,Prognostic Factors
+C1829939,{Non-patient}
+C0158940,Transitory tachypnea of newborn
+C0032529,Genetic Polymorphism
+C1332546,Beta Adrenergic Receptor Gene
+C1547699,MIME encoding
+C0444921,Duration of treatment
+C0205486,Psychologic
+C0332156,Return to (contextual qualifier) (qualifier value)
+C0522772,Shaving - surgical procedure
+C0449681,Site of incision
+C0009450,Communicable Diseases
+C0871208,Rating (action)
+C0004180,Atmospheric Pressure
+C0741160,"Aortic Aneurysm, Ruptured"
+C1301886,Diameter (qualifier value)
+C0002940,Aneurysm
+C3898777,Important
+C0376246,French language
+C0027361,Persons
+C0018724,Health Personnel
+C0243095,Finding
+C1879533,Acceptable
+C0009669,confidentiality
+C0242665,wife
+C0036916,Sexually Transmitted Diseases
+C0277786,Chief complaint (finding)
+C0086132,Depressive Symptoms
+C0205396,Identified
+C3242284,Population Health
+C1511726,Data
+C0205157,Remote
+C2936234,Ischemic Postconditioning
+C0475224,Ischemic
+C0010957,Tissue damage
+C1532338,Percutaneous Coronary Intervention
+C0336789,Combine
+C0599685,Anti-Retroviral Agents
+C0013058,Dosage Forms
+C2349975,Enhance (action)
+C0034380,Quality of life
+C0001175,Acquired Immunodeficiency Syndrome
+C0439850,Inverse
+C1512571,Hypothesis
+C1632850,apply - action
+C1551362,coverage - financial contract
+C0199230,Screening for cancer
+C0227972,Structure of median lobe of prostate
+C0021162,Income
+C0454664,Country
+C0006142,Malignant neoplasm of breast
+C0175659,Weight measurement scales
+C0023508,White Blood Cell Count procedure
+C3850024,Transcranial Direct Current Stimulation
+C0205269,Unresponsive to Treatment
+C0043012,Wakefulness
+C0751699,Minimally Conscious State
+C0593802,Aromatase Inhibitors
+C0231443,Musculoskeletal symptom
+C0029456,Osteoporosis
+C0683368,Symptoms aspect
+C0695347,Modality
+C0007103,Malignant neoplasm of endometrium
+C0175566,Open
+C0005854,Blood - brain barrier anatomy
+C0144576,paclitaxel
+C0279027,"Laser Therapy, Low-Level"
+C0677850,Adjuvant Therapy
+C0017638,Glioma
+C0014850,Esophageal Atresia
+C0930838,Structure of lateral semicircular canal
+C0034929,Reflex action
+C0029894,Structure of otoconia
+C0178784,Organ
+C1708517,Input
+C0267628,Rupture of appendix
+C0745287,infertility tubal factor
+C0032987,Ectopic Pregnancy
+C0449943,Serotype
+C0683201,specific immunity
+C0027573,Neisseria gonorrhoeae
+C0038492,student
+C0015535,Faculty
+C0682177,College student
+C3826020,Medical emergencies
+C0225336,Endothelial Cells
+C0004114,Astrocytoma
+C0441800,Grade
+C4277664,Healthy Lifestyle
+C0030672,Patient Acceptance of Health Care
+C0600225,Graafian Follicle
+C0336791,"Tool, device (physical object)"
+C0872104,Assisted Reproductive Technologies
+C2698872,Predictor
+C0444868,All
+C0438961,New Zealand ethnic groups
+C0015272,Exhibits as Topic
+C0013556,Economics
+C0812409,Gradient
+C0205307,Normal
+C0600169,Kinematics
+C0229671,Serum
+C0299583,leptin
+C0242379,Malignant neoplasm of lung
+C0079399,Gender
+C0562508,Accident and Emergency department
+C0545082,Visit
+C0020517,Hypersensitivity
+C1517892,Links List
+C0017296,gene therapy
+C1516998,Exogenous Factors
+C0001675,Adult
+C5212753,Body circumference
+C0205202,Corrected
+C1552934,quart - US
+C0332624,Dispersion
+C1997092,Hypertensive left ventricular hypertrophy
+C3263723,Traumatic injury
+C0002808,Science of Anatomy
+C0003489,Aortic arch structure
+C0854391,Aortic Injury
+C0021562,inpatient
+C0029921,Outpatients
+C0150234,Treatment of fever
+C1321164,Gynecologic Oncology
+C1514983,Stratification
+C0852216,Breast Cancer Radiotherapy
+C0024881,Mastectomy
+C0205160,Negative
+C1272691,To be stopped
+C0037253,Skeletal system
+C0302113,Fragility
+C0002911,"Anesthesia, Conduction"
+C0002915,General Anesthesia
+C4764203,Surgery Patient
+C0019557,Hip Fractures
+C0026538,Morbidity - disease rate
+C0085552,Health Care Costs
+C1268766,Blood pressure alteration (finding)
+C0857121,Hypertensive (finding)
+C0725813,depend
+C0444706,Measured
+C0028661,Nurses
+C0087110,Treadmill Test
+C0080178,Spina Bifida
+C0002424,Ambulatory Care Facilities
+C0429627,Oxygen uptake
+C0558058,Reflecting
+C0429693,Maximum oxygen uptake
+C0033204,Probability
+C0033053,Prenatal Diagnosis technique
+C0392535,Induced abortion (procedure)
+C1705242,Different
+C0015965,Fetus
+C0000768,Congenital Abnormality
+C0232908,conceived
+C0231290,Status post
+C0949811,"Reproductive Techniques, Assisted"
+C0034869,Records
+C0232201,Sinus rhythm
+C0016640,Chemical fractionation
+C0240919,Rural
+C0442529,Urban environment
+C0237096,residence
+C0192711,Anastomosis of intestine
+C0205170,Good
+C0222660,Cancellous Bone
+C0205360,Stable status
+C1552551,Any
+C3887511,Evidence
+C0679637,major surgery
+C0441587,Clinical act of insertion
+C0400748,Bile duct drainage
+C0205263,Induce (action)
+C0008311,Cholangitis
+C0337174,Storage area
+C0042210,Vaccines
+C1762617,Weak
+C0282332,Cold Chain
+C0004454,Axilla
+C0796693,Sentinel Lymph Node Biopsy
+C0036572,Seizures
+C0035317,Retinal Hemorrhage
+C0233426,Personal appearance
+C1517331,Further
+C0030688,Patient education (procedure)
+C0205147,regional
+C0004340,Australia
+C0443220,Flexible
+C4551823,instruments
+C1706214,Creation
+C1444754,Length
+C0441983,<90 degrees
+C0240114,Knee flexion
+C3178820,Anterior Cruciate Ligament Reconstruction
+C0086996,Socioeconomic Status
+C0243127,Biochemical turnover
+C0181734,Bone marker
+C0232970,Postmenopausal state
+C0553891,Tracheal Extubation
+C0018017,objective (goal)
+C0009678,Congenital MeSH qualifier
+C0018821,Cardiac Surgery procedures
+C1555567,delivery mode
+C0086839,Postpartum Period
+C0008115,China
+C0282402,Hormone replacement therapy
+C0745411,irregular bleeding
+C0227843,Endometrial
+C0022688,Natural Killer Cells
+C1880568,Ethanol Ablation Therapy
+C0749467,benign thyroid nodule
+C0941215,fluid aspiration
+C0001962,ethanol
+C0205430,Mixed (qualifier value)
+C0449249,Growth rate
+C1334941,Neoplastic Polyp
+C0597198,Performance
+C2348631,System of Measurement
+C0269197,Occlusion of cervix
+C0156543,Unspecified Abortion
+C0332287,In addition to
+C0044923,gemeprost
+C0032980,"Pregnancy Trimester, Second"
+C0021655,Insulin Resistance
+C0013126,Intrinsic drive
+C0004083,Mental association
+C0015376,Extravasation
+C0183336,Sleeve
+C0017118,Gastrectomy
+C0028756,Morbid obesity
+C0205191,chronic
+C0205245,Functional
+C3839861,Medically Unexplained Symptoms
+C0037179,Unmarried person
+C1021577,Actinotignum schaalii
+C0015127,Etiology aspects
+C0042029,Urinary tract infection
+C0683921,disorder prevalence
+C0079817,Medicare Part A
+C1550502,beneficiary
+C0018717,Medicare
+C1824356,RESF1 gene
+C0221423,Illness (finding)
+C0205197,Complete
+C0086858,Programmed Learning
+C0184511,Improved
+C0028773,Discipline of obstetrics
+C1516213,Cancer Patient
+C0026867,Music
+C0038435,Stress
+C1299448,Patient ventilated
+C0026838,Muscle Spasticity
+C0040710,Translating
+C0814225,Benefit
+C0441085,Holmium:YAG laser device
+C1522427,best (quality)
+C0181670,Lithotripter
+C0041951,Ureter
+C0993596,Metered Dose Inhaler
+C0023692,Ligature
+C1265611,Quantity
+C0376671,Orthodontic Space Closure
+C4082119,Three months
+C0018464,Behaviorial Habits
+C1443394,Vaccination status
+C1553356,Lebanese race
+C1320928,Resident (physician)
+C0016884,Future
+C0870077,Rule (guideline)
+C0346208,Vaginal intraepithelial neoplasia
+C0445247,Same
+C0015219,Biological Evolution
+C0206708,Cervical Intraepithelial Neoplasia
+C0017319,General Practitioners
+C0679006,Decision
+C0421447,Patient forename
+C0522518,Transesophageal approach
+C0080310,Left Ventricular Function
+C0006110,Brain Death
+C0018787,Heart
+C0040732,Transplantation
+C0599946,Attenuation
+C0022116,Ischemia
+C0035126,Reperfusion Injury
+C0205065,Ovarian
+C0034693,Rattus norvegicus
+C0070694,edaravone
+C1545588,Protection
+C3472496,National Institutes of Health stroke scale
+C0309049,favor
+C0228176,Left cerebral hemisphere
+C0581990,Approach to joint
+C0444454,Access
+C0009566,Complication
+C0008902,Classification
+C0149531,Fracture of pelvis
+C0005841,Blood Transfusion
+C1518422,Negation
+C1274117,Trauma & orthopedics
+C0042870,Vitamin D Deficiency
+C0599878,disease characteristic
+C1096345,sexual activity increased
+C0019682,HIV
+C0008370,Cholestasis
+C0266172,Atresia of small intestine
+C1292732,Investigates
+C0376243,financial
+C0021147,Incentives
+C0010186,Financial cost
+C0183683,"Support, device"
+C0085134,Cessation of smoking
+C0038495,"Students, Medical"
+C1880177,Contribution
+C0178932,quality assurance
+C0282046,"Surgery, Day"
+C1333944,Paraganglioma of head and neck
+C3825502,Volumetric analysis
+C0450363,Three-dimensional
+C1318309,Core needle biopsy
+C1706385,Device Evaluation Method
+C0567489,Lesion of breast
+C0262950,Skeletal bone
+C1280412,Thick
+C0205103,Intermediate
+C4476692,Dermatomal
+C1883067,Space - property
+C0449682,Site of insertion
+C0205095,Dorsal
+C0024687,Mandible
+C0036576,Genetic Selection
+C0449820,Score
+C0205143,Angular
+C0456603,Ratio
+C0332167,High risk of
+C0266498,Congenital anomaly of spinal cord
+C0239110,Consciousness clear
+C0205081,Moderate (severity modifier)
+C0031212,Personality Disorders
+C0009967,Coping Behavior
+C0489654,Style
+C0748064,Psychiatric inpatient
+C1514468,product
+C0007004,Carbohydrates
+C0032105,Plasma
+C0242606,Oxidative Stress
+C0041948,Uremia
+C1708287,HPV-High Risk
+C0885503,human breast milk
+C4763943,Ovarian Cancer Surgery
+C0015264,Exertion
+C0013216,Pharmacotherapy
+C0038952,Continuance of life
+C0007131,Non-Small Cell Lung Carcinoma
+C0332237,Topical surface
+C0073571,ropivacaine
+C0030755,Pediatrics
+C0030193,Pain
+C0033213,Problem
+C0205246,Generalized
+C1318601,Adult mental illness - specialty
+C0521115,Simultaneous
+C0195224,Anterior colporrhaphy
+C0205111,Apical
+C3179501,Midurethral Slings
+C0878773,Overactive Bladder
+C0449432,Component object
+C0869256,Mixed urinary incontinence
+C0085550,Cost Savings
+C2937358,Cerebral Hemorrhage
+C0011900,Diagnosis
+C0194261,Ureteroscopy
+C0521620,Dilatation of ureter
+C0086583,Managed Care
+C0032854,Poverty
+C0449416,Source
+C1947933,care activity
+C0237897,Physical Strength
+C0729333,Dynamic
+C0080331,Walking (activity)
+C0030567,Parkinson Disease
+C1706912,BARRIER
+C0025071,Medicaid
+C0017313,patient care
+C0006141,Breast
+C0391908,colon rectal
+C0018798,Congenital Heart Defects
+C0013080,Down Syndrome
+C0025353,mental health
+C0032659,geographic population
+C0024726,Manitoba
+C0277792,Pathognomonic sign
+C0341106,Eosinophilic esophagitis
+C0337189,Cage device
+C0020912,Optical Image Reconstruction
+C0180231,Cup Device
+C0039724,Thai language
+C0521170,Osteoporotic Fractures
+C0190129,Replacement of pulmonary valve
+C0205087,Late
+C0397326,Repair of tetralogy of Fallot
+C4738506,Operating
+C4036054,Too late
+C1337035,Xanthogranulomatous cholecystitis
+C0032927,Precancerous Conditions
+C0297429,protein TDP-43
+C0332307,Type - attribute
+C4699190,A pattern
+C0333641,Atrophic
+C0751072,Frontotemporal Lobar Degeneration
+C3828706,Oncoplastic Partial Mastectomy/Lumpectomy with Oncoplastic Closure
+C1881237,Interstitial Radiation Therapy
+C0025663,Methods
+C0853193,Bipolar I disorder
+C0338831,Manic
+C0037793,Specimen processing (procedure)
+C0680844,estimation <subjective>
+C0678121,Basal metabolic rate
+C0008120,Chinese Language
+C0521116,Current (present time)
+C0552449,Equation
+C1272460,Not Applicable
+C0035945,Rugby
+C0175974,head-gear
+C0006107,Brain Concussion
+C0751194,"Hematoma, Subdural, Spinal"
+C0543419,Sequela of disorder
+C0007766,Intracranial Aneurysm
+C0332479,Shapes
+C0205615,Well Differentiated
+C0007276,Internal carotid artery structure
+C0087086,Thrombus
+C0220825,Evaluation
+C3272310,Cardiac Computerized Tomographic Angiography
+C0007787,Transient Ischemic Attack
+C0003537,Aphasia
+C0085084,Motor Neuron Disease
+C0205208,Solid
+C0851253,tuberculosis culture
+C4042877,Clinical Decision-Making
+C0021201,India
+C1525619,Multisection:Finding:Point in time:Parotid gland:Narrative:MRI
+C1519691,Histologic Subtype
+C0079281,Endothelin-1
+C0019010,Hemodynamics
+C0392747,Changing
+C0019004,Hemodialysis
+C0086931,Risk Behavior
+C0525045,Mood Disorders
+C0596963,Polarity
+C3810844,Breast clinic
+C0525032,International Normalized Ratio
+C0018759,Health Status
+C1292728,Condition activity
+C0024141,"Lupus Erythematosus, Systemic"
+C0201544,Prostate specific antigen measurement
+C0205341,Repeat
+C0231241,Fluctuating (qualifier value)
+C0557055,Reassuring (procedure)
+C0005558,Biopsy
+C0919414,Arabic numeral 0
+C4698659,Central line-associated bloodstream infection
+C4761037,Gastric Electrical Stimulation
+C1282910,Upper
+C0031330,Pharmacology
+C2936643,Standard of Care
+C1272745,Improving (qualifier value)
+C1708130,GNAI1 wt Allele
+C0683535,health care resources
+C0086387,Health Benefits
+C0034099,Pulp Chamber
+C0034104,Pulpotomy
+C0205397,seen
+C0227959,Structure of apex of prostate
+C0205123,Coronal (qualifier value)
+C0410702,Adolescent idiopathic scoliosis
+C1456613,Health systems
+C3826599,Cerebral palsied children
+C0679750,prevention through information dissemination
+C1516221,Cancer Prognosis
+C0439660,Hereditary
+C1449855,Nuchal Translucency
+C0032979,"Pregnancy Trimester, First"
+C2903677,Gestational diabetes mellitus in pregnancy
+C0206132,Age of Onset
+C0284725,V1a vasopressin receptor
+C1519302,Short Tandem Repeat
+C0312420,Hypersexuality state
+C0233888,Prepuberty
+C0679245,early disease
+C0278504,Stage I Lung Non-Small Cell Cancer AJCC v7
+C1517886,Limited stage (cancer stage)
+C0035182,Residency
+C0242801,Selection Criteria
+C0029355,Orthopedics
+C0237428,Optimism
+C0564470,Optimistic
+C0549177,Large
+C0205129,Sagittal
+C2964224,Molar relationship
+C1317785,Tooth size discrepancy
+C0195325,Cold knife cone biopsy of cervix
+C0184930,Loop electrosurgical excision procedure
+C0030744,Pectins
+C1154978,cold acclimation
+C0011198,Delaware
+C0000934,Acclimatization
+C1519814,Update
+C0013987,Emotions
+C0033119,Puncture wound
+C0226550,Internal jugular vein structure
+C0917707,Cannulation
+C0138741,Prostate-Specific Antigen
+C0456081,Adjustment Action
+C0005893,Body mass index procedure
+C1510824,Aerobic
+C1456706,Fitness
+C0021485,Injection of therapeutic agent
+C0051028,AICA ribonucleotide
+C0683150,plasma concentration
+C0025219,melatonin
+C0337831,Ewe (ethnic group)
+C1314939,Involvement with
+C3890397,PRKAA1 wt Allele
+C0023864,Literacy
+C0175763,Hemispherectomy
+C0205409,Isolated
+C0228175,Right cerebral hemisphere
+C0034754,Reading (activity)
+C1880022,Characterization
+C0598095,sexual dimorphism (cellular)
+C0036982,"Shock, Hemorrhagic"
+C1134488,Hormonal Change
+C1273518,Responsible to
+C0009452,Communication
+C0871503,dying patients
+C0348054,taught
+C0522486,Delay time
+C1511300,Breast Cancer Therapeutic Procedure
+C0007272,Carotid Arteries
+C0577317,Pulsatility
+C0220912,Aspects of signs
+C0241657,Abnormality of the vasculature
+C0086582,Males
+C0020043,Home visit (procedure)
+C3826770,Older people
+C4042885,Open Access Publishing
+C0036397,Science
+C1706852,Article
+C1515655,In Vivo
+C0175631,Imagery
+C0700639,"Pyloric Stenosis, Hypertrophic"
+C0013227,Pharmaceutical Preparations
+C0020538,Hypertensive disease
+C3272281,American College of Cardiology/American Heart Association Lesion Complexity Score A
+C0678341,Responsibility
+C0018704,Health care facility
+C0339848,Fractured nasal bones
+C0587267,Closed
+C0301630,Reduction (chemical)
+C0683805,Outreach
+C0015576,Family
+C0009482,"Services, Community"
+C1527178,Basis - conceptual entity
+C2945729,child survival
+C0035053,"Remission, Spontaneous"
+C1709305,Occur (action)
+C0031036,Polyarteritis Nodosa
+C0013220,Drug Tolerance
+C0007570,Celiac Disease
+C4084911,Life Expectancy Greater than Twenty Years
+C0024117,Chronic Obstructive Airway Disease
+C0337664,Smoker
+C2348167,Search Engine
+C0332218,Difficult (qualifier value)
+C0205470,immunologic
+C0868928,Case (situation)
+C0205540,Approved
+C0199168,Medical service
+C0019212,Hepatorenal Syndrome
+C1551393,Container status - Missing
+C0042232,Vagina
+C0006098,Brachytherapy
+C0007847,Malignant tumor of cervix
+C0033080,Prescription procedure
+C0600420,Proxy
+C0264408,Childhood asthma
+C0008300,Choice Behavior
+C0040722,disease transmission qualifier
+C0556328,Pattern of drinking alcohol
+C0680085,early adulthood
+C4505280,Proof of Concept Study
+C0033228,fenofibrate
+C0037315,Sleep Apnea Syndromes
+C0229992,Psyche structure
+C0150627,Guided imagery
+C0376335,fMRI
+C0237820,Recovery - action
+C0009792,Consciousness Disorders
+C1518601,Options
+C0948955,cardiovascular evaluation
+C4723804,beta-adrenergic antagonist therapy
+C0206733,Strawberry nevus of skin
+C0037778,Medical Specialities
+C0018802,Congestive heart failure
+C0032533,Polymyalgia Rheumatica
+C0277793,Onset of illness
+C0815129,anthropometric measurement
+C0750572,Estimated
+C0701159,Patient in hospital
+C0687725,Alcoholics
+C1704774,Audit Object
+C0024923,Maternal Mortality
+C0699759,Wealthy
+C0439792,Extent
+C0024203,Lymph node excision
+C0205349,Modified By
+C0855657,wound culture
+C1947971,Give - dosing instruction imperative
+C0025952,Science of Microbiology
+C0200949,Blood culture
+C0006434,Burn injury
+C0004927,Behavior
+C0870209,Blame
+C0439836,Conversions
+C0005823,Blood Pressure
+C0449438,Status
+C0337824,Black African
+C1710133,South
+C5203499,Depression severity
+C3898897,Helpful
+C0033873,Psychiatry Specialty
+C0184069,"Treadmill, device"
+C0687676,Post
+C0027627,Neoplasm Metastasis
+C0037125,Silver
+C1301668,Time of delivery
+C0396621,Orotracheal intubation
+C0018875,Helicopter
+C0014406,Environment
+C0033572,Prostate
+C0032227,Pleural effusion disorder
+C0012634,Disease
+C0162648,Telemedicine
+C0039421,Technology
+C0518595,Sleep Efficiency
+C0205410,Sufficient
+C3160898,Controlled ovarian stimulation
+C0546824,Intrauterine artificial insemination
+C0302822,Couples Therapy
+C0232909,Multiple conception
+C0024485,Magnetic Resonance Imaging
+C0002978,angiogram
+C0003484,Abdominal aorta structure
+C0030797,Pelvis
+C3863730,digital tomosynthesis
+C0040405,X-Ray Computed Tomography
+C2986588,Cumulative Exposure
+C0003850,Arteriosclerosis
+C0376574,GB virus C
+C0887914,Torque teno virus
+C0341439,Chronic liver disease
+C0017095,Garbage
+C0086969,Self-Management
+C0027778,Netherlands
+C0442504,Place
+C0205309,Known
+C1272683,Request - action
+C1272684,Accepted
+C0205172,More
+C2985562,Transsphenoidal Surgery
+C0332196,Exclude
+C0220787,Endotracheal aspiration
+C0751956,Acute Cerebrovascular Accidents
+C0260194,radiologist
+C0242428,Satisfaction
+C0581839,Suspected victim of child abuse
+C0085089,Morphologic artifacts
+C0033727,Protons
+C0031354,Pharyngeal structure
+C0430701,Esophageal pH Monitoring
+C0364896,pH:LsCnc:Pt:Ser/Plas:Qn
+C0010992,Data Analysis
+C1707328,Cell Microenvironment
+C0272394,Disorder of lymph node
+C1269765,Assisted (qualifier value)
+C0233569,Physical wandering
+C0085631,Agitation
+C0332511,Decreased size
+C0190364,Aortoplasty
+C0205101,Extrinsic
+C0035007,Psychological reinforcement
+C0877130,aortic surgery
+C0003289,Antidepressive Agents
+C0450429,Location
+C0002422,Ambulances
+C0042693,Violence
+C0027086,Myoma
+C0521267,Laparoscopic adrenalectomy (procedure)
+C0342500,Adrenal mass
+C0522505,Upstream
+C0037633,Solutions
+C0231170,Disability
+C1979963,Profile (lab procedure)
+C0030768,Peer Review
+C0015426,Eyelid structure
+C0183185,Screens (device)
+C3540513,PCYT1A wt Allele
+C0449255,Context
+C0871712,Deprivation
+C3826143,Imitation
+C0013124,Drinking behavior processes
+C0036375,School
+C0242887,Food Policy
+C0013331,Dutch Population
+C0033145,Primary Schools
+C1547703,Room
+C0392707,Atopy
+C0030646,Patch Tests
+C0998367,Pyroglyphidae
+C0205369,Specific qualifier value
+C0011615,"Dermatitis, Atopic"
+C0029421,Osteochondritis Dissecans
+C0333949,Disturbance of growth
+C0018283,Epiphysial cartilage
+C0014570,Epiphysis of bone
+C0360714,Hydroxymethylglutaryl-CoA Reductase Inhibitors
+C1449575,Microarray Analysis
+C0549206,Patient currently pregnant
+C0455164,"Sperm Injections, Intracytoplasmic"
+C0002045,algorithm
+C0559956,Replacement
+C1553906,global introspection
+C4684583,Causality Assessment
+C0003835,Arterial Lines
+C0441621,Sampling - Surgical action
+C0449243,Timing
+C0034085,Pulmonary Surfactants
+C0746102,Chronic lung disease
+C0021278,Infant Mortality
+C0871685,Clinician
+C0742343,Acute Chest Syndrome
+C0683521,Patient Physiological Condition
+C0015744,Feedback - system communication
+C0013964,emergency medicine (field)
+C0871935,Theory
+C0439064,Numerous
+C0039593,Testing
+C0598034,BRCA2 gene
+C1528558,"BRCA1 protein, human"
+C0007294,Genetic Carriers
+C1273517,Used by
+C0086930,Risk Assessment
+C0205555,Special
+C0543488,Interested
+C0031150,Laparoscopy
+C0242656,Disease Progression
+C0003507,Aortic Valve Stenosis
+C0205554,Automated (qualifier value)
+C0542279,Reusable Drivers
+C0005615,Birth
+C0037464,Socioeconomic Factors
+C0001578,Adolescence
+C0034606,Radionuclide Imaging
+C0002688,Amputation
+C0206172,Diabetic Foot
+C0521095,Determined by
+C3544167,incomplete spinal cord injury
+C1516232,Cancer Survivorship Research
+C0014282,England
+C0039828,Theses
+C0242479,Interdisciplinary Studies
+C0750591,consider
+C0920321,Phase I Clinical Trials
+C0014695,ergocalciferol
+C0231179,Insufficiency
+C0011155,Deficiency
+C0243107,development aspects
+C1455761,Episodic
+C0018681,Headache
+C0597664,visual stimulus
+C0035139,Surgical Replantation
+C0340369,Functional mitral regurgitation
+C0700124,Dilated
+C0349782,Ischemic cardiomyopathy
+C0334529,"Hydatidiform Mole, Partial"
+C0008320,Cholecystectomy procedure
+C2945599,Mild (qualifier value)
+C0037889,Hereditary spherocytosis
+C0034619,radiotherapeutic
+C0262584,"Carcinoma, Small Cell"
+C1418706,PNKD gene
+C5206431,Metastatic Diagnosis
+C1883171,Stir
+C0011923,Diagnostic Imaging
+C0205462,Histologic
+C0205070,Testiculo-
+C0266427,Testicular regression syndrome
+C1515089,Surgical Management
+C1320357,Pain intensity (observable entity)
+C0376683,Lecture
+C2827364,Attendance
+C0205435,First (number)
+C0694756,Intrauterine
+C2987124,Patient Reported Outcome
+C0021823,"Interviews, Telephone"
+C0038951,Surveys
+C1551338,Entity
+C0010803,Cytokeratin
+C2230969,Short segment Barrett's esophagus
+C0022771,Korea
+C0205547,Routine
+C1306460,Primary malignant neoplasm of lung
+C0025202,melanoma
+C0024819,Marital Status
+C0595998,Household composition
+C0449830,With configuration
+C0037659,somatostatin
+C0068605,Neuromedin U
+C1882810,Rat Pancreas
+C0948201,Alloimmunization
+C2349596,Fetal thrombocytopenia
+C0870325,Computer Application
+C0024671,Mammography
+C0681683,temporal distribution
+C0337795,Austrians
+C0042196,Vaccination
+C0302837,Vitamin supplementation
+C0039198,Regulatory T-Lymphocytes
+C0750541,apparently
+C1708335,Healthy Volunteers
+C0018417,Gynecology
+C0332158,Contact with
+C0087009,Hospital specialist
+C0023676,Life Style
+C0206058,Elective Surgical Procedures
+C0556581,Retinol equivalents
+C2945843,Site of
+C0520453,Cannula device
+C0205100,Peripheral
+C0040046,Thrombophlebitis
+C0439629,First presentation
+C0041427,Twin sibling (person)
+C0347984,During
+C0026062,Middle Age
+C1515981,And
+C0750164,venous access
+C0021107,Implantation procedure
+C4688314,Interventional Radiologist
+C0362063,Other prophylactic chemotherapy
+C0457592,types of insulin
+C0359086,oral hypoglycemic
+C3640186,Primary Identifier
+C0332240,Unknown (origin) (qualifier value)
+C0158300,Adhesive Capsulitis
 C0237400,Actual
-C0949892,Ebolavirus
-C0238606,West Africans
+C0441468,photograph
+C0854477,scoliosis surgery
+C0205329,Progressive
+C0205134,Curved
+C0428255,Lead level result
+C0332466,Fused structure
+C0544570,Bactericidal activity
+C0026724,Mucous Membrane
+C0770751,ANTISEPTIC SOLUTION
+C1417861,NT5E gene
+C0239307,ethnic european
+C0749647,treatment empiric
+C0949665,Fluoroquinolones
+C0022271,Israel
+C0745777,Lost
+C0683525,treatment options
+C0870240,Calculator
+C0332850,Operative site
+C2745955,Occurrence
+C5202901,GDC Enneking MSTS Stage Terminology
+C0284447,Simulate composite resin
+C0024861,Masks
+C2607857,Physical performance
+C0231175,Failed
+C0031809,Physical Examination
+C0681191,faith
+C4721610,"Carcinoma, Ovarian Epithelial"
+C0405759,Second look laparotomy
+C1441604,High sensitivity
+C0006560,C-reactive protein
+C0577631,Carotid Atherosclerosis
+C3898900,Healthy
+C1556095,Korean race
+C1519941,Validation
+C0039694,Tetranitromethane
+C0333052,Version
+C0009247,Cohort Studies
+C0007134,Renal Cell Carcinoma
+C0162367,Interstitial Fluid
+C0086045,Mental concentration
+C0066005,meropenem
+C0010340,Critical Illness
+C3649547,Continuous Renal Replacement Therapy
+C0036658,Esthesia
+C0225409,Tip of nose
+C0332835,Transplanted tissue
+C0032001,Pituitary Apoplexy
+C0085756,African American
+C0205388,Few
+C1556156,"Nutrition, Calories"
 C0024501,Maintenance
-C1282913,Circular
+C0005910,Body Weight
+C1550177,Real Time
+C0449911,View
+C1721048,Capsule Endoscopy
+C0266807,Acute gastrointestinal hemorrhage
+C0007202,Cardiopulmonary Bypass
+C0005903,Body Temperature
+C0032790,Postoperative Period
+C0015190,Euthyroid Sick Syndromes
+C0005887,Body Dysmorphic Disorders
+C0004936,Mental disorders
+C0449560,Subtype (attribute)
+C0085555,Hospice Care
+C0028688,Nursing Homes
+C0444930,End
+C0376558,Life
+C0086426,Human Resources Development
+C0001747,"Africa, Western"
+C1704292,Ophthalmologist (occupation)
+C1959897,Alcohol consumption during pregnancy
+C2921139,Psychomotor deficit
+C0040613,tranexamic acid
+C0011701,desmopressin
+C3805089,Hyperfibrinolysis
+C0039103,Synovitis
+C0031327,Drug Kinetics
+C0443315,subcutaneous
+C0040616,Anti-Anxiety Agents
+C0677601,Counter device
+C0013631,"Education, Medical"
+C0205127,Longitudinal
+C1704259,Biochemical Pathway
+C0010478,Educational Curriculum
+C0678856,skill
+C0010453,Anthropological Culture
+C0812450,Intrauterine coil insertion
+C1516735,Community Practice
+C0441730,Type 2
+C0347788,Supracondylar fracture of humerus
+C1555307,promise
+C0205421,Deferred
+C0010417,Cryptorchidism
+C0194907,Orchidopexy
+C0039597,Testis
+C0011847,Diabetes
+C0037369,Smoking
+C0027051,Myocardial Infarction
+C0052432,artesunate
+C0150577,Education of family
+C0205145,Site
+C0026083,Midwife
+C0086035,Competence
+C0392760,Affecting
+C1442066,Area Ratio
+C0003483,Aorta
+C0005557,Bioprosthesis device
+C1704254,Medical Image
+C0156369,Uterine Polyp
+C0025320,Menopause
+C0524620,Metabolic Syndrome X
+C0744689,heart size
+C0033105,Statistical Prevalence
+C5142939,Misty
+C0025474,Mesentery
+C3179130,Multidetector Computed Tomography
+C0032930,Precipitating Factors
+C0566588,Compliant (qualifier value)
+C3669312,Discharge instructions:Find:Pt:{Setting}:Doc:{Provider}
+C0078755,Zeolites
+C0019120,Hemostatic Agents
+C0019080,Hemorrhage
+C0340652,Arterial Injury
+C0035201,Resources
+C0150269,Limit setting
+C0221103,Visual Suppression
+C0028829,Octogenarians
+C0014099,Carotid Endarterectomy
+C0332306,Quality
+C0038137,standards characteristics
+C0079613,Adoptive Immunotherapy
+C0028407,North Carolina
+C0680190,Weekend
+C0019664,History
+C1334177,Infiltrating Cervical Carcinoma
+C0000872,Academic Medical Centers
+C2239669,MAPK1IP1L gene
+C0162791,Guidelines
+C0026683,Mucocele
+C0026686,Mucocele of salivary gland
+C0019693,HIV Infections
+C1708485,Incidence Rate
+C0018378,Guillain-Barre Syndrome
+C0033011,Pregnant Women
+C1709269,North
+C0012621,Body Fluid Discharge
+C1711307,Coordinator
+C0586003,Discharge from hospital
+C0949700,"Echocardiography, Stress, Dobutamine"
+C1096316,Cardiac troponin measurement
+C0439775,Elevation procedure
+C0442562,Movie house
+C0443288,Restricted
+C0681495,Movies
+C0012655,Disease susceptibility
+C0022877,Laboratory
+C0700287,Reporting
+C0392762,Quantitative
+C4321295,CGA wt Allele
+C0038317,Steroids
+C0002556,Aminoglycosides
+C1154187,Ear Drops
+C0009195,Cochlear structure
+C0040539,Toxicity aspects
+C0038493,"Students, Dental"
+C0405532,Lobectomy of thyroid gland
+C1277266,Serum C reactive protein level
+C0205390,Phase
+C0796563,Localized Malignant Neoplasm
+C0456387,Class
+C0439656,Voluntary
+C0021672,Insurance
+C1550543,Fulfill
+C3161429,Intra-operative nerve monitoring
+C1273428,Total mesorectal excision
+C0278996,Malignant Head and Neck Neoplasm
+C0015726,Fear (Mental Process)
+C0034897,Recurrence
+C0333957,Growth acceleration
+C4315130,Hippocampal atrophy
+C0234985,Mental deterioration
+C0436307,Chemoradiotherapy
+C0279626,Squamous cell carcinoma of esophagus
+C0015252,removal technique
+C0682132,regional difference
+C0225331,Fibrous tissue
+C0553980,Endomyocardial Fibrosis
+C0456378,Type of bridge device
+C0181598,Left ventricular assist device
+C0034519,Electromagnetic Radiation
+C0009637,Conception
+C0277812,Trendelenburg position (finding)
+C0012618,Disasters
+C1610166,wait
+C1547647,Patient Outcome
+C0205265,Initially
+C0336537,Robot (device)
+C0194401,Complete cystectomy
+C0003611,Appendectomy
+C0597277,potassium ion
+C0935576,treatment guideline
+C0015811,Femur
+C0021885,Intramedullary Nailing
+C1550369,Performed By
+C0043251,Wounds and Injuries
+C0586908,Trauma Surgeon
+C0042769,Virus Diseases
+C3245499,Colombia
+C0517627,Infection status
+C0008972,Clinical Research
+C0449379,Connection
+C0014772,Red Blood Cell Count measurement
+C0036980,"Shock, Cardiogenic"
+C0231242,Complicated
+C0155626,Acute myocardial infarction
+C0184666,Hospital admission
+C0205372,Tertiary
+C0205099,Central
+C0032804,Postpartum Women
+C0042018,Urinary Calculi
+C0042295,Values
+C0183115,Scanning Systems
+C1535956,Laminoplasty
+C0011164,Abnormal degeneration
+C0678234,Stenosis Morphology
+C0206366,Ossification of Posterior Longitudinal Ligament
+C0597519,steroid hormone receptor
+C0040300,Body tissue
+C0227411,Anal canal
+C0015732,Fecal Incontinence
+C0205178,acute
+C0443215,Fibrinous
+C0264383,Organized pneumonia
+C1844666,Immune dysregulation
+C0020649,Hypotension
+C0010068,Coronary heart disease
+C0439808,Profound
+C0441471,Event
+C0027061,Myocardium
+C1440733,HIV 1+2
+C1319069,Point-of-Care Testing
+C0459958,HIV screen
+C0004048,Inspiration function
+C0079043,Bronchoconstriction
+C0039985,Plain chest X-ray
+C0442342,Transbronchial approach
+C0193171,Anastomosis of rectum
+C0439805,Tumor Debulking
+C0743226,DIVERT
+C1955856,Surgical Stoma
+C1413811,CTSC gene
+C0678951,gene polymorphism
+C1561643,Chronic Kidney Diseases
+C1416799,LARS gene
+C0017168,Gastroesophageal reflux disease
+C3853142,Well controlled
+C0397729,Endarterectomy of superficial femoral artery
+C0042449,Veins
+C0741847,Bypass
+C0205412,Inadequate (qualifier)
+C0520510,Materials
+C2945695,Limb ischemia
+C0871664,biofeedback training
+C0238703,Athletes
+C0038039,Sports
+C0079189,cytokine
+C0014544,Epilepsy
+C0010439,Cues
+C1879547,Activation action
+C0042200,Influenza vaccination
+C0442603,Office
+C0035280,Retention (Psychology)
+C0439663,Infected
+C0338614,Psychotic episodes
+C0681890,predictive
+C0033131,Primary Care Physicians
+C0043253,Nonpenetrating Wounds
+C0412620,CT of abdomen
+C0149645,Cervical myelopathy
+C0020097,HTLV-I Infections
+C0036866,Sex Characteristics
+C0019638,Histology
+C1882365,Phenomenon
+C2609090,Drainage of cerebrospinal fluid (procedure)
+C0920347,Procedure on spinal cord (procedure)
+C0043144,Wheezing
+C0205653,Adolescent (age group)
+C0201930,Carbon dioxide content measurement
+C0003842,Arteries
+C0007012,carbon dioxide
+C0456065,"Infant, Extremely Low Birth Weight"
+C0005516,Biological Markers
+C0011906,Differential Diagnosis
+C0269102,Endometrioma
+C0677886,Epithelial ovarian cancer
+C0033085,Biologic Preservation
+C1179589,Cruciate
+C0333118,Retained
+C0223896,Structure of tibial tuberosity
+C0376245,English Language
+C0027740,Nerve
+C0040997,Trigeminal Neuralgia
+C0085203,Radiosurgery
+C1185738,Column (anatomic)
+C0020980,Immunoassay method
+C3655762,Microparticle Enzyme Immunoassay
+C0085149,tacrolimus
+C0205125,Deep (qualifier value)
+C4551687,Sarcoma of soft tissue
+C0002644,amoxapine
+C1276996,Atypical antipsychotic
+C0683174,topical application
+C0155540,Ear discharge
+C0729627,Non-high density lipoprotein cholesterol (substance)
+C0023824,LDL Cholesterol Lipoproteins
+C0456337,Intrapartum
+C3827561,Vibroacoustic Stimulation
+C0410959,Fetal acidosis
+C0684314,Underage Drinking
+C1512806,Intake
+C0439801,Limited (extensiveness)
+C0041657,Unconscious State
+C0014653,Equilibrium
+C0086511,Knee Replacement Arthroplasty (procedure)
+C0852649,"Contraindications, Surgery"
+C2923839,Risk level
+C0599156,Transition Mutation
+C0033975,Psychotic Disorders
+C0015259,Exercise
+C0001811,Aging
+C0376466,Ischemic Preconditioning
+C0600653,Indexes
+C0038040,sports medicine specialty
+C0162443,Journal
+C1709627,Practitioner
+C0582540,Head position finding
+C0429492,Depth of anterior chamber of eye
+C0206368,Exfoliation Syndrome
+C1414461,ESR1 gene
+C0428460,Finding of lipid level
+C1154544,response to hormone
+C0038293,Sternum
+C0407295,Fixation of fracture using plate
+C0185003,Reparative closure
+C0043352,Xerostomia
+C1415545,HINT1 gene
+C0017337,Genes
+C4527371,Candidate
+C0474395,Behavior showing increased motor activity
+C0232901,Migratory (qualifier value)
+C0332677,Major injury
+C0050325,A-factor (Streptomyces)
+C1519595,Transcript
+C1511790,Detection
+C1709846,Real-Time Polymerase Chain Reaction
+C0205250,High
+C0332271,Worsening pattern
+C0041935,Urban Population
+C1553893,medication history
+C2360554,Note:Find:Pt:{Setting}:Doc:Patient
+C1281905,At risk of disease
+C1567664,Warm Ischemia
+C0456693,per 30 minutes
+C1144661,Laparoscopic partial nephrectomy
+C0235723,reaction febrile
+C0005821,Blood Platelets
+C0014792,Erythrocytes
+C2347083,Maternal Relative
+C0010286,creatine
+C0019868,Homeostasis
+C0025914,House mice
+C0311400,Metabolic
+C0079104,Pap smear
+C1517548,Glandular cell
+C0456962,Rapid
+C1155266,Inflammatory Response
+C0032914,Pre-Eclampsia
+C0037993,Spleen
+C0728887,Preserving
+C0176940,Distal subtotal pancreatectomy
+C0005847,Blood Vessel
+C0205447,One
+C0734092,Short gastric artery
+C3266178,Peripheral facial palsy
+C0038154,Stapes Surgery
+C0019145,Hepatic artery
+C1112459,Unresectable Hepatocellular Carcinoma
+C0449851,Techniques
+C0700276,Anatomic structures
+C0443142,arthroscopic
+C0460043,Staging laparoscopy
+C2239176,Liver carcinoma
+C0013516,Echocardiography
+C1623258,Electrocardiography
+C0205235,Discriminate
+C1719315,Hereditary cardiac amyloidosis
+C0007194,Hypertrophic Cardiomyopathy
+C0020044,House Staff
+C0022885,Laboratory Procedures
+C1705176,Order (arrangement)
+C2986522,Laparoscopic Prostatectomy
+C0205281,Invasive
+C0194825,Radical retropubic prostatectomy
+C0027430,Nasal Polyps
+C1136375,Inheritance Patterns
+C0072470,Proto-Oncogene Protein c-kit
+C0007595,Cell Growth
+C0220633,Uveal melanoma
+C1521840,Target
+C0409959,"Osteoarthritis, Knee"
+C0814279,prevention or treatment protocol
+C0178825,Rectum/Anus
+C0376443,Endoscopic Ultrasound
+C0237326,Dyschezia
+C1819426,chemokine production
+C0442165,Perivascular
+C0001527,Adipose tissue
+C0009853,Continuity of Patient Care
+C0020052,Households
+C0557779,Food shop
+C0748878,socioeconomic
+C0242503,Inequalities
+C0016767,Fruit
+C0042440,Vegetables
+C0009830,Consumption of goods
+C0085142,Birthing Centers
+C0033052,Prenatal care
+C0035150,Reproduction
+C0343187,Primary systemic vasculitis
+C1317978,Serum chloride measurement
+C0850624,cardiovascular risk factor
+C4071834,5D
+C0348000,Instrument - device
+C0948089,Acute Coronary Syndrome
+C0332293,Treated with
+C0444956,High dose
+C0078844,zonisamide
+C0441636,Surgical shortening - action
+C2923471,Time to peak
+C0024713,Manic Disorder
+C0035953,Running (physical activity)
+C0040423,Tonsillectomy
+C0240526,Night time
+C0400914,Acute hepatitis C
+C0020732,Iatrogenic Disease
+C1710602,VIPR1 wt Allele
+C0949214,Advertisements
+C0376630,Tobacco Industry
+C0162425,Intention - mental process
+C0037366,Smoke
+C0001551,Immunologic Adjuvants
+C0278584,Metastatic Carcinoma to the Uterine Cervix
+C0746922,Anatomic Node
+C0439673,Unknown
+C0460004,Head and neck structure
+C0449695,Site of primary lesion
+C0398395,Neck Dissection
+C0457280,Number of sutures
+C1533810,Placement action
+C0014857,Repair of paraesophageal diaphragmatic hernia
+C1532765,Laparoscopic adjustable gastric banding
+C0085236,"Macrophages, Alveolar"
+C0031306,Phagocyte Bactericidal Dysfunction
+C4543758,Protracted bronchitis caused by bacterium
+C0006267,Bronchiectasis
+C0870602,geriatric patients
+C1522449,Therapeutic radiology procedure
+C4076184,Metastatic spinal cord compression
+C0043237,World Health Organization
+C0026131,Milk (body substance)
+C0238605,South African
+C0021446,Repair of inguinal hernia
+C0042296,"Valves, Surgical"
+C0205173,Duplicate
+C0175649,Prosthesis
+C0184252,Medical Valves
+C0346990,Carcinomatosis of peritoneal cavity
+C0871463,surgical patients
+C0243028,APACHE II
+C0205463,Physiological
+C0556656,Meetings
+C0086279,Family Caregivers
+C0079377,Frail Elderly
+C0006145,Breast Diseases
+C1332629,"Breast Fibrocystic Change, Proliferative Type"
+C0741302,atypia morphology
+C1510483,Fine needle aspiration biopsy
+C1709941,Reviewed By (qualifier)
+C0552371,Citation
+C0428640,Central venous pressure
+C0005889,Body Fluids
+C0025260,Memory
+C0040399,"Tomography, Emission-Computed, Single-Photon"
+C0002395,Alzheimer's Disease
+C1331418,Comfort
+C2828008,Burden
+C0024032,Low Birth Weights
+C1517033,External Beam Radiation Therapy
+C0587605,Palliative care service
+C0235782,Gallbladder Carcinoma
+C3639994,Discordance
+C3844830,Automated auditory brainstem response
+C0024103,Mass in breast
+C0041703,United States
+C1301808,Geographic state
+C3841843,Person 1
+C0012161,"Diet, Atherogenic"
+C0026106,Mild Mental Retardation
+C0586739,Ability to read
+C0598801,Diffusion weighted imaging
+C1516193,Cancer Detection
+C0237123,Alcohol or Other Drugs use
+C0036864,Sex Behavior
+C0682176,high school students
+C0009253,Coitus
+C0948008,Ischemic stroke
+C0199242,Anticoagulant prophylaxis
+C0870869,medical patients
+C0033107,prevention & control
+C0557750,Towns
+C0029401,Osteitis Deformans
+C1524062,Additional
+C1522609,Numerical value
+C3501617,"SSTR2 protein, human"
+C0021044,Immunohistochemistry
+C0473935,Radiolabeled somatostatin analog study
+C0429263,Vaginal pH
+C0449770,Measured from
+C0696215,wet mount
+C0444330,Slide (glass microscope)
+C1521991,Molecular
+C0017431,Genotype
+C0012972,Information Management
+C4684942,Refractory Thyroid Gland Carcinoma
+C0260925,Encounter for screening for diabetes mellitus
+C0243161,criteria
+C0441833,Groups
+C2741673,Account number:Identifier:Point in time:^Patient:Nominal
+C0443199,Differential quality
+C1457887,Symptoms
+C0013850,Electronic
+C0025080,Medical Devices
+C0920086,Limb operation
+C1998319,Functional capacity
+C0022709,Peptidyl-Dipeptidase A
+C0376249,With frequency
+C0728985,Cervical spine
+C4289285,Feel Low in Energy
+C0441712,Mechanism (attribute)
+C0025953,Microbiological
+C0032972,Pregnancy Outcome
+C0032356,Country of Poland
+C0019029,Hemoglobin concentration result
+C0457846,Cervical segment of spinal cord
+C0333463,Senile Plaques
+C0233743,Prosody
+C1428114,TBATA gene
+C0004268,Attention
+C0023516,Leukocytes
+C0003615,Appendicitis
+C0005586,Bipolar Disorder
+C0349217,"Depressive episode, unspecified"
+C1148477,"Deafness, Sudden"
+C1272688,status - In progress
+C0025281,Meniere Disease
+C0687677,warning labels
+C0376649,Addresses (publication format)
+C1881865,Mismatch
+C0182431,Aortic valve prosthesis
+C0002792,anaphylaxis
+C0425382,Personal status - Adopted
+C0522523,Percutaneous
+C0013504,"Echinococcosis, Hepatic"
+C0200655,Red blood cell morphology procedure
+C0334901,Clinical pathologist
+C0105770,beta catenin
+C0920196,Eyelid Carcinoma
+C0034571,roentgenographic
+C0085556,Hospital Mortality
+C0011053,Deafness
+C4299032,Portable
+C0175718,Medical pins
+C0281949,Placement Evaluation
+C0518447,extremity fractures
+C0870465,education students
+C4684593,Clinical Encounter
+C0444669,Core
+C0073187,Blood group antigen D
+C0014869,Peptic Esophagitis
+C0001128,Acids
+C0205289,Maximal (qualifier value)
+C1698893,gadofosveset
+C2315388,MR angiography of carotid artery
+C0678587,Steady-State
+C0444693,First pass
+C0448823,Sternal skin
+C0600142,Hot flushes
+C0225442,Trunk of elephant
+C0700321,Small
+C3640173,Inner Diameter
+C0340643,Dissection of aorta
+C0002878,"Anemia, Hemolytic"
+C0728938,Partial
+C1707965,Expander Device
+C0680996,deflation
+C0436331,Symptom aggravating factors
+C0392615,Adverse effect of radiation therapy
+C0205448,Two
+C0599545,kidney preservation
+C0079419,TP53 gene
+C1515926,Alteration
+C4264454,Chemo-radiotherapy
+C0022104,Irritable Bowel Syndrome
+C4518809,Diagnosis of exclusion
+C0030794,Pelvic Pain
+C0521989,Associated symptom
+C0877015,Pelvic Organ Prolapse
+C0020740,ibuprofen
+C0186193,Repair of hip
+C0000833,Abscess
+C0031557,Phlegmon
+C0277556,Recurrent disease
+C1301624,Medical contraindication
+C1148475,Complementary and alternative medicine
+C0277562,Adult disease
+C4279936,Exercise Training
+C0018810,heart rate
+C0429028,QT interval feature (observable entity)
+C1134625,screening intervention
+C0013371,Shigella Infections
+C0025312,Meningomyelocele
+C0408736,Correction of scoliosis
+C0085122,Workload
+C0855316,blood pressure ambulatory
+C0004388,Autonomic nervous system
+C0008848,Cities
+C0016356,Fluoroscopy
+C0205224,Essential
+C0041952,Ureterolithiasis
+C0004793,Base Sequence
+C0348025,Open approach
+C0162871,"Aortic Aneurysm, Abdominal"
+C0013931,"Embolization, Therapeutic"
+C0583513,Plasma fasting glucose measurement
+C0011860,"Diabetes Mellitus, Non-Insulin-Dependent"
+C0683579,scenario
+C0332299,Suggestive of
+C0041296,Tuberculosis
+C2931267,Say Barber Miller syndrome
+C1553497,virtual patient encounter
+C0181090,Professional guide
+C1512343,Head and Neck Surgery
+C0443348,Viable
+C3824967,Overweight children
+C0497406,Overweight
+C0005411,Biliary Atresia
+C0032722,"Portoenterostomy, Hepatic"
+C0032967,Pregnancy History
+C0871633,desire
+C1744710,Sterilization Reversal
+C0027617,Neonatal Screening
+C0588446,Informing patient
+C0221106,Alkalemia
+C0005767,Blood
+C0597295,Protein Biosynthesis
+C0011945,Physical Dialysis
+C1744558,T-lymphocyte deficiency
+C0679024,Spatial Visualization
+C0241422,toluene exposure
+C0042900,Vitiligo
+C0011633,Dermatomyositis
+C0085655,Polymyositis
+C0224416,Skeletal muscle structure of thigh
+C0409675,Juvenile ankylosing spondylitis
+C0038013,Ankylosing spondylitis
+C4045995,Aspiration Thrombectomy
+C0441463,Static
+C0016504,Foot
+C0683928,regional area
+C0230463,Sole of Foot
+C0011441,Dentist
+C0442015,Digital X-ray
+C0152020,Gastroparesis
+C0034196,Pylorus
+C1514559,Protein Overexpression
+C4049944,Ki67 Measurement
+C1370932,Renal Pelvis and Ureter Carcinoma
+C1705822,Transfer Technique
+C0439148,Unit
+C0015802,Femoral Fractures
+C0205107,Proximal
+C1882115,Normalize
+C0442185,Subfoveal
+C0741712,Saline-filled breast implant
+C0016542,Foreign Bodies
+C0232902,migrated
+C0504196,Epicardial adipose tissue
+C0444598,Middle
+C0205251,low
+C0034885,Rectal Neoplasms
+C0006751,Calibration
+C0205419,Variant
+C0872318,Liquid Chromatography Mass Spectrometry
+C0439855,Complex
+C0221198,Lesion
+C4743756,Intrauterine Exposure
+C0009170,cocaine
+C0522174,Delinquent behavior
+C2982733,Early Adolescence
+C0007124,Noninfiltrating Intraductal Carcinoma
+C0817096,Chest
+C0189738,Reimplantation of artery
+C0037925,Spinal Cord
+C0194810,Radical prostatectomy
+C3849995,Health Information Exchange
+C0425087,Made redundant (finding)
+C0036202,Sarcoidosis
+C0158242,Cervical spondylosis with myelopathy
+C3165058,Endovenous laser ablation of varicose vein
+C0589360,Site of access
+C0237795,Pressors
+C0031001,Perfusion (procedure)
+C3654025,CARDIAC THERAPY DRUGS
+C0425309,Passive smoker
+C4699158,Increased risk
+C0180153,Covers (device)
+C0229985,Surgical margins
+C0042027,Urinary tract
+C0205303,Non-invasive
+C0266294,Unilateral agenesis of kidney
+C1098510,fondaparinux
+C1518988,perioperative
+C0870921,motor performance
+C0457949,Chronic low back pain
+C0009240,Cognition
+C0162340,Comprehension
+C0302828,Instruction [Publication Type]
+C0205315,Oblique
+C0242939,"Radiotherapy, Adjuvant"
+C4526609,Stage III Thymoma AJCC v8
+C0021463,INHIBIN
+C0175630,Circulating
+C0020217,Hydatidiform Mole
+C0016055,Fibronectins
+C0477633,Cervical disc disorder
+C0031139,Peritoneal Dialysis
+C0018520,Halitosis
+C0022661,"Kidney Failure, Chronic"
+C0441925,Level I
+C0449259,Clinical course
+C2882221,Acute pulmonary embolism
+C0205497,Transurethral approach
+C0007430,Catheterization
+C0449338,Method of drainage
+C0009393,Color
+C0205094,Anterior
+C0332536,Laxity
+C0162596,"Antibodies, Anticardiolipin"
+C0544452,Disease remission
+C0024517,"Major depression, single episode"
+C0035020,Relapse
+C0281186,Screening for Prostate Cancer
+C0011065,Cessation of life
+C0021212,Indicators
+C2718036,Delayed Diagnosis
+C0235991,Small for gestational age (disorder)
+C0035344,Retinopathy of Prematurity
+C0036043,Safety
+C0666743,infliximab
+C0717758,etanercept
+C4684773,Serious Risk
+C0815172,patient characteristics
+C0344355,Fast Foods
+C0028580,Nuclear Magnetic Resonance
+C3898501,MRI Ultrasound Fusion Guided Biopsy
+C0426732,Large prostate
+C0231940,Alveolar ventilation function
+C0014272,Energy Metabolism
+C0006104,Brain
+C1283195,Mapping (action)
+C0006147,Breast Feeding
+C0342527,Deficiency of testosterone biosynthesis
+C0034394,Questionnaires
+C0740214,Malnutrition screen
+C0815205,late childhood
+C0438696,Suicidal
+C3829692,Histologic Chorioamnionitis
+C3831078,Clinical Chorioamnionitis
+C4071830,Lifetime
+C0021099,Impetigo
+C0019372,Herpesviridae Infections
+C0027551,Needle device
+C0150600,Advice
+C0941225,Injection result
+C0030274,Pancreas
+C0597409,retransplantation
+C0205436,second (number)
+C0237506,Chance
+C0241863,diabetic
+C0153676,Secondary malignant neoplasm of lung
+C0205171,Singular
+C0009429,Combined Modality Therapy
+C0155502,Benign Paroxysmal Positional Vertigo
+C0086225,Enteral Feeding
+C0441478,Surgical advancement - action
+C0443303,short-term
+C1286282,Birth outcome
+C0442040,Salivary
+C0020268,hydrocortisone
+C0871311,screening tests
+C0010481,Cushing Syndrome
+C0815107,Psychological Distress
+C4726643,Drug Preload
+C0009361,Colloids
+C2584297,Sitting Function
+C1511497,Continuous Intravenous Infusion
+C0014563,epinephrine
+C0042149,Uterus
+C0232338,Blood flow
+C0751771,Sleep Bruxism
+C4083201,Patient Health Questionnaire - 9 Item
+C0441792,Editions
+C0005532,biology (field)
+C0349530,Early gastric cancer
+C0271561,Somatotropin deficiency
+C1709157,Negative Surgical Margin
+C0851312,Breast surgery specialty
+C2347858,Conservation
+C0376298,Consensus
+C0586886,Breast surgeon
+C5204033,EGFR Mutation Analysis
+C0282111,Internet
+C0019898,Homosexuals
+C0233397,Psychological symptom
+C3536818,Dietitian
+C1521827,Preparation
+C0030690,patient fall
+C0184713,Discharge to home
+C0034991,Rehabilitation therapy
+C0812225,Kit device
+C0019169,hepatitis B virus
+C0019189,"Hepatitis, Chronic"
+C0023890,Liver Cirrhosis
+C0451019,Barthel index
+C0678226,Due to
+C0178534,career
+C0749385,threat
+C0020008,"Hospitals, General"
+C0596721,hospital utilization
+C0205392,Some (qualifier value)
+C1547011,Aspect - Kind of quantity
+C0237827,Social Rejection
+C0683917,suicide mortality
+C0030563,Parity
+C0020459,Hyperinsulinism
+C0021430,Informed Consent
+C0043266,Writing (occupation or discipline)
+C0034770,Mental Recall
+C0024623,Malignant neoplasm of stomach
+C0022558,Kenya
+C0376640,Universal Health Insurance
+C0201950,Cholesterol measurement test
+C0260267,School child
+C1707391,Choose (action)
+C0443157,Bony
+C0243067,defects aspect
+C0347738,Anterior dislocation of shoulder joint
+C0020164,Bone structure of humerus
+C0587902,Information status
+C1184743,bony process
+C0008679,Chronic disease
+C0030702,Client satisfaction
+C0026259,mitoxantrone
+C0013218,Combination Drug Therapy
+C3251812,Bleeding risk
+C0007859,Neck Pain
+C0002268,alpha-D-galactosidase enzyme
+C1301676,Relieving
+C0155794,Sublingual varices
+C0028778,Obstruction
+C0020255,Hydrocephalus
+C0203224,Arthrography of shoulder
+C0002921,Local anesthesia
+C0332260,Compressing (action)
+C0597498,speech recognition
+C0234725,Hearing normal
+C2712133,Actual Effective Cognition
+C1510420,Cavitation
+C1956110,Cone-Beam Computed Tomography
+C0009817,Consultant
+C0851285,Regulation
+C3669170,Exercise intensity
+C0522510,With intensity
+C1527305,Feelings
+C0517226,Physical Well-being
+C0682194,socioeconomic differences
+C0035345,Retirement
+C0029939,Ovary
+C1333990,Hereditary Nonpolyposis Colorectal Cancer
+C4699551,Emergency physician
+C0042571,Vertigo
+C0231472,Standing position
+C0027066,Myoclonus
+C0427108,General unsteadiness
+C0007587,Cell Death
+C1516044,Apoptotic
+C1979874,Contrast
+C0016125,Finger joint structure
+C3899278,Early Rheumatoid Arthritis
+C0209453,gadobenate dimeglumine
+C1627358,Refractive surgery enhancement
+C0205177,Active
+C0007319,Case Mix
+C4763453,Reimbursement
+C0681390,student behavior
+C1263846,Attention deficit hyperactivity disorder
+C0026590,Mother-Child Relations
+C0263912,Rotator cuff syndrome
+C0028797,Occupational Diseases
+C0026846,Muscular Atrophy
+C0234615,Cord sign
+C0205494,Neurologic (qualifier value)
+C0394735,Injection of anesthetic agent into sciatic nerve
+C1285623,Motor response
+C0522776,Placement of stent
+C0149952,Torsion of ovary
+C0029936,Ovariectomy
+C0282624,Minimally Invasive Surgical Procedures
+C0031843,physiological aspects
+C0806140,Flow
+C0179574,Nasal Cannula
+C0199451,Continuous Positive Airway Pressure
+C4048294,Preterm Infant
+C0028708,Nutrition Assessment
+C0344351,Gluten-Free Diet
+C0678695,Nutrients
+C0496675,Medical care
+C0085104,Drug Delivery Systems
+C1706817,Response (statement)
+C1963724,Antiretroviral therapy
+C0001738,Africa South of the Sahara
+C0018735,Health Policy
+C2349952,Oropharyngeal Carcinoma
+C0332305,With staging
+C1699633,PET/CT scan
+C1883712,Add - instruction imperative
+C0234388,Electrical activity of brain
+C0022876,Premature Obstetric Labor
+C0021704,Intelligence
+C0446516,Upper arm
+C0033095,Pressure- physical agent
+C2347329,Nasogastric Decompression
+C1800706,Idiopathic Pulmonary Fibrosis
+C0037313,Sleep
+C0557698,Door (physical object)
+C0239981,Hypoalbuminemia
+C0085862,Independence
+C0518087,Pain level
+C1514489,Proliferative Index
+C1301820,Obtain
+C1511671,DNA Image Cytometry
+C1304098,Irritant contact dermatitis due to incontinence
+C0162577,Angioplasty
+C0520997,"Thrombolysis, function"
+C0340291,Silent myocardial ischemia
+C0428857,Myocardial perfusion
+C0001807,Aggressive behavior
+C0003450,Antivenin
+C0206317,Crotalus
+C0005658,bite injury
+C0679008,leadership skills
+C0163712,Relate - vinyl resin
+C0683739,program management
+C0057223,Cytochrome P-450 CYP2D6
+C0002085,Alleles
+C0347530,Base deficit (finding)
+C0876926,Traumatic Brain Injury
+C0033175,Private Room
+C0814514,health care use
+C0441516,Demand (clinical)
+C0796085,Nance-Horan syndrome
+C0032043,Placenta
+C0026578,Mosaicism
+C1831302,In vitro fertilization pregnancy:Arbitrary Concentration:Point in time:^Patient:Ordinal
+C0582205,Utilities (organization)
+C0002895,"Anemia, Sickle Cell"
+C0333548,Acute infarct
+C0153373,Malignant neoplasm of cheek mucosa
+C0205284,Marginal
+C0475455,T - Tumor stage
+C0205276,Local
+C4505223,Mass Drug Administration
+C0036323,Schistosomiasis
+C0060323,Fibrin fragment D
+C0549193,Parameter Value
+C0031090,Periodontal Diseases
+C0439828,Variable (uniformity)
+C1306645,Plain x-ray
+C0332189,Episode of
+C0266102,Globulo-maxillary cyst
+C0876088,Miralax
+C0061795,Golytely
+C0018104,Government
+C0018896,Helping Behavior
+C0885957,Eye care (regime/therapy)
+C4704820,Services Utilization
+C0557170,Low personal income
+C0248719,telmisartan
+C0239946,"Fibrosis, Liver"
+C0002152,Alloxan Diabetes
+C0028796,"Dermatitis, Occupational"
+C0429964,Dependent for dressing
+C0950624,Leukocyte L1 Antigen Complex
+C0204956,Preoperative education
+C0003467,Anxiety
+C0032787,Postoperative Complications
+C1290905,Discrepancy (finding)
+C0281588,Assessment of quality of life
+C0025810,methylphenidate
+C0027686,Pathologic Neovascularization
+C2697585,Hepatocellular
+C0231174,Failure (biologic function)
+C0040184,Bone structure of tibia
+C0807955,Slope
+C1510541,Evidence-Based Practice
+C3166632,What treatment
+C4044304,Quilt
+C0009068,Closure by suture
+C0262627,Seroma
+C0198542,Abdominoplasty (procedure)
+C0021931,"Intubation, Gastrointestinal"
+C0332437,Morphology
+C0014392,Enucleation procedure
+C0232189,Alteration in heart rate (finding)
+C0022245,isoproterenol
+C3178782,Aortic Stiffness
+C0028794,Occultism
+C0003904,Arthroscopy
+C1851476,ESTERASE C
+C1413931,ACE gene
+C0152277,Incision and drainage
+C1332838,Candidate Disease Gene
+C0085612,Ventricular arrhythmia
+C0025360,Mentally Ill Persons
+C0179323,Blades (device)
+C1167159,replication compartment
+C1416797,STMN1 gene
+C0005975,Bone Screws
+C0919720,fracture treatment
+C0069299,ochratoxin A
+C4050014,Unknown GENC
+C0017011,Gamma Rays
+C0027342,Nail plate
+C0200665,Platelet mean volume determination (procedure)
+C0242172,Pelvic Inflammatory Disease
+C0030296,pancreatic juice
+C0030286,Pancreatic Diseases
+C0150831,Patient sex
+C0032143,alteplase
+C0038996,Swedish language
+C0003826,Arts
+C0017596,Glass (substance)
+C0238690,contact exposure to arsenic (history)
+C0597547,Syntax
+C1536220,ST segment elevation myocardial infarction
+C0085672,Microbiology procedure
+C0024947,Maxilla
+C1440080,Alveolar
+C0016741,Frozen Sections
+C1696944,Thyroid therapy
+C0239006,Chest wall rigidity
+C0332266,Illicit
+C0015846,fentanyl
+C0013146,Drug abuse
+C0278140,Severe pain
+C0205548,Stat (do immediately)
+C0203668,Radioisotope scan of bone
+C1608426,Compensated Hepatic Cirrhosis
+C0242845,"Ultrasonography, Doppler, Duplex"
+C0046056,fluorodeoxyglucose F18
+C1522485,Tracer
+C4277581,Tumor Hypoxia
+C0012984,Canis familiaris
+C0871133,Priming
+C0175842,autistic children
+C0948898,Leukocyte scintigraphy
+C0947630,Scientific Study
+C0332147,Suspected diagnosis
+C0021390,Inflammatory Bowel Diseases
+C0162595,Antiphospholipid Antibodies
+C2983573,Prostate Bed
+C0026597,Motion
+C1550452,definition - ActMoodCompletionTrack
+C3641877,CT on Rails
+C0449719,Part
+C0454198,Clinical target volume
+C0475468,Esophagogastric
+C0581712,Devascularization - action
+C0020541,Portal Hypertension
+C0746977,"Obesity, Maternal"
+C0872333,behavior influence
+C0005971,Bone plates
+C1550003,Clearing
+C0023216,Lower Extremity
+C0037937,Spinal Injuries
+C0066256,methyl isocyanate
+C1704221,"Physicians, Family"
+C0950580,sentinel
+C0021400,Influenza
+C0443127,Aberrant
+C1517945,Loss
+C1438784,"DKK3 protein, human"
+C0686619,Secondary malignant neoplasm of lymph node
+C1260336,Maze Procedure
+C0203075,Barium Enema
+C0158915,Exceptionally large baby (disorder)
+C0205319,Manifest
+C1135241,Weeks pregnant
+C0085639,Falls
+C4330709,More Often than Once a Day
+C2317394,Scrotal approach
+C0522499,Palpable
+C0225217,Structure of superficial layer of cervical fascia
+C0010325,Crime Act
+C0013231,"Drugs, Non-Prescription"
+C0031321,Pharmaceutical Services
+C0009653,"Condoms, Male"
+C0185023,Fixation - action
+C0341268,Disorder of small intestine
+C0589105,Strategy training
+C0233794,Memory impairment
+C4688315,Symptom Checklist 90
+C0439534,Dimensions
+C0338656,Impaired cognition
+C2985343,Assessment of Fetal Condition
+C0427052,Finding of power of skeletal muscle
+C0678536,Speed (motion)
+C0449738,Direction
+C1096717,pain during injection
+C0449428,Provocation
+C0180459,Disks (device)
+C0275911,Tuberculosis of intestines
+C0085532,Coronary angiography
+C0864241,Bicompartmental knee replacement
+C0517349,Muscle Strength
+C0017562,Gingiva
+C0702196,Blood investigation
+C0040861,Triage
+C0455272,Serum urate measurement
+C0018099,Gout
+C0027569,Neighborhood
+C1510639,Social Capital
+C0470187,Availability of
+C0442570,Sports facility
+C0242211,"Roman Catholic, follower of religion (person)"
+C0649610,"1,2-bis(hexadecyloxy)-3-trimethylaminopropane"
+C4505148,Vaccination Coverage
+C0000809,"Abortion, Habitual"
+C4764073,Nonrandom X Chromosome Inactivation
+C1510756,Accrual
+C2826292,Related to Cancer
+C0008976,Clinical Trials
+C0428462,Measurement of serum lipid level
+C4692930,Beta-endorphin deficiency
+C4321457,Examination
+C0242622,Uteroplacental Circulation
+C0747845,early pregnancy
+C0003968,ascorbic acid
+C0458219,Complex Regional Pain Syndromes
+C0435630,Fracture of distal end of radius and ulna
+C0007222,Cardiovascular Diseases
+C0040802,travel
+C0399839,Gastrojejunostomy
+C0021756,Interleukin-2
+C0021758,interleukin-4
+C1448177,"TNF protein, human"
+C0021760,interleukin-6
+C0008310,Endoscopic Retrograde Cholangiopancreatography
+C0030305,Pancreatitis
+C0562297,Examination of lymph nodes
+C2699511,Squamous Epithelial Cell Count
+C0428447,Determination of stone composition
+C0018494,Hair
+C0042036,Urine
+C0067385,"N,N-dimethylarginine"
+C1148523,Childbirth
+C0856169,Endothelial dysfunction
+C0023089,Lasers
+C3816742,Percutaneous Absorption
+C1515657,In Vivo Model
+C0003062,Animals
+C1290864,Disorder of abdomen
+C0086447,Ileal Pouches
+C0192754,Ileorectostomy
+C0919691,Anastomotic Leak
+C0193062,Rectum excision (procedure)
+C0282163,Immigrant (person)
+C0015176,Europe
+C0332232,Approximate
+C0870294,clinical supervision
+C0443318,Sustained
+C0870781,Landscapes
+C0486293,Albumin To Creatinine Protein Ratio Measurement
+C1135440,Procedures involving the use of pharmaceuticals
+C0032460,Polycystic Ovary Syndrome
+C0205394,Other
+C0025598,metformin
+C0814472,co-treatment
+C0751992,Fetal Weight
+C1268717,Mammographic Breast Density
+C0184913,Reexcision
+C0917927,Breast-Conserving Surgery
+C0020676,Hypothyroidism
+C1444641,At risk
+C0266941,Derangement of temporomandibular joint
+C2111517,laparoscopic myomectomy
+C0456389,size
+C0237753,Numbers
+C0162522,"Cholecystectomy, Laparoscopic"
+C0004259,atropine
+C0022614,ketamine
+C0235195,Sedated state
+C1522408,Coating (film)
+C0521009,Bacterial
+C4289767,Colonization
+C1325881,biofilm formation
+C0021135,In Vitro [Publication Type]
+C0086600,Medical Care Costs
+C0332290,Consistent with
+C0032580,Adenomatous Polyposis Coli
+C0796357,Genetic Variation Analysis
+C0013961,Emergency medical service
+C0679924,professional occupation status
+C0039869,"Thinking, function"
+C0679698,disease prevention
+C0040771,Transurethral Resection of Prostate
+C0205156,Previous
+C0029162,Oral health
+C0596227,british
+C0026126,Military Personnel
+C0399651,Antireflux operation
+C0221074,"Depression, Postpartum"
+C1157722,polyphosphate biosynthetic process
+C0080222,"TGFB1 protein, human"
+C2047215,Herpesvirus 5 infection
+C1947925,Stop (Instruction Imperative)
+C0948827,hepatitis b e antigen negative
+C0019829,Hodgkin Disease
+C0159658,Fracture of clavicle
+C0972314,etoricoxib
+C0040508,Total Hip Replacement (procedure)
+C1261422,Serum lipase level result
+C0201885,"Amylase measurement, serum (procedure)"
+C0001339,"Pancreatitis, Acute"
+C0007113,Rectal Carcinoma
+C0444660,Anatomic Plane
+C0033573,Prostatectomy
+C0589036,Skeletal fixation procedure
+C0227716,Neck of urinary bladder
+C0038437,Female stress incontinence
+C0456904,Intraoperative
+C0877248,Adverse event
+C0679804,family intervention
+C5230176,Anxiety due to dementia
+C1333897,HIF1A gene
+C0078058,Vascular Endothelial Growth Factor A
+C0037663,Growth Hormone
+C0279328,Hyperbaric Oxygen (substance)
+C0557982,Constant supervision
+C0852681,colon anastomosis
+C0134394,oxybutynin chloride
+C3826717,Arrhythmia in children
+C0232841,Bladder dysfunction
+C0002871,Anemia
+C0009368,Colon structure (body structure)
+C0205052,rectal
+C0949626,Second Look Surgery
+C0041447,Tympanoplasty
+C0198160,Modified Radical Mastoidectomy
+C1278039,Serum total bilirubin measurement
+C1531624,Cardioembolic stroke
+C0027432,Nasal septum structure
+C0844334,septoplasty
+C0150685,nasal packing
+C0003299,Antiepileptic Agents
+C3166387,Suicidality
+C0840414,Cervical spinal cord injury
+C1514893,physiologic resolution
+C0068355,NADPH Oxidase
+C0870252,caregiver burden
+C0039548,terminal patient care
+C0015672,Fatigue
+C0016053,Fibromyalgia
+C1516209,Cancer Intervention
+C0002020,Alexithymia
+C0679309,physical symptom
+C3845697,Medical Outpatient
+C0001948,Alcohol consumption
+C1998602,Meal (occasion for eating)
+C0596975,mossy fiber
+C0016904,gamma-aminobutyric acid
+C2826293,Clinical Significance
+C0005400,Bile duct structure
+C0282346,Environmental sludge
+C0267869,Bile duct calculus
+C0036588,Self
+C0179196,"Bag, device"
+C0182998,Resuscitator
+C0021398,Economic Inflation
+C4744620,IgM-enriched Immunoglobulins
+C1262477,Weight decreased
+C0019144,Hepatectomy
+C0152060,Transection (procedure)
+C0426027,Finding of speed of delivery
+C3179079,Weight Reduction Programs
+C1456587,Bariatric Surgery
+C0332325,Resistant (qualifier value)
+C0016323,Water fluoridation
+C0281883,Pertrochanteric fracture
+C0336581,Intramedullary rod
+C2603343,Study
+C1956796,ioflupane I-123
+C2980484,DaTscan
+C0270736,Essential Tremor
+C0949878,Withdrawing Treatment
+C0175989,critically ill children
+C0019134,heparin
+C0010337,Care of intensive care unit patient
+C0027468,United States National Institutes of Health
+C0243098,Funding
+C1881856,Minimally Invasive Lesion
+C0396849,Mitral valvuloplasty
+C2004457,Artificial (qualifier value)
+C0231749,Knee pain
+C0444708,Radiographic
+C3161851,liquid-based cytology (procedure)
+C0018747,Health Services
+C0040786,Trauma Centers
+C0009348,Collateral Circulation
+C0333186,Restenosis
+C0442519,Home environment
+C1690540,Kit Dosing Unit
+C0013153,Drug Administration Routes
+C0178795,Perinatal period
+C0013537,Eclampsia
+C0887842,Balloon Occlusion
+C0014912,estradiol
+C0015915,Fertilization in Vitro
+C0009905,"Contraceptives, Oral"
+C0524662,Opiate Addiction
+C0746569,methadone treatment
+C1301725,Documented
+C0025102,Medical Records
+C0025115,Medication Error
+C0870289,patient attitudes
+C2981279,Decade
+C3898767,Inducer
+C1168153,Arterial calcification
+C0022663,Kidney Glomerulus
+C0022646,Kidney
+C0038531,Subclavian Steal Syndrome
+C0206655,Alveolar rhabdomyosarcoma
+C0039751,Theft
+C2362326,Sexual Health
+C0013893,Eligibility Determination
+C0949219,Antineoplastic Chemotherapy Protocols
+C1827293,"Carcinoma of urinary bladder, invasive"
+C3826265,Geriatric oncology
+C0009818,Consultation
+C0599880,Treatment Plan
+C3275093,Intentional Left Cardiac Atrial Appendage Occlusion Procedure
+C0013798,Electrocardiogram
+C0449381,Observation parameter
+C0013125,intravenous administration
+C1186706,Bolus of ingested food
+C0574377,Minangkabau Language
+C0574032,Infusion procedures
+C1997949,History of atopy
+C2983683,Titration Study
+C0085415,Treatment outcome
+C0005166,Beta Particle
+C0333961,Secondary hypertrophy
+C0225435,Middle nasal turbinate structure
+C0557773,Coach (vehicle)
+C0392921,Cancer Pain Management
+C0205183,Benign
+C0194804,Biopsy of prostate
+C0194820,Radical perineal prostatectomy
+C0449850,Patient position finding
+C0193373,Operation on liver
+C0595954,Venous air embolism
+C1512704,Indigenous
+C0238711,Australian
+C0334154,adherent
+C0205563,Clinical stage finding
+C0038018,Spondylolysis
+C0063252,desflurane
+C1292856,Stimulation procedure
+C0017504,Gestational Age
+C0005612,Birth Weight
+C0337948,Australian aborigine
+C0870221,Boys
+C2347813,Cmax
+C1720825,Therapeutic Drug Monitoring
+C0042313,vancomycin
+C0370220,Platelet rich plasma
+C0017243,Gel
+C0374711,Surgical repair
+C0927338,Third mandibular molar tooth
+C0242209,Sugars
+C0332296,Free of (attribute)
+C0439679,Erosive

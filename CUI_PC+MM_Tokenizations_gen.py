@@ -2,7 +2,7 @@
 The same code is there in the last 2 cells of KG_Constructor. Brought them here for clarity.
 '''
 
-#python CUI_PC+MM_Tokenizations_gen.py -mmf MM_NEW.json
+#python CUI_PC+MM_Tokenizations_gen.py -mmf MM_PubMed.json
 
 #Generate tuples (question, (matched_text, CUI, preferred candidate)) - new approach
 import json
