@@ -59,7 +59,8 @@ class InputMaker(object):
         if not tup.empty:
             mappings = tup['Mappings'].values[0]
             if self.fancy_concat:
-                new_text_components = [q_text.strip()]
+                #new_text_components = [q_text.strip()]
+                new_text_components = [q_text]
                 domain_umls_terms = ' '.join(['[{}]'.format(m[2]) for m in mappings])
                 domain_dict_terms = ' '.join(['#{}#'.format(m[2]) for m in mappings])
                 if self.use_kge:
@@ -67,7 +68,6 @@ class InputMaker(object):
                 if self.use_dict:
                     new_text_components.extend([self.sep_token, domain_dict_terms])
                 q_text = ' '.join(new_text_components)
-                q_text = q_text.strip()
 
             else:
                 mappings = list(sorted(mappings, key=lambda x: len(x[0])))
