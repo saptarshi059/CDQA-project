@@ -67,6 +67,7 @@ class InputMaker(object):
                 if self.use_dict:
                     new_text_components.extend([self.sep_token, domain_dict_terms])
                 q_text = ' '.join(new_text_components)
+                q_text = q_text.strip()
 
             else:
                 mappings = list(sorted(mappings, key=lambda x: len(x[0])))
