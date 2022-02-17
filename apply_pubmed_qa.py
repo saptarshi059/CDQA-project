@@ -174,10 +174,20 @@ if __name__ == '__main__':
         agg_stats['acc'].append(fold_acc)
         agg_stats['f1'].append(fold_f1)
 
+    print('Metrics by fold:')
+    for fold_no in range(len(agg_stats['acc'])):
+        print('Fold {0} - Acc: {1:3.2f} F1: {2:3.2f}'.format(fold_no, agg_stats['acc'][fold_no],
+                                                             agg_stats['f1'][fold_no]))
+
     agg_acc = sum(agg_stats['acc']) / len(agg_stats['acc'])
     agg_f1 = sum(agg_stats['f1']) / len(agg_stats['f1'])
     print('agg_acc: {0:3.4f} agg_f1: {1:3.4f}'.format(agg_acc, agg_f1))
     with open(os.path.join(model_dir, 'test_stats_e{}.txt'.format(args.epoch)), 'w+') as f:
         f.write('agg_acc: {0:3.4f} agg_f1: {1:3.4f}'.format(agg_acc, agg_f1))
+
+        f.write('Metrics by fold:')
+        for fold_no in range(len(agg_stats['acc'])):
+            f.write('Fold {0} - Acc: {1:3.2f} F1: {2:3.2f}'.format(fold_no, agg_stats['acc'][fold_no],
+                                                                   agg_stats['f1'][fold_no]))
 
 
