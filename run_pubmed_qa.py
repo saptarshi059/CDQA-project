@@ -92,6 +92,10 @@ if __name__ == '__main__':
     os.environ['MASTER_PORT'] = args.port
 
     curr_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    print_str = '** MODEL TIME ID: {} **'.format(curr_time)
+    print('*' * len(print_str))
+    print(print_str)
+    print('*' * len(print_str))
     args.out = os.path.join(args.out, curr_time)
     os.makedirs(args.out)
 
