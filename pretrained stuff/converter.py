@@ -58,6 +58,6 @@ with torch.no_grad():
         loss_vals.append(criterion(torch.FloatTensor(homogenized_embedding).reshape(1,-1), torch.FloatTensor(row.test).reshape(1,-1)).item())
 
 print('Saving Homogenized Embeddings...')
-pd.DataFrame(zip(CUI, entity_names, converted_embeddings), columns = ['CUI', 'Entity', 'UMLS_Embedding']).to_pickle(f"NN-DTE-to-{BERT_variant.replace('/','-')}.pkl")
+pd.DataFrame(zip(CUI, entity_names, converted_embeddings), columns = ['CUI', 'Entity', 'UMLS_Embedding']).to_pickle(f"UMLS_Only_NN-DTE-to-{BERT_variant.replace('/','-')}.pkl")
 
 print(f'Average Test Loss: {np.mean(loss_vals)}')

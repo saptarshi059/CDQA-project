@@ -35,7 +35,7 @@ for row in tqdm(dataframe.itertuples(index=False)):
 
 if args.avg_emb == 1:
 	#pd.DataFrame(zip(dataframe.Entity, dataframe.UMLS_Embedding, definition_embeddings), columns=['Entity', 'UMLS_Embedding', 'Dictionary_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl")
-	pd.DataFrame(zip(dataframe.Entity, definition_embeddings), columns=['Entity', 'UMLS_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl") #Trying only definition embeddings
+	pd.DataFrame(zip(dataframe.Entity, definition_embeddings), columns=['Entity', 'UMLS_Embedding']).to_pickle(f"Definition_Only_NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl") #Trying only definition embeddings
 else:
 	#I'm just calling it UMLS_Embedding so that it runs easily with run_modelling.py
 	pd.DataFrame(zip(dataframe.Entity, avg_emb), columns=['Entity', 'UMLS_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl")

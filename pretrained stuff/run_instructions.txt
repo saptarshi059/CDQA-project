@@ -9,7 +9,8 @@ pipeline for PT programs
 1st 4 programs & 8 - run on dgx1
 6 - local
 
-#Now use CUI_PC+MM_Tokenizations_gen.py to generate the tokenizations table and CUI_PC for respective task.
+A. Now use CUI_PC+MM_Tokenizations_gen.py to generate the tokenizations table and CUI_PC for respective task.
+B. scp CUI_PC.csv to dgx
 
 1. train_test_gen.py - once (to generate the train/test samples overall) - for the resp. task
 2. train_test_gen_NN.py - can repeat this to get the desired number of samples for the NN
@@ -19,3 +20,11 @@ pipeline for PT programs
 6. ent_def_gen.py - once to add defintions to our NN matrix
 7. scp Entity_Definition.pkl to dgx1
 8. def_embed.py - run once to generate definition embeddings
+
+
+export CUDA_VISIBLE_DEVICES=2
+
+python run_pubmed_qa.py --data /home/CDQA-project/data/ --model_name ktrapeznikov/biobert_v1.1_pubmed_squad_v2 --use_kge True --fancy_concat True --dte_lookup_table_fp /home/CDQA-project/pretrained\ stuff/for_pubmed/NN-DTE-to-ktrapeznikov-biobert_v1.1_pubmed_squad_v2.pkl --gpus 2 --n_epochs 8
+
+python apply_pubmed_qa.py --data /home/CDQA-project/data/test_set.json --model_id 20220215-193904 --epoch 7
+
