@@ -1,4 +1,4 @@
-#python ent_def_gen.py -f NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl
+#python ent_def_gen.py -f UMLS_Only_NN-DTE-to-navteca-roberta-base-squad2.pkl
 
 import sqlite3
 import pickle

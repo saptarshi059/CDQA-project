@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python converter.py -hl 1 -hd 300 -d test_data_Homogenization_data.pkl -b phiyodr/bert-base-finetuned-squad2
+#python converter.py -hl 1 -hd 300 -d test_data_Homogenization_data.pkl -b navteca/roberta-base-squad2
 
 #Loading trained model & setting it to eval mode
 from MyNN import FFNN

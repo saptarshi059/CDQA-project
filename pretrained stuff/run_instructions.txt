@@ -22,9 +22,17 @@ B. scp CUI_PC.csv to dgx
 8. def_embed.py - run once to generate definition embeddings
 
 
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=3
 
-python run_pubmed_qa.py --data /home/CDQA-project/data/ --model_name ktrapeznikov/biobert_v1.1_pubmed_squad_v2 --use_kge True --fancy_concat True --dte_lookup_table_fp /home/CDQA-project/pretrained\ stuff/for_pubmed/NN-DTE-to-ktrapeznikov-biobert_v1.1_pubmed_squad_v2.pkl --gpus 2 --n_epochs 8
+python run_pubmed_qa.py --data /home/CDQA-project/data/ --model_name phiyodr/bert-base-finetuned-squad2 --use_kge True --concat_kge True --dte_lookup_table_fp /home/CDQA-project/pretrained\ stuff/for_pubmed/NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl --gpus 3 --n_epochs 10 --port 12349
 
-python apply_pubmed_qa.py --data /home/CDQA-project/data/test_set.json --model_id 20220215-193904 --epoch 7
+
+vanilla
+
+python run_pubmed_qa.py --data /home/CDQA-project/data/ --model_name phiyodr/bert-base-finetuned-squad2 --gpus 3 --n_epochs 7 --port 12347
+
+
+python apply_pubmed_qa.py --data /home/CDQA-project/data/test_set.json --model_id 20220218-162931 --epoch 4
+
+roberta - 20220216-180225
 

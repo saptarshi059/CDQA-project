@@ -1,4 +1,4 @@
-#python def_embed.py -b phiyodr/bert-base-finetuned-squad2 -av 0
+#python def_embed.py -b navteca/roberta-base-squad2 -av 1
 
 from transformers import AutoModel, AutoTokenizer, logging
 import argparse
@@ -28,12 +28,12 @@ for row in tqdm(dataframe.itertuples(index=False)):
 	inputs = tokenizer(row.Definition, return_tensors='pt', max_length=512, truncation=True, padding='max_length')
 	inputs.to(device)
 	output = model(**inputs)
-	if args.avg_emb == 1:
+	if args.avg_emb == 0:
 		definition_embeddings.append(output['pooler_output'].detach().cpu())
 	else:
 		avg_emb.append(torch.mean(torch.vstack([row.UMLS_Embedding, output['pooler_output'].detach().cpu()]), dim=0).reshape(1,-1))
 
-if args.avg_emb == 1:
+if args.avg_emb == 0:
 	#pd.DataFrame(zip(dataframe.Entity, dataframe.UMLS_Embedding, definition_embeddings), columns=['Entity', 'UMLS_Embedding', 'Dictionary_Embedding']).to_pickle(f"NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl")
 	pd.DataFrame(zip(dataframe.Entity, definition_embeddings), columns=['Entity', 'UMLS_Embedding']).to_pickle(f"Definition_Only_NN-DTE-to-{args.bert_variant.replace('/','-')}.pkl") #Trying only definition embeddings
 else:
