@@ -1,4 +1,4 @@
-#python def_embed.py -b navteca/roberta-base-squad2 -av 1
+#python def_embed.py -b gsarti/scibert-nli -av 1
 
 from transformers import AutoModel, AutoTokenizer, logging
 import argparse

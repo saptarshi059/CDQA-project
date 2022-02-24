@@ -1,3 +1,7 @@
+'''
+For COVID-QA
+'''
+
 #python train_test_gen_NN.py -b phiyodr/bert-base-finetuned-squad2 -d training_data.pkl
 #python train_test_gen_NN.py -b phiyodr/bert-base-finetuned-squad2 -d test_data.pkl
 
@@ -9,6 +13,24 @@
 
 #python train_test_gen_NN.py -b ktrapeznikov/scibert_scivocab_uncased_squad_v2 -d training_data.pkl
 #python train_test_gen_NN.py -b ktrapeznikov/scibert_scivocab_uncased_squad_v2 -d test_data.pkl
+
+
+'''
+For PubMedQA
+'''
+
+#python train_test_gen_NN.py -b textattack/bert-base-uncased-snli -d training_data.pkl
+#python train_test_gen_NN.py -b textattack/bert-base-uncased-snli -d test_data.pkl
+
+#python train_test_gen_NN.py -b boychaboy/SNLI_roberta-base -d training_data.pkl
+#python train_test_gen_NN.py -b boychaboy/SNLI_roberta-base -d test_data.pkl
+
+#python train_test_gen_NN.py -b gsarti/biobert-nli -d training_data.pkl
+#python train_test_gen_NN.py -b gsarti/biobert-nli -d test_data.pkl
+
+#python train_test_gen_NN.py -b gsarti/scibert-nli -d training_data.pkl
+#python train_test_gen_NN.py -b gsarti/scibert-nli -d test_data.pkl
+
 
 import argparse
 import pickle5 as pickle
