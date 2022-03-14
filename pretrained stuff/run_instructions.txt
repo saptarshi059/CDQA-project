@@ -10,7 +10,7 @@ pipeline for PT programs
 6 - local
 
 A. Now use CUI_PC+MM_Tokenizations_gen.py to generate the tokenizations table and CUI_PC for respective task.
-B. scp CUI_PC.csv to dgx
+B. scp CUI_PC.csv & MetaMap_Tokenizations.pkl to dgx
 
 1. train_test_gen.py - once (to generate the train/test samples overall) - for the resp. task
 2. train_test_gen_NN.py - can repeat this to get the desired number of samples for the NN
@@ -22,17 +22,13 @@ B. scp CUI_PC.csv to dgx
 8. def_embed.py - run once to generate definition embeddings
 
 
-export CUDA_VISIBLE_DEVICES=3
+export CUDA_VISIBLE_DEVICES=2
 
-python run_pubmed_qa.py --data /home/CDQA-project/data/ --model_name phiyodr/bert-base-finetuned-squad2 --use_kge True --concat_kge True --dte_lookup_table_fp /home/CDQA-project/pretrained\ stuff/for_pubmed/NN-DTE-to-phiyodr-bert-base-finetuned-squad2.pkl --gpus 3 --n_epochs 10 --port 12349
-
-
-vanilla
-
-python run_pubmed_qa.py --data /home/CDQA-project/data/ --model_name phiyodr/bert-base-finetuned-squad2 --gpus 3 --n_epochs 7 --port 12347
-
+python run_pubmed_qa.py --data /home/CDQA-project/data/ --model_name boychaboy/SNLI_roberta-base --use_kge True --concat_kge True --random_kge True --dte_lookup_table_fp /home/CDQA-project/pretrained\ stuff/for_pubmedqa/roberta/NN-DTE-to-boychaboy-SNLI_roberta-base.pkl --gpus 2 --n_epochs 5 --port 10329
 
 python apply_pubmed_qa.py --data /home/CDQA-project/data/test_set.json --model_id 20220218-162931 --epoch 4
 
-roberta - 20220216-180225
+nohup ./on3.sh > bertandroberta.out &
+nohup ./on7.sh > roberta.out &
 
+nohup ./runpub_all.sh 20220301-152312 > pubtests.out &

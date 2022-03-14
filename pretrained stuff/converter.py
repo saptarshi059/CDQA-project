@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python converter.py -d test_data_Homogenization_data.pkl -b gsarti/scibert-nli
+#python converter.py -d test_data_Homogenization_data.pkl -b navteca/roberta-base-squad2
 
 #Loading trained model & setting it to eval mode
 from MyNN import FFNN

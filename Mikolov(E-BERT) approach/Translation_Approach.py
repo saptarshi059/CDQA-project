@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#python Translation_Approach.py --BERT_Variant phiyodr/bert-base-finetuned-squad2 --cui_pc_file their_CUI_PC.csv
+#python Translation_Approach.py --BERT_Variant boychaboy/SNLI_roberta-base --cui_pc_file their_CUI_PC.csv
 
 import pandas as pd
 import pickle5 as pickle

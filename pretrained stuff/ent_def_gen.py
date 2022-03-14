@@ -1,4 +1,4 @@
-#python ent_def_gen.py -f for_pubmedqa/scibert/UMLS_Only_NN-DTE-to-gsarti-scibert-nli.pkl 
+#python ent_def_gen.py -f for_covidqa/roberta/UMLS_Only_NN-DTE-to-navteca-roberta-base-squad2.pkl 
 
 import sqlite3
 import pickle
