@@ -2,36 +2,43 @@ import torch
 import copy
 
 
-def find_most_probably_span_len(poss_start_idxs, poss_end_idxs):
-        poss_start_idxs = torch.cat([poss_start_idxs.unsqueeze(-1) for _ in range(poss_start_idxs.shape[-1])], dim=-1)
-        poss_end_idxs = poss_end_idxs.unsqueeze(1)
+def find_most_probably_span_len(poss_start_idxs, poss_end_idxs, minimum_length=None):
+    poss_start_idxs = torch.cat([poss_start_idxs.unsqueeze(-1) for _ in range(poss_start_idxs.shape[-1])], dim=-1)
+    poss_end_idxs = poss_end_idxs.unsqueeze(1)
 
-        z = poss_end_idxs - poss_start_idxs
-        z_orig = copy.deepcopy(z)
+    z = poss_end_idxs - poss_start_idxs
+    z_orig = copy.deepcopy(z)
+    if minimum_length is not None:
+        z = z.view(z.shape[0], -1)
+        # print('z:\n{}\n\t{}'.format(z, z.shape))
+        # print('minimum_length:\n{}\n\t{}'.format(minimum_length, minimum_length.shape))
+        z = z - minimum_length
+        # print('z:\n{}\n\t{}'.format(z, z.shape))
+        z = z.view(-1, poss_start_idxs.shape[-1], poss_start_idxs.shape[-1])
 
-        z[z < 0] = -9e9
-        z[z > 0] = 1
-        # print('z:\n{}'.format(z))
-        adj_z = torch.tensor([i for i in range(poss_start_idxs.shape[-1])])
-        adj_z = [adj_z + i for i in range(poss_start_idxs.shape[-1])]
+    z[z < 0] = -9e9
+    z[z >= 0] = 1
+    # print('z:\n{}'.format(z))
+    adj_z = torch.tensor([i for i in range(poss_start_idxs.shape[-1])])
+    adj_z = [adj_z + i for i in range(poss_start_idxs.shape[-1])]
 
-        adj_z = torch.cat([s.unsqueeze(1) for s in adj_z], dim=1)
-        # print('adj_z:\n{}'.format(adj_z))
+    adj_z = torch.cat([s.unsqueeze(1) for s in adj_z], dim=1)
+    # print('adj_z:\n{}'.format(adj_z))
 
-        new_z = z + adj_z
-        # print('new_z:\n{}'.format(new_z))
+    new_z = z + adj_z
+    # print('new_z:\n{}'.format(new_z))
 
-        new_z = new_z.view(new_z.shape[0], -1)
-        max_idxs = torch.argmax(new_z, dim=-1)
-        # print('max_idxs:\n{}'.format(max_idxs))
-        z_orig = z_orig.view(z_orig.shape[0], -1)
+    new_z = new_z.view(new_z.shape[0], -1)
+    max_idxs = torch.argmax(new_z, dim=-1)
+    # print('max_idxs:\n{}'.format(max_idxs))
+    z_orig = z_orig.view(z_orig.shape[0], -1)
 
-        # print('z_orig.shape: {}'.format(z_orig.shape))
-        # print('max_idxs.shape: {}'.format(max_idxs.shape))
+    # print('z_orig.shape: {}'.format(z_orig.shape))
+    # print('max_idxs.shape: {}'.format(max_idxs.shape))
 
-        best_lengths = torch.gather(z_orig, 1, max_idxs.unsqueeze(-1))
-        # print('best_lengths:\n{}'.format(best_lengths))
-        return best_lengths
+    best_lengths = torch.gather(z_orig, 1, max_idxs.unsqueeze(-1))
+    # print('best_lengths:\n{}'.format(best_lengths))
+    return best_lengths
 
 
 x = torch.tensor([[134, 145, 74, 222, 266],
@@ -55,9 +62,19 @@ y = torch.tensor([[67, 136, 96, 115, 128],
                   [164, 128, 112, 107, 125],
                   [129, 157, 93, 5, 89],
                   [231, 90, 111, 223, 69]])
+z = torch.tensor([[13],
+                  [16],
+                  [12],
+                  [16],
+                  [12],
+                  [12],
+                  [16],
+                  [10],
+                  [12],
+                  [13]])
 
-print('x.shape: {}'.format(x.shape))
-print('y.shape: {}'.format(y.shape))
+# print('x.shape: {}'.format(x.shape))
+# print('y.shape: {}'.format(y.shape))
 
-something_something = find_most_probably_span_len(x, y)
+something_something = find_most_probably_span_len(x, y, minimum_length=z)
 print(something_something)
