@@ -2,19 +2,24 @@ import torch
 import copy
 
 
-def find_most_probably_span_len(poss_start_idxs, poss_end_idxs, minimum_length=None):
+def find_most_probably_span_len(poss_start_idxs, poss_end_idxs, min_start_idx=None):
     poss_start_idxs = torch.cat([poss_start_idxs.unsqueeze(-1) for _ in range(poss_start_idxs.shape[-1])], dim=-1)
     poss_end_idxs = poss_end_idxs.unsqueeze(1)
 
+    if min_start_idx is not None:
+        # print('poss_start_idxs:\n{}'.format(poss_start_idxs))
+        min_start_idx = torch.repeat_interleave(
+            torch.repeat_interleave(
+                min_start_idx, poss_start_idxs.shape[-1], dim=1
+            ).unsqueeze(-1), poss_start_idxs.shape[-1], dim=-1
+        )
+        # print('minimum_length:\n{}'.format(min_start_idx))
+
+        poss_start_idxs[poss_start_idxs <= min_start_idx] = 9e9
+        # input('poss_start_idxs:\n{}'.format(poss_start_idxs))
+
     z = poss_end_idxs - poss_start_idxs
     z_orig = copy.deepcopy(z)
-    if minimum_length is not None:
-        z = z.view(z.shape[0], -1)
-        # print('z:\n{}\n\t{}'.format(z, z.shape))
-        # print('minimum_length:\n{}\n\t{}'.format(minimum_length, minimum_length.shape))
-        z = z - minimum_length
-        # print('z:\n{}\n\t{}'.format(z, z.shape))
-        z = z.view(-1, poss_start_idxs.shape[-1], poss_start_idxs.shape[-1])
 
     z[z < 0] = -9e9
     z[z >= 0] = 1
@@ -62,6 +67,7 @@ y = torch.tensor([[67, 136, 96, 115, 128],
                   [164, 128, 112, 107, 125],
                   [129, 157, 93, 5, 89],
                   [231, 90, 111, 223, 69]])
+
 z = torch.tensor([[13],
                   [16],
                   [12],
@@ -76,5 +82,5 @@ z = torch.tensor([[13],
 # print('x.shape: {}'.format(x.shape))
 # print('y.shape: {}'.format(y.shape))
 
-something_something = find_most_probably_span_len(x, y, minimum_length=z)
+something_something = find_most_probably_span_len(x, y, min_start_idx=z)
 print(something_something)
