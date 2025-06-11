@@ -21,12 +21,10 @@ import os
 
 logger = datasets.logging.get_logger(__name__)
 
-
 # You can copy an official description
 _DESCRIPTION = """\
 Cleaned version of COVID-QA containing fixes as mentioned in ``Towards Efficient Methods in Medical Question Answering using Knowledge Graph Embeddings``.
 """
-
 
 _CITATION = """\
 @inproceedings{sengupta2024towards,
@@ -41,13 +39,7 @@ _CITATION = """\
 
 _HOMEPAGE = "https://ieeexplore.ieee.org/abstract/document/10821824"
 
-
 _LICENSE = "Apache License 2.0"
-
-
-_URL = "https://github.com/saptarshi059/CDQA-v2-Auxilliary-Loss/tree/main/data/covid_qa_cleaned_CS"
-_URLs = {"covid_qa_cleaned_CS": _URL + "covid_qa_cleaned_CS.json"}
-
 
 class CovidQADeepsetCleaned(datasets.GeneratorBasedBuilder):
     VERSION = datasets.Version("1.0.0")
@@ -82,9 +74,8 @@ class CovidQADeepsetCleaned(datasets.GeneratorBasedBuilder):
         )
 
     def _split_generators(self, dl_manager):
-        url = _URLs[self.config.name]
-        downloaded_filepath = dl_manager.download_and_extract(url)
-
+        downloaded_filepath = dl_manager.download_and_extract("https://raw.githubusercontent.com/saptarshi059/CDQA-project/refs/heads/main/covid_qa_cleaned_CS/covid_qa_cleaned_CS.json")
+        
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
@@ -95,6 +86,7 @@ class CovidQADeepsetCleaned(datasets.GeneratorBasedBuilder):
     def _generate_examples(self, filepath):
         """This function returns the examples in the raw (text) form."""
         logger.info("generating examples from = %s", filepath)
+        print(filepath)
         with open(filepath, encoding="utf-8") as f:
             covid_qa = json.load(f)
             for article in covid_qa["data"]:
